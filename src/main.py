@@ -20,6 +20,8 @@ def main():
     # utils.load_student_data(args)
     gail = GailExecutor(args)
     gail.run()
+    # conservative gail tryout: we are trying to produce behaviors that is close to pi_1 (say low nlg students)
+    # and far from pi_2 (high nlg students). 
 
 
 if __name__ == "__main__":
