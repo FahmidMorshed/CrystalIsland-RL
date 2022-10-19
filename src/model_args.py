@@ -7,10 +7,10 @@ from dataclasses import dataclass, field
 @dataclass
 class ModelArguments:
     # generic params
-    seed: int = field(default=42, metadata={"help": "random seed for reproducibility of results"})
+    seed: int = field(default=23, metadata={"help": "random seed for reproducibility of results"})
     run_type: str = field(default="train", metadata={"help": "type of run. For training GAIL use train. "
                                                              "For evaluation, use eval."})
-    train_steps: int = field(default=1e6, metadata={"help": "maximum training time steps"})
+    train_steps: int = field(default=1e7, metadata={"help": "maximum training time steps"})
     split_by: str = field(default="high", metadata={"help": "split dataset into high|low nlg"})
 
     # Crystal Island env parameters
@@ -32,7 +32,7 @@ class ModelArguments:
     internal_epoch_d: int = field(default=2, metadata={"help": "training epochs of discriminator model"})
     discount_factor: float = field(default=0.99, metadata={"help": "discount factor for gail"})
     clip_eps: float = field(default=0.2, metadata={"help": "clipping epsilon in PPO loss"})
-    d_stop_threshold: float = field(default=0.10, metadata={"help": "maximum difference between expert score and "
+    d_stop_threshold: float = field(default=0.1, metadata={"help": "maximum difference between expert score and "
                                                                     "novice score that is counted as a success"})
     d_stop_count: int = field(default=5, metadata={"help": "minimum consecutive number of times d_stop_threshold "
                                                            "is met"})
