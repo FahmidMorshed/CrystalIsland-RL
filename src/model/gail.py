@@ -162,21 +162,27 @@ class GailExecutor:
 
 
     def train_evaluator(self):
-        sample_size = 50000
+        sample_size = 5000
         for ep in range(10000):
             self.reset_buffers()
-            self.random_action_simulate(sample_size)
+            self.random_action_simulate(sample_size//2)
             rand_state_actions, _, _ = self._gen_state_action_tensor(self.rand_states, self.rand_actions)
+
+            idx = np.random.choice(range(self.comp_state_actions.size()[0]), sample_size//2, replace=False)
+            comp_state_actions = self.comp_state_actions[idx]
 
             idx = np.random.choice(range(self.expert_state_actions.size()[0]), sample_size, replace=False)
             expert_state_actions = self.expert_state_actions[idx]
 
             expert_prob = self.d_eval(expert_state_actions)
             rand_prob = self.d_eval(rand_state_actions)
-            term1 = self.bce_loss(rand_prob, torch.ones((rand_state_actions.shape[0], 1), device=self.args.device))
-            term2 = self.bce_loss(expert_prob, torch.zeros((expert_state_actions.shape[0], 1), device=self.args.device))
+            comp_prob = self.d_eval(comp_state_actions)
 
-            loss = term1 + term2
+            term1 = self.bce_loss(expert_prob, torch.zeros((expert_state_actions.shape[0], 1), device=self.args.device))
+            term2 = self.bce_loss(rand_prob, torch.ones((rand_state_actions.shape[0], 1), device=self.args.device))
+            term3 = self.bce_loss(comp_prob, torch.ones((comp_state_actions.shape[0], 1), device=self.args.device))
+
+            loss = term1 + term2 + term3
             curr_loss = loss.item()
             self.optimizer_d_eval.zero_grad()
             loss.backward()
@@ -221,6 +227,14 @@ class GailExecutor:
         y_test_truth = np.random.choice([0, 1], sample_size)
         print("Test with random truths: ", metrics.accuracy_score(y_test_truth, y_test))
 
+        # original complement
+        idx = np.random.choice(range(self.comp_test_state_actions.size()[0]), sample_size, replace=False)
+        comp_test_state_actions = self.comp_test_state_actions[idx]
+        y_comp = self.d_eval(comp_test_state_actions).detach()
+        y_comp = (y_comp > .5)
+        y_comp_truth = np.ones(sample_size)
+        print("Comp with actual truths: ", metrics.accuracy_score(y_comp_truth, y_comp))
+
         # random with test
         rand_state_actions, _, _ = self._gen_state_action_tensor(self.rand_states, self.rand_actions)
         y_rand = self.d_eval(rand_state_actions).detach()
@@ -228,15 +242,20 @@ class GailExecutor:
         y_rand_truth = np.ones(sample_size)
         print("Random with actual truths: ", metrics.accuracy_score(y_rand_truth, y_rand))
 
+        idx = np.random.choice(range(self.test_state_actions.size()[0]), 2*sample_size, replace=False)
+        test_state_actions = self.test_state_actions[idx]
         y_test = self.d_eval(test_state_actions).detach()
         y_test = (y_test > .5)
-        y_test_truth = np.zeros(sample_size)
+        y_test_truth = np.zeros(2*sample_size)
         y_rand = self.d_eval(rand_state_actions).detach()
         y_rand = (y_rand > .5)
         y_rand_truth = np.ones(sample_size)
-        y = torch.cat([y_rand, y_test], dim=0)
-        y_truth = np.concatenate([y_rand_truth, y_test_truth])
-        print("Test and Random with actual truths: ", metrics.accuracy_score(y_truth, y))
+        y_comp = self.d_eval(comp_test_state_actions).detach()
+        y_comp = (y_comp > .5)
+        y_comp_truth = np.ones(sample_size)
+        y = torch.cat([y_rand, y_test, y_comp], dim=0)
+        y_truth = np.concatenate([y_rand_truth, y_test_truth, y_comp_truth])
+        print("Test and Comp and Random with actual truths: ", metrics.accuracy_score(y_truth, y))
 
         self.reset_buffers()
 

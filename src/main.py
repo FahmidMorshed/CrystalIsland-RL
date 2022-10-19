@@ -18,7 +18,8 @@ def main():
     args = ModelArguments()
     utils.set_all_seeds(args.seed)
     gail = GailExecutor(args)
-    gail.run()
+    gail.load()
+    gail.eval()
     # conservative gail tryout: we are trying to produce behaviors that is close to pi_1 (say low nlg students)
     # and far from pi_2 (high nlg students).
 
