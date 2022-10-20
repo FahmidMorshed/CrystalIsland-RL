@@ -38,9 +38,8 @@ def load_student_data(args: dataclasses):
     test_df_high = test_df_high.set_index("student_id").loc[test_high_student].reset_index()
     test_df_low = test_df_low.set_index("student_id").loc[test_low_student].reset_index()
 
-    print(len(train_high_student), len(train_low_student), len(test_high_student), len(test_low_student))
-
-    return train_df_high, train_df_low, test_df_high, test_df_low
+    s0 = np.stack(df.loc[df['step'] == 0, 'state'])
+    return train_df_high, train_df_low, test_df_high, test_df_low, s0
 
 
 def set_all_seeds(seed=42):

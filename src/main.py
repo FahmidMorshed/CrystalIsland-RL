@@ -17,11 +17,12 @@ logger = logging.getLogger(__name__)
 def main():
     args = ModelArguments()
     utils.set_all_seeds(args.seed)
-    gail = GailExecutor(args)
-    gail.train_evaluator()
-    # gail.eval()
-    # conservative gail tryout: we are trying to produce behaviors that is close to pi_1 (say low nlg students)
-    # and far from pi_2 (high nlg students).
+    train_low, train_high, test_low, test_high, s0 = utils.load_student_data(args)
+    env = CrystalIsland(args, s0)
+    gail = GailExecutor(args, train_low, env)
+    gail.run()
+
+    # print(env.gen_random_data(50))
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ import pickle
 from copy import deepcopy
 
 import numpy as np
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -138,3 +139,25 @@ class CrystalIsland:
                          "position {3} was triggered".format(action, narrative_action, aes_action, aes_state_num))
 
         return state, reward, done, info
+
+    def gen_random_data(self, steps):
+        ep = 0
+        data = []
+        for step in range(steps):
+            state = deepcopy(self.reset())
+            ep_step = 0
+            while ep_step < self.args.max_episode_len:
+                action = np.random.choice(range(0, self.args.action_dim))
+                next_state, reward, done, info = self.step(action)
+                data.append({'episode': ep, 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                             'done': done, 'info': info})
+                ep_step += 1
+                state = deepcopy(next_state)
+                if done:
+                    break
+            ep += 1
+
+        df = pd.DataFrame(data, columns=['episode', 'step', 'state', 'action', 'reward', 'done', 'info'])
+        return df
+
+
