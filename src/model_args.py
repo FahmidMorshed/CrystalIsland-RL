@@ -7,7 +7,7 @@ from dataclasses import dataclass, field
 @dataclass
 class ModelArguments:
     # generic params
-    seed: int = field(default=23, metadata={"help": "random seed for reproducibility of results"})
+    seed: int = field(default=24, metadata={"help": "random seed for reproducibility of results"})
     run_type: str = field(default="train", metadata={"help": "type of run. For training GAIL use train. "
                                                              "For evaluation, use eval."})
     train_steps: int = field(default=1e7, metadata={"help": "maximum training time steps"})
@@ -23,7 +23,7 @@ class ModelArguments:
                                   metadata={"help": "location of the pickle file in pd.DataFrame"})
     # model param
     device: str = field(default="cpu", metadata={"help": "device (cpu|cuda:0)"})
-    units: float = field(default=64, metadata={"help": "number of neurons per layer"})
+    units: float = field(default=128, metadata={"help": "number of neurons per layer"})
     lr_actor: float = field(default=0.001, metadata={"help": "actor model learning rate"})
     lr_critic: float = field(default=0.001, metadata={"help": "critic model learning rate"})
     lr_discriminator: float = field(default=0.001, metadata={"help": "discriminator model learning rate"})
@@ -33,11 +33,18 @@ class ModelArguments:
     discount_factor: float = field(default=0.99, metadata={"help": "discount factor for gail"})
     clip_eps: float = field(default=0.2, metadata={"help": "clipping epsilon in PPO loss"})
     d_stop_threshold: float = field(default=0.1, metadata={"help": "maximum difference between expert score and "
-                                                                    "novice score that is counted as a success"})
+                                                                   "novice score that is counted as a success"})
     d_stop_count: int = field(default=5, metadata={"help": "minimum consecutive number of times d_stop_threshold "
                                                            "is met"})
     max_episode_len: int = field(default=1500, metadata={"help": "maximum episode length"})
     update_steps: int = field(default=12000, metadata={"help": "frequency of model update"})
+
+    # validator params
+    lr_validator: float = field(default=0.001, metadata={"help": "validator model learning rate"})
+    validator_epoch: int = field(default=50000, metadata={"help": "training epochs of validator model"})
+    validator_batch: int = field(default=5000, metadata={"help": "batch size for training auth validator"})
+    validator_auth_threshold: float = field(default=.9, metadata={"help": "authenticator threshold for considering a "
+                                                                           "valid episode"})
 
     def to_dict(self):
         """

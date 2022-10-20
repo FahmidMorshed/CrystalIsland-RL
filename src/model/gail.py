@@ -45,11 +45,12 @@ class GailExecutor:
         self.env = env
         self.train_student_df = train_student_df
         self.expert_state_actions, self.expert_states, self.expert_actions = \
-            self._gen_state_action_tensor(np.stack(self.train_student_df['state']),
-                                          np.array(self.train_student_df['action']))
+            utils.state_action_tensor(np.stack(self.train_student_df['state']),
+                                      np.array(self.train_student_df['action']), self.args.action_dim)
         self.rand_data = self.env.gen_random_data(10000)
-        self.rand_state_actions, _, _ = self._gen_state_action_tensor(np.stack(self.rand_data['state']),
-                                                                      np.array(self.rand_data['action']))
+        self.rand_state_actions, _, _ = utils.state_action_tensor(np.stack(self.rand_data['state']),
+                                                                  np.array(self.rand_data['action']),
+                                                                  self.args.action_dim)
 
         self.states = []
         self.actions = []
@@ -86,20 +87,10 @@ class GailExecutor:
 
         return next_state, reward, done
 
-    def _gen_state_action_tensor(self, states, actions):
-        if type(states) is np.ndarray:
-            state_tensor = torch.tensor(states, dtype=torch.float32, device=self.args.device)
-            action_tensor = torch.tensor(actions, dtype=torch.int64, device=self.args.device)
-        else:
-            state_tensor = torch.stack(states, dim=0).to(self.args.device)
-            action_tensor = torch.stack(actions, dim=0).to(self.args.device)
-        actions_one_hot = torch.eye(self.args.action_dim)[action_tensor.long()].to(self.args.device)
-        state_action_tensor = torch.cat([state_tensor, actions_one_hot], dim=1)
-        return state_action_tensor, state_tensor, action_tensor
-
     def update(self):
         prev_log_prob_actions = torch.stack(self.log_prob_actions, dim=0).to(self.args.device)
-        agent_state_actions, prev_states, prev_actions = self._gen_state_action_tensor(self.states, self.actions)
+        agent_state_actions, prev_states, prev_actions = utils.state_action_tensor(self.states, self.actions,
+                                                                                   self.args.action_dim)
 
         curr_loss = 0.0
         for ep in range(self.args.internal_epoch_d):
@@ -207,8 +198,31 @@ class GailExecutor:
         torch.save(self.d.state_dict(), "../checkpoint/discriminator.ckpt")
 
     def load(self):
-        policy_model_path = "../checkpoint/policy.ckpt"
-        self.pi_old.load_state_dict(torch.load(policy_model_path, map_location=lambda x, y: x))
+        self.pi_old.load_state_dict(torch.load("../checkpoint/policy.ckpt", map_location=lambda x, y: x))
         self.pi.load_state_dict(self.pi_old.state_dict())
-        discriminator_model_path = "../checkpoint/discriminator.ckpt"
-        self.d.load_state_dict(torch.load(discriminator_model_path, map_location=lambda x, y: x))
+        self.d.load_state_dict(torch.load("../checkpoint/discriminator.ckpt", map_location=lambda x, y: x))
+
+    def simulate(self, episode):
+        data = []
+        for ep in range(episode):
+            state = self.env.reset()
+            ep_step = 0
+            done = False
+            while ep_step < self.args.max_episode_len or done is False:
+                state = torch.tensor(state, dtype=torch.float32, device=self.args.device)
+                with torch.no_grad():
+                    action, action_log_prob = self.pi_old.act(state)
+                action = action.detach().item()
+                next_state, reward, done, info = self.env.step(action)
+
+                data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                             'done': done, 'info': info})
+                ep_step += 1
+                if done:
+                    break
+
+        df = pd.DataFrame(data, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
+        return df
+
+
+

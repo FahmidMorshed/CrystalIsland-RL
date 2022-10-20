@@ -143,21 +143,25 @@ class CrystalIsland:
     def gen_random_data(self, steps):
         ep = 0
         data = []
-        for step in range(steps):
+        step = 0
+        while step < steps:
             state = deepcopy(self.reset())
             ep_step = 0
-            while ep_step < self.args.max_episode_len:
+            while ep_step < self.args.max_episode_len and step < steps:
                 action = np.random.choice(range(0, self.args.action_dim))
                 next_state, reward, done, info = self.step(action)
-                data.append({'episode': ep, 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
                              'done': done, 'info': info})
                 ep_step += 1
                 state = deepcopy(next_state)
+                step += 1
                 if done:
                     break
             ep += 1
+            if (step+1) % 10000 == 0:
+                logger.info("{0} out of {1} random data generated".format(step, steps))
 
-        df = pd.DataFrame(data, columns=['episode', 'step', 'state', 'action', 'reward', 'done', 'info'])
+        df = pd.DataFrame(data, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
         return df
 
 
