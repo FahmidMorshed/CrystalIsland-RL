@@ -54,7 +54,7 @@ class GailExecutor:
         self.bce_loss = nn.BCELoss()
 
         # create state and action tensors
-        self.train_student_df, self.test_student_df, self.train_comp_df, self.test_comp_df = utils.load_student_data(self.args)
+        self.train_student_df, self.train_comp_df, self.test_student_df, self.test_comp_df = utils.load_student_data(self.args)
 
         self.expert_state_actions, self.expert_states, self.expert_actions = \
             self._gen_state_action_tensor(np.stack(self.train_student_df['state']),
@@ -102,6 +102,19 @@ class GailExecutor:
         self.comp_test_state_actions, self.comp_test_states, self.comp_test_actions = \
             self._gen_state_action_tensor(np.stack(self.test_comp_df['state']),
                                           np.array(self.test_comp_df['action']))
+
+        # for testing end state only
+        d = self.train_student_df.loc[self.train_student_df['done']]
+        self.expert_state_actions_end, _, _ = self._gen_state_action_tensor(np.stack(d['state']), np.array(d['action']))
+
+        d = self.test_student_df.loc[self.test_student_df['done']]
+        self.test_state_actions_end, _, _ = self._gen_state_action_tensor(np.stack(d['state']), np.array(d['action']))
+
+        d = self.train_comp_df.loc[self.train_comp_df['done']]
+        self.comp_state_actions_end, _, _ = self._gen_state_action_tensor(np.stack(d['state']), np.array(d['action']))
+
+        d = self.test_comp_df.loc[self.test_comp_df['done']]
+        self.comp_test_state_actions_end, _, _ = self._gen_state_action_tensor(np.stack(d['state']), np.array(d['action']))
 
     def reset_buffers(self):
         self.states = []
@@ -162,27 +175,17 @@ class GailExecutor:
 
 
     def train_evaluator(self):
-        sample_size = 5000
         for ep in range(10000):
-            self.reset_buffers()
-            self.random_action_simulate(sample_size//2)
-            rand_state_actions, _, _ = self._gen_state_action_tensor(self.rand_states, self.rand_actions)
-
-            idx = np.random.choice(range(self.comp_state_actions.size()[0]), sample_size//2, replace=False)
-            comp_state_actions = self.comp_state_actions[idx]
-
-            idx = np.random.choice(range(self.expert_state_actions.size()[0]), sample_size, replace=False)
-            expert_state_actions = self.expert_state_actions[idx]
+            comp_state_actions = self.comp_state_actions_end
+            expert_state_actions = self.expert_state_actions_end
 
             expert_prob = self.d_eval(expert_state_actions)
-            rand_prob = self.d_eval(rand_state_actions)
             comp_prob = self.d_eval(comp_state_actions)
 
             term1 = self.bce_loss(expert_prob, torch.zeros((expert_state_actions.shape[0], 1), device=self.args.device))
-            term2 = self.bce_loss(rand_prob, torch.ones((rand_state_actions.shape[0], 1), device=self.args.device))
-            term3 = self.bce_loss(comp_prob, torch.ones((comp_state_actions.shape[0], 1), device=self.args.device))
+            term2 = self.bce_loss(comp_prob, torch.ones((comp_state_actions.shape[0], 1), device=self.args.device))
 
-            loss = term1 + term2 + term3
+            loss = term1 + term2
             curr_loss = loss.item()
             self.optimizer_d_eval.zero_grad()
             loss.backward()
@@ -193,7 +196,20 @@ class GailExecutor:
                 break
 
         logger.info("finished training evaluator")
-        self.reset_buffers()
+
+        test_state_actions = self.test_state_actions_end
+        comp_test_state_actions = self.comp_test_state_actions_end
+        print(len(test_state_actions), len(comp_test_state_actions))
+
+        state_action = torch.cat([test_state_actions, comp_test_state_actions], dim=0)
+        y_test = self.d_eval(state_action).detach()
+        y_test = (y_test > .5)
+        y_test_truth = np.zeros(len(test_state_actions))
+        y_comp_truth = np.ones(len(comp_test_state_actions))
+        y_truth = np.concatenate([y_test_truth, y_comp_truth])
+        print("Eval TEST: ", metrics.accuracy_score(y_truth, y_test))
+        print(metrics.confusion_matrix(y_truth, y_test))
+        print(metrics.classification_report(y_truth, y_test))
 
     def eval(self):
         # clear buffers
@@ -224,7 +240,7 @@ class GailExecutor:
         test_state_actions = self.test_state_actions[idx]
         y_test = self.d_eval(test_state_actions).detach()
         y_test = (y_test > .5)
-        y_test_truth = np.random.choice([0, 1], sample_size)
+        y_test_truth = np.ones(sample_size)
         print("Test with random truths: ", metrics.accuracy_score(y_test_truth, y_test))
 
         # original complement
@@ -256,6 +272,21 @@ class GailExecutor:
         y = torch.cat([y_rand, y_test, y_comp], dim=0)
         y_truth = np.concatenate([y_rand_truth, y_test_truth, y_comp_truth])
         print("Test and Comp and Random with actual truths: ", metrics.accuracy_score(y_truth, y))
+
+        # original test
+        idx = np.random.choice(range(self.test_state_actions.size()[0]), sample_size, replace=False)
+        test_state_actions = self.test_state_actions[idx]
+        idx = np.random.choice(range(self.comp_test_state_actions.size()[0]), sample_size, replace=False)
+        comp_test_state_actions = self.comp_test_state_actions[idx]
+
+        state_action = torch.cat([test_state_actions, comp_test_state_actions], dim=0)
+        y_test = self.d_eval(state_action).detach()
+        y_test = (y_test > .5)
+        y_test_truth = np.zeros(sample_size)
+        y_comp_truth = np.ones(sample_size)
+        y_truth = np.concatenate([y_test_truth, y_comp_truth])
+        print("XXXX with random truths: ", metrics.accuracy_score(y_truth, y_test))
+        print(metrics.confusion_matrix(y_truth, y_test))
 
         self.reset_buffers()
 
