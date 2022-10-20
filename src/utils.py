@@ -9,27 +9,38 @@ from sklearn.model_selection import train_test_split
 
 def load_student_data(args: dataclasses):
     df = pd.read_pickle(args.student_data_loc)
-    complementary_df = None
-    if args.split_by == 'high':
-        high_nlg_students = df.loc[df['nlg'] == 100]['student_id'].unique()
-        complement_df = df.loc[~df['student_id'].isin(high_nlg_students)].reset_index(drop=True)
-        df = df.loc[df['student_id'].isin(high_nlg_students)].reset_index(drop=True)
 
-    elif args.split_by == 'low':
-        low_nlg_students = df.loc[df['nlg'] == -100]['student_id'].unique()
-        complement_df = df.loc[~df['student_id'].isin(low_nlg_students)].reset_index(drop=True)
-        df = df.loc[df['student_id'].isin(low_nlg_students)].reset_index(drop=True)
+    d = df.loc[df['done']]
+    student_ids = d['student_id'].tolist()
+    nlgs = d['nlg'].tolist()
 
-    train_student, test_student = train_test_split(df['student_id'].unique(), test_size=0.2)
+    train_student, test_student = train_test_split(student_ids, test_size=0.2, stratify=nlgs)
 
     train_df = df.loc[df['student_id'].isin(train_student)].reset_index(drop=True)
     test_df = df.loc[df['student_id'].isin(test_student)].reset_index(drop=True)
 
-    # shuffle by student_id
-    train_df = train_df.set_index("student_id").loc[train_student].reset_index()
-    test_df = test_df.set_index("student_id").loc[test_student].reset_index()
+    train_high_student = df.loc[(df['student_id'].isin(train_student)) & (df['done']) & (df['nlg'] == 100)]['student_id']
+    train_low_student = df.loc[(df['student_id'].isin(train_student)) & (df['done']) & (df['nlg'] == -100)]['student_id']
+    train_df_high = df.loc[df['student_id'].isin(train_high_student)].reset_index(drop=True)
+    train_df_low = df.loc[df['student_id'].isin(train_low_student)].reset_index(drop=True)
 
-    return train_df, test_df, complement_df
+    # shuffle
+    train_df_high = train_df_high.set_index("student_id").loc[train_high_student].reset_index()
+    train_df_low = train_df_low.set_index("student_id").loc[train_low_student].reset_index()
+
+    test_high_student = df.loc[(df['student_id'].isin(test_student)) & (df['done']) & (df['nlg'] == 100)][
+        'student_id']
+    test_low_student = df.loc[(df['student_id'].isin(test_student)) & (df['done']) & (df['nlg'] == -100)][
+        'student_id']
+    test_df_high = df.loc[df['student_id'].isin(test_high_student)].reset_index(drop=True)
+    test_df_low = df.loc[df['student_id'].isin(test_low_student)].reset_index(drop=True)
+    # shuffle
+    test_df_high = test_df_high.set_index("student_id").loc[test_high_student].reset_index()
+    test_df_low = test_df_low.set_index("student_id").loc[test_low_student].reset_index()
+
+    print(len(train_high_student), len(train_low_student), len(test_high_student), len(test_low_student))
+
+    return train_df_high, train_df_low, test_df_high, test_df_low
 
 
 def set_all_seeds(seed=42):
