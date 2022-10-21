@@ -67,7 +67,6 @@ class Validator:
         result_df = pd.DataFrame(result, columns=['student_id', 'is_authentic', 'is_high'])
         return result_df
 
-
     def _train_nlg(self):
         train_ids = np.array(self.train_df.loc[self.train_df['done']].index)
         test_ids = np.array(self.test_df.loc[self.test_df['done']].index)

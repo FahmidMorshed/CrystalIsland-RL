@@ -9,7 +9,7 @@ import torch.nn as nn
 import logging
 
 from src import utils
-from src.model.crystalisland import CrystalIsland
+from src.model.crystalisland import CrystalIsland, _gen_narrative_state
 from src.model.nets import PolicyModel, Discriminator
 
 logger = logging.getLogger(__name__)
@@ -72,10 +72,14 @@ class GailExecutor:
         self.rewards = []
         self.is_terminal = []
 
-    def take_action(self, state):
+    def take_action(self, state, action=None):
         state = torch.tensor(state, dtype=torch.float32, device=self.args.device)
-        with torch.no_grad():
-            action, action_log_prob = self.pi_old.act(state)
+        if action:
+            action = torch.tensor(action, dtype=torch.int64, device=self.args.device)
+            values, action_log_prob, entropy = self.pi.evaluate(state, action)
+        else:
+            with torch.no_grad():
+                action, action_log_prob = self.pi_old.act(state)
         self.states.append(state.detach())
         self.actions.append(action.detach())
         self.log_prob_actions.append(action_log_prob.detach())
@@ -131,7 +135,7 @@ class GailExecutor:
             imp_ratios = torch.exp(log_prob_actions - prev_log_prob_actions)
             clamped_imp_ratio = torch.clamp(imp_ratios, 1 - self.args.clip_eps, 1 + self.args.clip_eps)
             term1 = -torch.min(imp_ratios, clamped_imp_ratio) * advantages
-            term2 = 0.5 * self.mse_loss(values, rewards)
+            term2 = 0.1 * self.mse_loss(values, rewards)
             term3 = -0.01 * entropy
             loss = term1 + term2 + term3
             curr_loss += loss.mean().item()
@@ -152,9 +156,8 @@ class GailExecutor:
         self.lr_scheduler_d.step()
         self.args.clip_eps = self.args.clip_eps * self.args.scheduler_gamma
 
-    def run(self):
+    def run(self, total_updates=100, dryrun=True):
         t = 1
-        success_count = 0
         update_count = 0
         finish = False
         while t <= self.args.train_steps:
@@ -172,25 +175,26 @@ class GailExecutor:
                             t, update_count, self.d_loss, self.pi_loss, self.d_exp_score, self.d_nov_score,
                             self.d_rand_score))
 
-                    # check if conversed
-                    if abs(self.d_exp_score - 0.5) <= self.args.d_stop_threshold and \
-                            abs(self.d_nov_score - 0.5) <= self.args.d_stop_threshold:
-                        success_count += 1
-                        if success_count >= self.args.d_stop_count:
-                            logger.info("--model converged. saving checkpoint--")
-                            self.save()
-                            finish = True
-                    else:
-                        success_count = 0
+                    # TODO This is not valid criteria. https://arxiv.org/pdf/1802.03446.pdf also check
+                    #  https://stats.stackexchange.com/questions/482653/what-is-the-stop-criteria-of-generative
+                    #  -adversarial-nets
+                    # if abs(self.d_exp_score - 0.5) <= self.args.d_stop_threshold and \
+                    #         abs(self.d_nov_score - 0.5) <= self.args.d_stop_threshold:
+                    if update_count >= total_updates:
+                        logger.info("--finished training. saving checkpoint--")
+                        self.save()
+                        finish = True
 
                 t += 1
                 ep_len += 1
                 if done:
                     break
             if not done:
-                logger.debug("truncated at horizon")
+                state, reward, done = self.take_action(state, action=5)
+                logger.debug("truncated at horizon. forced end game")
             if finish:
-                self.save()
+                if dryrun is False:
+                    self.save()
                 break
 
     def save(self):
@@ -202,27 +206,46 @@ class GailExecutor:
         self.pi.load_state_dict(self.pi_old.state_dict())
         self.d.load_state_dict(torch.load("../checkpoint/discriminator.ckpt", map_location=lambda x, y: x))
 
-    def simulate(self, episode):
+    def simulate(self, episode, save=False, filename='sim'):
         data = []
+        data_narr = []
         for ep in range(episode):
             state = self.env.reset()
+            step_narr = 0
             ep_step = 0
             done = False
-            while ep_step < self.args.max_episode_len or done is False:
-                state = torch.tensor(state, dtype=torch.float32, device=self.args.device)
+            while ep_step < self.args.max_episode_len and done is False:
+                state_tensor = torch.tensor(state, dtype=torch.float32, device=self.args.device)
                 with torch.no_grad():
-                    action, action_log_prob = self.pi_old.act(state)
+                    action, action_log_prob = self.pi_old.act(state_tensor)
                 action = action.detach().item()
                 next_state, reward, done, info = self.env.step(action)
 
                 data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
                              'done': done, 'info': info})
+
+                state = next_state
+                if len(info) != 0:
+                    data_narr.append({'student_id': str(ep), 'step': step_narr,
+                                           'state': info['narrative_state'], 'action': info['narrative_action'],
+                                           'reward': 0, 'done': done, 'info': info})
+                    step_narr += 1
+
                 ep_step += 1
                 if done:
+                    data_narr[-1]['done'] = True
                     break
 
         df = pd.DataFrame(data, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
-        return df
+        df_narr = pd.DataFrame(data_narr, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
+
+        if save:
+            df.to_pickle('../simulated_data/' + filename + '.pkl')
+            df_narr.to_pickle('../simulated_data/' + filename + '_narr.pkl')
+
+            df.to_csv('../simulated_data/' + filename + '.csv')
+            df_narr.to_csv('../simulated_data/' + filename + '_narr.csv')
+        return df, df_narr
 
 
 

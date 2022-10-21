@@ -135,6 +135,8 @@ class CrystalIsland:
                 narrative_state=narrative_state, random_planner=self.is_random_planner)
             state = _set_student_state(state=state, aes_action=aes_action, aes_state_num=aes_state_num)
 
+            info = {'narrative_state': narrative_state, 'narrative_action': narrative_action}
+
             logger.debug("for student action {0}, narrative planner action {1} converted to aes action {2} with aes "
                          "position {3} was triggered".format(action, narrative_action, aes_action, aes_state_num))
 
@@ -159,7 +161,7 @@ class CrystalIsland:
                     break
             ep += 1
             if (step+1) % 10000 == 0:
-                logger.info("{0} out of {1} random data generated".format(step, steps))
+                logger.info("{0} out of {1} random data generated".format(step+1, steps))
 
         df = pd.DataFrame(data, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
         return df

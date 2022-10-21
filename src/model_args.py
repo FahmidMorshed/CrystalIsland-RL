@@ -31,13 +31,13 @@ class ModelArguments:
     internal_epoch_pi: int = field(default=20, metadata={"help": "training epochs of policy model"})
     internal_epoch_d: int = field(default=2, metadata={"help": "training epochs of discriminator model"})
     discount_factor: float = field(default=0.99, metadata={"help": "discount factor for gail"})
-    clip_eps: float = field(default=0.2, metadata={"help": "clipping epsilon in PPO loss"})
+    clip_eps: float = field(default=0.1, metadata={"help": "clipping epsilon in PPO loss"})
     d_stop_threshold: float = field(default=0.1, metadata={"help": "maximum difference between expert score and "
                                                                    "novice score that is counted as a success"})
     d_stop_count: int = field(default=5, metadata={"help": "minimum consecutive number of times d_stop_threshold "
                                                            "is met"})
-    max_episode_len: int = field(default=1500, metadata={"help": "maximum episode length"})
-    update_steps: int = field(default=12000, metadata={"help": "frequency of model update"})
+    max_episode_len: int = field(default=1000, metadata={"help": "maximum episode length"})
+    update_steps: int = field(default=10000, metadata={"help": "frequency of model update"})
 
     # validator params
     lr_validator: float = field(default=0.001, metadata={"help": "validator model learning rate"})
