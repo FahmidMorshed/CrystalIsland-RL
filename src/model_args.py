@@ -8,13 +8,12 @@ from dataclasses import dataclass, field
 class ModelArguments:
     # generic params
     seed: int = field(default=24, metadata={"help": "random seed for reproducibility of results"})
-    run_type: str = field(default="train", metadata={"help": "type of run. For training GAIL use train. "
-                                                             "For evaluation, use eval."})
-    train_steps: int = field(default=1e7, metadata={"help": "maximum training time steps"})
-    split_by: str = field(default="high", metadata={"help": "split dataset into high|low nlg"})
+    run_name: str = field(default="high_", metadata={"help": "the name of run. files will be saved by this name."})
+    train_steps: int = field(default=1000, metadata={"help": "maximum training time steps"})
+    dryrun: bool = field(default=False, metadata={"help": "if we are saving actual files or not"})
 
     # Crystal Island env parameters
-    state_dim: float = field(default=26, metadata={"help": "length of student state for crystal island"})
+    state_dim: float = field(default=27, metadata={"help": "length of student state for crystal island"})
     action_dim: float = field(default=19, metadata={"help": "number of student actions for crystal island"})
     is_random_planner: bool = field(default=True, metadata={"help": "if the narrative planner will behave randomly or "
                                                                     "not"})
@@ -23,7 +22,7 @@ class ModelArguments:
                                   metadata={"help": "location of the pickle file in pd.DataFrame"})
     # model param
     device: str = field(default="cpu", metadata={"help": "device (cpu|cuda:0)"})
-    units: float = field(default=128, metadata={"help": "number of neurons per layer"})
+    units: float = field(default=64, metadata={"help": "number of neurons per layer"})
     lr_actor: float = field(default=0.001, metadata={"help": "actor model learning rate"})
     lr_critic: float = field(default=0.001, metadata={"help": "critic model learning rate"})
     lr_discriminator: float = field(default=0.001, metadata={"help": "discriminator model learning rate"})
@@ -41,9 +40,9 @@ class ModelArguments:
 
     # validator params
     lr_validator: float = field(default=0.001, metadata={"help": "validator model learning rate"})
-    validator_epoch: int = field(default=50000, metadata={"help": "training epochs of validator model"})
+    validator_train_steps: int = field(default=10000, metadata={"help": "training epochs of validator model"})
     validator_batch: int = field(default=5000, metadata={"help": "batch size for training auth validator"})
-    validator_auth_threshold: float = field(default=.9, metadata={"help": "authenticator threshold for considering a "
+    validator_auth_threshold: float = field(default=.95, metadata={"help": "authenticator threshold for considering a "
                                                                            "valid episode"})
 
     def to_dict(self):

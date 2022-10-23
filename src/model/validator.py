@@ -17,14 +17,18 @@ logger = logging.getLogger(__name__)
 
 # TODO maybe include heuristic based data along with random data
 class Validator:
-    def __init__(self, args: dataclasses):
+    def __init__(self, args: dataclasses, train_df: pd.DataFrame, test_df: pd.DataFrame, s0: np.ndarray):
         self.args = args
 
-        self.train_df, self.test_df, self.s0 = utils.load_student_data(args)
+        self.train_df = train_df
+        self.test_df = test_df
+        self.s0 = s0
         self.train_state_actions, _, _ = utils.state_action_tensor(np.stack(self.train_df['state']),
-                                      np.array(self.train_df['action']), self.args.action_dim)
+                                                                   np.array(self.train_df['action']),
+                                                                   self.args.action_dim)
         self.test_state_actions, _, _ = utils.state_action_tensor(np.stack(self.test_df['state']),
-                                      np.array(self.test_df['action']), self.args.action_dim)
+                                                                  np.array(self.test_df['action']),
+                                                                  self.args.action_dim)
 
         self.env = CrystalIsland(self.args, self.s0)
 
@@ -46,7 +50,7 @@ class Validator:
         state_actions, _, _ = utils.state_action_tensor(states, actions, self.args.action_dim)
 
         is_auth = self.model_auth(state_actions)
-        is_auth = sum((is_auth > 0.5).float())/len(is_auth)     # 1 is for authentic
+        is_auth = sum((is_auth > 0.5).float()) / len(is_auth)  # 1 is for authentic
         if is_auth > self.args.validator_auth_threshold:
             is_authentic = True
 
@@ -87,7 +91,7 @@ class Validator:
         curr_loss = 0
         early_stop = 0
         self.model_nlg.train()
-        for ep in range(self.args.validator_epoch):
+        for ep in range(self.args.validator_train_steps):
             pred_y = self.model_nlg(train_X)
             pred_y = pred_y.squeeze()
             loss = self.loss(pred_y, train_y)
@@ -126,8 +130,8 @@ class Validator:
 
         rand_df = self.env.gen_random_data(len(train_y_true))
         train_X_rand, _, _ = utils.state_action_tensor(np.stack(rand_df['state']),
-                                                                        np.array(rand_df['action']),
-                                                                        self.args.action_dim)
+                                                       np.array(rand_df['action']),
+                                                       self.args.action_dim)
         train_y_rand = torch.zeros((train_X_rand.shape[0], 1), device=self.args.device)
 
         train_X = torch.cat([train_X_true, train_X_rand], dim=0)
@@ -135,8 +139,8 @@ class Validator:
 
         rand_df = self.env.gen_random_data(len(test_y_true))
         test_X_rand, _, _ = utils.state_action_tensor(np.stack(rand_df['state']),
-                                                       np.array(rand_df['action']),
-                                                       self.args.action_dim)
+                                                      np.array(rand_df['action']),
+                                                      self.args.action_dim)
         test_y_rand = torch.zeros((test_X_rand.shape[0], 1), device=self.args.device)
 
         test_X = torch.cat([test_X_true, test_X_rand], dim=0)
@@ -145,7 +149,7 @@ class Validator:
         curr_loss = 0
         early_stop = 0
         self.model_auth.train()
-        for ep in range(self.args.validator_epoch):
+        for ep in range(self.args.validator_train_steps):
             pred_y = self.model_auth(train_X)
             loss = self.loss(pred_y, train_y)
 
@@ -176,17 +180,18 @@ class Validator:
     def train(self):
         self._train_nlg()
         self._train_auth()
-        self.save()
+        if self.args.dryrun is False:
+            self.save()
 
     def save(self):
-        torch.save(self.model_nlg.state_dict(), "../checkpoint/valid_nlg.ckpt")
-        torch.save(self.model_auth.state_dict(), "../checkpoint/valid_auth.ckpt")
+        torch.save(self.model_nlg.state_dict(), "../checkpoint/" + self.args.run_name + "_valid_nlg.ckpt")
+        torch.save(self.model_auth.state_dict(), "../checkpoint/" + self.args.run_name + "_valid_auth.ckpt")
         logger.info("validator models saved!")
 
     def load(self):
-        self.model_nlg.load_state_dict(torch.load("../checkpoint/valid_nlg.ckpt", map_location=lambda x, y: x))
-        self.model_auth.load_state_dict(torch.load("../checkpoint/valid_auth.ckpt", map_location=lambda x, y: x))
+        self.model_nlg.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_valid_nlg.ckpt",
+                                                  map_location=lambda x, y: x))
+        self.model_auth.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_valid_auth.ckpt",
+                                                   map_location=lambda x, y: x))
         logger.info("validator models loaded!")
 
-    def evaluate(self):
-        raise NotImplementedError

@@ -22,19 +22,19 @@ def _gen_narrative_action(narrative_state: list, random_planner: bool) -> (int, 
     aes_state_num = -1
     aes_action = -1
     if random_planner:
-        if narrative_state[26] == 1:  # bryce trigger
+        if narrative_state[27] == 1:  # bryce trigger
             narrative_action = np.random.choice([0, 1])
             aes_state_num = 19
             aes_action = narrative_action + 1
-        elif narrative_state[27] == 1:  # teresa trigger
+        elif narrative_state[28] == 1:  # teresa trigger
             narrative_action = np.random.choice([2, 3, 4])
             aes_state_num = 20
             aes_action = narrative_action - 1
-        elif narrative_state[28] == 1:  # quiz trigger
+        elif narrative_state[29] == 1:  # quiz trigger
             narrative_action = np.random.choice([5, 6])
             aes_state_num = 21
             aes_action = narrative_action - 4
-        elif narrative_state[29] == 1:  # diagnosis trigger
+        elif narrative_state[30] == 1:  # diagnosis trigger
             narrative_action = np.random.choice([7, 8, 9])
             aes_state_num = 22
             aes_action = narrative_action - 6
@@ -79,13 +79,13 @@ def _gen_narrative_state(state, student_action: int) -> list:
     narrative_state = np.concatenate([narrative_state, np.array([0, 0, 0, 0])])
 
     if student_action == 14:  # quiz trigger
-        narrative_state[28] = 1
-    elif student_action == 15:  # bryce trigger
-        narrative_state[26] = 1
-    elif student_action == 17:  # teresa trigger
-        narrative_state[27] = 1
-    elif student_action == 18:  # diagnosis trigger
         narrative_state[29] = 1
+    elif student_action == 15:  # bryce trigger
+        narrative_state[27] = 1
+    elif student_action == 17:  # teresa trigger
+        narrative_state[28] = 1
+    elif student_action == 18:  # diagnosis trigger
+        narrative_state[30] = 1
 
     return narrative_state
 
@@ -124,6 +124,7 @@ class CrystalIsland:
         """
         # action number and state position are matched for all student actions
         state[action] += 1
+        state[26] += 1  # next step
         done = False
         reward = 0
         info = {}
@@ -149,7 +150,8 @@ class CrystalIsland:
         while step < steps:
             state = deepcopy(self.reset())
             ep_step = 0
-            while ep_step < self.args.max_episode_len and step < steps:
+            done = False
+            while ep_step < self.args.max_episode_len-1 and step < steps-1:
                 action = np.random.choice(range(0, self.args.action_dim))
                 next_state, reward, done, info = self.step(action)
                 data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
@@ -157,13 +159,18 @@ class CrystalIsland:
                 ep_step += 1
                 state = deepcopy(next_state)
                 step += 1
+                if (step + 1) % 50000 == 0:
+                    logger.info("{0} out of {1} random data generated".format(step + 1, steps))
                 if done:
                     break
+            if not done:
+                action = 5
+                next_state, reward, done, info = self.step(action)
+                data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                             'done': done, 'info': info})
+                step += 1
             ep += 1
-            if (step+1) % 10000 == 0:
-                logger.info("{0} out of {1} random data generated".format(step+1, steps))
 
         df = pd.DataFrame(data, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
+        logger.info("finished creating random samples")
         return df
-
-

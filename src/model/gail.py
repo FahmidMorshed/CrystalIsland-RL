@@ -72,10 +72,9 @@ class GailExecutor:
         self.rewards = []
         self.is_terminal = []
 
-    def take_action(self, state, action=None):
+    def take_action(self, state, action: torch.Tensor = None):
         state = torch.tensor(state, dtype=torch.float32, device=self.args.device)
         if action:
-            action = torch.tensor(action, dtype=torch.int64, device=self.args.device)
             values, action_log_prob, entropy = self.pi.evaluate(state, action)
         else:
             with torch.no_grad():
@@ -156,17 +155,17 @@ class GailExecutor:
         self.lr_scheduler_d.step()
         self.args.clip_eps = self.args.clip_eps * self.args.scheduler_gamma
 
-    def run(self, total_updates=100, dryrun=True):
+    def train(self):
         t = 1
         update_count = 0
         finish = False
-        while t <= self.args.train_steps:
+        while True:
             state = self.env.reset()
             done = False
             ep_len = 0
             while ep_len < self.args.max_episode_len:
                 state, reward, done = self.take_action(state)
-                if self.args.run_type == 'train' and t % self.args.update_steps == 0:
+                if t % self.args.update_steps == 0:
                     self.update()
                     update_count += 1
                     logger.info(
@@ -180,33 +179,38 @@ class GailExecutor:
                     #  -adversarial-nets
                     # if abs(self.d_exp_score - 0.5) <= self.args.d_stop_threshold and \
                     #         abs(self.d_nov_score - 0.5) <= self.args.d_stop_threshold:
-                    if update_count >= total_updates:
+                    if update_count >= self.args.train_steps:
                         logger.info("--finished training. saving checkpoint--")
                         self.save()
                         finish = True
+                        break
 
                 t += 1
                 ep_len += 1
                 if done:
                     break
             if not done:
-                state, reward, done = self.take_action(state, action=5)
+                action = torch.tensor(5, dtype=torch.int64, device=self.args.device)
+                state, reward, done = self.take_action(state, action=action)
                 logger.debug("truncated at horizon. forced end game")
             if finish:
-                if dryrun is False:
+                if self.args.dryrun is False:
                     self.save()
                 break
 
     def save(self):
-        torch.save(self.pi_old.state_dict(), "../checkpoint/policy.ckpt")
-        torch.save(self.d.state_dict(), "../checkpoint/discriminator.ckpt")
+        torch.save(self.pi_old.state_dict(), "../checkpoint/" + self.args.run_name + "_policy.ckpt")
+        torch.save(self.d.state_dict(), "../checkpoint/" + self.args.run_name + "_discriminator.ckpt")
 
     def load(self):
-        self.pi_old.load_state_dict(torch.load("../checkpoint/policy.ckpt", map_location=lambda x, y: x))
+        self.pi_old.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_policy.ckpt",
+                                               map_location=lambda x, y: x))
         self.pi.load_state_dict(self.pi_old.state_dict())
-        self.d.load_state_dict(torch.load("../checkpoint/discriminator.ckpt", map_location=lambda x, y: x))
+        self.d.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_discriminator.ckpt",
+                                          map_location=lambda x, y: x))
 
-    def simulate(self, episode, save=False, filename='sim'):
+    def simulate(self, episode):
+        logger.info("creating simulated data")
         data = []
         data_narr = []
         for ep in range(episode):
@@ -214,7 +218,7 @@ class GailExecutor:
             step_narr = 0
             ep_step = 0
             done = False
-            while ep_step < self.args.max_episode_len and done is False:
+            while ep_step < self.args.max_episode_len-1:
                 state_tensor = torch.tensor(state, dtype=torch.float32, device=self.args.device)
                 with torch.no_grad():
                     action, action_log_prob = self.pi_old.act(state_tensor)
@@ -232,19 +236,27 @@ class GailExecutor:
                     step_narr += 1
 
                 ep_step += 1
+
                 if done:
                     data_narr[-1]['done'] = True
                     break
+            if not done:
+                action = 5  # game end
+                next_state, reward, done, info = self.env.step(action)
+                data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                             'done': done, 'info': info})
+                ep_step += 1
+            logger.info("{} out of episode {} is finished".format(ep, episode))
 
         df = pd.DataFrame(data, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
         df_narr = pd.DataFrame(data_narr, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
 
-        if save:
-            df.to_pickle('../simulated_data/' + filename + '.pkl')
-            df_narr.to_pickle('../simulated_data/' + filename + '_narr.pkl')
+        if self.args.dryrun is False:
+            df.to_pickle('../simulated_data/' + self.args.run_name + '_sim.pkl')
+            df_narr.to_pickle('../simulated_data/' + self.args.run_name + '_sim_narr.pkl')
 
-            df.to_csv('../simulated_data/' + filename + '.csv')
-            df_narr.to_csv('../simulated_data/' + filename + '_narr.csv')
+            df.to_csv('../simulated_data/' + self.args.run_name + '_sim.csv')
+            df_narr.to_csv('../simulated_data/' + self.args.run_name + '_sim_narr.csv')
         return df, df_narr
 
 

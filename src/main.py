@@ -18,12 +18,21 @@ logger = logging.getLogger(__name__)
 def main():
     args = ModelArguments()
     utils.set_all_seeds(args.seed)
-    train_high, train_low, test_high, test_low, s0 = utils.load_student_data_by_nlg(args)
+
+    train, test, s0 = utils.load_student_data(args)
+    validator = Validator(args, train, test, s0)
+    validator.train()
+
+    train_high, train_low, test_high, test_low = utils.split_by_nlg(train, test)
     env = CrystalIsland(args, s0)
-    gail = GailExecutor(args, train_low, env)
-    gail.run(total_updates=20, dryrun=True)
-    # df, df_narr = gail.simulate(5, save=True, filename='test')
-    # train, test, s0 = utils.load_student_data(args)
+    gail = GailExecutor(args, train_high, env)
+    gail.train()
+    df, df_narr = gail.simulate(100)
+    result = validator.validate_df(df)
+    result.to_csv('../simulated_data/' + args.run_name + '_result.csv')
+
+
+
 
 
 
