@@ -1,10 +1,12 @@
 import dataclasses
 
+import torch
 import torch.nn as nn
 import logging
 
 from torch import Tensor
 from torch.distributions import Categorical
+import torch.nn.functional as F
 
 logger = logging.getLogger(__name__)
 
@@ -64,4 +66,30 @@ class Discriminator(nn.Module):
     def forward(self, state_action: Tensor):
         reward = self.model(state_action)
         return reward
+
+# this section is for Narrative Planner RL
+# any state/action refer onward represents narrative planner state/action, not student state/action
+class QNetwork(nn.Module):
+    def __init__(self, args: dataclasses):
+        super(QNetwork, self).__init__()
+        self.args = args
+        self.q1 = nn.Linear(self.args.np_state_dim, self.args.units)
+        self.q2 = nn.Linear(self.args.units, self.args.units)
+        self.q3 = nn.Linear(self.args.units, self.args.np_action_dim)
+
+        self.i1 = nn.Linear(self.args.np_state_dim, self.args.units)
+        self.i2 = nn.Linear(self.args.units, self.args.units)
+        self.i3 = nn.Linear(self.args.units, self.args.np_action_dim)
+
+    def forward(self, state: torch.Tensor) -> (torch.Tensor, torch.Tensor, torch.Tensor):
+        q = F.relu(self.q1(state))
+        q = F.relu(self.q2(q))
+        q = self.q3(q)
+
+        i = F.relu(self.i1(state))
+        i = F.relu(self.i2(i))
+        i = F.relu(self.i3(i))
+        i_log_softmax = F.log_softmax(i, dim=1)
+
+        return q, i_log_softmax, i
 

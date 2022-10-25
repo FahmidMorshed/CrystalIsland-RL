@@ -218,7 +218,7 @@ class GailExecutor:
             step_narr = 0
             ep_step = 0
             done = False
-            while ep_step < self.args.max_episode_len-1:
+            while ep_step < self.args.max_episode_len - 1:
                 state_tensor = torch.tensor(state, dtype=torch.float32, device=self.args.device)
                 with torch.no_grad():
                     action, action_log_prob = self.pi_old.act(state_tensor)
@@ -231,8 +231,8 @@ class GailExecutor:
                 state = next_state
                 if len(info) != 0:
                     data_narr.append({'student_id': str(ep), 'step': step_narr,
-                                           'state': info['narrative_state'], 'action': info['narrative_action'],
-                                           'reward': 0, 'done': done, 'info': info})
+                                      'state': info['narrative_state'], 'action': info['narrative_action'],
+                                      'reward': 0, 'done': done, 'info': info})
                     step_narr += 1
 
                 ep_step += 1
@@ -258,6 +258,3 @@ class GailExecutor:
             df.to_csv('../simulated_data/' + self.args.run_name + '_sim.csv')
             df_narr.to_csv('../simulated_data/' + self.args.run_name + '_sim_narr.csv')
         return df, df_narr
-
-
-

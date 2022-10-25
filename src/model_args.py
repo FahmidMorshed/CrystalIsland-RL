@@ -10,7 +10,7 @@ class ModelArguments:
     seed: int = field(default=24, metadata={"help": "random seed for reproducibility of results"})
     run_name: str = field(default="high_", metadata={"help": "the name of run. files will be saved by this name."})
     train_steps: int = field(default=1000, metadata={"help": "maximum training time steps"})
-    dryrun: bool = field(default=False, metadata={"help": "if we are saving actual files or not"})
+    dryrun: bool = field(default=True, metadata={"help": "if we are saving actual files or not"})
 
     # Crystal Island env parameters
     state_dim: float = field(default=27, metadata={"help": "length of student state for crystal island"})
@@ -20,6 +20,8 @@ class ModelArguments:
     # processed data locations
     student_data_loc: str = field(default="../processed_data/student_trajectories.pkl",
                                   metadata={"help": "location of the pickle file in pd.DataFrame"})
+    narrative_data_loc: str = field(default="../processed_data/narrative_trajectories.pkl",
+                                  metadata={"help": "location of the pickle file of narrative data in pd.DataFrame"})
     # model param
     device: str = field(default="cpu", metadata={"help": "device (cpu|cuda:0)"})
     units: float = field(default=64, metadata={"help": "number of neurons per layer"})
@@ -45,6 +47,17 @@ class ModelArguments:
     validator_auth_threshold: float = field(default=.95, metadata={"help": "authenticator threshold for considering a "
                                                                            "valid episode"})
 
+    # bcq narrative planner params
+    bcq_batch: int = field(default=1000, metadata={"help": "batch size for training bcq narrative planner"})
+    lr_bcq: float = field(default=0.001, metadata={"help": "bcq model learning rate"})
+    bcq_threshold: float = field(default=0.1, metadata={"help": "bcq model constraint parameter (tau value)"})
+    bcq_train_steps: int = field(default=1000, metadata={"help": "total number of training steps for the bcq"})
+    bcq_update_frequency: int = field(default=100, metadata={"help": "update target network frequency"})
+
+    # narrative planner params
+    np_state_dim: float = field(default=31, metadata={"help": "length of narrative planner state for crystal island"})
+    np_action_dim: float = field(default=10, metadata={"help": "number of narrative planner action for crystal island"})
+    np_discount: float = field(default=0.99, metadata={"help": "discounted factor or gamma for the narrative planner"})
     def to_dict(self):
         """
         Serializes this instance while replace `Enum` by their values (for JSON serialization support).

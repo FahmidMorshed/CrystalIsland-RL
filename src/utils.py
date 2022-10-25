@@ -44,8 +44,8 @@ def load_student_data_by_nlg(args: dataclasses):
     return train_df_high, train_df_low, test_df_high, test_df_low, s0
 
 
-def load_student_data(args: dataclasses):
-    df = pd.read_pickle(args.student_data_loc)
+def load_data(df_location):
+    df = pd.read_pickle(df_location)
     s0 = np.stack(df.loc[df['step'] == 0, 'state'])
 
     d = df.loc[df['done']]
