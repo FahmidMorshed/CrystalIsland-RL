@@ -12,16 +12,16 @@ def load_student_data_by_nlg(args: dataclasses):
 
     d = df.loc[df['done']]
     student_ids = d['student_id'].tolist()
-    nlgs = d['nlg'].tolist()
+    nlgs = d['reward'].tolist()
 
     train_student, test_student = train_test_split(student_ids, test_size=0.2, stratify=nlgs)
 
     train_df = df.loc[df['student_id'].isin(train_student)].reset_index(drop=True)
     test_df = df.loc[df['student_id'].isin(test_student)].reset_index(drop=True)
 
-    train_high_student = df.loc[(df['student_id'].isin(train_student)) & (df['done']) & (df['nlg'] == 100)][
+    train_high_student = df.loc[(df['student_id'].isin(train_student)) & (df['done']) & (df['reward'] == 100)][
         'student_id']
-    train_low_student = df.loc[(df['student_id'].isin(train_student)) & (df['done']) & (df['nlg'] == -100)][
+    train_low_student = df.loc[(df['student_id'].isin(train_student)) & (df['done']) & (df['reward'] == -100)][
         'student_id']
     train_df_high = df.loc[df['student_id'].isin(train_high_student)].reset_index(drop=True)
     train_df_low = df.loc[df['student_id'].isin(train_low_student)].reset_index(drop=True)
@@ -30,9 +30,9 @@ def load_student_data_by_nlg(args: dataclasses):
     train_df_high = train_df_high.set_index("student_id").loc[train_high_student].reset_index()
     train_df_low = train_df_low.set_index("student_id").loc[train_low_student].reset_index()
 
-    test_high_student = df.loc[(df['student_id'].isin(test_student)) & (df['done']) & (df['nlg'] == 100)][
+    test_high_student = df.loc[(df['student_id'].isin(test_student)) & (df['done']) & (df['reward'] == 100)][
         'student_id']
-    test_low_student = df.loc[(df['student_id'].isin(test_student)) & (df['done']) & (df['nlg'] == -100)][
+    test_low_student = df.loc[(df['student_id'].isin(test_student)) & (df['done']) & (df['reward'] == -100)][
         'student_id']
     test_df_high = df.loc[df['student_id'].isin(test_high_student)].reset_index(drop=True)
     test_df_low = df.loc[df['student_id'].isin(test_low_student)].reset_index(drop=True)
@@ -44,13 +44,17 @@ def load_student_data_by_nlg(args: dataclasses):
     return train_df_high, train_df_low, test_df_high, test_df_low, s0
 
 
-def load_data(df_location):
+def load_data(df_location, test_size=0.2):
     df = pd.read_pickle(df_location)
+    a = (df.groupby(['action']).count() / len(df))[['step']]
+    a.rename(columns={'step': 'action_prob'}, inplace=True)
+    df = df.merge(a, on=['action'], how='left')
+
     s0 = np.stack(df.loc[df['step'] == 0, 'state'])
 
     d = df.loc[df['done']]
     student_ids = d['student_id'].tolist()
-    nlgs = d['nlg'].tolist()
+    nlgs = d['reward'].tolist()
 
     train_student, test_student = train_test_split(student_ids, test_size=0.2, stratify=nlgs)
 
@@ -75,7 +79,7 @@ def set_all_seeds(seed=42):
     torch.backends.cudnn.deterministic = True
 
 
-def state_action_tensor(states, actions,  action_dim, device='cpu',):
+def state_action_tensor(states, actions, action_dim, device='cpu'):
     if type(states) is np.ndarray:
         state_tensor = torch.tensor(states, dtype=torch.float32, device=device)
         action_tensor = torch.tensor(actions, dtype=torch.int64, device=device)
@@ -87,10 +91,10 @@ def state_action_tensor(states, actions,  action_dim, device='cpu',):
     return sa_tensor, state_tensor, action_tensor
 
 
-def split_by_nlg(df_train, df_test):
+def split_by_reward(df_train, df_test):
     # for train data
-    train_high_student = df_train.loc[(df_train['done']) & (df_train['nlg'] == 100)]['student_id'].unique()
-    train_low_student = df_train.loc[(df_train['done']) & (df_train['nlg'] == -100)]['student_id'].unique()
+    train_high_student = df_train.loc[(df_train['done']) & (df_train['reward'] == 100)]['student_id'].unique()
+    train_low_student = df_train.loc[(df_train['done']) & (df_train['reward'] == -100)]['student_id'].unique()
 
     train_df_high = df_train.loc[(df_train['student_id'].isin(train_high_student))]
     train_df_low = df_train.loc[(df_train['student_id'].isin(train_low_student))]
@@ -100,8 +104,8 @@ def split_by_nlg(df_train, df_test):
     train_df_low = train_df_low.set_index("student_id").loc[train_low_student].reset_index()
 
     # for test data
-    test_high_student = df_test.loc[(df_test['done']) & (df_test['nlg'] == 100)]['student_id'].unique()
-    test_low_student = df_test.loc[(df_test['done']) & (df_test['nlg'] == -100)]['student_id'].unique()
+    test_high_student = df_test.loc[(df_test['done']) & (df_test['reward'] == 100)]['student_id'].unique()
+    test_low_student = df_test.loc[(df_test['done']) & (df_test['reward'] == -100)]['student_id'].unique()
 
     test_df_high = df_test.loc[(df_test['student_id'].isin(test_high_student))]
     test_df_low = df_test.loc[(df_test['student_id'].isin(test_low_student))]
@@ -111,3 +115,9 @@ def split_by_nlg(df_train, df_test):
     test_df_low = test_df_low.set_index("student_id").loc[test_low_student].reset_index()
 
     return train_df_high, train_df_low, test_df_high, test_df_low
+
+
+def parse_config(args_class, external_config):
+    keys = {f.name for f in dataclasses.fields(args_class)}
+    inputs = {k: v for k, v in external_config.items() if k in keys}
+    return args_class(**inputs)

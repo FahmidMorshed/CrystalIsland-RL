@@ -77,15 +77,15 @@ class Validator:
         train_X = self.train_state_actions[train_ids]
         test_X = self.test_state_actions[test_ids]
 
-        train_nlg = np.array(self.train_df['nlg'])
+        train_nlg = np.array(self.train_df['reward'])
         train_y = train_nlg[train_ids]
         if set(train_y) != {-100.0, 100.0}:
-            logger.error("train_y has do not have different nlg values")
+            logger.error("train_y has do not have different reward values")
         train_y = torch.from_numpy((train_y == 100)).float()
-        test_nlg = np.array(self.test_df['nlg'])
+        test_nlg = np.array(self.test_df['reward'])
         test_y = test_nlg[test_ids]
         if set(test_y) != {-100.0, 100.0}:
-            logger.error("test_y has do not have different nlg values")
+            logger.error("test_y has do not have different reward values")
         test_y = torch.from_numpy((test_y == 100)).float()
 
         curr_loss = 0
@@ -107,16 +107,16 @@ class Validator:
             self.optimizer_nlg.step()
             self.lr_scheduler_nlg.step()
 
-            logger.info("nlg training epoch {0} | current loss {1: .8f}".format(ep, curr_loss))
+            logger.info("reward training epoch {0} | current loss {1: .8f}".format(ep, curr_loss))
             if early_stop > 10:
                 break
 
-        logger.info("nlg training complete | current loss {0: .4f}".format(curr_loss))
+        logger.info("reward training complete | current loss {0: .4f}".format(curr_loss))
         self.model_nlg.eval()
         pred_y = self.model_nlg(test_X).detach()
         pred_y = pred_y.squeeze()
         pred_y = (pred_y > 0.5).float()
-        print("-- validator nlg test result --")
+        print("-- validator reward test result --")
         print("confusion metrix\n", metrics.confusion_matrix(test_y, pred_y))
         print("accuracy:", metrics.accuracy_score(test_y, pred_y))
         print("report\n", metrics.classification_report(test_y, pred_y))
@@ -172,7 +172,7 @@ class Validator:
         self.model_auth.eval()
         pred_y = self.model_auth(test_X).detach()
         pred_y = (pred_y > 0.5).float()
-        print("-- validator nlg test result --")
+        print("-- validator reward test result --")
         print("confusion metrix\n", metrics.confusion_matrix(test_y, pred_y))
         print("accuracy:", metrics.accuracy_score(test_y, pred_y))
         print("report\n", metrics.classification_report(test_y, pred_y))
@@ -194,4 +194,3 @@ class Validator:
         self.model_auth.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_valid_auth.ckpt",
                                                    map_location=lambda x, y: x))
         logger.info("validator models loaded!")
-

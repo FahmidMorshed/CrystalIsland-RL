@@ -67,6 +67,7 @@ class Discriminator(nn.Module):
         reward = self.model(state_action)
         return reward
 
+
 # this section is for Narrative Planner RL
 # any state/action refer onward represents narrative planner state/action, not student state/action
 class QNetwork(nn.Module):
@@ -77,19 +78,29 @@ class QNetwork(nn.Module):
         self.q2 = nn.Linear(self.args.units, self.args.units)
         self.q3 = nn.Linear(self.args.units, self.args.np_action_dim)
 
+    def forward(self, state: torch.Tensor) -> (torch.Tensor, torch.Tensor, torch.Tensor):
+        q = torch.tanh(self.q1(state))
+        q = torch.tanh(self.q2(q))
+        q = self.q3(q)
+        return q
+
+
+class BCNetwork(nn.Module):
+    def __init__(self, args: dataclasses):
+        super(BCNetwork, self).__init__()
+        self.args = args
+
         self.i1 = nn.Linear(self.args.np_state_dim, self.args.units)
         self.i2 = nn.Linear(self.args.units, self.args.units)
         self.i3 = nn.Linear(self.args.units, self.args.np_action_dim)
 
     def forward(self, state: torch.Tensor) -> (torch.Tensor, torch.Tensor, torch.Tensor):
-        q = F.relu(self.q1(state))
-        q = F.relu(self.q2(q))
-        q = self.q3(q)
 
         i = F.relu(self.i1(state))
         i = F.relu(self.i2(i))
         i = F.relu(self.i3(i))
-        i_log_softmax = F.log_softmax(i, dim=1)
+        i_log_softmax = F.softmax(i, dim=1)
 
-        return q, i_log_softmax, i
+        return i_log_softmax, i
+
 

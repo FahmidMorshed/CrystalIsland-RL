@@ -179,7 +179,7 @@ class GailExecutor:
                     #  -adversarial-nets
                     # if abs(self.d_exp_score - 0.5) <= self.args.d_stop_threshold and \
                     #         abs(self.d_nov_score - 0.5) <= self.args.d_stop_threshold:
-                    if update_count >= self.args.train_steps:
+                    if update_count >= self.args.gail_train_steps:
                         logger.info("--finished training. saving checkpoint--")
                         self.save()
                         finish = True
@@ -209,15 +209,18 @@ class GailExecutor:
         self.d.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_discriminator.ckpt",
                                           map_location=lambda x, y: x))
 
-    def simulate(self, episode):
+    def simulate(self, episode, validator):
         logger.info("creating simulated data")
         data = []
         data_narr = []
+        total_skipped = 0
         for ep in range(episode):
             state = self.env.reset()
             step_narr = 0
             ep_step = 0
             done = False
+            ep_data = []
+            ep_data_narr = []
             while ep_step < self.args.max_episode_len - 1:
                 state_tensor = torch.tensor(state, dtype=torch.float32, device=self.args.device)
                 with torch.no_grad():
@@ -225,12 +228,12 @@ class GailExecutor:
                 action = action.detach().item()
                 next_state, reward, done, info = self.env.step(action)
 
-                data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                ep_data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
                              'done': done, 'info': info})
 
                 state = next_state
                 if len(info) != 0:
-                    data_narr.append({'student_id': str(ep), 'step': step_narr,
+                    ep_data_narr.append({'student_id': str(ep), 'step': step_narr,
                                       'state': info['narrative_state'], 'action': info['narrative_action'],
                                       'reward': 0, 'done': done, 'info': info})
                     step_narr += 1
@@ -238,14 +241,33 @@ class GailExecutor:
                 ep_step += 1
 
                 if done:
-                    data_narr[-1]['done'] = True
+                    if len(ep_data_narr) > 0:
+                        ep_data_narr[-1]['done'] = True
                     break
+
+            # force end if episode length is longer
             if not done:
                 action = 5  # game end
                 next_state, reward, done, info = self.env.step(action)
-                data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                ep_data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
                              'done': done, 'info': info})
+                if len(ep_data_narr) > 0:
+                    ep_data_narr[-1]['done'] = True
                 ep_step += 1
+
+            # filter out invalid episodes and assign reward:
+            states = np.stack([row['state'] for row in ep_data])
+            actions = np.array([row['action'] for row in ep_data])
+            is_authentic, is_high = validator.validate_episode(states, actions)
+            if is_authentic is False:
+                total_skipped += 1
+                logger.info("skipping episode {0} | total skipped {1}".format(ep, total_skipped))
+                continue
+            reward = 100 if is_high else -100
+            ep_data[-1]['reward'] = reward
+            ep_data_narr[-1]['reward'] = reward
+            data += ep_data
+            data_narr += ep_data_narr
             logger.info("{} out of episode {} is finished".format(ep, episode))
 
         df = pd.DataFrame(data, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
@@ -254,7 +276,4 @@ class GailExecutor:
         if self.args.dryrun is False:
             df.to_pickle('../simulated_data/' + self.args.run_name + '_sim.pkl')
             df_narr.to_pickle('../simulated_data/' + self.args.run_name + '_sim_narr.pkl')
-
-            df.to_csv('../simulated_data/' + self.args.run_name + '_sim.csv')
-            df_narr.to_csv('../simulated_data/' + self.args.run_name + '_sim_narr.csv')
         return df, df_narr
