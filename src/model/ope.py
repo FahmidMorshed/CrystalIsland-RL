@@ -4,9 +4,10 @@ from typing import List, Dict
 
 import numpy as np
 import pandas as pd
+import torch
 
 
-def doubly_robust_estimate(df_test, policy, np_discount) -> (List[Dict], float, float):
+def doubly_robust_estimate(policy, dr_estimator) -> (List[Dict], float):
     """The Doubly Robust estimator.
         Let s_t, a_t, and r_t be the state, action, and reward at timestep t.
         This method takes a traiend Q-model for the evaluation policy \pi_e on behavior
@@ -22,8 +23,8 @@ def doubly_robust_estimate(df_test, policy, np_discount) -> (List[Dict], float, 
         V^{\pi_e}(s_0) = V_0^DR
         and returns the mean and standard deviation over episodes.
         For more information refer to https://arxiv.org/pdf/1911.06854.pdf"""
+    df_test = policy.df_test
     all_estimates = []
-
     for student_id, df in df_test.groupby('student_id'):
         estimates_per_episode = {}
         rewards, old_prob = np.array(df["reward"]), np.array(df["action_prob"])
@@ -34,35 +35,29 @@ def doubly_robust_estimate(df_test, policy, np_discount) -> (List[Dict], float, 
         new_prob = policy.action_probs(states, actions)
         new_prob = new_prob.squeeze().detach().cpu().numpy()
 
-        v_behavior = 0.0
         v_target = 0.0
-        q_values = policy.estimate_q(states, actions)
+        q_values = dr_estimator.estimate_q(states, actions)
         q_values = q_values.detach().cpu().numpy()
-        v_values = policy.estimate_v(states)
+        v_values = dr_estimator.estimate_v(states)
         v_values = v_values.detach().cpu().numpy()
 
-        assert q_values.shape == v_values.shape == (ep_length,)
-
         for t in reversed(range(ep_length)):
-            v_behavior = rewards[t] + np_discount * v_behavior
             v_target = v_values[t] + (new_prob[t] / old_prob[t]) * (
-                    rewards[t] + np_discount * v_target - q_values[t]
+                    rewards[t] + policy.args.np_discount * v_target - q_values[t]
             )
         v_target = v_target.item()
 
         estimates_per_episode["student_id"] = student_id
-        estimates_per_episode["v_behavior"] = v_behavior
         estimates_per_episode["v_target"] = v_target
 
         all_estimates.append(estimates_per_episode)
 
-    mean_behavior = sum(est['v_behavior'] for est in all_estimates) / len(all_estimates)
-    mean_target = sum(est['v_target'] for est in all_estimates) / len(all_estimates)
+    mean_dr = sum(est['v_target'] for est in all_estimates) / len(all_estimates)
 
-    return all_estimates, mean_behavior, mean_target
+    return all_estimates, mean_dr
 
-# TODO Doesnt work
-def importance_sampling_estimate(df_test, policy, np_discount) -> (List[Dict], float, float):
+
+def importance_sampling_estimate(policy) -> (List[Dict], float, float):
     """The step-wise IS estimator.
     Let s_t, a_t, and r_t be the state, action, and reward at timestep t.
     For behavior policy \pi_b and evaluation policy \pi_e, define the
@@ -73,8 +68,10 @@ def importance_sampling_estimate(df_test, policy, np_discount) -> (List[Dict], f
     and returns the mean and standard deviation over episodes.
     For more information refer to https://arxiv.org/pdf/1911.06854.pdf"""
 
+    # implementation follows 3.2.2 in https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/paper-1.pdf
+    df_test = policy.df_test
     all_estimates = []
-
+    w_t = {}
     for student_id, df in df_test.groupby('student_id'):
         estimates_per_episode = {}
         rewards, old_prob = np.array(df["reward"]), np.array(df["action_prob"])
@@ -95,90 +92,38 @@ def importance_sampling_estimate(df_test, policy, np_discount) -> (List[Dict], f
             pt = pt_prev * new_prob[t] / old_prob[t]
             p.append(pt)
 
-        v_behavior = 0.0
-        v_target = 0.0
+            w_t[t] = pt+w_t.get(t, 0.)
 
-        for t in range(ep_length):
-            v_behavior += rewards[t] * np_discount ** t
-            v_target += p[t] * rewards[t] * np_discount ** t
-
-        v_target = v_target.item()
+        # in delayed reward, all r_t is 0 except the last one
+        v_is = (policy.args.np_discount ** ep_length) * p[-1] * rewards[-1]
+        v_is = v_is.item()
 
         estimates_per_episode["student_id"] = student_id
-        estimates_per_episode["v_behavior"] = v_behavior
-        estimates_per_episode["v_target"] = v_target
+        estimates_per_episode["v_is"] = v_is
+        estimates_per_episode["total_steps"] = ep_length
 
         all_estimates.append(estimates_per_episode)
 
-    mean_behavior = sum(est['v_behavior'] for est in all_estimates) / len(all_estimates)
-    mean_target = sum(est['v_target'] for est in all_estimates) / len(all_estimates)
+    for t, w in w_t.items():
+        w_t[t] = w/len(all_estimates)
+    for estimates_per_episode in all_estimates:
+        ep_length = estimates_per_episode["total_steps"]
+        v_is = estimates_per_episode["v_is"]
+        # in delayed reward, all r_t is 0 except the last one
+        v_wis = (v_is+1e-8)/(w_t[ep_length-1]+1e-8)
+        estimates_per_episode['v_wis'] = v_wis
 
-    return all_estimates, mean_behavior, mean_target
+    mean_is = sum(est['v_is'] for est in all_estimates) / len(all_estimates)
+    mean_wis = sum(est['v_wis'] for est in all_estimates) / len(all_estimates)
+
+    return all_estimates, mean_is, mean_wis
 
 
-# TODO Doesn't work
-def weighted_importance_sampling_estimate(df_test, policy, np_discount) -> (List[Dict], float, float):
-    """The step-wise WIS estimator.
-    Let s_t, a_t, and r_t be the state, action, and reward at timestep t.
-    For behavior policy \pi_b and evaluation policy \pi_e, define the
-    cumulative importance ratio at timestep t as:
-    p_t = \sum_{t'=0}^t (\pi_e(a_{t'} | s_{t'}) / \pi_b(a_{t'} | s_{t'})).
-    Define the average importance ratio over episodes i in the dataset D as:
-    w_t = \sum_{i \in D} p^(i)_t / |D|
-    This estimator computes the expected return for \pi_e for an episode as:
-    V^{\pi_e}(s_0) = \E[\sum_t \gamma ^ {t} * (p_t / w_t) * r_t]
-    and returns the mean and standard deviation over episodes.
-    For more information refer to https://arxiv.org/pdf/1911.06854.pdf"""
+def direct_method_estimate(policy, dr_estimator) -> (List[Dict], float):
+    df_test = policy.df_test
+    s0 = np.stack(df_test.groupby('student_id').first()['state'])
+    actions = policy.select_action(s0)
 
-    all_estimates = []
+    q_values = dr_estimator.estimate_q(s0, actions)
 
-    for student_id, df in df_test.groupby('student_id'):
-        estimates_per_episode = {}
-        rewards, old_prob = np.array(df["reward"]), np.array(df["action_prob"])
-        ep_length = len(df)
-
-        states = np.stack(df['state'])
-        actions = np.array(df['action'])
-        new_prob = policy.action_probs(states, actions)
-        new_prob = new_prob.squeeze().detach().cpu().numpy()
-
-        # calculate importance ratios
-        p = []
-        for t in range(ep_length):
-            if t == 0:
-                pt_prev = 1.0
-            else:
-                pt_prev = p[t - 1]
-            pt = pt_prev * new_prob[t] / old_prob[t]
-            p.append(pt)
-
-        cummulative_ips_values = []
-        episode_timestep_count = []
-        for t, p_t in enumerate(p):
-            if t >= len(cummulative_ips_values):
-                cummulative_ips_values.append(p_t)
-                episode_timestep_count.append(1.0)
-            else:
-                cummulative_ips_values[t] += p_t
-                episode_timestep_count[t] += 1.0
-
-        v_behavior = 0.0
-        v_target = 0.0
-
-        for t in range(ep_length):
-            v_behavior += rewards[t] * np_discount ** t
-            w_t = cummulative_ips_values[t] / episode_timestep_count[t]
-            v_target += p[t] / w_t * rewards[t] * np_discount ** t
-
-        v_target = v_target.item()
-
-        estimates_per_episode["student_id"] = student_id
-        estimates_per_episode["v_behavior"] = v_behavior
-        estimates_per_episode["v_target"] = v_target
-
-        all_estimates.append(estimates_per_episode)
-
-    mean_behavior = sum(est['v_behavior'] for est in all_estimates) / len(all_estimates)
-    mean_target = sum(est['v_target'] for est in all_estimates) / len(all_estimates)
-
-    return all_estimates, mean_behavior, mean_target
+    return q_values.mean().item()

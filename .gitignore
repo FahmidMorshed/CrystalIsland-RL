@@ -1,3 +1,6 @@
 # Ignore the raw data files
 raw data/
 processed_data/
+checkpoint/
+simulated_data/
+temp/

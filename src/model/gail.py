@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 class GailExecutor:
-    def __init__(self, args: dataclasses, train_student_df: pd.DataFrame, env: CrystalIsland):
+    def __init__(self, args: dataclasses, train_student_df: pd.DataFrame, env: CrystalIsland, name="gail"):
         self.args = args
         logger.info("args: {0}".format(self.args.to_json_string()))
 
@@ -64,6 +64,8 @@ class GailExecutor:
 
         self.d_loss = 9999.0
         self.pi_loss = 9999.0
+
+        self.name = name
 
     def reset_buffers(self):
         self.states = []
@@ -155,7 +157,13 @@ class GailExecutor:
         self.lr_scheduler_d.step()
         self.args.clip_eps = self.args.clip_eps * self.args.scheduler_gamma
 
-    def train(self):
+    def train(self, force_train=False):
+        if force_train is False:
+            is_loaded = self.load()
+            if is_loaded:
+                return
+
+        logger.info('-- training gail --')
         t = 1
         update_count = 0
         finish = False
@@ -199,17 +207,24 @@ class GailExecutor:
                 break
 
     def save(self):
-        torch.save(self.pi_old.state_dict(), "../checkpoint/" + self.args.run_name + "_policy.ckpt")
-        torch.save(self.d.state_dict(), "../checkpoint/" + self.args.run_name + "_discriminator.ckpt")
+        torch.save(self.pi_old.state_dict(), "../checkpoint/" + self.args.run_name + "_" + self.name + "_policy.ckpt")
+        torch.save(self.d.state_dict(), "../checkpoint/" + self.args.run_name + "_" + self.name + "_discriminator.ckpt")
 
     def load(self):
-        self.pi_old.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_policy.ckpt",
-                                               map_location=lambda x, y: x))
-        self.pi.load_state_dict(self.pi_old.state_dict())
-        self.d.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_discriminator.ckpt",
-                                          map_location=lambda x, y: x))
+        is_loaded = False
+        try:
+            self.pi_old.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_" + self.name + "_policy.ckpt",
+                                                   map_location=lambda x, y: x))
+            self.pi.load_state_dict(self.pi_old.state_dict())
+            self.d.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_" + self.name + "_discriminator.ckpt",
+                                              map_location=lambda x, y: x))
+            logger.info('-- loaded gail with run_name {0} and name {1}--'.format(self.args.run_name, self.name))
+            is_loaded = True
+        except FileNotFoundError:
+            logger.info('-- no gail with run_name {0} and name {1}--'.format(self.args.run_name, self.name))
+        return is_loaded
 
-    def simulate(self, episode, validator):
+    def simulate(self, episode, validator, max_ep_len=550):
         logger.info("creating simulated data")
         data = []
         data_narr = []
@@ -221,7 +236,7 @@ class GailExecutor:
             done = False
             ep_data = []
             ep_data_narr = []
-            while ep_step < self.args.max_episode_len - 1:
+            while ep_step < max_ep_len - 1:
                 state_tensor = torch.tensor(state, dtype=torch.float32, device=self.args.device)
                 with torch.no_grad():
                     action, action_log_prob = self.pi_old.act(state_tensor)
@@ -268,7 +283,8 @@ class GailExecutor:
             ep_data_narr[-1]['reward'] = reward
             data += ep_data
             data_narr += ep_data_narr
-            logger.info("{} out of episode {} is finished".format(ep, episode))
+            if ep+1 % 100 == 0:
+                logger.info("{} out of episode {} is finished".format(ep+1, episode))
 
         df = pd.DataFrame(data, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
         df_narr = pd.DataFrame(data_narr, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
