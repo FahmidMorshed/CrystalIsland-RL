@@ -280,7 +280,8 @@ class GailExecutor:
                 continue
             reward = 100 if is_high else -100
             ep_data[-1]['reward'] = reward
-            ep_data_narr[-1]['reward'] = reward
+            if len(ep_data_narr) > 0:
+                ep_data_narr[-1]['reward'] = reward
             data += ep_data
             data_narr += ep_data_narr
             if ep+1 % 100 == 0:

@@ -56,8 +56,6 @@ def full_run():
         bcq.train_behavior_cloning()
         bcq.train()
         bcq.print_logs(1, 0)
-        bcq.print_logs(1, 0)
-        bcq.print_logs(1, 0)
 
         sim_narr_loc = '../simulated_data/'+args.run_name + '_sim_narr.pkl'
         if os.path.isfile(sim_narr_loc):
@@ -81,8 +79,6 @@ def full_run():
         bcq_sim.train_behavior_cloning()
         bcq_sim.train()
         bcq_sim.print_logs(1, 0)
-        bcq_sim.print_logs(1, 0)
-        bcq_sim.print_logs(1, 0)
 
         # combine simulated and training data and shuffle
         comb_narr = pd.concat([train_narr, sim_narr], axis=0)
@@ -93,8 +89,6 @@ def full_run():
         bcq_comb = BCQ(args, comb_narr, test_narr, fqe, 'comb')
         bcq_comb.train_behavior_cloning()
         bcq_comb.train()
-        bcq_comb.print_logs(1, 0)
-        bcq_comb.print_logs(1, 0)
         bcq_comb.print_logs(1, 0)
 
 

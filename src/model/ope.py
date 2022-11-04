@@ -41,6 +41,10 @@ def doubly_robust_estimate(policy, dr_estimator) -> (List[Dict], float):
         v_values = dr_estimator.estimate_v(states)
         v_values = v_values.detach().cpu().numpy()
 
+        if new_prob.shape == ():
+            new_prob = new_prob.reshape(1, )
+            q_values = q_values.reshape(1, )
+
         for t in reversed(range(ep_length)):
             v_target = v_values[t] + (new_prob[t] / old_prob[t]) * (
                     rewards[t] + policy.args.np_discount * v_target - q_values[t]
@@ -82,6 +86,8 @@ def importance_sampling_estimate(policy) -> (List[Dict], float, float):
         new_prob = policy.action_probs(states, actions)
         new_prob = new_prob.squeeze().detach().cpu().numpy()
 
+        if new_prob.shape == ():
+            new_prob = new_prob.reshape(1, )
         # calculate importance ratios
         p = []
         for t in range(ep_length):
@@ -92,7 +98,7 @@ def importance_sampling_estimate(policy) -> (List[Dict], float, float):
             pt = pt_prev * new_prob[t] / old_prob[t]
             p.append(pt)
 
-            w_t[t] = pt+w_t.get(t, 0.)
+            w_t[t] = pt + w_t.get(t, 0.)
 
         # in delayed reward, all r_t is 0 except the last one
         v_is = (policy.args.np_discount ** ep_length) * p[-1] * rewards[-1]
@@ -105,12 +111,12 @@ def importance_sampling_estimate(policy) -> (List[Dict], float, float):
         all_estimates.append(estimates_per_episode)
 
     for t, w in w_t.items():
-        w_t[t] = w/len(all_estimates)
+        w_t[t] = w / len(all_estimates)
     for estimates_per_episode in all_estimates:
         ep_length = estimates_per_episode["total_steps"]
         v_is = estimates_per_episode["v_is"]
         # in delayed reward, all r_t is 0 except the last one
-        v_wis = (v_is+1e-8)/(w_t[ep_length-1]+1e-8)
+        v_wis = (v_is + 1e-8) / (w_t[ep_length - 1] + 1e-8)
         estimates_per_episode['v_wis'] = v_wis
 
     mean_is = sum(est['v_is'] for est in all_estimates) / len(all_estimates)
