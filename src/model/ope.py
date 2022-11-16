@@ -7,7 +7,7 @@ import pandas as pd
 import torch
 
 
-def doubly_robust_estimate(policy, dr_estimator) -> (List[Dict], float):
+def doubly_robust_estimate(policy, estimator) -> (List[Dict], float):
     """The Doubly Robust estimator.
         Let s_t, a_t, and r_t be the state, action, and reward at timestep t.
         This method takes a traiend Q-model for the evaluation policy \pi_e on behavior
@@ -23,23 +23,26 @@ def doubly_robust_estimate(policy, dr_estimator) -> (List[Dict], float):
         V^{\pi_e}(s_0) = V_0^DR
         and returns the mean and standard deviation over episodes.
         For more information refer to https://arxiv.org/pdf/1911.06854.pdf"""
-    df_test = policy.df_test
+    df_test = estimator.df
     all_estimates = []
-    for student_id, df in df_test.groupby('student_id'):
+    for episode, df in df_test.groupby('episode'):
         estimates_per_episode = {}
         rewards, old_prob = np.array(df["reward"]), np.array(df["action_prob"])
         ep_length = len(df)
 
         states = np.stack(df['state'])
         actions = np.array(df['action'])
-        new_prob = policy.action_probs(states, actions)
-        new_prob = new_prob.squeeze().detach().cpu().numpy()
+        state_tensor = torch.tensor(states, dtype=torch.float32, device=policy.args.device)
+        action_tensor = torch.tensor(actions, dtype=torch.int64, device=policy.args.device)
+
+        new_prob = policy.action_probs(state_tensor, action_tensor)
+        new_prob = new_prob.squeeze().numpy()
 
         v_target = 0.0
-        q_values = dr_estimator.estimate_q(states, actions)
-        q_values = q_values.detach().cpu().numpy()
-        v_values = dr_estimator.estimate_v(states)
-        v_values = v_values.detach().cpu().numpy()
+        q_values = estimator.estimate_q(state_tensor, action_tensor)
+        q_values = q_values.numpy()
+        v_values = estimator.estimate_v(state_tensor)
+        v_values = v_values.numpy()
 
         if new_prob.shape == ():
             new_prob = new_prob.reshape(1, )
@@ -47,11 +50,11 @@ def doubly_robust_estimate(policy, dr_estimator) -> (List[Dict], float):
 
         for t in reversed(range(ep_length)):
             v_target = v_values[t] + (new_prob[t] / old_prob[t]) * (
-                    rewards[t] + policy.args.np_discount * v_target - q_values[t]
+                    rewards[t] + policy.args.discount_factor * v_target - q_values[t]
             )
         v_target = v_target.item()
 
-        estimates_per_episode["student_id"] = student_id
+        estimates_per_episode["episode"] = episode
         estimates_per_episode["v_target"] = v_target
 
         all_estimates.append(estimates_per_episode)
@@ -61,7 +64,7 @@ def doubly_robust_estimate(policy, dr_estimator) -> (List[Dict], float):
     return all_estimates, mean_dr
 
 
-def importance_sampling_estimate(policy) -> (List[Dict], float, float):
+def importance_sampling_estimate(policy, estimator) -> (List[Dict], float, float):
     """The step-wise IS estimator.
     Let s_t, a_t, and r_t be the state, action, and reward at timestep t.
     For behavior policy \pi_b and evaluation policy \pi_e, define the
@@ -73,18 +76,21 @@ def importance_sampling_estimate(policy) -> (List[Dict], float, float):
     For more information refer to https://arxiv.org/pdf/1911.06854.pdf"""
 
     # implementation follows 3.2.2 in https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/paper-1.pdf
-    df_test = policy.df_test
+    df_test = estimator.df
     all_estimates = []
     w_t = {}
-    for student_id, df in df_test.groupby('student_id'):
+    for episode, df in df_test.groupby('episode'):
         estimates_per_episode = {}
         rewards, old_prob = np.array(df["reward"]), np.array(df["action_prob"])
         ep_length = len(df)
 
         states = np.stack(df['state'])
         actions = np.array(df['action'])
-        new_prob = policy.action_probs(states, actions)
-        new_prob = new_prob.squeeze().detach().cpu().numpy()
+        state_tensor = torch.tensor(states, dtype=torch.float32, device=policy.args.device)
+        action_tensor = torch.tensor(actions, dtype=torch.int64, device=policy.args.device)
+
+        new_prob = policy.action_probs(state_tensor, action_tensor)
+        new_prob = new_prob.squeeze().numpy()
 
         if new_prob.shape == ():
             new_prob = new_prob.reshape(1, )
@@ -101,10 +107,10 @@ def importance_sampling_estimate(policy) -> (List[Dict], float, float):
             w_t[t] = pt + w_t.get(t, 0.)
 
         # in delayed reward, all r_t is 0 except the last one
-        v_is = (policy.args.np_discount ** ep_length) * p[-1] * rewards[-1]
+        v_is = (policy.args.discount_factor ** ep_length) * p[-1] * rewards[-1]
         v_is = v_is.item()
 
-        estimates_per_episode["student_id"] = student_id
+        estimates_per_episode["episode"] = episode
         estimates_per_episode["v_is"] = v_is
         estimates_per_episode["total_steps"] = ep_length
 
@@ -125,11 +131,9 @@ def importance_sampling_estimate(policy) -> (List[Dict], float, float):
     return all_estimates, mean_is, mean_wis
 
 
-def direct_method_estimate(policy, dr_estimator) -> (List[Dict], float):
-    df_test = policy.df_test
-    s0 = np.stack(df_test.groupby('student_id').first()['state'])
+def direct_method_estimate(policy, estimator) -> (List[Dict], float):
+    s0 = estimator.s0
     actions = policy.select_action(s0)
-
-    q_values = dr_estimator.estimate_q(s0, actions)
+    q_values = estimator.estimate_q(s0, actions)
 
     return q_values.mean().item()

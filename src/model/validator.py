@@ -1,5 +1,6 @@
 import dataclasses
 import logging
+from collections import deque
 
 import numpy as np
 import pandas as pd
@@ -35,13 +36,9 @@ class SimpleValidator:
         self.model_nlg = nets.Discriminator(args)
         self.model_auth = nets.Discriminator(args)
 
-        self.optimizer_nlg = torch.optim.Adam(self.model_nlg.parameters(), lr=self.args.lr_validator)
-        self.lr_scheduler_nlg = torch.optim.lr_scheduler.ExponentialLR(optimizer=self.optimizer_nlg,
-                                                                       gamma=self.args.scheduler_gamma)
+        self.optimizer_nlg = torch.optim.Adam(self.model_nlg.parameters(), lr=self.args.lr)
 
-        self.optimizer_auth = torch.optim.Adam(self.model_auth.parameters(), lr=self.args.lr_validator)
-        self.lr_scheduler_auth = torch.optim.lr_scheduler.ExponentialLR(optimizer=self.optimizer_auth,
-                                                                        gamma=self.args.scheduler_gamma)
+        self.optimizer_auth = torch.optim.Adam(self.model_auth.parameters(), lr=self.args.lr)
 
         self.loss = nn.MSELoss()
 
@@ -91,26 +88,28 @@ class SimpleValidator:
         test_y = torch.from_numpy((test_y == 100)).float()
 
         curr_loss = 0
-        early_stop = 0
+        prev_loss = 999.0
+        prev_diffs = deque(maxlen=100)
+        for i in range(100):
+            prev_diffs.append(9999.0)
         self.model_nlg.train()
-        for ep in range(self.args.validator_train_steps):
-            pred_y = self.model_nlg(train_X)
+        for ep in range(self.args.train_steps):
+            idx = np.random.choice(range(len(train_y)), 128)
+            train_X_batch = train_X[idx]
+            train_y_batch = train_y[idx]
+            pred_y = self.model_nlg(train_X_batch)
             pred_y = pred_y.squeeze()
-            loss = self.loss(pred_y, train_y)
+            loss = self.loss(pred_y, train_y_batch)
 
-            if loss.item() == curr_loss or curr_loss < 0.01:
-                early_stop += 1
-            else:
-                early_stop = 0
             curr_loss = loss.item()
 
             self.optimizer_nlg.zero_grad()
             loss.backward()
             self.optimizer_nlg.step()
-            self.lr_scheduler_nlg.step()
 
             logger.info("reward training epoch {0} | current loss {1: .8f}".format(ep, curr_loss))
-            if early_stop > 10:
+            if curr_loss < 0.01:
+                logger.info("-- early converged | epoch {0}/{1} --".format(ep, self.args.train_steps))
                 break
 
         logger.info("reward training complete | current loss {0: .4f}".format(curr_loss))
@@ -148,26 +147,29 @@ class SimpleValidator:
         test_X = torch.cat([test_X_true, test_X_rand], dim=0)
         test_y = torch.cat([test_y_true, test_y_rand], dim=0)
 
-        curr_loss = 0
-        early_stop = 0
+        curr_loss = 0.0
+        prev_loss = 9999.0
+        prev_diffs = deque(maxlen=100)
+        for i in range(100):
+            prev_diffs.append(9999.0)
         self.model_auth.train()
-        for ep in range(self.args.validator_train_steps):
-            pred_y = self.model_auth(train_X)
-            loss = self.loss(pred_y, train_y)
+        for ep in range(self.args.train_steps):
+            idx = np.random.choice(range(len(train_y)), 128)
+            train_X_batch = train_X[idx]
+            train_y_batch = train_y[idx]
 
-            if loss.item() == curr_loss or curr_loss < 0.01:
-                early_stop += 1
-            else:
-                early_stop = 0
+            pred_y = self.model_auth(train_X_batch)
+            loss = self.loss(pred_y, train_y_batch)
+
             curr_loss = loss.item()
 
             self.optimizer_auth.zero_grad()
             loss.backward()
             self.optimizer_auth.step()
-            self.lr_scheduler_auth.step()
 
             logger.info("auth training epoch {0} | current loss {1: .8f}".format(ep, curr_loss))
-            if early_stop > 10:
+            if curr_loss < 0.01:
+                logger.info("-- early converged | epoch {0}/{1} --".format(ep, self.args.train_steps))
                 break
 
         logger.info("auth training complete | current loss {0: .4f}".format(curr_loss))
@@ -229,13 +231,9 @@ class LSTMValidator:
         self.model_nlg = nets.Discriminator(args)
         self.model_auth = nets.Discriminator(args)
 
-        self.optimizer_nlg = torch.optim.Adam(self.model_nlg.parameters(), lr=self.args.lr_validator)
-        self.lr_scheduler_nlg = torch.optim.lr_scheduler.ExponentialLR(optimizer=self.optimizer_nlg,
-                                                                       gamma=self.args.scheduler_gamma)
+        self.optimizer_nlg = torch.optim.Adam(self.model_nlg.parameters(), lr=self.args.lr)
 
-        self.optimizer_auth = torch.optim.Adam(self.model_auth.parameters(), lr=self.args.lr_validator)
-        self.lr_scheduler_auth = torch.optim.lr_scheduler.ExponentialLR(optimizer=self.optimizer_auth,
-                                                                        gamma=self.args.scheduler_gamma)
+        self.optimizer_auth = torch.optim.Adam(self.model_auth.parameters(), lr=self.args.lr)
 
         self.loss = nn.MSELoss()
 
@@ -285,7 +283,7 @@ class LSTMValidator:
         curr_loss = 0
         early_stop = 0
         self.model_nlg.train()
-        for ep in range(self.args.validator_train_steps):
+        for ep in range(self.args.train_steps):
             pred_y = self.model_nlg(train_X)
             pred_y = pred_y.squeeze()
             loss = self.loss(pred_y, train_y)
@@ -299,7 +297,6 @@ class LSTMValidator:
             self.optimizer_nlg.zero_grad()
             loss.backward()
             self.optimizer_nlg.step()
-            self.lr_scheduler_nlg.step()
 
             logger.info("reward training epoch {0} | current loss {1: .8f}".format(ep, curr_loss))
             if early_stop > 10:
@@ -343,7 +340,7 @@ class LSTMValidator:
         curr_loss = 0
         early_stop = 0
         self.model_auth.train()
-        for ep in range(self.args.validator_train_steps):
+        for ep in range(self.args.train_steps):
             pred_y = self.model_auth(train_X)
             loss = self.loss(pred_y, train_y)
 
@@ -356,7 +353,6 @@ class LSTMValidator:
             self.optimizer_auth.zero_grad()
             loss.backward()
             self.optimizer_auth.step()
-            self.lr_scheduler_auth.step()
 
             logger.info("auth training epoch {0} | current loss {1: .8f}".format(ep, curr_loss))
             if early_stop > 10:
@@ -388,3 +384,4 @@ class LSTMValidator:
         self.model_auth.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_valid_auth.ckpt",
                                                    map_location=lambda x, y: x))
         logger.info("validator models loaded!")
+

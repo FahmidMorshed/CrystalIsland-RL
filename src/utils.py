@@ -1,6 +1,7 @@
 import dataclasses
 import logging
 import random
+from collections import deque
 
 import numpy as np
 import pandas as pd
@@ -14,34 +15,34 @@ def load_student_data_by_nlg(args: dataclasses):
     df = pd.read_pickle(args.student_data_loc)
 
     d = df.loc[df['done']]
-    student_ids = d['student_id'].tolist()
+    student_ids = d['episode'].tolist()
     nlgs = d['reward'].tolist()
 
     train_student, test_student = train_test_split(student_ids, test_size=0.2, stratify=nlgs)
 
-    train_df = df.loc[df['student_id'].isin(train_student)].reset_index(drop=True)
-    test_df = df.loc[df['student_id'].isin(test_student)].reset_index(drop=True)
+    train_df = df.loc[df['episode'].isin(train_student)].reset_index(drop=True)
+    test_df = df.loc[df['episode'].isin(test_student)].reset_index(drop=True)
 
-    train_high_student = df.loc[(df['student_id'].isin(train_student)) & (df['done']) & (df['reward'] == 100)][
-        'student_id']
-    train_low_student = df.loc[(df['student_id'].isin(train_student)) & (df['done']) & (df['reward'] == -100)][
-        'student_id']
-    train_df_high = df.loc[df['student_id'].isin(train_high_student)].reset_index(drop=True)
-    train_df_low = df.loc[df['student_id'].isin(train_low_student)].reset_index(drop=True)
+    train_high_student = df.loc[(df['episode'].isin(train_student)) & (df['done']) & (df['reward'] == 100)][
+        'episode']
+    train_low_student = df.loc[(df['episode'].isin(train_student)) & (df['done']) & (df['reward'] == -100)][
+        'episode']
+    train_df_high = df.loc[df['episode'].isin(train_high_student)].reset_index(drop=True)
+    train_df_low = df.loc[df['episode'].isin(train_low_student)].reset_index(drop=True)
 
     # shuffle
-    train_df_high = train_df_high.set_index("student_id").loc[train_high_student].reset_index()
-    train_df_low = train_df_low.set_index("student_id").loc[train_low_student].reset_index()
+    train_df_high = train_df_high.set_index("episode").loc[train_high_student].reset_index()
+    train_df_low = train_df_low.set_index("episode").loc[train_low_student].reset_index()
 
-    test_high_student = df.loc[(df['student_id'].isin(test_student)) & (df['done']) & (df['reward'] == 100)][
-        'student_id']
-    test_low_student = df.loc[(df['student_id'].isin(test_student)) & (df['done']) & (df['reward'] == -100)][
-        'student_id']
-    test_df_high = df.loc[df['student_id'].isin(test_high_student)].reset_index(drop=True)
-    test_df_low = df.loc[df['student_id'].isin(test_low_student)].reset_index(drop=True)
+    test_high_student = df.loc[(df['episode'].isin(test_student)) & (df['done']) & (df['reward'] == 100)][
+        'episode']
+    test_low_student = df.loc[(df['episode'].isin(test_student)) & (df['done']) & (df['reward'] == -100)][
+        'episode']
+    test_df_high = df.loc[df['episode'].isin(test_high_student)].reset_index(drop=True)
+    test_df_low = df.loc[df['episode'].isin(test_low_student)].reset_index(drop=True)
     # shuffle
-    test_df_high = test_df_high.set_index("student_id").loc[test_high_student].reset_index()
-    test_df_low = test_df_low.set_index("student_id").loc[test_low_student].reset_index()
+    test_df_high = test_df_high.set_index("episode").loc[test_high_student].reset_index()
+    test_df_low = test_df_low.set_index("episode").loc[test_low_student].reset_index()
 
     s0 = np.stack(df.loc[df['step'] == 0, 'state'])
     return train_df_high, train_df_low, test_df_high, test_df_low, s0
@@ -54,21 +55,21 @@ def load_data(df_location, test_size=0.2, train_student=None, test_student=None)
     a.rename(columns={'step': 'action_prob'}, inplace=True)
     df = df.merge(a, on=['action'], how='left')
 
-    s0 = np.stack(df.groupby('student_id').first()['state'])
+    s0 = np.stack(df.groupby('episode').first()['state'])
 
     if train_student is None and test_student is None:
         d = df.loc[df['done']]
-        student_ids = d['student_id'].tolist()
+        student_ids = d['episode'].tolist()
         nlgs = d['reward'].tolist()
 
-        train_student, test_student = train_test_split(student_ids, test_size=0.2, stratify=nlgs)
+        train_student, test_student = train_test_split(student_ids, test_size=test_size, stratify=nlgs)
 
-    train_df = df.loc[df['student_id'].isin(train_student)].reset_index(drop=True)
-    test_df = df.loc[df['student_id'].isin(test_student)].reset_index(drop=True)
+    train_df = df.loc[df['episode'].isin(train_student)].reset_index(drop=True)
+    test_df = df.loc[df['episode'].isin(test_student)].reset_index(drop=True)
 
     # shuffle
-    train_df = train_df.set_index("student_id").loc[train_student].reset_index()
-    test_df = test_df.set_index("student_id").loc[test_student].reset_index()
+    train_df = train_df.set_index("episode").loc[train_student].reset_index()
+    test_df = test_df.set_index("episode").loc[test_student].reset_index()
 
     return train_df, test_df, s0
 
@@ -97,26 +98,26 @@ def state_action_tensor(states, actions, action_dim, device='cpu'):
 
 def split_by_reward(df_train, df_test):
     # for train data
-    train_high_student = df_train.loc[(df_train['done']) & (df_train['reward'] == 100)]['student_id'].unique()
-    train_low_student = df_train.loc[(df_train['done']) & (df_train['reward'] == -100)]['student_id'].unique()
+    train_high_student = df_train.loc[(df_train['done']) & (df_train['reward'] == 100)]['episode'].unique()
+    train_low_student = df_train.loc[(df_train['done']) & (df_train['reward'] == -100)]['episode'].unique()
 
-    train_df_high = df_train.loc[(df_train['student_id'].isin(train_high_student))]
-    train_df_low = df_train.loc[(df_train['student_id'].isin(train_low_student))]
+    train_df_high = df_train.loc[(df_train['episode'].isin(train_high_student))]
+    train_df_low = df_train.loc[(df_train['episode'].isin(train_low_student))]
 
     # shuffle
-    train_df_high = train_df_high.set_index("student_id").loc[train_high_student].reset_index()
-    train_df_low = train_df_low.set_index("student_id").loc[train_low_student].reset_index()
+    train_df_high = train_df_high.set_index("episode").loc[train_high_student].reset_index()
+    train_df_low = train_df_low.set_index("episode").loc[train_low_student].reset_index()
 
     # for test data
-    test_high_student = df_test.loc[(df_test['done']) & (df_test['reward'] == 100)]['student_id'].unique()
-    test_low_student = df_test.loc[(df_test['done']) & (df_test['reward'] == -100)]['student_id'].unique()
+    test_high_student = df_test.loc[(df_test['done']) & (df_test['reward'] == 100)]['episode'].unique()
+    test_low_student = df_test.loc[(df_test['done']) & (df_test['reward'] == -100)]['episode'].unique()
 
-    test_df_high = df_test.loc[(df_test['student_id'].isin(test_high_student))]
-    test_df_low = df_test.loc[(df_test['student_id'].isin(test_low_student))]
+    test_df_high = df_test.loc[(df_test['episode'].isin(test_high_student))]
+    test_df_low = df_test.loc[(df_test['episode'].isin(test_low_student))]
 
     # shuffle
-    test_df_high = test_df_high.set_index("student_id").loc[test_high_student].reset_index()
-    test_df_low = test_df_low.set_index("student_id").loc[test_low_student].reset_index()
+    test_df_high = test_df_high.set_index("episode").loc[test_high_student].reset_index()
+    test_df_low = test_df_low.set_index("episode").loc[test_low_student].reset_index()
 
     return train_df_high, train_df_low, test_df_high, test_df_low
 
@@ -198,3 +199,11 @@ def sample_buffer_tensor(buffer_tensor: dict, sample_size: int) -> (torch.Tensor
                                                buffer_tensor['musk'][idx])
 
     return state, action, reward, next_state, done, next_state_action_musk
+
+
+def converged(curr_loss: float, prev_loss: float, prev_diffs: deque):
+    diff = abs(curr_loss - prev_loss)
+    prev_diffs.append(diff)
+    diff_mean = np.mean(prev_diffs)
+    return diff_mean <= 0.001
+

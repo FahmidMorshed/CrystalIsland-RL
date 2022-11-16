@@ -26,16 +26,12 @@ class GailExecutor:
         self.pi_old.load_state_dict(self.pi.state_dict())
         self.d = Discriminator(self.args).to(self.args.device)
 
-        # optimizers and schedulers
+        # optimizers
         self.optimizer_pi = torch.optim.Adam([
-            {"params": self.pi.actor.parameters(), "lr": self.args.lr_actor},
-            {"params": self.pi.critic.parameters(), "lr": self.args.lr_critic}
+            {"params": self.pi.actor.parameters(), "lr": self.args.lr},
+            {"params": self.pi.critic.parameters(), "lr": self.args.lr}
         ])
-        self.optimizer_d = torch.optim.Adam(self.d.parameters(), lr=self.args.lr_discriminator)
-        self.lr_scheduler_d = torch.optim.lr_scheduler.ExponentialLR(optimizer=self.optimizer_d,
-                                                                     gamma=self.args.scheduler_gamma, verbose=False)
-        self.lr_scheduler_pi = torch.optim.lr_scheduler.ExponentialLR(optimizer=self.optimizer_pi,
-                                                                      gamma=self.args.scheduler_gamma, verbose=False)
+        self.optimizer_d = torch.optim.Adam(self.d.parameters(), lr=self.args.lr)
 
         # define loss functions
         self.mse_loss = nn.MSELoss()
@@ -153,10 +149,6 @@ class GailExecutor:
 
         self.reset_buffers()
 
-        self.lr_scheduler_pi.step()
-        self.lr_scheduler_d.step()
-        self.args.clip_eps = self.args.clip_eps * self.args.scheduler_gamma
-
     def train(self, force_train=False):
         if force_train is False:
             is_loaded = self.load()
@@ -173,13 +165,13 @@ class GailExecutor:
             ep_len = 0
             while ep_len < self.args.max_episode_len:
                 state, reward, done = self.take_action(state)
-                if t % self.args.update_steps == 0:
+                if t % self.args.max_episode_len == 0:
                     self.update()
                     update_count += 1
                     logger.info(
-                        "iter: {0} | update: {1} | d_loss: {2:.2f} | pi_loss: {3: .2f} | "
+                        "epoch: {0}/{1} | d_loss: {2:.2f} | pi_loss: {3: .2f} | "
                         "d_exp: {4: .4f} | d_nov: {5: .4f} | d_rand: {6: .4f}".format(
-                            t, update_count, self.d_loss, self.pi_loss, self.d_exp_score, self.d_nov_score,
+                            update_count, self.args.gail_train_steps, self.d_loss, self.pi_loss, self.d_exp_score, self.d_nov_score,
                             self.d_rand_score))
 
                     # TODO This is not valid criteria. https://arxiv.org/pdf/1802.03446.pdf also check
@@ -200,7 +192,7 @@ class GailExecutor:
             if not done:
                 action = torch.tensor(5, dtype=torch.int64, device=self.args.device)
                 state, reward, done = self.take_action(state, action=action)
-                logger.debug("truncated at horizon. forced end game")
+                # logger.debug("truncated at horizon. forced end game")
             if finish:
                 if self.args.dryrun is False:
                     self.save()
@@ -224,7 +216,7 @@ class GailExecutor:
             logger.info('-- no gail with run_name {0} and name {1}--'.format(self.args.run_name, self.name))
         return is_loaded
 
-    def simulate(self, episode, validator, max_ep_len=550):
+    def simulate(self, episode, validator):
         logger.info("creating simulated data")
         data = []
         data_narr = []
@@ -236,19 +228,20 @@ class GailExecutor:
             done = False
             ep_data = []
             ep_data_narr = []
-            while ep_step < max_ep_len - 1:
+            while ep_step < self.args.max_episode_len - 1:
                 state_tensor = torch.tensor(state, dtype=torch.float32, device=self.args.device)
                 with torch.no_grad():
                     action, action_log_prob = self.pi_old.act(state_tensor)
                 action = action.detach().item()
+
                 next_state, reward, done, info = self.env.step(action)
 
-                ep_data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                ep_data.append({'episode': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
                              'done': done, 'info': info})
 
                 state = next_state
                 if len(info) != 0:
-                    ep_data_narr.append({'student_id': str(ep), 'step': step_narr,
+                    ep_data_narr.append({'episode': str(ep), 'step': step_narr,
                                       'state': info['narrative_state'], 'action': info['narrative_action'],
                                       'reward': 0, 'done': done, 'info': info})
                     step_narr += 1
@@ -264,7 +257,7 @@ class GailExecutor:
             if not done:
                 action = 5  # game end
                 next_state, reward, done, info = self.env.step(action)
-                ep_data.append({'student_id': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                ep_data.append({'episode': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
                              'done': done, 'info': info})
                 if len(ep_data_narr) > 0:
                     ep_data_narr[-1]['done'] = True
@@ -284,11 +277,11 @@ class GailExecutor:
                 ep_data_narr[-1]['reward'] = reward
             data += ep_data
             data_narr += ep_data_narr
-            if ep+1 % 100 == 0:
+            if (ep+1) % 100 == 0:
                 logger.info("{} out of episode {} is finished".format(ep+1, episode))
 
-        df = pd.DataFrame(data, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
-        df_narr = pd.DataFrame(data_narr, columns=['student_id', 'step', 'state', 'action', 'reward', 'done', 'info'])
+        df = pd.DataFrame(data, columns=['episode', 'step', 'state', 'action', 'reward', 'done', 'info'])
+        df_narr = pd.DataFrame(data_narr, columns=['episode', 'step', 'state', 'action', 'reward', 'done', 'info'])
 
         if self.args.dryrun is False:
             df.to_pickle('../simulated_data/' + self.args.run_name + '_sim.pkl')

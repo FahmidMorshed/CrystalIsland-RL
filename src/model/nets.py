@@ -104,3 +104,53 @@ class BCNetwork(nn.Module):
         return i_log_softmax, i
 
 
+class LSTMAttention(nn.Module):
+    def __init__(self, args: dataclasses):
+        super(LSTMAttention, self).__init__()
+        self.args = args
+        self.lstm = nn.LSTM(self.args.state_dim, self.args.validator_hidden_dim, self.args.validator_n_layers,
+                            dropout=self.args.validator_dropout, batch_first=True)
+
+        self.atten = nn.MultiheadAttention(self.args.validator_hidden_dim, self.args.validator_attn_head)
+        # dropout layer
+        self.dropout = nn.Dropout(0.3)
+
+        # linear and sigmoid layers
+        self.fc = nn.Linear(self.args.validator_hidden_dim, 1)  # predict binary high/low nlg, thus 1
+        self.sig = nn.Sigmoid()
+
+    def forward(self, x, hidden):
+        batch_size = x.size(0)
+
+        lstm_out, hidden = self.lstm(x, hidden)
+
+        attn_output, attn_output_weights = self.atten(lstm_out, lstm_out, lstm_out)
+
+        attn_output = attn_output.contiguous().view(-1, self.args.validator_hidden_dim)
+
+        # # stack up lstm outputs
+        lstm_out = lstm_out.contiguous().view(-1, self.args.validator_hidden_dim)
+
+        # dropout and fully-connected layer
+        out = self.dropout(attn_output)
+        out = self.fc(out)
+        # sigmoid function
+        sig_out = self.sig(out)
+
+        # reshape to be batch_size first
+        sig_out = sig_out.view(batch_size, -1)
+        sig_out = sig_out[:, -1]  # get last batch of labels
+
+        # return last sigmoid output and hidden state
+        return sig_out, hidden
+
+    def init_hidden(self, batch_size):
+        ''' Initializes hidden state '''
+        # Create two new tensors with sizes n_layers x batch_size x hidden_dim,
+        # initialized to zero, for hidden state and cell state of LSTM
+        weight = next(self.parameters()).data
+
+        hidden = (weight.new(self.args.validator_n_layers, batch_size, self.args.validator_hidden_dim).zero_(),
+                  weight.new(self.args.validator_n_layers, batch_size, self.args.validator_hidden_dim).zero_())
+
+        return hidden
