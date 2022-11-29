@@ -51,11 +51,10 @@ def load_student_data_by_nlg(args: dataclasses):
 def load_data(df_location, test_size=0.2, train_student=None, test_student=None):
     logger.info("-- loading data from {0} with test size {1} --".format(df_location, test_size))
     df = pd.read_pickle(df_location)
-    a = (df.groupby(['action']).count() / len(df))[['step']]
-    a.rename(columns={'step': 'action_prob'}, inplace=True)
-    df = df.merge(a, on=['action'], how='left')
 
-    s0 = np.stack(df.groupby('episode').first()['state'])
+    d = df.groupby('episode').last()
+    eps = d.loc[d['done'] == False].index
+    df = df.loc[~df['episode'].isin(eps)]
 
     if train_student is None and test_student is None:
         d = df.loc[df['done']]
@@ -71,7 +70,7 @@ def load_data(df_location, test_size=0.2, train_student=None, test_student=None)
     train_df = train_df.set_index("episode").loc[train_student].reset_index()
     test_df = test_df.set_index("episode").loc[test_student].reset_index()
 
-    return train_df, test_df, s0
+    return train_df, test_df
 
 def set_all_seeds(seed=42):
     random.seed(seed)
@@ -207,3 +206,81 @@ def converged(curr_loss: float, prev_loss: float, prev_diffs: deque):
     diff_mean = np.mean(prev_diffs)
     return diff_mean <= 0.001
 
+
+######################################################
+# this is part of the actual gail implementation
+
+def get_flat_grads(f, net):
+    flat_grads = torch.cat([
+        grad.view(-1)
+        for grad in torch.autograd.grad(f, net.parameters(), create_graph=True)
+    ])
+
+    return flat_grads
+
+
+def get_flat_params(net):
+    return torch.cat([param.view(-1) for param in net.parameters()])
+
+
+def set_params(net, new_flat_params):
+    start_idx = 0
+    for param in net.parameters():
+        end_idx = start_idx + np.prod(list(param.shape))
+        param.data = torch.reshape(
+            new_flat_params[start_idx:end_idx], param.shape
+        )
+
+        start_idx = end_idx
+
+
+def conjugate_gradient(Av_func, b, max_iter=10, residual_tol=1e-10):
+    x = torch.zeros_like(b)
+    r = b - Av_func(x)
+    p = r
+    rsold = r.norm() ** 2
+
+    for _ in range(max_iter):
+        Ap = Av_func(p)
+        alpha = rsold / torch.dot(p, Ap)
+        x = x + alpha * p
+        r = r - alpha * Ap
+        rsnew = r.norm() ** 2
+        if torch.sqrt(rsnew) < residual_tol:
+            break
+        p = r + (rsnew / rsold) * p
+        rsold = rsnew
+
+    return x
+
+
+def rescale_and_linesearch(
+    g, s, Hs, max_kl, L, kld, old_params, pi, max_iter=10,
+    success_ratio=0.1
+):
+    set_params(pi, old_params)
+    L_old = L().detach()
+
+    beta = torch.sqrt((2 * max_kl) / torch.dot(s, Hs))
+
+    for _ in range(max_iter):
+        new_params = old_params + beta * s
+
+        set_params(pi, new_params)
+        kld_new = kld().detach()
+
+        L_new = L().detach()
+
+        actual_improv = L_new - L_old
+        approx_improv = torch.dot(g, beta * s)
+        ratio = actual_improv / approx_improv
+
+        if ratio > success_ratio \
+            and actual_improv > 0 \
+                and kld_new < max_kl:
+            return new_params
+
+        beta *= 0.5
+
+    print("The line search was failed!")
+    return old_params
