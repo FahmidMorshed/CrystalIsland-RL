@@ -1,0 +1,1596 @@
+INFO:src.utils:-- loading data from ../processed_data/student_trajectories.pkl with test size 0.3 --
+              precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        34
+           2       0.95      1.00      0.97        19
+
+    accuracy                           0.98        53
+   macro avg       0.97      0.99      0.98        53
+weighted avg       0.98      0.98      0.98        53
+
+              precision    recall  f1-score   support
+
+           0       0.89      0.91      0.90        34
+           2       0.83      0.79      0.81        19
+
+    accuracy                           0.87        53
+   macro avg       0.86      0.85      0.85        53
+weighted avg       0.87      0.87      0.87        53
+
+              precision    recall  f1-score   support
+
+           0       0.89      0.97      0.93        34
+           2       0.94      0.79      0.86        19
+
+    accuracy                           0.91        53
+   macro avg       0.91      0.88      0.89        53
+weighted avg       0.91      0.91      0.90        53
+
+              precision    recall  f1-score   support
+
+           0       0.85      0.88      0.87        33
+           2       0.79      0.75      0.77        20
+
+    accuracy                           0.83        53
+   macro avg       0.82      0.81      0.82        53
+weighted avg       0.83      0.83      0.83        53
+
+              precision    recall  f1-score   support
+
+           0       0.94      0.97      0.96        33
+           2       0.95      0.90      0.92        20
+
+    accuracy                           0.94        53
+   macro avg       0.94      0.93      0.94        53
+weighted avg       0.94      0.94      0.94        53
+
+              precision    recall  f1-score   support
+
+           0       0.89      0.97      0.93        33
+           2       0.94      0.80      0.86        20
+
+    accuracy                           0.91        53
+   macro avg       0.92      0.88      0.90        53
+weighted avg       0.91      0.91      0.90        53
+
+              precision    recall  f1-score   support
+
+           0       0.91      0.97      0.94        33
+           2       0.94      0.85      0.89        20
+
+    accuracy                           0.92        53
+   macro avg       0.93      0.91      0.92        53
+weighted avg       0.93      0.92      0.92        53
+
+              precision    recall  f1-score   support
+
+           0       0.94      1.00      0.97        33
+           2       1.00      0.90      0.95        20
+
+    accuracy                           0.96        53
+   macro avg       0.97      0.95      0.96        53
+weighted avg       0.96      0.96      0.96        53
+
+              precision    recall  f1-score   support
+
+           0       0.94      0.97      0.96        33
+           2       0.94      0.89      0.92        19
+
+    accuracy                           0.94        52
+   macro avg       0.94      0.93      0.94        52
+weighted avg       0.94      0.94      0.94        52
+
+              precision    recall  f1-score   support
+
+           0       0.94      1.00      0.97        33
+           2       1.00      0.89      0.94        19
+
+    accuracy                           0.96        52
+   macro avg       0.97      0.95      0.96        52
+weighted avg       0.96      0.96      0.96        52
+
+F1 Weighted Mean: 0.9216671199629367
+INFO:src.model.gail2:-- no gail with run_name nov29_2 --
+TARGET REWARD: -100.0
+INFO:src.model.gail2:epoc: 1 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 2 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 3 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 4 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 5 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 6 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 7 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 8 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 9 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 10 ||| D Scores | Test  -0.43 | Rand:  0.63 | Curr:  0.48 ||| Steps | Test   170.30 | Rand:  22.73 | Curr:  205.03 ||| Perplexity | Rand:  0.0526 | Curr:  0.0562 ||| KLD | Rand:  9.4780 | Curr:  9.1126 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 745), (1, 762), (2, 800), (3, 753), (4, 762), (5, 764), (6, 722), (7, 769), (8, 737), (9, 830), (10, 734), (11, 743), (12, 774), (13, 734), (14, 738), (15, 732), (16, 711), (17, 755), (18, 740)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 465), (1, 636), (2, 724), (3, 562), (4, 779), (5, 663), (6, 778), (7, 603), (8, 1229), (9, 854), (10, 737), (11, 1415), (12, 661), (13, 755), (14, 785), (15, 1017), (16, 69), (17, 996), (18, 577)]
+
+INFO:src.model.gail2:epoc: 11 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 12 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 13 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 14 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 15 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 16 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 17 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 18 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 19 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 20 ||| D Scores | Test  -0.19 | Rand:  1.37 | Curr:  0.47 ||| Steps | Test   170.30 | Rand:  21.29 | Curr:  205.81 ||| Perplexity | Rand:  0.0526 | Curr:  0.0781 ||| KLD | Rand:  9.4780 | Curr:  7.3013 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 766), (1, 761), (2, 752), (3, 782), (4, 826), (5, 731), (6, 738), (7, 740), (8, 736), (9, 758), (10, 759), (11, 711), (12, 753), (13, 686), (14, 763), (15, 771), (16, 782), (17, 726), (18, 764)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 93), (1, 279), (2, 359), (3, 199), (4, 395), (5, 162), (6, 299), (7, 172), (8, 2944), (9, 853), (10, 267), (11, 6014), (12, 258), (13, 468), (14, 228), (15, 515), (16, 69), (17, 542), (18, 189)]
+
+INFO:src.model.gail2:epoc: 21 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 22 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 23 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 24 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 25 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 26 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 27 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 28 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 29 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 30 ||| D Scores | Test  -0.59 | Rand:  0.26 | Curr:  0.44 ||| Steps | Test   170.30 | Rand:  20.44 | Curr:  205.10 ||| Perplexity | Rand:  0.0526 | Curr:  0.0447 ||| KLD | Rand:  9.4780 | Curr:  8.2170 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 790), (1, 770), (2, 753), (3, 740), (4, 745), (5, 767), (6, 731), (7, 792), (8, 738), (9, 732), (10, 797), (11, 762), (12, 688), (13, 716), (14, 708), (15, 739), (16, 795), (17, 778), (18, 764)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 11), (1, 184), (2, 113), (3, 25), (4, 347), (5, 9), (6, 26), (7, 8), (8, 4129), (9, 3737), (10, 20), (11, 3077), (12, 107), (13, 1047), (14, 20), (15, 60), (16, 69), (17, 1294), (18, 22)]
+
+INFO:src.model.gail2:epoc: 31 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 32 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 33 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 34 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 35 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 36 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 37 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 38 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 39 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 40 ||| D Scores | Test  -1.35 | Rand: -1.03 | Curr:  1.20 ||| Steps | Test   170.30 | Rand:  20.98 | Curr:  204.58 ||| Perplexity | Rand:  0.0526 | Curr:  0.0356 ||| KLD | Rand:  9.4780 | Curr:  8.4003 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 768), (1, 763), (2, 728), (3, 714), (4, 760), (5, 731), (6, 755), (7, 741), (8, 741), (9, 767), (10, 754), (11, 824), (12, 718), (13, 762), (14, 785), (15, 725), (16, 757), (17, 748), (18, 764)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 14), (1, 641), (2, 214), (3, 12), (4, 791), (5, 10), (6, 92), (7, 5), (8, 716), (9, 1350), (10, 21), (11, 5376), (12, 348), (13, 1359), (14, 13), (15, 121), (16, 69), (17, 3092), (18, 61)]
+
+INFO:src.model.gail2:epoc: 41 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 42 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 43 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 44 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 45 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 46 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 47 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 48 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 49 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 50 ||| D Scores | Test  -1.03 | Rand: -1.18 | Curr: -0.04 ||| Steps | Test   170.30 | Rand:  22.40 | Curr:  205.81 ||| Perplexity | Rand:  0.0526 | Curr:  0.0399 ||| KLD | Rand:  9.4780 | Curr:  9.0962 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 746), (1, 721), (2, 712), (3, 775), (4, 714), (5, 741), (6, 796), (7, 771), (8, 778), (9, 752), (10, 781), (11, 777), (12, 770), (13, 756), (14, 821), (15, 696), (16, 710), (17, 733), (18, 755)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 84), (1, 1354), (2, 755), (3, 40), (4, 771), (5, 31), (6, 370), (7, 15), (8, 781), (9, 725), (10, 27), (11, 3519), (12, 1835), (13, 472), (14, 40), (15, 1616), (16, 69), (17, 1586), (18, 215)]
+
+INFO:src.model.gail2:epoc: 51 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 52 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 53 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 54 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 55 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 56 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 57 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 58 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 59 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 60 ||| D Scores | Test  -0.84 | Rand: -0.08 | Curr:  0.93 ||| Steps | Test   170.30 | Rand:  21.86 | Curr:  201.86 ||| Perplexity | Rand:  0.0526 | Curr:  0.0391 ||| KLD | Rand:  9.4780 | Curr:  9.4594 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 781), (1, 753), (2, 791), (3, 802), (4, 753), (5, 726), (6, 702), (7, 730), (8, 766), (9, 793), (10, 716), (11, 773), (12, 754), (13, 781), (14, 726), (15, 768), (16, 745), (17, 721), (18, 724)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 1199), (1, 255), (2, 1892), (3, 286), (4, 346), (5, 463), (6, 1621), (7, 374), (8, 1109), (9, 467), (10, 164), (11, 1075), (12, 742), (13, 39), (14, 297), (15, 1611), (16, 70), (17, 201), (18, 2094)]
+
+INFO:src.model.gail2:epoc: 61 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 62 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 63 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 64 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 65 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 66 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 67 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 68 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 69 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 70 ||| D Scores | Test  -1.29 | Rand:  0.64 | Curr:  1.05 ||| Steps | Test   170.30 | Rand:  21.98 | Curr:  205.16 ||| Perplexity | Rand:  0.0526 | Curr:  0.0600 ||| KLD | Rand:  9.4780 | Curr:  7.7770 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 799), (1, 772), (2, 743), (3, 770), (4, 768), (5, 698), (6, 763), (7, 770), (8, 742), (9, 758), (10, 746), (11, 750), (12, 698), (13, 787), (14, 752), (15, 769), (16, 729), (17, 742), (18, 749)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 272), (1, 222), (2, 773), (3, 160), (4, 397), (5, 169), (6, 539), (7, 294), (8, 2056), (9, 1432), (10, 205), (11, 4901), (12, 505), (13, 51), (14, 227), (15, 1026), (16, 69), (17, 300), (18, 707)]
+
+INFO:src.model.gail2:epoc: 71 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 72 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 73 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 74 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 75 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 76 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 77 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 78 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 79 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 80 ||| D Scores | Test  -0.60 | Rand:  0.73 | Curr:  1.33 ||| Steps | Test   170.30 | Rand:  21.73 | Curr:  202.41 ||| Perplexity | Rand:  0.0526 | Curr:  0.0223 ||| KLD | Rand:  9.4780 | Curr:  9.3301 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 729), (1, 733), (2, 744), (3, 734), (4, 739), (5, 747), (6, 724), (7, 797), (8, 746), (9, 756), (10, 727), (11, 740), (12, 769), (13, 800), (14, 778), (15, 805), (16, 756), (17, 753), (18, 728)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 88), (1, 64), (2, 162), (3, 358), (4, 595), (5, 143), (6, 140), (7, 142), (8, 616), (9, 5217), (10, 507), (11, 5723), (12, 27), (13, 24), (14, 165), (15, 27), (16, 70), (17, 168), (18, 69)]
+
+INFO:src.model.gail2:epoc: 81 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 82 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 83 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 84 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 85 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 86 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 87 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 88 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 89 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 90 ||| D Scores | Test  -1.81 | Rand:  0.01 | Curr:  1.51 ||| Steps | Test   170.30 | Rand:  21.05 | Curr:  204.61 ||| Perplexity | Rand:  0.0526 | Curr:  0.0340 ||| KLD | Rand:  9.4780 | Curr:  8.7773 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 743), (1, 783), (2, 788), (3, 739), (4, 733), (5, 773), (6, 714), (7, 719), (8, 794), (9, 703), (10, 715), (11, 802), (12, 752), (13, 745), (14, 751), (15, 698), (16, 755), (17, 788), (18, 810)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 96), (1, 315), (2, 161), (3, 573), (4, 1331), (5, 89), (6, 193), (7, 45), (8, 2181), (9, 2193), (10, 938), (11, 4117), (12, 84), (13, 68), (14, 228), (15, 128), (16, 69), (17, 1404), (18, 92)]
+
+INFO:src.model.gail2:epoc: 91 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 92 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 93 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 94 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 95 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 96 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 97 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 98 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 99 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 100 ||| D Scores | Test  -1.14 | Rand:  0.49 | Curr:  0.66 ||| Steps | Test   170.30 | Rand:  21.85 | Curr:  205.58 ||| Perplexity | Rand:  0.0526 | Curr:  0.0315 ||| KLD | Rand:  9.4780 | Curr:  8.7176 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 761), (1, 786), (2, 749), (3, 811), (4, 747), (5, 759), (6, 747), (7, 694), (8, 723), (9, 734), (10, 749), (11, 751), (12, 747), (13, 780), (14, 780), (15, 703), (16, 724), (17, 764), (18, 796)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 95), (1, 395), (2, 273), (3, 35), (4, 72), (5, 37), (6, 353), (7, 7), (8, 188), (9, 689), (10, 12), (11, 8907), (12, 282), (13, 501), (14, 39), (15, 1936), (16, 69), (17, 274), (18, 141)]
+
+INFO:src.model.gail2:epoc: 101 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 102 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 103 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 104 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 105 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 106 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 107 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 108 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 109 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 110 ||| D Scores | Test  -1.43 | Rand:  0.10 | Curr:  1.37 ||| Steps | Test   170.30 | Rand:  21.41 | Curr:  204.72 ||| Perplexity | Rand:  0.0526 | Curr:  0.0122 ||| KLD | Rand:  9.4780 | Curr:  10.8006 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 748), (1, 785), (2, 767), (3, 752), (4, 806), (5, 718), (6, 757), (7, 736), (8, 744), (9, 739), (10, 727), (11, 796), (12, 738), (13, 767), (14, 731), (15, 746), (16, 744), (17, 757), (18, 747)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 184), (1, 446), (2, 294), (3, 19), (4, 40), (5, 26), (6, 332), (7, 11), (8, 84), (9, 243), (10, 6), (11, 4454), (12, 943), (13, 3124), (14, 21), (15, 3698), (16, 69), (17, 113), (18, 198)]
+
+INFO:src.model.gail2:epoc: 111 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 112 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 113 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 114 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 115 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 116 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 117 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 118 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 119 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 120 ||| D Scores | Test  -2.38 | Rand: -0.11 | Curr:  2.40 ||| Steps | Test   170.30 | Rand:  22.22 | Curr:  197.15 ||| Perplexity | Rand:  0.0526 | Curr:  0.0229 ||| KLD | Rand:  9.4780 | Curr:  9.9077 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 700), (1, 793), (2, 786), (3, 805), (4, 779), (5, 718), (6, 745), (7, 736), (8, 768), (9, 762), (10, 764), (11, 783), (12, 747), (13, 729), (14, 736), (15, 745), (16, 735), (17, 732), (18, 742)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 224), (1, 737), (2, 382), (3, 45), (4, 230), (5, 149), (6, 410), (7, 98), (8, 263), (9, 178), (10, 36), (11, 1640), (12, 2396), (13, 4735), (14, 107), (15, 1347), (16, 72), (17, 1013), (18, 243)]
+
+INFO:src.model.gail2:epoc: 121 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 122 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 123 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 124 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 125 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 126 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 127 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 128 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 129 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 130 ||| D Scores | Test  -1.52 | Rand:  1.16 | Curr:  1.69 ||| Steps | Test   170.30 | Rand:  21.73 | Curr:  204.51 ||| Perplexity | Rand:  0.0526 | Curr:  0.0305 ||| KLD | Rand:  9.4780 | Curr:  8.4469 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 735), (1, 781), (2, 736), (3, 723), (4, 729), (5, 795), (6, 745), (7, 747), (8, 688), (9, 797), (10, 788), (11, 707), (12, 751), (13, 824), (14, 768), (15, 792), (16, 725), (17, 759), (18, 715)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 68), (1, 246), (2, 53), (3, 45), (4, 283), (5, 90), (6, 124), (7, 323), (8, 604), (9, 391), (10, 27), (11, 9773), (12, 155), (13, 362), (14, 307), (15, 90), (16, 69), (17, 1284), (18, 11)]
+
+INFO:src.model.gail2:epoc: 131 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 132 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 133 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 134 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 135 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 136 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 137 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 138 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 139 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 140 ||| D Scores | Test  -0.92 | Rand:  1.01 | Curr:  1.38 ||| Steps | Test   170.30 | Rand:  20.84 | Curr:  205.48 ||| Perplexity | Rand:  0.0526 | Curr:  0.0181 ||| KLD | Rand:  9.4780 | Curr:  8.5637 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 774), (1, 791), (2, 758), (3, 746), (4, 720), (5, 781), (6, 725), (7, 759), (8, 788), (9, 772), (10, 694), (11, 717), (12, 729), (13, 797), (14, 734), (15, 770), (16, 763), (17, 745), (18, 742)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 99), (1, 214), (2, 77), (3, 35), (4, 226), (5, 95), (6, 185), (7, 109), (8, 6877), (9, 1698), (10, 11), (11, 3603), (12, 157), (13, 277), (14, 103), (15, 81), (16, 69), (17, 361), (18, 28)]
+
+INFO:src.model.gail2:epoc: 141 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 142 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 143 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 144 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 145 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 146 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 147 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 148 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 149 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 150 ||| D Scores | Test  -1.63 | Rand:  0.46 | Curr:  0.49 ||| Steps | Test   170.30 | Rand:  21.14 | Curr:  205.13 ||| Perplexity | Rand:  0.0526 | Curr:  0.0097 ||| KLD | Rand:  9.4780 | Curr:  9.0489 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 726), (1, 728), (2, 739), (3, 746), (4, 770), (5, 748), (6, 808), (7, 769), (8, 770), (9, 771), (10, 791), (11, 735), (12, 760), (13, 763), (14, 751), (15, 705), (16, 733), (17, 770), (18, 722)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 166), (1, 327), (2, 212), (3, 69), (4, 615), (5, 95), (6, 109), (7, 79), (8, 991), (9, 6486), (10, 6), (11, 4855), (12, 55), (13, 9), (14, 70), (15, 8), (16, 70), (17, 75), (18, 8)]
+
+INFO:src.model.gail2:epoc: 151 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 152 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 153 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 154 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 155 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 156 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 157 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 158 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 159 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 160 ||| D Scores | Test  -0.60 | Rand:  1.02 | Curr:  1.22 ||| Steps | Test   170.30 | Rand:  20.48 | Curr:  204.94 ||| Perplexity | Rand:  0.0526 | Curr:  0.0080 ||| KLD | Rand:  9.4780 | Curr:  8.9568 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 719), (1, 785), (2, 720), (3, 779), (4, 765), (5, 740), (6, 779), (7, 760), (8, 779), (9, 740), (10, 730), (11, 725), (12, 745), (13, 702), (14, 777), (15, 758), (16, 784), (17, 745), (18, 773)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 113), (1, 4560), (2, 1557), (3, 128), (4, 2121), (5, 99), (6, 410), (7, 72), (8, 16), (9, 958), (10, 7), (11, 3945), (12, 108), (13, 8), (14, 39), (15, 21), (16, 74), (17, 49), (18, 20)]
+
+INFO:src.model.gail2:epoc: 161 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 162 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 163 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 164 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 165 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 166 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 167 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 168 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 169 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 170 ||| D Scores | Test  -1.24 | Rand:  1.01 | Curr:  0.54 ||| Steps | Test   170.30 | Rand:  22.03 | Curr:  204.84 ||| Perplexity | Rand:  0.0526 | Curr:  0.0080 ||| KLD | Rand:  9.4780 | Curr:  9.4423 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 773), (1, 748), (2, 769), (3, 741), (4, 760), (5, 767), (6, 758), (7, 735), (8, 759), (9, 749), (10, 742), (11, 728), (12, 705), (13, 758), (14, 772), (15, 762), (16, 728), (17, 786), (18, 765)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 54), (1, 3316), (2, 2531), (3, 374), (4, 795), (5, 39), (6, 995), (7, 125), (8, 307), (9, 218), (10, 4), (11, 62), (12, 4673), (13, 27), (14, 20), (15, 38), (16, 69), (17, 516), (18, 142)]
+
+INFO:src.model.gail2:epoc: 171 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 172 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 173 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 174 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 175 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 176 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 177 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 178 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 179 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 180 ||| D Scores | Test  -1.78 | Rand:  0.96 | Curr:  2.52 ||| Steps | Test   170.30 | Rand:  21.12 | Curr:  203.41 ||| Perplexity | Rand:  0.0526 | Curr:  0.0080 ||| KLD | Rand:  9.4780 | Curr:  9.5638 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 735), (1, 755), (2, 785), (3, 745), (4, 776), (5, 755), (6, 732), (7, 760), (8, 715), (9, 772), (10, 701), (11, 782), (12, 740), (13, 758), (14, 755), (15, 759), (16, 755), (17, 757), (18, 768)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 34), (1, 1186), (2, 1348), (3, 381), (4, 315), (5, 35), (6, 673), (7, 209), (8, 134), (9, 87), (10, 8), (11, 116), (12, 6418), (13, 101), (14, 10), (15, 105), (16, 98), (17, 2346), (18, 701)]
+
+INFO:src.model.gail2:epoc: 181 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 182 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 183 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 184 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 185 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 186 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 187 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 188 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 189 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 190 ||| D Scores | Test  -2.30 | Rand:  1.35 | Curr:  2.35 ||| Steps | Test   170.30 | Rand:  21.08 | Curr:  207.51 ||| Perplexity | Rand:  0.0526 | Curr:  0.0059 ||| KLD | Rand:  9.4780 | Curr:  9.4294 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 802), (1, 731), (2, 756), (3, 772), (4, 690), (5, 736), (6, 687), (7, 762), (8, 770), (9, 751), (10, 757), (11, 774), (12, 756), (13, 749), (14, 763), (15, 754), (16, 744), (17, 780), (18, 771)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 16), (1, 163), (2, 149), (3, 34), (4, 74), (5, 19), (6, 90), (7, 173), (8, 5702), (9, 32), (10, 3), (11, 55), (12, 332), (13, 336), (14, 3), (15, 139), (16, 131), (17, 6129), (18, 725)]
+
+INFO:src.model.gail2:epoc: 191 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 192 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 193 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 194 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 195 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 196 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 197 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 198 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 199 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 200 ||| D Scores | Test  -2.21 | Rand:  1.77 | Curr:  0.50 ||| Steps | Test   170.30 | Rand:  21.40 | Curr:  200.10 ||| Perplexity | Rand:  0.0526 | Curr:  0.0078 ||| KLD | Rand:  9.4780 | Curr:  8.9086 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 698), (1, 756), (2, 737), (3, 813), (4, 776), (5, 785), (6, 750), (7, 782), (8, 739), (9, 696), (10, 759), (11, 772), (12, 757), (13, 756), (14, 737), (15, 781), (16, 749), (17, 739), (18, 723)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 14), (1, 39), (2, 64), (3, 14), (4, 21), (5, 14), (6, 41), (7, 63), (8, 2229), (9, 24), (10, 6), (11, 6922), (12, 123), (13, 2829), (14, 4), (15, 438), (16, 71), (17, 1249), (18, 140)]
+
+INFO:src.model.gail2:epoc: 201 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 202 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 203 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 204 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 205 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 206 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 207 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 208 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 209 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 210 ||| D Scores | Test  -1.20 | Rand:  1.89 | Curr:  2.96 ||| Steps | Test   170.30 | Rand:  20.84 | Curr:  204.68 ||| Perplexity | Rand:  0.0526 | Curr:  0.0059 ||| KLD | Rand:  9.4780 | Curr:  8.2125 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 733), (1, 755), (2, 736), (3, 772), (4, 739), (5, 750), (6, 718), (7, 754), (8, 831), (9, 694), (10, 753), (11, 756), (12, 742), (13, 790), (14, 758), (15, 748), (16, 766), (17, 757), (18, 753)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 68), (1, 141), (2, 85), (3, 50), (4, 176), (5, 48), (6, 32), (7, 57), (8, 572), (9, 93), (10, 6), (11, 11430), (12, 39), (13, 629), (14, 8), (15, 234), (16, 69), (17, 528), (18, 40)]
+
+INFO:src.model.gail2:epoc: 211 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 212 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 213 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 214 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 215 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 216 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 217 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 218 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 219 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 220 ||| D Scores | Test  -2.20 | Rand:  0.67 | Curr:  1.06 ||| Steps | Test   170.30 | Rand:  21.38 | Curr:  206.13 ||| Perplexity | Rand:  0.0526 | Curr:  0.0090 ||| KLD | Rand:  9.4780 | Curr:  8.3140 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 729), (1, 750), (2, 776), (3, 757), (4, 702), (5, 729), (6, 797), (7, 790), (8, 768), (9, 718), (10, 750), (11, 754), (12, 761), (13, 755), (14, 775), (15, 719), (16, 751), (17, 747), (18, 777)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 90), (1, 107), (2, 117), (3, 170), (4, 181), (5, 85), (6, 53), (7, 34), (8, 6755), (9, 363), (10, 187), (11, 5455), (12, 14), (13, 2), (14, 401), (15, 18), (16, 69), (17, 192), (18, 12)]
+
+INFO:src.model.gail2:epoc: 221 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 222 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 223 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 224 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 225 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 226 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 227 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 228 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 229 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 230 ||| D Scores | Test  -0.99 | Rand:  1.46 | Curr:  2.26 ||| Steps | Test   170.30 | Rand:  22.52 | Curr:  204.96 ||| Perplexity | Rand:  0.0526 | Curr:  0.0061 ||| KLD | Rand:  9.4780 | Curr:  8.8878 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 698), (1, 768), (2, 779), (3, 786), (4, 773), (5, 707), (6, 773), (7, 729), (8, 765), (9, 702), (10, 758), (11, 767), (12, 765), (13, 772), (14, 767), (15, 741), (16, 707), (17, 821), (18, 727)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 127), (1, 50), (2, 281), (3, 990), (4, 343), (5, 64), (6, 39), (7, 25), (8, 199), (9, 244), (10, 5134), (11, 4852), (12, 5), (13, 3), (14, 1679), (15, 32), (16, 69), (17, 150), (18, 19)]
+
+INFO:src.model.gail2:epoc: 231 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 232 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 233 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 234 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 235 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 236 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 237 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 238 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 239 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 240 ||| D Scores | Test  -2.45 | Rand:  0.69 | Curr:  1.74 ||| Steps | Test   170.30 | Rand:  20.89 | Curr:  205.26 ||| Perplexity | Rand:  0.0526 | Curr:  0.0034 ||| KLD | Rand:  9.4780 | Curr:  9.2090 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 798), (1, 743), (2, 750), (3, 713), (4, 752), (5, 803), (6, 707), (7, 774), (8, 718), (9, 776), (10, 750), (11, 778), (12, 749), (13, 749), (14, 756), (15, 740), (16, 771), (17, 748), (18, 730)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 109), (1, 54), (2, 2221), (3, 600), (4, 3012), (5, 89), (6, 53), (7, 255), (8, 189), (9, 403), (10, 3771), (11, 2475), (12, 31), (13, 20), (14, 301), (15, 135), (16, 72), (17, 245), (18, 270)]
+
+INFO:src.model.gail2:epoc: 241 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 242 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 243 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 244 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 245 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 246 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 247 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 248 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 249 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 250 ||| D Scores | Test  -1.79 | Rand:  2.26 | Curr:  3.12 ||| Steps | Test   170.30 | Rand:  21.86 | Curr:  205.91 ||| Perplexity | Rand:  0.0526 | Curr:  0.0028 ||| KLD | Rand:  9.4780 | Curr:  9.1184 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 696), (1, 795), (2, 714), (3, 746), (4, 771), (5, 746), (6, 768), (7, 752), (8, 761), (9, 788), (10, 748), (11, 749), (12, 776), (13, 725), (14, 765), (15, 762), (16, 730), (17, 738), (18, 775)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 37), (1, 12), (2, 210), (3, 48), (4, 125), (5, 29), (6, 14), (7, 28), (8, 1), (9, 36), (10, 85), (11, 10389), (12, 93), (13, 109), (14, 9), (15, 2825), (16, 69), (17, 99), (18, 87)]
+
+INFO:src.model.gail2:epoc: 251 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 252 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 253 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 254 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 255 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 256 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 257 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 258 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 259 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 260 ||| D Scores | Test  -1.93 | Rand:  2.64 | Curr:  1.78 ||| Steps | Test   170.30 | Rand:  21.28 | Curr:  204.87 ||| Perplexity | Rand:  0.0526 | Curr:  0.0031 ||| KLD | Rand:  9.4780 | Curr:  9.5058 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 776), (1, 732), (2, 804), (3, 752), (4, 729), (5, 761), (6, 748), (7, 750), (8, 725), (9, 750), (10, 772), (11, 704), (12, 759), (13, 805), (14, 753), (15, 769), (16, 742), (17, 738), (18, 736)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 49), (1, 45), (2, 125), (3, 18), (4, 76), (5, 5), (6, 32), (7, 8), (8, 5), (9, 29), (10, 1), (11, 9760), (12, 3450), (13, 143), (14, 2), (15, 317), (16, 70), (17, 123), (18, 47)]
+
+INFO:src.model.gail2:epoc: 261 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 262 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 263 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 264 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 265 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 266 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 267 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 268 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 269 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 270 ||| D Scores | Test  -2.65 | Rand:  2.00 | Curr:  2.84 ||| Steps | Test   170.30 | Rand:  20.64 | Curr:  205.30 ||| Perplexity | Rand:  0.0526 | Curr:  0.0037 ||| KLD | Rand:  9.4780 | Curr:  10.0573 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 691), (1, 710), (2, 753), (3, 776), (4, 756), (5, 775), (6, 730), (7, 746), (8, 763), (9, 765), (10, 752), (11, 805), (12, 749), (13, 758), (14, 780), (15, 715), (16, 775), (17, 762), (18, 744)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 40), (1, 28), (2, 15), (3, 3), (4, 92), (6, 26), (7, 12), (8, 41), (9, 31), (10, 1), (11, 8392), (12, 377), (13, 4504), (14, 4), (15, 521), (16, 69), (17, 126), (18, 23)]
+
+INFO:src.model.gail2:epoc: 271 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 272 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 273 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 274 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 275 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 276 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 277 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 278 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 279 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 280 ||| D Scores | Test  -2.88 | Rand:  1.88 | Curr:  1.29 ||| Steps | Test   170.30 | Rand:  21.83 | Curr:  204.80 ||| Perplexity | Rand:  0.0526 | Curr:  0.0044 ||| KLD | Rand:  9.4780 | Curr:  9.2430 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 733), (1, 750), (2, 724), (3, 760), (4, 737), (5, 704), (6, 754), (7, 739), (8, 753), (9, 761), (10, 769), (11, 784), (12, 709), (13, 782), (14, 719), (15, 836), (16, 730), (17, 775), (18, 786)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 93), (1, 2237), (2, 43), (3, 30), (4, 329), (5, 4), (6, 103), (7, 36), (8, 2310), (9, 73), (10, 7), (11, 6970), (12, 87), (13, 841), (14, 9), (15, 51), (16, 69), (17, 987), (18, 26)]
+
+INFO:src.model.gail2:epoc: 281 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 282 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 283 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 284 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 285 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 286 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 287 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 288 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 289 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 290 ||| D Scores | Test  -1.74 | Rand:  2.41 | Curr:  3.03 ||| Steps | Test   170.30 | Rand:  20.89 | Curr:  204.51 ||| Perplexity | Rand:  0.0526 | Curr:  0.0034 ||| KLD | Rand:  9.4780 | Curr:  9.2801 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 779), (1, 802), (2, 708), (3, 719), (4, 765), (5, 743), (6, 737), (7, 792), (8, 732), (9, 763), (10, 766), (11, 748), (12, 741), (13, 776), (14, 706), (15, 748), (16, 783), (17, 781), (18, 716)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 63), (1, 2527), (2, 48), (3, 95), (4, 613), (5, 13), (6, 254), (7, 101), (8, 6428), (9, 709), (10, 34), (11, 2585), (12, 21), (13, 58), (14, 23), (15, 5), (16, 69), (17, 645), (18, 14)]
+
+INFO:src.model.gail2:epoc: 291 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 292 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 293 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 294 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 295 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 296 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 297 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 298 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 299 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 300 ||| D Scores | Test  -2.28 | Rand:  1.72 | Curr:  2.12 ||| Steps | Test   170.30 | Rand:  21.05 | Curr:  205.30 ||| Perplexity | Rand:  0.0526 | Curr:  0.0025 ||| KLD | Rand:  9.4780 | Curr:  8.9919 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 761), (1, 785), (2, 785), (3, 751), (4, 728), (5, 784), (6, 739), (7, 721), (8, 751), (9, 758), (10, 753), (11, 688), (12, 741), (13, 804), (14, 730), (15, 794), (16, 752), (17, 735), (18, 745)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 72), (1, 525), (2, 27), (3, 144), (4, 492), (5, 45), (6, 396), (7, 193), (8, 1509), (9, 2287), (10, 12), (11, 8222), (12, 24), (13, 30), (14, 15), (15, 10), (16, 69), (17, 208), (18, 25)]
+
+INFO:src.model.gail2:epoc: 301 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 302 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 303 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 304 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 305 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 306 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 307 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 308 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 309 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 310 ||| D Scores | Test  -2.09 | Rand:  1.30 | Curr:  2.53 ||| Steps | Test   170.30 | Rand:  21.25 | Curr:  204.84 ||| Perplexity | Rand:  0.0526 | Curr:  0.0022 ||| KLD | Rand:  9.4780 | Curr:  8.7969 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 754), (1, 698), (2, 761), (3, 754), (4, 749), (5, 724), (6, 777), (7, 775), (8, 773), (9, 754), (10, 713), (11, 733), (12, 808), (13, 757), (14, 754), (15, 761), (16, 768), (17, 762), (18, 730)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 76), (1, 176), (2, 30), (3, 260), (4, 523), (5, 127), (6, 582), (7, 138), (8, 4169), (9, 1343), (10, 31), (11, 6382), (12, 27), (13, 21), (14, 18), (15, 19), (16, 70), (17, 155), (18, 158)]
+
+INFO:src.model.gail2:epoc: 311 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 312 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 313 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 314 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 315 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 316 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 317 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 318 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 319 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 320 ||| D Scores | Test  -2.11 | Rand:  1.43 | Curr:  2.29 ||| Steps | Test   170.30 | Rand:  20.90 | Curr:  201.50 ||| Perplexity | Rand:  0.0526 | Curr:  0.0016 ||| KLD | Rand:  9.4780 | Curr:  9.2226 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 720), (1, 752), (2, 775), (3, 782), (4, 738), (5, 778), (6, 793), (7, 757), (8, 763), (9, 736), (10, 712), (11, 714), (12, 777), (13, 762), (14, 759), (15, 733), (16, 753), (17, 761), (18, 740)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 73), (1, 69), (2, 38), (3, 1440), (4, 454), (5, 81), (6, 908), (7, 60), (8, 4505), (9, 863), (10, 50), (11, 4928), (12, 39), (13, 26), (14, 45), (15, 64), (16, 70), (17, 147), (18, 445)]
+
+INFO:src.model.gail2:epoc: 321 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 322 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 323 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 324 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 325 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 326 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 327 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 328 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 329 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 330 ||| D Scores | Test  -2.19 | Rand:  1.47 | Curr:  2.42 ||| Steps | Test   170.30 | Rand:  21.38 | Curr:  205.48 ||| Perplexity | Rand:  0.0526 | Curr:  0.0018 ||| KLD | Rand:  9.4780 | Curr:  9.5563 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 744), (1, 722), (2, 778), (3, 750), (4, 776), (5, 744), (6, 758), (7, 751), (8, 731), (9, 804), (10, 736), (11, 759), (12, 754), (13, 730), (14, 756), (15, 748), (16, 746), (17, 781), (18, 737)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 70), (1, 93), (2, 156), (3, 435), (4, 694), (5, 79), (6, 878), (7, 112), (8, 4793), (9, 855), (10, 222), (11, 3138), (12, 58), (13, 181), (14, 111), (15, 1432), (16, 70), (17, 384), (18, 544)]
+
+INFO:src.model.gail2:epoc: 331 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 332 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 333 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 334 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 335 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 336 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 337 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 338 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 339 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 340 ||| D Scores | Test  -2.46 | Rand:  1.55 | Curr:  2.60 ||| Steps | Test   170.30 | Rand:  21.97 | Curr:  204.99 ||| Perplexity | Rand:  0.0526 | Curr:  0.0018 ||| KLD | Rand:  9.4780 | Curr:  9.6077 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 714), (1, 787), (2, 725), (3, 749), (4, 773), (5, 725), (6, 701), (7, 770), (8, 773), (9, 831), (10, 721), (11, 794), (12, 784), (13, 750), (14, 716), (15, 737), (16, 724), (17, 754), (18, 777)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 26), (1, 44), (2, 48), (3, 55), (4, 181), (5, 69), (6, 184), (7, 28), (8, 4871), (9, 368), (10, 77), (11, 5769), (12, 51), (13, 1387), (14, 45), (15, 650), (16, 69), (17, 271), (18, 112)]
+
+INFO:src.model.gail2:epoc: 341 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 342 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 343 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 344 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 345 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 346 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 347 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 348 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 349 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 350 ||| D Scores | Test  -2.58 | Rand:  1.83 | Curr:  2.79 ||| Steps | Test   170.30 | Rand:  22.30 | Curr:  204.36 ||| Perplexity | Rand:  0.0526 | Curr:  0.0013 ||| KLD | Rand:  9.4780 | Curr:  10.0652 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 769), (1, 760), (2, 756), (3, 749), (4, 752), (5, 721), (6, 753), (7, 751), (8, 708), (9, 774), (10, 783), (11, 748), (12, 787), (13, 749), (14, 736), (15, 758), (16, 725), (17, 790), (18, 736)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 9), (1, 52), (2, 35), (3, 25), (4, 191), (5, 67), (6, 93), (7, 29), (8, 3041), (9, 271), (10, 24), (11, 7466), (12, 343), (13, 2193), (14, 11), (15, 54), (16, 69), (17, 278), (18, 54)]
+
+INFO:src.model.gail2:epoc: 351 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 352 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 353 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 354 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 355 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 356 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 357 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 358 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 359 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 360 ||| D Scores | Test  -2.34 | Rand:  2.38 | Curr:  3.02 ||| Steps | Test   170.30 | Rand:  20.40 | Curr:  204.86 ||| Perplexity | Rand:  0.0526 | Curr:  0.0014 ||| KLD | Rand:  9.4780 | Curr:  10.3968 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 762), (1, 764), (2, 755), (3, 804), (4, 737), (5, 740), (6, 734), (7, 720), (8, 782), (9, 779), (10, 782), (11, 748), (12, 734), (13, 690), (14, 745), (15, 801), (16, 770), (17, 752), (18, 706)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 6), (1, 209), (2, 44), (3, 18), (4, 141), (5, 25), (6, 178), (7, 31), (8, 757), (9, 388), (10, 9), (11, 5938), (12, 2415), (13, 1867), (14, 9), (15, 32), (16, 69), (17, 2099), (18, 70)]
+
+INFO:src.model.gail2:epoc: 361 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 362 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 363 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 364 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 365 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 366 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 367 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 368 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 369 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 370 ||| D Scores | Test  -3.27 | Rand:  1.44 | Curr:  2.88 ||| Steps | Test   170.30 | Rand:  21.24 | Curr:  205.16 ||| Perplexity | Rand:  0.0526 | Curr:  0.0011 ||| KLD | Rand:  9.4780 | Curr:  10.4987 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 750), (1, 780), (2, 721), (3, 720), (4, 746), (5, 733), (6, 756), (7, 714), (8, 805), (9, 783), (10, 734), (11, 744), (12, 757), (13, 698), (14, 788), (15, 805), (16, 748), (17, 768), (18, 755)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 38), (1, 569), (2, 105), (3, 70), (4, 492), (5, 103), (6, 189), (7, 96), (8, 974), (9, 325), (10, 69), (11, 7171), (12, 1660), (13, 1094), (14, 25), (15, 49), (16, 70), (17, 1051), (18, 155)]
+
+INFO:src.model.gail2:epoc: 371 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 372 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 373 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 374 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 375 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 376 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 377 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 378 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 379 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 380 ||| D Scores | Test  -2.46 | Rand:  2.26 | Curr:  3.15 ||| Steps | Test   170.30 | Rand:  20.59 | Curr:  205.09 ||| Perplexity | Rand:  0.0526 | Curr:  0.0011 ||| KLD | Rand:  9.4780 | Curr:  10.2721 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 756), (1, 746), (2, 707), (3, 770), (4, 739), (5, 774), (6, 723), (7, 781), (8, 715), (9, 770), (10, 720), (11, 777), (12, 753), (13, 800), (14, 752), (15, 753), (16, 781), (17, 706), (18, 782)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 51), (1, 141), (2, 2121), (3, 77), (4, 768), (5, 77), (6, 97), (7, 52), (8, 625), (9, 91), (10, 419), (11, 8810), (12, 190), (13, 98), (14, 303), (15, 76), (16, 69), (17, 57), (18, 183)]
+
+INFO:src.model.gail2:epoc: 381 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 382 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 383 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 384 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 385 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 386 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 387 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 388 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 389 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 390 ||| D Scores | Test  -2.75 | Rand:  2.22 | Curr:  3.03 ||| Steps | Test   170.30 | Rand:  20.15 | Curr:  205.00 ||| Perplexity | Rand:  0.0526 | Curr:  0.0019 ||| KLD | Rand:  9.4780 | Curr:  9.9568 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 752), (1, 746), (2, 778), (3, 759), (4, 747), (5, 765), (6, 765), (7, 747), (8, 714), (9, 757), (10, 764), (11, 680), (12, 722), (13, 760), (14, 773), (15, 760), (16, 789), (17, 753), (18, 774)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 32), (1, 307), (2, 1156), (3, 89), (4, 241), (5, 24), (6, 107), (7, 54), (8, 1408), (9, 168), (10, 95), (11, 9273), (12, 87), (13, 40), (14, 738), (15, 36), (16, 69), (17, 51), (18, 330)]
+
+INFO:src.model.gail2:epoc: 391 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 392 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 393 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 394 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 395 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 396 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 397 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 398 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 399 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 400 ||| D Scores | Test  -2.69 | Rand:  2.48 | Curr:  3.00 ||| Steps | Test   170.30 | Rand:  21.10 | Curr:  205.42 ||| Perplexity | Rand:  0.0526 | Curr:  0.0024 ||| KLD | Rand:  9.4780 | Curr:  9.4919 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 778), (1, 746), (2, 732), (3, 748), (4, 740), (5, 750), (6, 810), (7, 707), (8, 780), (9, 739), (10, 762), (11, 777), (12, 747), (13, 736), (14, 754), (15, 788), (16, 762), (17, 704), (18, 745)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 69), (1, 413), (2, 118), (3, 21), (4, 163), (5, 9), (6, 161), (7, 45), (8, 6598), (9, 516), (10, 8), (11, 5334), (12, 135), (13, 88), (14, 232), (15, 32), (16, 69), (17, 73), (18, 221)]
+
+INFO:src.model.gail2:epoc: 401 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 402 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 403 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 404 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 405 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 406 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 407 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 408 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 409 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 410 ||| D Scores | Test  -2.38 | Rand:  2.27 | Curr:  2.65 ||| Steps | Test   170.30 | Rand:  22.18 | Curr:  205.00 ||| Perplexity | Rand:  0.0526 | Curr:  0.0019 ||| KLD | Rand:  9.4780 | Curr:  9.7574 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 729), (1, 724), (2, 774), (3, 763), (4, 795), (5, 776), (6, 754), (7, 762), (8, 751), (9, 725), (10, 797), (11, 790), (12, 767), (13, 729), (14, 731), (15, 702), (16, 730), (17, 736), (18, 770)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 67), (1, 864), (2, 69), (3, 23), (4, 126), (5, 23), (6, 260), (7, 52), (8, 5225), (9, 1349), (10, 4), (11, 3680), (12, 798), (13, 833), (14, 59), (15, 42), (16, 69), (17, 648), (18, 114)]
+
+INFO:src.model.gail2:epoc: 411 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 412 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 413 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 414 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 415 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 416 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 417 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 418 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 419 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 420 ||| D Scores | Test  -2.60 | Rand:  1.76 | Curr:  2.74 ||| Steps | Test   170.30 | Rand:  21.09 | Curr:  205.49 ||| Perplexity | Rand:  0.0526 | Curr:  0.0019 ||| KLD | Rand:  9.4780 | Curr:  10.0801 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 697), (1, 729), (2, 754), (3, 754), (4, 719), (5, 786), (6, 742), (7, 749), (8, 762), (9, 773), (10, 743), (11, 771), (12, 769), (13, 772), (14, 787), (15, 757), (16, 768), (17, 719), (18, 754)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 62), (1, 661), (2, 69), (3, 14), (4, 157), (5, 17), (6, 146), (7, 69), (8, 3614), (9, 1056), (10, 2), (11, 4300), (12, 1033), (13, 1161), (14, 20), (15, 67), (16, 69), (17, 1741), (18, 47)]
+
+INFO:src.model.gail2:epoc: 421 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 422 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 423 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 424 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 425 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 426 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 427 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 428 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 429 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 430 ||| D Scores | Test  -2.74 | Rand:  1.31 | Curr:  3.01 ||| Steps | Test   170.30 | Rand:  22.06 | Curr:  204.58 ||| Perplexity | Rand:  0.0526 | Curr:  0.0018 ||| KLD | Rand:  9.4780 | Curr:  9.9582 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 714), (1, 783), (2, 749), (3, 713), (4, 742), (5, 779), (6, 743), (7, 740), (8, 790), (9, 773), (10, 780), (11, 790), (12, 762), (13, 728), (14, 744), (15, 745), (16, 740), (17, 768), (18, 722)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 70), (1, 285), (2, 75), (3, 16), (4, 291), (5, 24), (6, 301), (7, 147), (8, 7750), (9, 307), (10, 6), (11, 2593), (12, 268), (13, 462), (14, 33), (15, 362), (16, 71), (17, 1164), (18, 80)]
+
+INFO:src.model.gail2:epoc: 431 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 432 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 433 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 434 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 435 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 436 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 437 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 438 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 439 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 440 ||| D Scores | Test  -2.42 | Rand:  1.73 | Curr:  2.54 ||| Steps | Test   170.30 | Rand:  21.58 | Curr:  170.63 ||| Perplexity | Rand:  0.0526 | Curr:  0.0012 ||| KLD | Rand:  9.4780 | Curr:  10.0044 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 787), (1, 732), (2, 774), (3, 768), (4, 751), (5, 750), (6, 718), (7, 769), (8, 771), (9, 777), (10, 716), (11, 760), (12, 751), (13, 761), (14, 739), (15, 758), (16, 732), (17, 728), (18, 763)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 51), (1, 266), (2, 125), (3, 48), (4, 420), (5, 53), (6, 324), (7, 62), (8, 5918), (9, 320), (10, 16), (11, 3852), (12, 141), (13, 325), (14, 63), (15, 1250), (16, 122), (17, 828), (18, 121)]
+
+INFO:src.model.gail2:epoc: 441 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 442 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 443 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 444 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 445 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 446 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 447 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 448 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 449 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 450 ||| D Scores | Test  -2.17 | Rand:  1.35 | Curr:  2.34 ||| Steps | Test   170.30 | Rand:  20.26 | Curr:  141.55 ||| Perplexity | Rand:  0.0526 | Curr:  0.0010 ||| KLD | Rand:  9.4780 | Curr:  10.2380 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 740), (1, 786), (2, 753), (3, 770), (4, 798), (5, 693), (6, 739), (7, 747), (8, 775), (9, 769), (10, 770), (11, 757), (12, 741), (13, 742), (14, 741), (15, 753), (16, 810), (17, 692), (18, 729)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 40), (1, 307), (2, 121), (3, 87), (4, 1028), (5, 50), (6, 490), (7, 106), (8, 5346), (9, 321), (10, 14), (11, 3987), (12, 124), (13, 246), (14, 65), (15, 944), (16, 151), (17, 719), (18, 159)]
+
+INFO:src.model.gail2:epoc: 451 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 452 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 453 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 454 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 455 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 456 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 457 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 458 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 459 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 460 ||| D Scores | Test  -1.39 | Rand:  1.67 | Curr:  1.94 ||| Steps | Test   170.30 | Rand:  21.45 | Curr:  150.45 ||| Perplexity | Rand:  0.0526 | Curr:  0.0010 ||| KLD | Rand:  9.4780 | Curr:  10.1338 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 726), (1, 749), (2, 745), (3, 758), (4, 781), (5, 739), (6, 759), (7, 700), (8, 756), (9, 761), (10, 748), (11, 784), (12, 750), (13, 790), (14, 775), (15, 765), (16, 743), (17, 760), (18, 716)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 21), (1, 479), (2, 221), (3, 277), (4, 1031), (5, 80), (6, 809), (7, 75), (8, 3657), (9, 549), (10, 28), (11, 4398), (12, 212), (13, 338), (14, 67), (15, 620), (16, 156), (17, 895), (18, 392)]
+
+INFO:src.model.gail2:epoc: 461 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 462 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 463 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 464 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 465 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 466 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 467 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 468 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 469 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 470 ||| D Scores | Test  -0.89 | Rand:  1.60 | Curr:  0.98 ||| Steps | Test   170.30 | Rand:  21.60 | Curr:  172.52 ||| Perplexity | Rand:  0.0526 | Curr:  0.0013 ||| KLD | Rand:  9.4780 | Curr:  10.0449 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 740), (1, 767), (2, 779), (3, 775), (4, 757), (5, 736), (6, 760), (7, 754), (8, 755), (9, 794), (10, 780), (11, 753), (12, 772), (13, 714), (14, 691), (15, 739), (16, 743), (17, 729), (18, 767)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 10), (1, 619), (2, 515), (3, 1211), (4, 452), (5, 55), (6, 385), (7, 35), (8, 2757), (9, 1002), (10, 65), (11, 3717), (12, 629), (13, 812), (14, 63), (15, 245), (16, 203), (17, 943), (18, 587)]
+
+INFO:src.model.gail2:epoc: 471 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 472 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 473 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 474 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 475 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 476 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 477 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 478 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 479 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 480 ||| D Scores | Test  -1.04 | Rand:  1.68 | Curr:  1.56 ||| Steps | Test   170.30 | Rand:  21.80 | Curr:  189.48 ||| Perplexity | Rand:  0.0526 | Curr:  0.0012 ||| KLD | Rand:  9.4780 | Curr:  10.2521 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 785), (1, 770), (2, 749), (3, 732), (4, 744), (5, 776), (6, 776), (7, 753), (8, 737), (9, 758), (10, 735), (11, 749), (12, 709), (13, 750), (14, 753), (15, 703), (16, 734), (17, 797), (18, 795)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 7), (1, 832), (2, 734), (3, 849), (4, 378), (5, 34), (6, 243), (7, 36), (8, 3022), (9, 1489), (10, 113), (11, 2283), (12, 1228), (13, 1564), (14, 75), (15, 156), (16, 187), (17, 660), (18, 415)]
+
+INFO:src.model.gail2:epoc: 481 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 482 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 483 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 484 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 485 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 486 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 487 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 488 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 489 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 490 ||| D Scores | Test  -1.86 | Rand:  1.70 | Curr:  1.85 ||| Steps | Test   170.30 | Rand:  21.00 | Curr:  187.38 ||| Perplexity | Rand:  0.0526 | Curr:  0.0016 ||| KLD | Rand:  9.4780 | Curr:  10.0375 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 786), (1, 702), (2, 718), (3, 766), (4, 746), (5, 803), (6, 693), (7, 775), (8, 747), (9, 729), (10, 785), (11, 777), (12, 716), (13, 748), (14, 777), (15, 736), (16, 753), (17, 793), (18, 755)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 11), (1, 789), (2, 824), (3, 384), (4, 194), (5, 18), (6, 134), (7, 35), (8, 2737), (9, 1011), (10, 503), (11, 4745), (12, 820), (13, 903), (14, 73), (15, 153), (16, 187), (17, 446), (18, 338)]
+
+INFO:src.model.gail2:epoc: 491 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 492 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 493 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 494 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 495 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 496 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 497 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 498 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 499 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 500 ||| D Scores | Test  -1.80 | Rand:  2.23 | Curr:  3.15 ||| Steps | Test   170.30 | Rand:  20.97 | Curr:  185.00 ||| Perplexity | Rand:  0.0526 | Curr:  0.0012 ||| KLD | Rand:  9.4780 | Curr:  10.3301 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 748), (1, 784), (2, 770), (3, 754), (4, 761), (5, 689), (6, 769), (7, 742), (8, 768), (9, 734), (10, 739), (11, 734), (12, 727), (13, 769), (14, 756), (15, 739), (16, 765), (17, 785), (18, 772)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 3), (1, 327), (2, 215), (3, 224), (4, 117), (5, 15), (6, 71), (7, 16), (8, 3540), (9, 219), (10, 3501), (11, 5088), (12, 76), (13, 156), (14, 91), (15, 97), (16, 178), (17, 270), (18, 101)]
+
+INFO:src.model.gail2:epoc: 501 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 502 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 503 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 504 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 505 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 506 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 507 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 508 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 509 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 510 ||| D Scores | Test  -3.08 | Rand:  1.19 | Curr:  2.73 ||| Steps | Test   170.30 | Rand:  21.62 | Curr:  199.45 ||| Perplexity | Rand:  0.0526 | Curr:  0.0015 ||| KLD | Rand:  9.4780 | Curr:  9.7092 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 734), (1, 783), (2, 719), (3, 754), (4, 801), (5, 769), (6, 793), (7, 737), (8, 733), (9, 757), (10, 746), (11, 767), (12, 776), (13, 724), (14, 759), (15, 732), (16, 728), (17, 757), (18, 736)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 22), (1, 495), (2, 185), (3, 80), (4, 144), (5, 28), (6, 82), (7, 80), (8, 4291), (9, 341), (10, 992), (11, 6306), (12, 82), (13, 213), (14, 93), (15, 235), (16, 134), (17, 384), (18, 118)]
+
+INFO:src.model.gail2:epoc: 511 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 512 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 513 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 514 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 515 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 516 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 517 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 518 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 519 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 520 ||| D Scores | Test  -2.23 | Rand:  1.94 | Curr:  2.98 ||| Steps | Test   170.30 | Rand:  21.10 | Curr:  197.01 ||| Perplexity | Rand:  0.0526 | Curr:  0.0012 ||| KLD | Rand:  9.4780 | Curr:  9.6931 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 774), (1, 762), (2, 743), (3, 733), (4, 744), (5, 765), (6, 741), (7, 769), (8, 724), (9, 779), (10, 754), (11, 779), (12, 715), (13, 730), (14, 740), (15, 758), (16, 769), (17, 786), (18, 740)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 47), (1, 868), (2, 129), (3, 60), (4, 172), (5, 31), (6, 69), (7, 131), (8, 4172), (9, 1164), (10, 43), (11, 6099), (12, 95), (13, 231), (14, 39), (15, 202), (16, 113), (17, 469), (18, 171)]
+
+INFO:src.model.gail2:epoc: 521 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 522 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 523 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 524 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 525 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 526 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 527 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 528 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 529 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 530 ||| D Scores | Test  -2.35 | Rand:  1.96 | Curr:  2.71 ||| Steps | Test   170.30 | Rand:  20.05 | Curr:  202.10 ||| Perplexity | Rand:  0.0526 | Curr:  0.0008 ||| KLD | Rand:  9.4780 | Curr:  9.8145 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 720), (1, 774), (2, 714), (3, 770), (4, 762), (5, 753), (6, 732), (7, 779), (8, 771), (9, 768), (10, 726), (11, 756), (12, 734), (13, 737), (14, 781), (15, 759), (16, 791), (17, 729), (18, 749)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 117), (1, 329), (2, 123), (3, 29), (4, 138), (5, 80), (6, 108), (7, 153), (8, 5573), (9, 766), (10, 10), (11, 5440), (12, 182), (13, 301), (14, 36), (15, 89), (16, 75), (17, 521), (18, 235)]
+
+INFO:src.model.gail2:epoc: 531 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 532 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 533 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 534 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 535 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 536 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 537 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 538 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 539 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 540 ||| D Scores | Test  -2.22 | Rand:  2.11 | Curr:  3.23 ||| Steps | Test   170.30 | Rand:  22.42 | Curr:  204.62 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  9.9860 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 711), (1, 785), (2, 804), (3, 741), (4, 765), (5, 754), (6, 753), (7, 805), (8, 716), (9, 770), (10, 733), (11, 721), (12, 766), (13, 736), (14, 820), (15, 723), (16, 734), (17, 704), (18, 764)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 177), (1, 104), (2, 206), (3, 8), (4, 139), (5, 96), (6, 95), (7, 100), (8, 8043), (9, 184), (10, 11), (11, 3978), (12, 376), (13, 333), (14, 25), (15, 59), (16, 75), (17, 187), (18, 109)]
+
+INFO:src.model.gail2:epoc: 541 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 542 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 543 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 544 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 545 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 546 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 547 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 548 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 549 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 550 ||| D Scores | Test  -2.58 | Rand:  2.32 | Curr:  3.32 ||| Steps | Test   170.30 | Rand:  20.58 | Curr:  205.77 ||| Perplexity | Rand:  0.0526 | Curr:  0.0005 ||| KLD | Rand:  9.4780 | Curr:  10.1249 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 729), (1, 760), (2, 726), (3, 752), (4, 781), (5, 756), (6, 752), (7, 711), (8, 722), (9, 763), (10, 741), (11, 755), (12, 785), (13, 742), (14, 767), (15, 762), (16, 759), (17, 792), (18, 750)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 195), (1, 98), (2, 560), (3, 18), (4, 151), (5, 92), (6, 99), (7, 77), (8, 8190), (9, 170), (10, 31), (11, 3231), (12, 412), (13, 375), (14, 116), (15, 78), (16, 73), (17, 199), (18, 140)]
+
+INFO:src.model.gail2:epoc: 551 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 552 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 553 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 554 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 555 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 556 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 557 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 558 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 559 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 560 ||| D Scores | Test  -2.33 | Rand:  2.89 | Curr:  3.04 ||| Steps | Test   170.30 | Rand:  20.46 | Curr:  205.19 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  10.4194 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 772), (1, 711), (2, 728), (3, 773), (4, 785), (5, 749), (6, 752), (7, 749), (8, 759), (9, 749), (10, 704), (11, 769), (12, 729), (13, 766), (14, 725), (15, 760), (16, 790), (17, 771), (18, 764)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 92), (1, 284), (2, 686), (3, 43), (4, 554), (5, 64), (6, 279), (7, 58), (8, 4844), (9, 629), (10, 39), (11, 2951), (12, 345), (13, 348), (14, 1227), (15, 336), (16, 70), (17, 1090), (18, 366)]
+
+INFO:src.model.gail2:epoc: 561 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 562 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 563 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 564 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 565 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 566 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 567 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 568 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 569 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 570 ||| D Scores | Test  -3.02 | Rand:  2.69 | Curr:  3.77 ||| Steps | Test   170.30 | Rand:  20.94 | Curr:  205.04 ||| Perplexity | Rand:  0.0526 | Curr:  0.0008 ||| KLD | Rand:  9.4780 | Curr:  10.1100 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 771), (1, 790), (2, 744), (3, 786), (4, 757), (5, 802), (6, 672), (7, 759), (8, 740), (9, 747), (10, 747), (11, 703), (12, 797), (13, 736), (14, 733), (15, 738), (16, 772), (17, 782), (18, 729)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 54), (1, 251), (2, 263), (3, 53), (4, 749), (5, 63), (6, 232), (7, 71), (8, 6781), (9, 303), (10, 47), (11, 3845), (12, 115), (13, 128), (14, 505), (15, 238), (16, 72), (17, 385), (18, 150)]
+
+INFO:src.model.gail2:epoc: 571 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 572 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 573 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 574 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 575 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 576 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 577 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 578 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 579 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 580 ||| D Scores | Test  -2.61 | Rand:  2.82 | Curr:  4.32 ||| Steps | Test   170.30 | Rand:  21.11 | Curr:  205.28 ||| Perplexity | Rand:  0.0526 | Curr:  0.0009 ||| KLD | Rand:  9.4780 | Curr:  9.7754 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 766), (1, 765), (2, 766), (3, 734), (4, 729), (5, 764), (6, 713), (7, 753), (8, 762), (9, 722), (10, 756), (11, 761), (12, 761), (13, 710), (14, 780), (15, 754), (16, 771), (17, 762), (18, 776)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 46), (1, 238), (2, 188), (3, 205), (4, 170), (5, 40), (6, 198), (7, 55), (8, 8401), (9, 112), (10, 65), (11, 3933), (12, 68), (13, 65), (14, 65), (15, 180), (16, 69), (17, 147), (18, 60)]
+
+INFO:src.model.gail2:epoc: 581 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 582 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 583 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 584 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 585 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 586 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 587 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 588 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 589 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 590 ||| D Scores | Test  -2.78 | Rand:  2.91 | Curr:  3.57 ||| Steps | Test   170.30 | Rand:  22.83 | Curr:  202.76 ||| Perplexity | Rand:  0.0526 | Curr:  0.0008 ||| KLD | Rand:  9.4780 | Curr:  9.8239 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 795), (1, 740), (2, 739), (3, 739), (4, 724), (5, 769), (6, 713), (7, 763), (8, 754), (9, 763), (10, 731), (11, 770), (12, 807), (13, 732), (14, 752), (15, 803), (16, 696), (17, 769), (18, 746)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 40), (1, 297), (2, 193), (3, 601), (4, 195), (5, 66), (6, 202), (7, 56), (8, 7371), (9, 317), (10, 477), (11, 3069), (12, 268), (13, 201), (14, 87), (15, 352), (16, 72), (17, 345), (18, 96)]
+
+INFO:src.model.gail2:epoc: 591 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 592 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 593 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 594 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 595 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 596 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 597 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 598 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 599 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 600 ||| D Scores | Test  -2.67 | Rand:  2.94 | Curr:  3.30 ||| Steps | Test   170.30 | Rand:  20.87 | Curr:  204.81 ||| Perplexity | Rand:  0.0526 | Curr:  0.0008 ||| KLD | Rand:  9.4780 | Curr:  9.8548 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 774), (1, 692), (2, 747), (3, 739), (4, 797), (5, 744), (6, 719), (7, 784), (8, 793), (9, 778), (10, 772), (11, 727), (12, 727), (13, 746), (14, 774), (15, 725), (16, 764), (17, 745), (18, 758)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 33), (1, 255), (2, 299), (3, 360), (4, 518), (5, 40), (6, 134), (7, 61), (8, 5297), (9, 424), (10, 1662), (11, 3008), (12, 765), (13, 491), (14, 93), (15, 443), (16, 73), (17, 231), (18, 118)]
+
+INFO:src.model.gail2:epoc: 601 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 602 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 603 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 604 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 605 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 606 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 607 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 608 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 609 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 610 ||| D Scores | Test  -2.87 | Rand:  3.03 | Curr:  3.68 ||| Steps | Test   170.30 | Rand:  21.00 | Curr:  202.06 ||| Perplexity | Rand:  0.0526 | Curr:  0.0007 ||| KLD | Rand:  9.4780 | Curr:  10.0193 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 763), (1, 772), (2, 768), (3, 806), (4, 763), (5, 778), (6, 746), (7, 760), (8, 740), (9, 729), (10, 727), (11, 747), (12, 784), (13, 719), (14, 765), (15, 736), (16, 766), (17, 706), (18, 730)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 29), (1, 220), (2, 250), (3, 420), (4, 707), (5, 27), (6, 146), (7, 79), (8, 5711), (9, 484), (10, 340), (11, 4780), (12, 313), (13, 267), (14, 16), (15, 227), (16, 73), (17, 114), (18, 102)]
+
+INFO:src.model.gail2:epoc: 611 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 612 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 613 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 614 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 615 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 616 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 617 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 618 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 619 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 620 ||| D Scores | Test  -2.89 | Rand:  2.92 | Curr:  3.84 ||| Steps | Test   170.30 | Rand:  21.53 | Curr:  193.66 ||| Perplexity | Rand:  0.0526 | Curr:  0.0007 ||| KLD | Rand:  9.4780 | Curr:  9.8165 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 725), (1, 769), (2, 754), (3, 732), (4, 747), (5, 802), (6, 724), (7, 731), (8, 721), (9, 754), (10, 769), (11, 726), (12, 732), (13, 797), (14, 791), (15, 739), (16, 749), (17, 794), (18, 749)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 40), (1, 362), (2, 166), (3, 523), (4, 346), (5, 37), (6, 194), (7, 45), (8, 6685), (9, 307), (10, 142), (11, 4517), (12, 113), (13, 103), (14, 4), (15, 229), (16, 92), (17, 238), (18, 162)]
+
+INFO:src.model.gail2:epoc: 621 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 622 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 623 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 624 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 625 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 626 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 627 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 628 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 629 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 630 ||| D Scores | Test  -2.84 | Rand:  2.82 | Curr:  3.87 ||| Steps | Test   170.30 | Rand:  19.94 | Curr:  184.94 ||| Perplexity | Rand:  0.0526 | Curr:  0.0009 ||| KLD | Rand:  9.4780 | Curr:  9.6245 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 714), (1, 743), (2, 757), (3, 750), (4, 833), (5, 791), (6, 726), (7, 718), (8, 765), (9, 706), (10, 745), (11, 727), (12, 743), (13, 749), (14, 747), (15, 755), (16, 807), (17, 774), (18, 755)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 50), (1, 621), (2, 219), (3, 336), (4, 239), (5, 82), (6, 172), (7, 85), (8, 5985), (9, 301), (10, 77), (11, 4240), (12, 155), (13, 219), (14, 6), (15, 248), (16, 119), (17, 943), (18, 208)]
+
+INFO:src.model.gail2:epoc: 631 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 632 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 633 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 634 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 635 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 636 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 637 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 638 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 639 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 640 ||| D Scores | Test  -3.00 | Rand:  2.69 | Curr:  4.34 ||| Steps | Test   170.30 | Rand:  21.35 | Curr:  199.97 ||| Perplexity | Rand:  0.0526 | Curr:  0.0009 ||| KLD | Rand:  9.4780 | Curr:  9.5046 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 727), (1, 746), (2, 760), (3, 741), (4, 756), (5, 802), (6, 759), (7, 720), (8, 731), (9, 764), (10, 768), (11, 787), (12, 750), (13, 757), (14, 766), (15, 732), (16, 730), (17, 755), (18, 754)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 20), (1, 154), (2, 147), (3, 164), (4, 132), (5, 44), (6, 63), (7, 79), (8, 6949), (9, 97), (10, 91), (11, 5413), (12, 294), (13, 270), (14, 12), (15, 130), (16, 81), (17, 96), (18, 69)]
+
+INFO:src.model.gail2:epoc: 641 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 642 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 643 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 644 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 645 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 646 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 647 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 648 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 649 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 650 ||| D Scores | Test  -3.24 | Rand:  2.51 | Curr:  4.18 ||| Steps | Test   170.30 | Rand:  20.65 | Curr:  194.08 ||| Perplexity | Rand:  0.0526 | Curr:  0.0007 ||| KLD | Rand:  9.4780 | Curr:  9.7225 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 760), (1, 715), (2, 748), (3, 741), (4, 737), (5, 762), (6, 768), (7, 692), (8, 759), (9, 711), (10, 738), (11, 763), (12, 698), (13, 787), (14, 735), (15, 755), (16, 776), (17, 839), (18, 821)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 31), (1, 111), (2, 197), (3, 109), (4, 123), (5, 56), (6, 73), (7, 61), (8, 7061), (9, 79), (10, 143), (11, 4942), (12, 486), (13, 388), (14, 17), (15, 185), (16, 121), (17, 61), (18, 61)]
+
+INFO:src.model.gail2:epoc: 651 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 652 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 653 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 654 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 655 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 656 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 657 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 658 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 659 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 660 ||| D Scores | Test  -3.48 | Rand:  2.70 | Curr:  4.09 ||| Steps | Test   170.30 | Rand:  22.75 | Curr:  202.26 ||| Perplexity | Rand:  0.0526 | Curr:  0.0008 ||| KLD | Rand:  9.4780 | Curr:  9.6867 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 773), (1, 744), (2, 746), (3, 752), (4, 775), (5, 761), (6, 737), (7, 767), (8, 784), (9, 759), (10, 769), (11, 752), (12, 721), (13, 779), (14, 752), (15, 705), (16, 697), (17, 801), (18, 731)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 33), (1, 198), (2, 215), (3, 231), (4, 152), (5, 51), (6, 103), (7, 62), (8, 7786), (9, 137), (10, 98), (11, 4003), (12, 317), (13, 326), (14, 44), (15, 277), (16, 83), (17, 114), (18, 75)]
+
+INFO:src.model.gail2:epoc: 661 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 662 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 663 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 664 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 665 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 666 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 667 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 668 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 669 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 670 ||| D Scores | Test  -3.31 | Rand:  2.45 | Curr:  4.08 ||| Steps | Test   170.30 | Rand:  21.86 | Curr:  204.86 ||| Perplexity | Rand:  0.0526 | Curr:  0.0009 ||| KLD | Rand:  9.4780 | Curr:  9.6085 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 761), (1, 737), (2, 783), (3, 752), (4, 824), (5, 708), (6, 793), (7, 701), (8, 772), (9, 760), (10, 758), (11, 770), (12, 729), (13, 753), (14, 729), (15, 738), (16, 742), (17, 771), (18, 724)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 32), (1, 323), (2, 250), (3, 231), (4, 157), (5, 99), (6, 194), (7, 72), (8, 6448), (9, 167), (10, 126), (11, 4988), (12, 137), (13, 171), (14, 74), (15, 336), (16, 76), (17, 342), (18, 82)]
+
+INFO:src.model.gail2:epoc: 671 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 672 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 673 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 674 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 675 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 676 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 677 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 678 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 679 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 680 ||| D Scores | Test  -2.96 | Rand:  2.58 | Curr:  4.52 ||| Steps | Test   170.30 | Rand:  21.64 | Curr:  205.51 ||| Perplexity | Rand:  0.0526 | Curr:  0.0008 ||| KLD | Rand:  9.4780 | Curr:  9.8047 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 754), (1, 765), (2, 804), (3, 758), (4, 766), (5, 717), (6, 750), (7, 724), (8, 766), (9, 725), (10, 746), (11, 782), (12, 753), (13, 771), (14, 731), (15, 731), (16, 749), (17, 767), (18, 746)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 25), (1, 304), (2, 111), (3, 201), (4, 134), (5, 55), (6, 116), (7, 75), (8, 6857), (9, 288), (10, 139), (11, 4602), (12, 62), (13, 147), (14, 159), (15, 215), (16, 71), (17, 692), (18, 52)]
+
+INFO:src.model.gail2:epoc: 681 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 682 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 683 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 684 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 685 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 686 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 687 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 688 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 689 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 690 ||| D Scores | Test  -3.20 | Rand:  2.51 | Curr:  4.46 ||| Steps | Test   170.30 | Rand:  21.50 | Curr:  204.72 ||| Perplexity | Rand:  0.0526 | Curr:  0.0010 ||| KLD | Rand:  9.4780 | Curr:  9.7632 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 772), (1, 767), (2, 748), (3, 746), (4, 784), (5, 747), (6, 771), (7, 750), (8, 757), (9, 762), (10, 763), (11, 739), (12, 698), (13, 752), (14, 766), (15, 714), (16, 745), (17, 754), (18, 770)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 37), (1, 222), (2, 74), (3, 159), (4, 75), (5, 46), (6, 143), (7, 70), (8, 8268), (9, 373), (10, 55), (11, 3573), (12, 48), (13, 263), (14, 332), (15, 134), (16, 71), (17, 309), (18, 53)]
+
+INFO:src.model.gail2:epoc: 691 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 692 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 693 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 694 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 695 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 696 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 697 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 698 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 699 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 700 ||| D Scores | Test  -3.08 | Rand:  2.76 | Curr:  4.78 ||| Steps | Test   170.30 | Rand:  21.88 | Curr:  205.62 ||| Perplexity | Rand:  0.0526 | Curr:  0.0010 ||| KLD | Rand:  9.4780 | Curr:  9.4899 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 731), (1, 784), (2, 735), (3, 753), (4, 763), (5, 779), (6, 717), (7, 707), (8, 754), (9, 756), (10, 756), (11, 761), (12, 744), (13, 812), (14, 771), (15, 737), (16, 738), (17, 746), (18, 761)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 35), (1, 185), (2, 85), (3, 185), (4, 38), (5, 51), (6, 196), (7, 63), (8, 8742), (9, 403), (10, 122), (11, 2970), (12, 103), (13, 220), (14, 304), (15, 131), (16, 73), (17, 323), (18, 76)]
+
+INFO:src.model.gail2:epoc: 701 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 702 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 703 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 704 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 705 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 706 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 707 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 708 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 709 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 710 ||| D Scores | Test  -3.25 | Rand:  2.80 | Curr:  4.73 ||| Steps | Test   170.30 | Rand:  22.90 | Curr:  204.26 ||| Perplexity | Rand:  0.0526 | Curr:  0.0010 ||| KLD | Rand:  9.4780 | Curr:  9.4436 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 795), (1, 780), (2, 720), (3, 763), (4, 749), (5, 787), (6, 706), (7, 740), (8, 756), (9, 754), (10, 767), (11, 772), (12, 778), (13, 714), (14, 753), (15, 759), (16, 704), (17, 786), (18, 722)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 49), (1, 201), (2, 87), (3, 251), (4, 20), (5, 47), (6, 262), (7, 82), (8, 8377), (9, 163), (10, 260), (11, 3069), (12, 323), (13, 223), (14, 281), (15, 168), (16, 71), (17, 273), (18, 98)]
+
+INFO:src.model.gail2:epoc: 711 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 712 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 713 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 714 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 715 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 716 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 717 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 718 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 719 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 720 ||| D Scores | Test  -3.43 | Rand:  2.77 | Curr:  4.75 ||| Steps | Test   170.30 | Rand:  20.61 | Curr:  205.09 ||| Perplexity | Rand:  0.0526 | Curr:  0.0009 ||| KLD | Rand:  9.4780 | Curr:  9.3249 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 740), (1, 749), (2, 710), (3, 679), (4, 775), (5, 724), (6, 728), (7, 743), (8, 759), (9, 774), (10, 741), (11, 735), (12, 723), (13, 778), (14, 805), (15, 772), (16, 791), (17, 832), (18, 747)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 63), (1, 455), (2, 90), (3, 92), (4, 16), (5, 45), (6, 130), (7, 88), (8, 9574), (9, 89), (10, 307), (11, 2121), (12, 381), (13, 250), (14, 142), (15, 129), (16, 69), (17, 188), (18, 76)]
+
+INFO:src.model.gail2:epoc: 721 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 722 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 723 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 724 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 725 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 726 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 727 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 728 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 729 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 730 ||| D Scores | Test  -3.18 | Rand:  3.15 | Curr:  4.74 ||| Steps | Test   170.30 | Rand:  21.57 | Curr:  205.16 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  9.2424 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 782), (1, 750), (2, 776), (3, 751), (4, 706), (5, 737), (6, 733), (7, 748), (8, 770), (9, 696), (10, 793), (11, 693), (12, 778), (13, 732), (14, 722), (15, 810), (16, 753), (17, 761), (18, 814)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 61), (1, 425), (2, 83), (3, 175), (4, 21), (5, 70), (6, 111), (7, 52), (8, 7723), (9, 159), (10, 218), (11, 3935), (12, 325), (13, 313), (14, 67), (15, 134), (16, 70), (17, 296), (18, 67)]
+
+INFO:src.model.gail2:epoc: 731 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 732 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 733 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 734 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 735 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 736 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 737 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 738 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 739 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 740 ||| D Scores | Test  -3.53 | Rand:  2.71 | Curr:  4.67 ||| Steps | Test   170.30 | Rand:  20.83 | Curr:  203.20 ||| Perplexity | Rand:  0.0526 | Curr:  0.0007 ||| KLD | Rand:  9.4780 | Curr:  9.2558 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 753), (1, 737), (2, 788), (3, 751), (4, 761), (5, 756), (6, 784), (7, 796), (8, 744), (9, 719), (10, 762), (11, 763), (12, 780), (13, 748), (14, 755), (15, 721), (16, 763), (17, 687), (18, 737)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 44), (1, 209), (2, 63), (3, 222), (4, 42), (5, 107), (6, 107), (7, 73), (8, 6431), (9, 634), (10, 203), (11, 4780), (12, 257), (13, 272), (14, 45), (15, 193), (16, 72), (17, 460), (18, 91)]
+
+INFO:src.model.gail2:epoc: 741 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 742 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 743 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 744 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 745 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 746 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 747 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 748 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 749 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 750 ||| D Scores | Test  -3.42 | Rand:  2.35 | Curr:  4.58 ||| Steps | Test   170.30 | Rand:  20.63 | Curr:  187.64 ||| Perplexity | Rand:  0.0526 | Curr:  0.0008 ||| KLD | Rand:  9.4780 | Curr:  9.2051 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 745), (1, 740), (2, 752), (3, 748), (4, 787), (5, 760), (6, 804), (7, 761), (8, 713), (9, 753), (10, 744), (11, 753), (12, 776), (13, 757), (14, 694), (15, 764), (16, 765), (17, 726), (18, 763)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 44), (1, 198), (2, 74), (3, 218), (4, 85), (5, 63), (6, 91), (7, 92), (8, 7527), (9, 1032), (10, 146), (11, 3561), (12, 213), (13, 166), (14, 62), (15, 265), (16, 81), (17, 310), (18, 77)]
+
+INFO:src.model.gail2:epoc: 751 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 752 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 753 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 754 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 755 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 756 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 757 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 758 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 759 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 760 ||| D Scores | Test  -3.13 | Rand:  2.70 | Curr:  4.11 ||| Steps | Test   170.30 | Rand:  20.53 | Curr:  205.22 ||| Perplexity | Rand:  0.0526 | Curr:  0.0005 ||| KLD | Rand:  9.4780 | Curr:  9.6225 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 786), (1, 774), (2, 732), (3, 744), (4, 729), (5, 718), (6, 806), (7, 764), (8, 750), (9, 788), (10, 726), (11, 750), (12, 753), (13, 742), (14, 742), (15, 728), (16, 778), (17, 762), (18, 733)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 35), (1, 199), (2, 152), (3, 476), (4, 2043), (5, 31), (6, 129), (7, 75), (8, 3278), (9, 253), (10, 133), (11, 6636), (12, 127), (13, 108), (14, 66), (15, 233), (16, 71), (17, 168), (18, 92)]
+
+INFO:src.model.gail2:epoc: 761 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 762 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 763 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 764 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 765 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 766 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 767 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 768 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 769 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 770 ||| D Scores | Test  -3.48 | Rand:  3.00 | Curr:  4.36 ||| Steps | Test   170.30 | Rand:  21.17 | Curr:  199.31 ||| Perplexity | Rand:  0.0526 | Curr:  0.0009 ||| KLD | Rand:  9.4780 | Curr:  9.3116 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 747), (1, 795), (2, 785), (3, 802), (4, 688), (5, 761), (6, 723), (7, 732), (8, 730), (9, 753), (10, 728), (11, 782), (12, 750), (13, 754), (14, 768), (15, 750), (16, 752), (17, 765), (18, 740)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 56), (1, 289), (2, 149), (3, 196), (4, 700), (5, 52), (6, 185), (7, 97), (8, 5808), (9, 53), (10, 240), (11, 5375), (12, 196), (13, 153), (14, 109), (15, 322), (16, 71), (17, 134), (18, 120)]
+
+INFO:src.model.gail2:epoc: 771 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 772 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 773 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 774 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 775 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 776 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 777 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 778 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 779 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 780 ||| D Scores | Test  -3.29 | Rand:  2.86 | Curr:  4.95 ||| Steps | Test   170.30 | Rand:  21.31 | Curr:  198.17 ||| Perplexity | Rand:  0.0526 | Curr:  0.0008 ||| KLD | Rand:  9.4780 | Curr:  9.1419 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 739), (1, 781), (2, 755), (3, 722), (4, 789), (5, 715), (6, 743), (7, 737), (8, 806), (9, 776), (10, 743), (11, 808), (12, 779), (13, 754), (14, 781), (15, 725), (16, 741), (17, 704), (18, 707)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 51), (1, 196), (2, 80), (3, 134), (4, 113), (5, 52), (6, 101), (7, 82), (8, 6929), (9, 44), (10, 406), (11, 5164), (12, 207), (13, 211), (14, 140), (15, 203), (16, 72), (17, 71), (18, 49)]
+
+INFO:src.model.gail2:epoc: 781 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 782 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 783 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 784 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 785 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 786 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 787 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 788 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 789 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 790 ||| D Scores | Test  -3.24 | Rand:  2.51 | Curr:  4.65 ||| Steps | Test   170.30 | Rand:  22.63 | Curr:  204.75 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  9.3877 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 742), (1, 732), (2, 731), (3, 744), (4, 719), (5, 773), (6, 791), (7, 773), (8, 777), (9, 695), (10, 751), (11, 802), (12, 748), (13, 757), (14, 803), (15, 768), (16, 722), (17, 718), (18, 759)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 56), (1, 138), (2, 91), (3, 69), (4, 70), (5, 35), (6, 78), (7, 61), (8, 6393), (9, 57), (10, 1385), (11, 4516), (12, 383), (13, 383), (14, 195), (15, 184), (16, 69), (17, 116), (18, 26)]
+
+INFO:src.model.gail2:epoc: 791 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 792 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 793 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 794 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 795 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 796 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 797 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 798 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 799 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 800 ||| D Scores | Test  -3.19 | Rand:  2.34 | Curr:  4.82 ||| Steps | Test   170.30 | Rand:  22.51 | Curr:  202.91 ||| Perplexity | Rand:  0.0526 | Curr:  0.0005 ||| KLD | Rand:  9.4780 | Curr:  9.6108 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 753), (1, 827), (2, 721), (3, 764), (4, 767), (5, 736), (6, 779), (7, 762), (8, 774), (9, 730), (10, 751), (11, 734), (12, 742), (13, 733), (14, 724), (15, 749), (16, 720), (17, 763), (18, 776)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 50), (1, 131), (2, 62), (3, 114), (4, 76), (5, 39), (6, 83), (7, 64), (8, 5434), (9, 514), (10, 662), (11, 5839), (12, 238), (13, 287), (14, 123), (15, 142), (16, 70), (17, 346), (18, 31)]
+
+INFO:src.model.gail2:epoc: 801 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 802 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 803 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 804 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 805 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 806 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 807 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 808 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 809 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 810 ||| D Scores | Test  -3.14 | Rand:  1.97 | Curr:  4.20 ||| Steps | Test   170.30 | Rand:  22.96 | Curr:  202.60 ||| Perplexity | Rand:  0.0526 | Curr:  0.0005 ||| KLD | Rand:  9.4780 | Curr:  9.5474 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 702), (1, 719), (2, 735), (3, 820), (4, 796), (5, 761), (6, 772), (7, 769), (8, 776), (9, 728), (10, 733), (11, 779), (12, 749), (13, 735), (14, 766), (15, 761), (16, 726), (17, 719), (18, 759)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 67), (1, 183), (2, 54), (3, 150), (4, 139), (5, 113), (6, 244), (7, 71), (8, 6675), (9, 1513), (10, 150), (11, 3751), (12, 126), (13, 201), (14, 63), (15, 109), (16, 71), (17, 548), (18, 77)]
+
+INFO:src.model.gail2:epoc: 811 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 812 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 813 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 814 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 815 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 816 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 817 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 818 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 819 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 820 ||| D Scores | Test  -3.11 | Rand:  1.77 | Curr:  4.75 ||| Steps | Test   170.30 | Rand:  23.02 | Curr:  205.01 ||| Perplexity | Rand:  0.0526 | Curr:  0.0007 ||| KLD | Rand:  9.4780 | Curr:  9.4799 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 735), (1, 727), (2, 804), (3, 750), (4, 707), (5, 776), (6, 744), (7, 794), (8, 753), (9, 779), (10, 758), (11, 781), (12, 733), (13, 740), (14, 763), (15, 737), (16, 710), (17, 744), (18, 770)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 51), (1, 327), (2, 79), (3, 268), (4, 76), (5, 74), (6, 241), (7, 86), (8, 5213), (9, 361), (10, 258), (11, 6022), (12, 150), (13, 159), (14, 73), (15, 162), (16, 69), (17, 414), (18, 222)]
+
+INFO:src.model.gail2:epoc: 821 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 822 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 823 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 824 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 825 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 826 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 827 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 828 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 829 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 830 ||| D Scores | Test  -3.22 | Rand:  2.04 | Curr:  4.91 ||| Steps | Test   170.30 | Rand:  21.32 | Curr:  205.26 ||| Perplexity | Rand:  0.0526 | Curr:  0.0007 ||| KLD | Rand:  9.4780 | Curr:  9.5742 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 697), (1, 711), (2, 773), (3, 745), (4, 724), (5, 739), (6, 782), (7, 765), (8, 794), (9, 785), (10, 755), (11, 769), (12, 711), (13, 731), (14, 758), (15, 764), (16, 766), (17, 756), (18, 780)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 72), (1, 326), (2, 124), (3, 195), (4, 87), (5, 23), (6, 95), (7, 92), (8, 5492), (9, 95), (10, 146), (11, 6497), (12, 232), (13, 205), (14, 222), (15, 113), (16, 69), (17, 110), (18, 110)]
+
+INFO:src.model.gail2:epoc: 831 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 832 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 833 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 834 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 835 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 836 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 837 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 838 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 839 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 840 ||| D Scores | Test  -3.41 | Rand:  2.44 | Curr:  4.74 ||| Steps | Test   170.30 | Rand:  20.80 | Curr:  205.43 ||| Perplexity | Rand:  0.0526 | Curr:  0.0007 ||| KLD | Rand:  9.4780 | Curr:  9.7522 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 757), (1, 709), (2, 782), (3, 692), (4, 750), (5, 781), (6, 770), (7, 767), (8, 750), (9, 767), (10, 756), (11, 734), (12, 747), (13, 781), (14, 745), (15, 765), (16, 771), (17, 725), (18, 756)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 50), (1, 153), (2, 533), (3, 43), (4, 405), (5, 11), (6, 50), (7, 55), (8, 6699), (9, 44), (10, 154), (11, 5014), (12, 276), (13, 246), (14, 225), (15, 138), (16, 69), (17, 103), (18, 37)]
+
+INFO:src.model.gail2:epoc: 841 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 842 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 843 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 844 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 845 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 846 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 847 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 848 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 849 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 850 ||| D Scores | Test  -3.56 | Rand:  2.87 | Curr:  4.78 ||| Steps | Test   170.30 | Rand:  21.19 | Curr:  203.84 ||| Perplexity | Rand:  0.0526 | Curr:  0.0007 ||| KLD | Rand:  9.4780 | Curr:  9.4824 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 747), (1, 770), (2, 737), (3, 740), (4, 813), (5, 770), (6, 745), (7, 768), (8, 768), (9, 741), (10, 749), (11, 781), (12, 747), (13, 729), (14, 696), (15, 739), (16, 758), (17, 762), (18, 745)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 58), (1, 149), (2, 551), (3, 64), (4, 1241), (5, 47), (6, 43), (7, 55), (8, 5548), (9, 180), (10, 306), (11, 4883), (12, 217), (13, 236), (14, 149), (15, 140), (16, 70), (17, 306), (18, 62)]
+
+INFO:src.model.gail2:epoc: 851 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 852 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 853 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 854 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 855 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 856 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 857 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 858 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 859 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 860 ||| D Scores | Test  -3.63 | Rand:  2.58 | Curr:  5.07 ||| Steps | Test   170.30 | Rand:  20.92 | Curr:  203.04 ||| Perplexity | Rand:  0.0526 | Curr:  0.0007 ||| KLD | Rand:  9.4780 | Curr:  9.2089 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 758), (1, 743), (2, 727), (3, 747), (4, 688), (5, 743), (6, 750), (7, 752), (8, 812), (9, 738), (10, 750), (11, 769), (12, 753), (13, 762), (14, 756), (15, 758), (16, 768), (17, 774), (18, 757)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 55), (1, 105), (2, 269), (3, 44), (4, 486), (5, 46), (6, 44), (7, 49), (8, 6025), (9, 177), (10, 326), (11, 5653), (12, 178), (13, 190), (14, 99), (15, 187), (16, 70), (17, 268), (18, 34)]
+
+INFO:src.model.gail2:epoc: 861 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 862 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 863 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 864 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 865 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 866 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 867 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 868 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 869 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 870 ||| D Scores | Test  -3.73 | Rand:  1.99 | Curr:  5.25 ||| Steps | Test   170.30 | Rand:  20.96 | Curr:  205.23 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  9.1221 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 733), (1, 762), (2, 758), (3, 787), (4, 764), (5, 733), (6, 713), (7, 735), (8, 714), (9, 771), (10, 764), (11, 778), (12, 713), (13, 735), (14, 767), (15, 708), (16, 744), (17, 784), (18, 842)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 57), (1, 286), (2, 92), (3, 94), (4, 136), (5, 57), (6, 80), (7, 82), (8, 3992), (9, 178), (10, 386), (11, 7992), (12, 138), (13, 197), (14, 120), (15, 168), (16, 69), (17, 116), (18, 65)]
+
+INFO:src.model.gail2:epoc: 871 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 872 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 873 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 874 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 875 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 876 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 877 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 878 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 879 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 880 ||| D Scores | Test  -3.53 | Rand:  2.03 | Curr:  5.13 ||| Steps | Test   170.30 | Rand:  21.38 | Curr:  200.13 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  9.1907 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 753), (1, 731), (2, 734), (3, 706), (4, 781), (5, 794), (6, 774), (7, 765), (8, 798), (9, 753), (10, 740), (11, 744), (12, 740), (13, 798), (14, 710), (15, 743), (16, 754), (17, 748), (18, 739)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 51), (1, 549), (2, 67), (3, 88), (4, 84), (5, 43), (6, 90), (7, 85), (8, 6130), (9, 195), (10, 510), (11, 5511), (12, 151), (13, 240), (14, 107), (15, 160), (16, 71), (17, 124), (18, 49)]
+
+INFO:src.model.gail2:epoc: 881 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 882 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 883 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 884 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 885 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 886 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 887 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 888 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 889 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 890 ||| D Scores | Test  -3.63 | Rand:  2.18 | Curr:  5.44 ||| Steps | Test   170.30 | Rand:  21.35 | Curr:  205.17 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  9.3926 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 726), (1, 760), (2, 719), (3, 741), (4, 760), (5, 735), (6, 734), (7, 737), (8, 800), (9, 762), (10, 796), (11, 754), (12, 758), (13, 773), (14, 733), (15, 690), (16, 743), (17, 800), (18, 784)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 49), (1, 118), (2, 66), (3, 53), (4, 141), (5, 27), (6, 89), (7, 94), (8, 6925), (9, 54), (10, 535), (11, 5298), (12, 218), (13, 239), (14, 91), (15, 145), (16, 69), (17, 73), (18, 21)]
+
+INFO:src.model.gail2:epoc: 891 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 892 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 893 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 894 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 895 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 896 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 897 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 898 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 899 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 900 ||| D Scores | Test  -3.80 | Rand:  2.21 | Curr:  5.00 ||| Steps | Test   170.30 | Rand:  21.56 | Curr:  204.51 ||| Perplexity | Rand:  0.0526 | Curr:  0.0005 ||| KLD | Rand:  9.4780 | Curr:  9.1887 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 774), (1, 767), (2, 760), (3, 740), (4, 750), (5, 722), (6, 777), (7, 752), (8, 749), (9, 702), (10, 821), (11, 752), (12, 722), (13, 783), (14, 743), (15, 767), (16, 743), (17, 726), (18, 755)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 69), (1, 134), (2, 83), (3, 131), (4, 324), (5, 46), (6, 189), (7, 96), (8, 5535), (9, 264), (10, 365), (11, 6015), (12, 236), (13, 262), (14, 103), (15, 150), (16, 69), (17, 162), (18, 72)]
+
+INFO:src.model.gail2:epoc: 901 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 902 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 903 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 904 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 905 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 906 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 907 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 908 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 909 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 910 ||| D Scores | Test  -3.72 | Rand:  2.27 | Curr:  5.32 ||| Steps | Test   170.30 | Rand:  20.41 | Curr:  205.48 ||| Perplexity | Rand:  0.0526 | Curr:  0.0005 ||| KLD | Rand:  9.4780 | Curr:  9.2241 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 767), (1, 772), (2, 748), (3, 742), (4, 783), (5, 674), (6, 708), (7, 786), (8, 798), (9, 695), (10, 797), (11, 791), (12, 741), (13, 758), (14, 734), (15, 767), (16, 781), (17, 797), (18, 666)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 66), (1, 146), (2, 97), (3, 146), (4, 735), (5, 50), (6, 273), (7, 88), (8, 5853), (9, 460), (10, 457), (11, 4781), (12, 136), (13, 208), (14, 84), (15, 193), (16, 69), (17, 374), (18, 89)]
+
+INFO:src.model.gail2:epoc: 911 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 912 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 913 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 914 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 915 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 916 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 917 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 918 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 919 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 920 ||| D Scores | Test  -3.77 | Rand:  2.71 | Curr:  5.33 ||| Steps | Test   170.30 | Rand:  20.96 | Curr:  202.29 ||| Perplexity | Rand:  0.0526 | Curr:  0.0005 ||| KLD | Rand:  9.4780 | Curr:  9.1316 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 752), (1, 771), (2, 780), (3, 766), (4, 712), (5, 716), (6, 738), (7, 742), (8, 759), (9, 771), (10, 790), (11, 781), (12, 737), (13, 741), (14, 747), (15, 753), (16, 769), (17, 744), (18, 736)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 60), (1, 243), (2, 135), (3, 186), (4, 904), (5, 66), (6, 189), (7, 59), (8, 4492), (9, 223), (10, 296), (11, 6495), (12, 113), (13, 182), (14, 121), (15, 132), (16, 70), (17, 286), (18, 53)]
+
+INFO:src.model.gail2:epoc: 921 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 922 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 923 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 924 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 925 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 926 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 927 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 928 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 929 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 930 ||| D Scores | Test  -3.87 | Rand:  2.54 | Curr:  5.47 ||| Steps | Test   170.30 | Rand:  19.48 | Curr:  202.57 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  9.2205 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 786), (1, 741), (2, 714), (3, 784), (4, 795), (5, 808), (6, 765), (7, 741), (8, 769), (9, 742), (10, 692), (11, 752), (12, 735), (13, 735), (14, 714), (15, 711), (16, 814), (17, 768), (18, 739)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 89), (1, 398), (2, 106), (3, 94), (4, 250), (5, 54), (6, 104), (7, 55), (8, 4571), (9, 106), (10, 205), (11, 7078), (12, 196), (13, 195), (14, 154), (15, 246), (16, 70), (17, 304), (18, 30)]
+
+INFO:src.model.gail2:epoc: 931 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 932 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 933 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 934 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 935 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 936 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 937 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 938 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 939 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 940 ||| D Scores | Test  -3.95 | Rand:  2.44 | Curr:  5.45 ||| Steps | Test   170.30 | Rand:  21.15 | Curr:  204.71 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  9.2690 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 744), (1, 767), (2, 776), (3, 757), (4, 736), (5, 709), (6, 772), (7, 776), (8, 774), (9, 756), (10, 721), (11, 722), (12, 783), (13, 788), (14, 768), (15, 717), (16, 750), (17, 774), (18, 715)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 81), (1, 306), (2, 119), (3, 67), (4, 231), (5, 58), (6, 55), (7, 26), (8, 5133), (9, 105), (10, 236), (11, 6656), (12, 284), (13, 194), (14, 228), (15, 210), (16, 69), (17, 210), (18, 37)]
+
+INFO:src.model.gail2:epoc: 941 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 942 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 943 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 944 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 945 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 946 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 947 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 948 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 949 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 950 ||| D Scores | Test  -3.92 | Rand:  2.24 | Curr:  5.71 ||| Steps | Test   170.30 | Rand:  21.59 | Curr:  204.91 ||| Perplexity | Rand:  0.0526 | Curr:  0.0005 ||| KLD | Rand:  9.4780 | Curr:  9.3822 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 683), (1, 766), (2, 740), (3, 747), (4, 738), (5, 765), (6, 776), (7, 807), (8, 723), (9, 713), (10, 790), (11, 739), (12, 714), (13, 753), (14, 803), (15, 748), (16, 752), (17, 789), (18, 759)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 58), (1, 117), (2, 117), (3, 78), (4, 236), (5, 53), (6, 40), (7, 27), (8, 6492), (9, 141), (10, 274), (11, 5671), (12, 174), (13, 170), (14, 202), (15, 121), (16, 69), (17, 235), (18, 30)]
+
+INFO:src.model.gail2:epoc: 951 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 952 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 953 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 954 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 955 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 956 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 957 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 958 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 959 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 960 ||| D Scores | Test  -3.83 | Rand:  2.42 | Curr:  5.52 ||| Steps | Test   170.30 | Rand:  20.90 | Curr:  202.73 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  9.0841 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 755), (1, 766), (2, 757), (3, 728), (4, 792), (5, 746), (6, 766), (7, 759), (8, 765), (9, 743), (10, 765), (11, 698), (12, 752), (13, 728), (14, 716), (15, 744), (16, 753), (17, 770), (18, 802)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 55), (1, 195), (2, 166), (3, 126), (4, 465), (5, 61), (6, 78), (7, 33), (8, 5011), (9, 273), (10, 350), (11, 6105), (12, 154), (13, 164), (14, 234), (15, 161), (16, 70), (17, 412), (18, 192)]
+
+INFO:src.model.gail2:epoc: 961 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 962 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 963 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 964 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 965 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 966 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 967 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 968 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 969 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 970 ||| D Scores | Test  -3.78 | Rand:  2.36 | Curr:  5.69 ||| Steps | Test   170.30 | Rand:  20.08 | Curr:  205.16 ||| Perplexity | Rand:  0.0526 | Curr:  0.0005 ||| KLD | Rand:  9.4780 | Curr:  9.0403 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 749), (1, 712), (2, 753), (3, 750), (4, 720), (5, 780), (6, 720), (7, 699), (8, 758), (9, 753), (10, 738), (11, 741), (12, 795), (13, 790), (14, 789), (15, 744), (16, 793), (17, 758), (18, 763)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 49), (1, 142), (2, 139), (3, 133), (4, 316), (5, 52), (6, 87), (7, 55), (8, 5689), (9, 333), (10, 322), (11, 5903), (12, 106), (13, 148), (14, 184), (15, 226), (16, 69), (17, 176), (18, 176)]
+
+INFO:src.model.gail2:epoc: 971 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 972 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 973 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 974 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 975 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 976 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 977 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 978 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 979 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 980 ||| D Scores | Test  -3.71 | Rand:  2.52 | Curr:  5.50 ||| Steps | Test   170.30 | Rand:  20.90 | Curr:  205.46 ||| Perplexity | Rand:  0.0526 | Curr:  0.0006 ||| KLD | Rand:  9.4780 | Curr:  8.8276 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 732), (1, 786), (2, 762), (3, 801), (4, 781), (5, 699), (6, 758), (7, 784), (8, 744), (9, 750), (10, 791), (11, 749), (12, 725), (13, 717), (14, 757), (15, 707), (16, 750), (17, 764), (18, 748)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 44), (1, 195), (2, 162), (3, 174), (4, 372), (5, 45), (6, 141), (7, 93), (8, 5735), (9, 320), (10, 249), (11, 5668), (12, 176), (13, 220), (14, 154), (15, 221), (16, 69), (17, 132), (18, 135)]
+
+INFO:src.model.gail2:epoc: 981 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 982 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 983 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 984 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 985 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 986 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 987 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 988 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 989 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 990 ||| D Scores | Test  -3.97 | Rand:  2.73 | Curr:  5.86 ||| Steps | Test   170.30 | Rand:  22.00 | Curr:  204.59 ||| Perplexity | Rand:  0.0526 | Curr:  0.0007 ||| KLD | Rand:  9.4780 | Curr:  8.9121 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 745), (1, 753), (2, 671), (3, 792), (4, 796), (5, 717), (6, 734), (7, 792), (8, 786), (9, 748), (10, 788), (11, 732), (12, 772), (13, 761), (14, 751), (15, 761), (16, 715), (17, 753), (18, 738)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 41), (1, 146), (2, 126), (3, 132), (4, 177), (5, 20), (6, 102), (7, 103), (8, 4206), (9, 167), (10, 515), (11, 7510), (12, 218), (13, 268), (14, 145), (15, 168), (16, 69), (17, 108), (18, 84)]
+
+INFO:src.model.gail2:epoc: 991 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 992 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 993 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 994 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 995 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 996 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 997 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 998 | Reward Mean: -100.00
+INFO:src.model.gail2:epoc: 999 | Reward Mean: -100.00
+INFO:src.model.gail2:epoch: 1000 ||| D Scores | Test  -4.04 | Rand:  2.51 | Curr:  5.50 ||| Steps | Test   170.30 | Rand:  21.51 | Curr:  205.83 ||| Perplexity | Rand:  0.0526 | Curr:  0.0005 ||| KLD | Rand:  9.4780 | Curr:  8.9041 ||| 
+INFO:src.model.gail2:Action Distribution: 
+Rand [(0, 806), (1, 775), (2, 757), (3, 731), (4, 755), (5, 732), (6, 763), (7, 768), (8, 744), (9, 751), (10, 713), (11, 750), (12, 729), (13, 772), (14, 740), (15, 748), (16, 762), (17, 750), (18, 759)]
+Test [(0, 186), (1, 414), (2, 329), (3, 143), (4, 377), (5, 257), (6, 161), (7, 206), (8, 3532), (9, 836), (10, 302), (11, 4414), (12, 412), (13, 528), (14, 244), (15, 689), (16, 234), (17, 582), (18, 459)]
+Curr [(0, 68), (1, 258), (2, 70), (3, 114), (4, 222), (5, 45), (6, 121), (7, 127), (8, 5793), (9, 195), (10, 110), (11, 6096), (12, 266), (13, 277), (14, 69), (15, 167), (16, 69), (17, 161), (18, 77)]
+
+INFO:src.model.gail2:-- creating simulated data --
+

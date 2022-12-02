@@ -1,149 +1,85 @@
 import dataclasses
-import numpy as np
-import pandas as pd
-import torch
-import torch.nn as nn
 import logging
+from copy import deepcopy
 
-from src import utils
-from src.env.crystalisland import CrystalIsland
-from src.model.nets import PolicyModel, Discriminator
-import src.env.constants as envconst
+import numpy as np
+import torch
+
+from torch.nn import Module
+
+from src import evaluation
+from src.model import dummy_policy
+from src.model.nets import PolicyNetwork, ValueNetwork, Discriminator
+
+from torch import FloatTensor
+import pandas as pd
+from collections import Counter
 
 logger = logging.getLogger(__name__)
 
 
-class GailExecutor:
-    def __init__(self, args: dataclasses, train_df: pd.DataFrame, test_df: pd.DataFrame, name="gail"):
+class GAIL(Module):
+    def __init__(
+            self,
+            args: dataclasses,
+            train_df: pd.DataFrame,
+            test_df: pd.DataFrame,
+            env
+    ) -> None:
+        super().__init__()
         self.args = args
-        logger.info("args: {0}".format(self.args.to_json_string()))
 
-        # create networks
-        self.pi = PolicyModel(self.args).to(self.args.device)
-        self.pi_old = PolicyModel(self.args).to(self.args.device)
-        self.pi_old.load_state_dict(self.pi.state_dict())
-        self.d = Discriminator(self.args).to(self.args.device)
-
-        # optimizers
-        self.optimizer_pi = torch.optim.Adam([
-            {"params": self.pi.actor.parameters(), "lr": self.args.lr},
-            {"params": self.pi.critic.parameters(), "lr": self.args.lr}
-        ])
-        self.optimizer_d = torch.optim.Adam(self.d.parameters(), lr=self.args.lr)
-
-        # define loss functions
-        self.mse_loss = nn.MSELoss()
-        self.bce_loss = nn.BCELoss()
-
-        # create state and action tensors
-        self.env = CrystalIsland()
         self.train_df = train_df
-        self.expert_state_actions, self.expert_states, self.expert_actions = \
-            utils.state_action_tensor(np.stack(self.train_df['state']),
-                                      np.array(self.train_df['action']), self.args.action_dim)
+        self.exp_obs = np.stack(self.train_df['state'])
+        self.exp_acts = np.array(self.train_df['action'])
+        self.num_steps_per_iter = len(train_df)
 
         self.test_df = test_df
-        self.expert_state_actions_test, _, _ = \
-            utils.state_action_tensor(np.stack(self.test_df['state']),
-                                      np.array(self.test_df['action']), self.args.action_dim)
+        action_count = Counter(np.array(self.test_df['action']))
+        total_eps = len(test_df.groupby('episode').count())
+        self.avg_action_counts = {act: round(count/total_eps, 1) for (act, count) in sorted(action_count.items())}
+        self.test_avg_step = round(test_df.groupby('episode').count()['done'].mean(), 2)
+        self.test_reward = round(self.train_df.groupby('episode').sum(numeric_only=True)['reward'].mean(), 2)
 
-        self.states = []
-        self.actions = []
-        self.log_prob_actions = []
-        self.rewards = []
-        self.is_terminal = []
+        self.env = env
 
-        self.d_exp_score = 99999.0
-        self.d_nov_score = 99990.0
+        self.pi = PolicyNetwork(self.args)
+        self.v = ValueNetwork(self.args)
+        self.d = Discriminator(self.args)
 
-        self.d_loss = 9999.0
-        self.pi_loss = 9999.0
+        p1 = dummy_policy.RandomPolicy(args, train_df, test_df, env)
+        p2 = dummy_policy.BehaviorPolicy(args, train_df, test_df, env)
+        p3 = dummy_policy.BehaviorPolicy2(args, train_df, test_df, env)
+        self.other_policies = {"RandomPolicy": p1, "BehaviorPolicy": p2, "BehaviorPolicy2": p3}
 
-        self.name = name
+    def get_networks(self):
+        return [self.pi, self.v]
 
-    def reset_buffers(self):
-        self.states = []
-        self.actions = []
-        self.log_prob_actions = []
-        self.rewards = []
-        self.is_terminal = []
+    def act(self, state):
+        self.pi.eval()
 
-    def take_action(self, state, action: torch.Tensor = None):
-        state = torch.tensor(state, dtype=torch.float32, device=self.args.device)
-        if action:
-            values, action_log_prob, entropy = self.pi.evaluate(state, action)
-        else:
-            with torch.no_grad():
-                action, action_log_prob = self.pi_old.act(state)
-        self.states.append(state.detach())
-        self.actions.append(action.detach())
-        self.log_prob_actions.append(action_log_prob.detach())
+        state = FloatTensor(state)
+        distb = self.pi(state)
 
-        action = action.detach().item()
-        next_state, reward, done, info = self.env.step(action)
-        self.rewards.append(reward)
-        self.is_terminal.append(done)
+        action = distb.sample().detach().cpu().numpy()
 
-        return next_state, reward, done
+        return action
 
-    def update(self):
-        prev_log_prob_actions = torch.stack(self.log_prob_actions, dim=0).to(self.args.device)
-        agent_state_actions, prev_states, prev_actions = utils.state_action_tensor(self.states, self.actions,
-                                                                                   self.args.action_dim)
-        curr_loss = 0.0
-        for ep in range(self.args.internal_epoch_d):
-            expert_prob = self.d(self.expert_state_actions)
-            agent_prob = self.d(agent_state_actions)
-            term1 = self.bce_loss(agent_prob, torch.ones((agent_state_actions.shape[0], 1), device=self.args.device))
-            term2 = self.bce_loss(expert_prob, torch.zeros((self.expert_state_actions.shape[0], 1),
-                                                           device=self.args.device))
+    def get_action(self, state):
+        return int(self.act(state))
 
-            loss = term1 + term2
-            curr_loss += loss.item()
-            self.optimizer_d.zero_grad()
-            loss.backward()
-            self.optimizer_d.step()
+    def get_probs(self, state: np.ndarray):
+        self.pi.eval()
 
-        self.d_loss = curr_loss / self.args.internal_epoch_d
+        state = FloatTensor(state)
+        distb = self.pi(state)
 
-        with torch.no_grad():
-            d_rewards = 100*(0.5 - (self.d(agent_state_actions)))
+        probs = distb.probs.detach().cpu().numpy()
+        return probs
 
-        rewards = []
-        cumulative_discounted_reward = 0.0
-        for d_reward, terminal in zip(reversed(d_rewards), reversed(self.is_terminal)):
-            if terminal:
-                cumulative_discounted_reward = 0
-            cumulative_discounted_reward = d_reward + (self.args.discount_factor * cumulative_discounted_reward)
-            rewards.insert(0, cumulative_discounted_reward)
-
-        rewards = torch.tensor(rewards, dtype=torch.float32, device=self.args.device)
-        # rewards = (rewards - rewards.mean()) / (rewards.std() + 1e-7)
-
-        curr_loss = 0.0
-        for ep in range(self.args.internal_epoch_pi):
-            # TODO CAN DO SAMPLING!!!
-            values, log_prob_actions, entropy = self.pi.evaluate(prev_states, prev_actions)
-            values = values.squeeze()
-            advantages = rewards - values.detach()
-            imp_ratios = torch.exp(log_prob_actions - prev_log_prob_actions)
-            clamped_imp_ratio = torch.clamp(imp_ratios, 1 - self.args.clip_eps, 1 + self.args.clip_eps)
-            term1 = -torch.min(imp_ratios, clamped_imp_ratio) * advantages
-            term2 = 0.5 * self.mse_loss(values, rewards)
-            term3 = -0.01 * entropy
-            loss = term1 + term2 + term3
-            curr_loss += loss.mean().item()
-            self.optimizer_pi.zero_grad()
-            loss.mean().backward()
-            self.optimizer_pi.step()
-
-        self.pi_loss = curr_loss / self.args.internal_epoch_pi
-        self.pi_old.load_state_dict(self.pi.state_dict())
-
-        self.d_nov_score = self.d(agent_state_actions).mean().detach().item()
-        self.d_exp_score = self.d(self.expert_state_actions).mean().detach().item()
-
-        self.reset_buffers()
+    def act_log_prob(self, state, action):
+        probs = self.get_probs(state)
+        return np.log(probs[action])
 
     def train(self, force_train=False):
         if force_train is False:
@@ -151,128 +87,360 @@ class GailExecutor:
             if is_loaded:
                 return
 
-        logger.info('-- training gail --')
-        t = 1
-        update_count = 0
-        finish = False
-        while True:
-            state = self.env.reset()
-            done = False
-            ep_len = 0
-            while ep_len < self.args.episode_len_90p:
-                state, reward, done = self.take_action(state)
-                if t % self.args.episode_len_90p == 0:
-                    self.update()
-                    update_count += 1
-                    logger.info(
-                        "epoch: {0}/{1} | d_loss: {2:.2f} | pi_loss: {3: .2f} | "
-                        "d_exp: {4: .4f} | d_nov: {5: .4f}".format(
-                            update_count, self.args.train_steps, self.d_loss, self.pi_loss, self.d_exp_score, self.d_nov_score,
-                            ))
+        opt_d = torch.optim.Adam(self.d.parameters())
 
-                    # TODO This is not valid criteria. https://arxiv.org/pdf/1802.03446.pdf also check
-                    #  https://stats.stackexchange.com/questions/482653/what-is-the-stop-criteria-of-generative
-                    #  -adversarial-nets
-                    # if abs(self.d_exp_score - 0.5) <= self.args.d_stop_threshold and \
-                    #         abs(self.d_nov_score - 0.5) <= self.args.d_stop_threshold:
-                    if update_count >= self.args.train_steps:
-                        logger.info("--finished training. saving checkpoint--")
-                        self.save()
-                        finish = True
-                        break
-                    if (update_count+1) % self.args.log_frequency == 0:
-                        self.eval()
+        exp_obs = FloatTensor(self.exp_obs)
+        exp_acts = FloatTensor(self.exp_acts)
 
-                t += 1
-                ep_len += 1
+        rwd_iter_means = []
+        for i in range(self.args.train_steps):
+            rwd_iter = []
+
+            obs = []
+            acts = []
+            rets = []
+            advs = []
+            gms = []
+
+            steps = 0
+            while steps < self.num_steps_per_iter:
+                ep_obs = []
+                ep_acts = []
+                ep_rwds = []
+                ep_costs = []
+                ep_disc_costs = []
+                ep_gms = []
+                ep_lmbs = []
+
+                ep_step = 0
+                done = False
+
+                state = self.env.reset()
+                forced_done = np.random.normal(self.args.ep_steps_mean, self.args.ep_steps_std)
+
+                while not done and steps < self.num_steps_per_iter:
+                    action = self.act(state)
+
+                    if ep_step >= forced_done:
+                        action = np.array(self.env.envconst.action_map['a_workshsubmit'])  # forcing game end
+
+                    ep_obs.append(state)
+                    obs.append(state)
+
+                    ep_acts.append(action)
+                    acts.append(action)
+
+                    state, reward, done, info = self.env.step(int(action))
+
+                    if ep_step >= forced_done and done==False:
+                        reward = -100.0
+                        done = True
+
+                    ep_rwds.append(reward)
+                    ep_gms.append(self.args.discount_factor ** ep_step)
+                    ep_lmbs.append(self.args.discount_factor ** ep_step)
+
+                    ep_step += 1
+                    steps += 1
+
                 if done:
-                    break
-            if not done:
-                action = torch.tensor(5, dtype=torch.int64, device=self.args.device)
-                state, reward, done = self.take_action(state, action=action)
-                # logger.debug("truncated at horizon. forced end game")
-            if finish:
-                if self.args.dryrun is False:
-                    self.save()
-                break
+                    rwd_iter.append(np.sum(ep_rwds))
+
+                ep_obs = FloatTensor(np.array(ep_obs))
+                ep_acts = FloatTensor(np.array(ep_acts))
+                ep_rwds = FloatTensor(ep_rwds)
+                # ep_disc_rwds = FloatTensor(ep_disc_rwds)
+                ep_gms = FloatTensor(ep_gms)
+                ep_lmbs = FloatTensor(ep_lmbs)
+
+                ep_costs = (-1) * torch.log(self.d(ep_obs, ep_acts)) \
+                    .squeeze().detach()
+                ep_disc_costs = ep_gms * ep_costs
+
+                ep_disc_rets = FloatTensor(
+                    [sum(ep_disc_costs[i:]) for i in range(ep_step)]
+                )
+                ep_rets = ep_disc_rets / ep_gms
+
+                rets.append(ep_rets)
+
+                self.v.eval()
+                curr_vals = self.v(ep_obs).detach()
+                next_vals = torch.cat(
+                    (self.v(ep_obs)[1:], FloatTensor([[0.]]))
+                ).detach()
+                ep_deltas = ep_costs.unsqueeze(-1) \
+                            + self.args.discount_factor * next_vals \
+                            - curr_vals
+
+                ep_advs = FloatTensor([
+                    ((ep_gms * ep_lmbs)[:ep_step - j].unsqueeze(-1) * ep_deltas[j:])
+                    .sum()
+                    for j in range(ep_step)
+                ])
+                advs.append(ep_advs)
+
+                gms.append(ep_gms)
+
+            rwd_iter_means.append(np.mean(rwd_iter))
+
+            obs = FloatTensor(np.array(obs))
+            acts = FloatTensor(np.array(acts))
+            rets = torch.cat(rets)
+            advs = torch.cat(advs)
+            gms = torch.cat(gms)
+
+            # this is optional
+            advs = (advs - advs.mean()) / advs.std()
+
+            self.d.train()
+            exp_scores = self.d.get_logits(exp_obs, exp_acts)
+            nov_scores = self.d.get_logits(obs, acts)
+
+            opt_d.zero_grad()
+            loss = torch.nn.functional.binary_cross_entropy_with_logits(
+                exp_scores, torch.zeros_like(exp_scores)
+            ) \
+                   + torch.nn.functional.binary_cross_entropy_with_logits(
+                nov_scores, torch.ones_like(nov_scores)
+            )
+            loss.backward()
+            opt_d.step()
+
+            self.v.train()
+            old_params = get_flat_params(self.v).detach()
+            old_v = self.v(obs).detach()
+
+            def constraint():
+                return ((old_v - self.v(obs)) ** 2).mean()
+
+            grad_diff = get_flat_grads(constraint(), self.v)
+
+            def Hv(v):
+                hessian = get_flat_grads(torch.dot(grad_diff, v), self.v) \
+                    .detach()
+
+                return hessian
+
+            g = get_flat_grads(
+                ((-1) * (self.v(obs).squeeze() - rets) ** 2).mean(), self.v
+            ).detach()
+            s = conjugate_gradient(Hv, g).detach()
+
+            Hs = Hv(s).detach()
+            alpha = torch.sqrt(2 * self.args.epsilon / torch.dot(s, Hs))
+
+            new_params = old_params + alpha * s
+
+            set_params(self.v, new_params)
+
+            self.pi.train()
+            old_params = get_flat_params(self.pi).detach()
+            old_distb = self.pi(obs)
+
+            def L():
+                distb = self.pi(obs)
+
+                return (advs * torch.exp(
+                    distb.log_prob(acts)
+                    - old_distb.log_prob(acts).detach()
+                )).mean()
+
+            def kld():
+                distb = self.pi(obs)
+
+                old_p = old_distb.probs.detach()
+                p = distb.probs
+
+                return (old_p * (torch.log(old_p) - torch.log(p))) \
+                    .sum(-1) \
+                    .mean()
+
+            grad_kld_old_param = get_flat_grads(kld(), self.pi)
+
+            def Hv(v):
+                hessian = get_flat_grads(
+                    torch.dot(grad_kld_old_param, v),
+                    self.pi
+                ).detach()
+
+                return hessian + self.args.cg_damping * v
+
+            g = get_flat_grads(L(), self.pi).detach()
+
+            s = conjugate_gradient(Hv, g).detach()
+            Hs = Hv(s).detach()
+
+            new_params = rescale_and_linesearch(
+                g, s, Hs, self.args.max_kl, L, kld, old_params, self.pi
+            )
+
+            disc_causal_entropy = ((-1) * gms * self.pi(obs).log_prob(acts)) \
+                .mean()
+            grad_disc_causal_entropy = get_flat_grads(
+                disc_causal_entropy, self.pi
+            )
+            new_params += self.args.lambda_ * grad_disc_causal_entropy
+
+            set_params(self.pi, new_params)
+
+            if (i + 1) % 10 == 0:
+                self.eval_score(i + 1)
+            else:
+                logger.info(
+                    "epoc: {0} | Target Reward Mean: {1: .2f} | Reward Mean: {2: .2f}"
+                    .format(i + 1, self.test_reward, np.mean(rwd_iter))
+                )
+
+        if self.args.dryrun is False:
+            self.save()
+
+        return rwd_iter_means
+
+    # an internal eval function to understand progress
+    def eval_score(self, epoch):
+        steps, rewards, actions = evaluation.steps_rewards_actions(self)
+        perp = evaluation.perplexity(self)
+        kld = evaluation.kld(self)
+        logger.info("====== EPOCH {0} ======".format(epoch))
+        logger.info("TEST DATA | Steps: {0: .0f} | Rewards: {1: .0f} |  Actions: {2}"
+                    .format(self.test_avg_step, self.test_reward, self.avg_action_counts))
+        logger.info("CURRENT POLICY | Steps: {1: .0f} | Rewards: {2: .0f} | "
+                    "Perplexity: {3: .4f} | KLD: {4: .4f} | Actions: {5}"
+                    .format(epoch, steps, rewards, perp, kld, actions))
+
+        for policy_name, policy in self.other_policies.items():
+            steps, rewards, actions = evaluation.steps_rewards_actions(policy)
+            perp = evaluation.perplexity(policy)
+            kld = evaluation.kld(policy)
+            logger.info("{6} | Steps: {1: .0f} | Rewards: {2: .0f} | "
+                        "Perplexity: {3: .4f} | KLD: {4: .4f} | Actions: {5}"
+                        .format(epoch, steps, rewards, perp, kld, actions, policy_name))
 
     def save(self):
-        torch.save(self.pi_old.state_dict(), "../checkpoint/" + self.args.run_name + "_" + self.name + "_policy.ckpt")
-        torch.save(self.d.state_dict(), "../checkpoint/" + self.args.run_name + "_" + self.name + "_discriminator.ckpt")
+        torch.save(self.pi.state_dict(), "../checkpoint/" + self.args.run_name + "_policy.ckpt")
+        torch.save(self.d.state_dict(), "../checkpoint/" + self.args.run_name + "_discriminator.ckpt")
+        torch.save(self.v.state_dict(), "../checkpoint/" + self.args.run_name + "_value.ckpt")
 
     def load(self):
         is_loaded = False
         try:
-            self.pi_old.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_" + self.name + "_policy.ckpt",
-                                                   map_location=lambda x, y: x))
-            self.pi.load_state_dict(self.pi_old.state_dict())
-            self.d.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_" + self.name + "_discriminator.ckpt",
+            self.pi.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_policy.ckpt",
+                                               map_location=lambda x, y: x))
+            self.d.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_discriminator.ckpt",
                                               map_location=lambda x, y: x))
-            logger.info('-- loaded gail with run_name {0} and name {1}--'.format(self.args.run_name, self.name))
+            self.v.load_state_dict(torch.load("../checkpoint/" + self.args.run_name + "_value.ckpt",
+                                              map_location=lambda x, y: x))
+            logger.info('-- loaded gail with run_name {0} --'.format(self.args.run_name))
             is_loaded = True
         except FileNotFoundError:
-            logger.info('-- no gail with run_name {0} and name {1}--'.format(self.args.run_name, self.name))
+            logger.info('-- no gail with run_name {0} --'.format(self.args.run_name))
         return is_loaded
 
-    def simulate(self, episode):
+    def simulate(self, total_episode):
         logger.info("-- creating simulated data --")
         data = []
-        for ep in range(episode):
+        for ep in range(total_episode):
             state = self.env.reset()
             ep_step = 0
-            ep_data = []
-            while ep_step < self.args.episode_len_90p - 1:
-                state_tensor = torch.tensor(state, dtype=torch.float32, device=self.args.device)
-                with torch.no_grad():
-                    action, action_log_prob = self.pi_old.act(state_tensor)
-                action = action.detach().item()
+            done = False
+            forced_done = np.random.normal(self.args.ep_steps_mean, self.args.ep_steps_std)
+            while not done:
+                action = int(self.act(state))
+                if ep_step >= forced_done:
+                    action = self.env.envconst.action_map['a_workshsubmit']  # forcing game end
 
                 next_state, reward, done, info = self.env.step(action)
 
-                ep_data.append({'episode': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
-                             'done': done, 'info': info})
+                if ep_step >= forced_done and done == False:
+                    done = True
+                    reward = -100.0
 
-                state = next_state
+                data.append({'episode': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                             'next_state': next_state, 'done': done, 'info': info})
+                state = deepcopy(next_state)
                 ep_step += 1
-                if done:
-                    break
 
-        df = pd.DataFrame(data, columns=['episode', 'step', 'state', 'action', 'reward', 'done', 'info'])
+        df = pd.DataFrame(data, columns=['episode', 'step', 'state', 'action', 'reward', 'next_state', 'done', 'info'])
 
         if self.args.dryrun is False:
             df.to_pickle('../simulated_data/' + self.args.run_name + '_sim.pkl')
         return df
 
-    def eval(self):
-        rand_states = []
-        rand_actions = []
-        state = self.env.reset()
 
-        for i in range(self.args.episode_len_90p):
-            action = np.random.choice(list(envconst.action_map.values()))
-            rand_states.append(state)
-            rand_actions.append(action)
-            state, reward, done, info = self.env.step(action)
-            if done:
-                state = self.env.reset()
+#################################
+# Some utility functions for GAIL
+def get_flat_grads(f, net):
+    flat_grads = torch.cat([
+        grad.view(-1)
+        for grad in torch.autograd.grad(f, net.parameters(), create_graph=True)
+    ])
 
-        state_actions_rand, _, _ = \
-            utils.state_action_tensor(np.stack(rand_states), np.array(rand_actions), self.args.action_dim)
+    return flat_grads
 
-        for i in range(self.args.episode_len_90p):
-            state, reward, done = self.take_action(state)
-            if done:
-                state = self.env.reset()
-        state_actions_curr, _, _ = utils.state_action_tensor(self.states, self.actions, self.args.action_dim)
 
-        total_rows = self.expert_state_actions_test.size()[0]
-        idx = np.random.choice(range(total_rows), self.args.episode_len_90p)
-        state_actions_test = self.expert_state_actions_test[idx]
+def get_flat_params(net):
+    return torch.cat([param.view(-1) for param in net.parameters()])
 
-        rand = self.d(state_actions_rand).mean().detach().item()
-        test = self.d(state_actions_test).mean().detach().item()
-        curr = self.d(state_actions_curr).mean().detach().item()
 
-        print("-- EVAL | RAND: {0} | TEST: {1} | CURR: {2}".format(rand, test, curr))
+def set_params(net, new_flat_params):
+    start_idx = 0
+    for param in net.parameters():
+        end_idx = start_idx + np.prod(list(param.shape))
+        param.data = torch.reshape(
+            new_flat_params[start_idx:end_idx], param.shape
+        )
 
-        self.reset_buffers()
+        start_idx = end_idx
+
+
+def conjugate_gradient(Av_func, b, max_iter=10, residual_tol=1e-10):
+    x = torch.zeros_like(b)
+    r = b - Av_func(x)
+    p = r
+    rsold = r.norm() ** 2
+
+    for _ in range(max_iter):
+        Ap = Av_func(p)
+        alpha = rsold / torch.dot(p, Ap)
+        x = x + alpha * p
+        r = r - alpha * Ap
+        rsnew = r.norm() ** 2
+        if torch.sqrt(rsnew) < residual_tol:
+            break
+        p = r + (rsnew / rsold) * p
+        rsold = rsnew
+
+    return x
+
+
+def rescale_and_linesearch(
+        g, s, Hs, max_kl, L, kld, old_params, pi, max_iter=10,
+        success_ratio=0.1
+):
+    set_params(pi, old_params)
+    L_old = L().detach()
+
+    beta = torch.sqrt((2 * max_kl) / torch.dot(s, Hs))
+
+    for _ in range(max_iter):
+        new_params = old_params + beta * s
+
+        set_params(pi, new_params)
+        kld_new = kld().detach()
+
+        L_new = L().detach()
+
+        actual_improv = L_new - L_old
+        approx_improv = torch.dot(g, beta * s)
+        ratio = actual_improv / approx_improv
+
+        if ratio > success_ratio \
+                and actual_improv > 0 \
+                and kld_new < max_kl:
+            return new_params
+
+        beta *= 0.5
+
+    print("The line search was failed!")
+    return old_params

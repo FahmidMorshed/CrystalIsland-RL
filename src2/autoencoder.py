@@ -8,7 +8,7 @@ from torch.nn import MSELoss
 from src import utils
 
 
-def create_states(df, max_len=200):
+def create_states(df, max_len=150):
     all_states = []
     for student, d in df.groupby('episode'):
         states = d['state']
@@ -29,11 +29,12 @@ def create_states(df, max_len=200):
 org_train, org_test = utils.load_data("../processed_data/student_trajectories.pkl", test_size=.2)
 
 states = FloatTensor(create_states(org_train))
+test_states = FloatTensor(create_states(org_test))
 
 model = LSTM_AE(
-  input_dim=108,
-  encoding_dim=128,
-  h_dims=[64],
+  input_dim=102,
+  encoding_dim=256,
+  h_dims=[32],
   h_activ=None,
   out_activ=None
 )
@@ -64,4 +65,3 @@ for epoch in range(100):
 
     print(f"Epoch: {epoch}, Loss: {mean_loss}")
 
-print(z)

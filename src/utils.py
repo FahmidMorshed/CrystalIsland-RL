@@ -6,55 +6,89 @@ from collections import deque
 import numpy as np
 import pandas as pd
 import torch
-from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report, f1_score
+from sklearn.model_selection import train_test_split, StratifiedKFold
+from sklearn.neural_network import MLPClassifier
+
+import src.env.constants as envconst
+from src.model import dummy_policy
 
 logger = logging.getLogger(__name__)
 
+def get_act_prob_df(df):
+    df['state_tup'] = df.apply(lambda x: tuple(x['state']), axis=1)
+    d = df.groupby(['state_tup', 'action']).count()['step'].reset_index()
+    dd = d.groupby(['state_tup']).sum()['step'].reset_index()
+    dd.rename(columns={'step': 'total'}, inplace=True)
+    d.rename(columns={'step': 'count'}, inplace=True)
+    d = d.merge(dd, on='state_tup', how='left')
+    d['prob'] = d['count'] / d['total']
+    d.drop(columns=['count', 'total'], inplace=True)
 
-def load_student_data_by_nlg(args: dataclasses):
-    df = pd.read_pickle(args.student_data_loc)
+    dd = d.groupby('state_tup').apply(lambda x: dict(zip(x['action'], x['prob']))).reset_index()
+    all_probs = []
+    for i, row in dd.iterrows():
+        probs = []
+        for act in range(len(envconst.action_map)):
+            probs.append(row[0].get(act, 0.000001))
+        all_probs.append({'state_tup': row['state_tup'], 'act_prob': np.array(probs)})
 
-    d = df.loc[df['done']]
+    dd = pd.DataFrame(all_probs, columns=['state_tup', 'act_prob'])
+
+    df = df.merge(dd, on=['state_tup'], how='left')
+    df.drop(columns=['state_tup'], inplace=True)
+    return df
+
+def reward_predictor(df_org, seed=0, print_eval=False):
+    df = df_org.loc[(df_org['action'] == envconst.action_map['a_workshsubmit'])].copy()
+
+    X = np.stack(df['state'])
+    df['y'] = df.apply(lambda x: 1 if x['reward'] == 100.0 else 0, axis=1)
+    y = np.array(df['y'])
+
+    if print_eval:
+        skf = StratifiedKFold(n_splits=10, random_state=seed, shuffle=True)
+        f1 = []
+        for train_index, test_index in skf.split(X, y):
+            X_train, X_test = X[train_index], X[test_index]
+            y_train, y_test = y[train_index], y[test_index]
+
+            clf = MLPClassifier(random_state=seed, max_iter=1000, shuffle=True)
+            clf.fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
+            print(classification_report(y_test, y_pred))
+            f1.append(f1_score(y_test, y_pred, average='weighted'))
+
+        print("F1 Weighted Mean:", np.mean(f1))
+
+    clf = MLPClassifier(random_state=seed, max_iter=1000, shuffle=True)
+    clf.fit(X, y)
+    return clf
+
+def load_data_by_reward(df_location, reward=100, test_size=0.2):
+    logger.info("-- loading data from {0} with test size {1} --".format(df_location, test_size))
+    df = pd.read_pickle(df_location)
+
+    df = get_act_prob_df(df)
+
+    d = df.loc[(df['reward'] == reward)]
     student_ids = d['episode'].tolist()
-    nlgs = d['reward'].tolist()
 
-    train_student, test_student = train_test_split(student_ids, test_size=0.2, stratify=nlgs)
+    train_student, test_student = train_test_split(student_ids, test_size=test_size)
 
     train_df = df.loc[df['episode'].isin(train_student)].reset_index(drop=True)
     test_df = df.loc[df['episode'].isin(test_student)].reset_index(drop=True)
 
-    train_high_student = df.loc[(df['episode'].isin(train_student)) & (df['done']) & (df['reward'] == 100)][
-        'episode']
-    train_low_student = df.loc[(df['episode'].isin(train_student)) & (df['done']) & (df['reward'] == -100)][
-        'episode']
-    train_df_high = df.loc[df['episode'].isin(train_high_student)].reset_index(drop=True)
-    train_df_low = df.loc[df['episode'].isin(train_low_student)].reset_index(drop=True)
-
     # shuffle
-    train_df_high = train_df_high.set_index("episode").loc[train_high_student].reset_index()
-    train_df_low = train_df_low.set_index("episode").loc[train_low_student].reset_index()
+    train_df = train_df.set_index("episode").loc[train_student].reset_index()
+    test_df = test_df.set_index("episode").loc[test_student].reset_index()
 
-    test_high_student = df.loc[(df['episode'].isin(test_student)) & (df['done']) & (df['reward'] == 100)][
-        'episode']
-    test_low_student = df.loc[(df['episode'].isin(test_student)) & (df['done']) & (df['reward'] == -100)][
-        'episode']
-    test_df_high = df.loc[df['episode'].isin(test_high_student)].reset_index(drop=True)
-    test_df_low = df.loc[df['episode'].isin(test_low_student)].reset_index(drop=True)
-    # shuffle
-    test_df_high = test_df_high.set_index("episode").loc[test_high_student].reset_index()
-    test_df_low = test_df_low.set_index("episode").loc[test_low_student].reset_index()
-
-    s0 = np.stack(df.loc[df['step'] == 0, 'state'])
-    return train_df_high, train_df_low, test_df_high, test_df_low, s0
-
+    return train_df, test_df
 
 def load_data(df_location, test_size=0.2, train_student=None, test_student=None):
     logger.info("-- loading data from {0} with test size {1} --".format(df_location, test_size))
     df = pd.read_pickle(df_location)
-
-    d = df.groupby('episode').last()
-    eps = d.loc[d['done'] == False].index
-    df = df.loc[~df['episode'].isin(eps)]
+    df = get_act_prob_df(df)
 
     if train_student is None and test_student is None:
         d = df.loc[df['done']]
@@ -207,80 +241,33 @@ def converged(curr_loss: float, prev_loss: float, prev_diffs: deque):
     return diff_mean <= 0.001
 
 
-######################################################
-# this is part of the actual gail implementation
-
-def get_flat_grads(f, net):
-    flat_grads = torch.cat([
-        grad.view(-1)
-        for grad in torch.autograd.grad(f, net.parameters(), create_graph=True)
-    ])
-
-    return flat_grads
+def diff_state(state, next_state):
+    fchanges = {}
+    fids = np.where(state != next_state)[0]
+    fvals = next_state[fids]
+    for fid, val in zip(fids, fvals):
+        fname = envconst.state_map_rev[fid]
+        fchanges[fname] = val
+    return fchanges
 
 
-def get_flat_params(net):
-    return torch.cat([param.view(-1) for param in net.parameters()])
+def get_action_probs():
+    df = pd.read_pickle("../processed_data/raw_logs.pkl")
+    probs = {}
+    d = df.loc[(df['action'] == 'PICKUP') & (~df['more_detail'].isin(
+        ['cur-action-pickup-crate-1', 'cur-action-pickup-crate-3', 'cur-action-pickup-null']))].copy()
+    d['name'] = d.apply(lambda x: x['more_detail'].split('-')[-1], axis=1)
+    d['name'] = d.apply(
+        lambda x: "s_obj_" + x["name"][:3] if x['name'] not in ["10", "11", "4"] else "s_obj_jar" + x["name"], axis=1)
+    probs["a_obj"] = (d.groupby('name').count()['action'] / len(d)).to_dict()
 
+    d = df.loc[(df['action'] == 'BOOKREAD')].copy()
+    d['name'] = d.apply(lambda x: "s_book_" + x["detail"][:3], axis=1)
+    probs["a_book"] = (d.groupby('name').count()['action'] / len(d)).to_dict()
 
-def set_params(net, new_flat_params):
-    start_idx = 0
-    for param in net.parameters():
-        end_idx = start_idx + np.prod(list(param.shape))
-        param.data = torch.reshape(
-            new_flat_params[start_idx:end_idx], param.shape
-        )
-
-        start_idx = end_idx
-
-
-def conjugate_gradient(Av_func, b, max_iter=10, residual_tol=1e-10):
-    x = torch.zeros_like(b)
-    r = b - Av_func(x)
-    p = r
-    rsold = r.norm() ** 2
-
-    for _ in range(max_iter):
-        Ap = Av_func(p)
-        alpha = rsold / torch.dot(p, Ap)
-        x = x + alpha * p
-        r = r - alpha * Ap
-        rsnew = r.norm() ** 2
-        if torch.sqrt(rsnew) < residual_tol:
-            break
-        p = r + (rsnew / rsold) * p
-        rsold = rsnew
-
-    return x
-
-
-def rescale_and_linesearch(
-    g, s, Hs, max_kl, L, kld, old_params, pi, max_iter=10,
-    success_ratio=0.1
-):
-    set_params(pi, old_params)
-    L_old = L().detach()
-
-    beta = torch.sqrt((2 * max_kl) / torch.dot(s, Hs))
-
-    for _ in range(max_iter):
-        new_params = old_params + beta * s
-
-        set_params(pi, new_params)
-        kld_new = kld().detach()
-
-        L_new = L().detach()
-
-        actual_improv = L_new - L_old
-        approx_improv = torch.dot(g, beta * s)
-        ratio = actual_improv / approx_improv
-
-        if ratio > success_ratio \
-            and actual_improv > 0 \
-                and kld_new < max_kl:
-            return new_params
-
-        beta *= 0.5
-
-    print("The line search was failed!")
-    return old_params
+    d = df.loc[(df['action'] == 'LOOKSTART')].copy()
+    d['name'] = d.apply(
+        lambda x: "s_post_" + x['detail'].split('-')[1][:3] + "_" + x['detail'].split('-')[2][:3] if len(
+            x['detail'].split('-')) >= 3 else "s_post_" + x['detail'].split('-')[1][:3], axis=1)
+    probs["a_post"] = (d.groupby('name').count()['action'] / len(d)).to_dict()
+    return probs

@@ -1,18 +1,52 @@
-from sklearn.ensemble import RandomForestClassifier
+from collections import Counter
+
+import numpy as np
+import pandas as pd
+import torch
+from torch import FloatTensor
 
 
-def eval_sim(org_train, org_test, sim_train, sim_test, seed=0):
-    """
-    :param org_train: pd DataFrame for training classifier, all positive
-    :param org_test: pd DataFrame for test classifier, all positive
-    :param sim_train: pd DataFrame for training classifier, all negative, same length as org_train
-    :param sim_test: pd DataFrame for training classifier, all negative, same length as org_test
-    :return: accuracy, precision, f1 of test data
-    """
+def steps_rewards_actions(policy):
+    actions = []
+    steps = []
+    rewards = []
+    step = 0
+    state = policy.env.reset()
+    action_counts = []
+    curr_reward = 0
+    forced_done = np.random.normal(policy.args.ep_steps_mean, policy.args.ep_steps_std)
+    for i in range(len(policy.test_df)):
+        step += 1
+        action = policy.get_action(state)
+        if step >= forced_done:
+            action = policy.env.envconst.action_map['a_workshsubmit']  # forcing game end
 
-    clf = RandomForestClassifier(random_state=seed)
-    X_train_pos = org_train.apply(lambda x: x['state'] + [x['action'], ], axis=1)
-    X_train_neg = sim_train.apply(lambda x: x['state'] + [x['action'], ], axis=1)
-    print()
-    return
+        actions.append(action)
+        state, reward, done, info = policy.env.step(action)
+        if step >= forced_done and done == False:
+            done = True
+            reward = -100.0
+        curr_reward += reward
+        if done:
+            steps.append(step)
+            act_count = Counter(actions)
+            action_counts.append(act_count)
+            rewards.append(curr_reward)
+            curr_reward = 0
+            actions = []
+            state = policy.env.reset()
+            step = 0
+            forced_done = np.random.normal(policy.args.ep_steps_mean, policy.args.ep_steps_std)
 
+    avg_action_counts = pd.DataFrame(action_counts).mean().reset_index().sort_values(by='index').set_index('index').round(1).to_dict()[0]
+    return np.mean(steps), np.mean(rewards), avg_action_counts
+
+
+def perplexity(policy):
+    return np.exp(-np.mean(policy.test_df.apply(lambda x: policy.act_log_prob(x['state'], x['action']), axis=1)))
+
+
+def kld(policy):
+    q = FloatTensor(np.stack(policy.test_df.apply(lambda x: policy.get_probs(x['state']), axis=1)))
+    p = FloatTensor(np.stack(policy.test_df['act_prob']))
+    return (p * (torch.log(p) - torch.log(q))).sum(-1).mean().item()
