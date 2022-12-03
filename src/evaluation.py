@@ -14,18 +14,13 @@ def steps_rewards_actions(policy):
     state = policy.env.reset()
     action_counts = []
     curr_reward = 0
-    forced_done = np.random.normal(policy.args.ep_steps_mean, policy.args.ep_steps_std)
     for i in range(len(policy.test_df)):
         step += 1
         action = policy.get_action(state)
-        if step >= forced_done:
-            action = policy.env.envconst.action_map['a_workshsubmit']  # forcing game end
 
         actions.append(action)
         state, reward, done, info = policy.env.step(action)
-        if step >= forced_done and done == False:
-            done = True
-            reward = -100.0
+
         curr_reward += reward
         if done:
             steps.append(step)
@@ -36,7 +31,6 @@ def steps_rewards_actions(policy):
             actions = []
             state = policy.env.reset()
             step = 0
-            forced_done = np.random.normal(policy.args.ep_steps_mean, policy.args.ep_steps_std)
 
     avg_action_counts = pd.DataFrame(action_counts).mean().reset_index().sort_values(by='index').set_index('index').round(1).to_dict()[0]
     return np.mean(steps), np.mean(rewards), avg_action_counts

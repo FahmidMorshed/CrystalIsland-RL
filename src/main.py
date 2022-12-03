@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 external_config = {
     'dryrun': False,
     # 'simulate_episodes': 1000,
-    'run_name': 'dec2',
+    'run_name': 'dec3',
     # 'train_steps': 1000,
     # 'update_frequency': 100,
     # 'log_frequency': 100,
@@ -38,7 +38,7 @@ def run():
 
     train, test = utils.load_data(args.student_data_loc, test_size=.3)
 
-    clf = utils.reward_predictor(train, args.seed, print_eval=False)
+    clf = utils.reward_predictor(train, args.seed, print_eval=True)
     action_probs = utils.get_action_probs()
 
     env = CrystalIsland(solution_predictor=clf, action_probs=action_probs)
@@ -56,18 +56,21 @@ def dummy():
 
     train, test = utils.load_data(args.student_data_loc, test_size=.3)
 
-    clf = utils.reward_predictor(train, args.seed, print_eval=False)
+    clf = utils.reward_predictor(train, args.seed, print_eval=True)
     action_probs = utils.get_action_probs()
-    env = CrystalIsland(solution_predictor=clf, action_probs=action_probs)
+    env = CrystalIsland(solution_predictor=None, action_probs=action_probs)
     state = env.reset()
-    for i in range(1000):
-        action = np.random.choice(range(20))
+    total_reward = 0
+    for i in range(10000):
+        action = np.random.choice(range(19))
         next_state, reward, done, info = env.step(action)
-
+        total_reward += reward
         state = next_state
         if done:
-            print(state, action, reward, info)
+            if reward > 0:
+                print(state, action, reward, info, total_reward)
             state = env.reset()
+            total_reward = 0
 
 
 if __name__ == "__main__":

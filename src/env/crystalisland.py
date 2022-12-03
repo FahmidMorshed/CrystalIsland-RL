@@ -30,7 +30,7 @@ class CrystalIsland(Env):
         self.action_space = spaces.Discrete(len(envconst.action_map), )
 
         self.state = self._get_init_state()
-        self.step_count = 0
+        self.step_count = -1
 
         self.solution_predictor = solution_predictor
         self.envconst = envconst
@@ -58,7 +58,7 @@ class CrystalIsland(Env):
         return fchanges
 
     def reset(self) -> np.ndarray:
-        self.step_count = 0
+        self.step_count = -1
         self.state = self._get_init_state()
         diffs = self._diff_state(np.zeros(len(envconst.state_map)), self.state)
         logger.debug("INIT: {0}".format(diffs))
@@ -81,7 +81,16 @@ class CrystalIsland(Env):
         rand_val = ""
         aes = ""
 
-        if 'a_talk_' in action_name:
+        if self.step_count >= self.envconst.max_ep_len-1:
+            done = True
+            reward = 100.0 if self.state[self.envconst.state_map['s_solved']] == 1 else -100.0
+            rand_val = "last step"
+
+        elif next_state[envconst.state_map["s_end"]] == 1:
+            rand_val = "game ended"
+            reward = 0.0
+
+        elif 'a_talk_' in action_name:
             if action_name == 'a_talk_que' and next_state[envconst.state_map['s' + action_name[1:]]] == 1:
                 # talk to quentin 2nd time | AES Quentin Revelation triggered
                 next_state, aes = self._trigger_aes(next_state, aes_name='s_aes_que_', action_prob={0: 0.5, 1: 0.5})
@@ -159,15 +168,16 @@ class CrystalIsland(Env):
             if self.solution_predictor is not None:
                 solved = self.solution_predictor.predict([next_state])[0]
             else:
-                # the prob is always around 16%-22% no matter if testpos or lesson read or anything else.
-                solved = np.random.choice([0, 1], p=[.8, .2])
+                # the prob of getting unsolved and solve, respectively
+                solved = np.random.choice([0, 1], p=[.83, .17])
 
-            if solved:
-                done = True
-                reward = 100.0
+            next_state[envconst.state_map["s_solved"]] = solved
 
             # AES Worksheet triggered
             next_state, aes = self._trigger_aes(next_state, aes_name='s_aes_wor_', action_prob={0: 0.33, 1: 0.33, 2: 0.34})
+
+        elif 'a_end' == action_name:
+            next_state[envconst.state_map['s_end']] = 1
 
         next_state[envconst.state_map['s_step']] += 1
         # noting down info

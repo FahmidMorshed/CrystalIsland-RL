@@ -32,18 +32,18 @@ state_names = [
     "s_static_gender", "s_static_pretest", "s_static_gameskill",
     # target goal | total 102
     "s_target_disease", "s_target_item",
-    # steps | total 103
-    "s_step"
+    # solved and steps | total 104
+    "s_solved", "s_end", "s_step"
 ]
 
 action_names = [
     # talk 8 | total 8
     "a_talk_bry", "a_talk_eli", "a_talk_ext", "a_talk_for", "a_talk_kim",
     "a_talk_que", "a_talk_rob", "a_talk_ter",
-    # individual 11 | total 19
+    # individual 12 | total 20
     "a_obj", "a_objtest", "a_book", "a_post", "a_notetake",
     "a_noteview", "a_computer", "a_worksheet", "a_label", "a_testleft",
-    "a_workshsubmit"
+    "a_workshsubmit", "a_end"
 ]
 
 state_map = {name:i for (i,name) in enumerate(state_names)}
@@ -61,3 +61,5 @@ s_obj_p = {
     's_obj_oj': 0.06034584166568639, 's_obj_ora': 0.027996706269850607, 's_obj_pie': 0.042583225502882016,
     's_obj_san': 0.10722267968474297, 's_obj_wat': 0.07199153040818727
 }
+
+max_ep_len = 230  # 90th percentile is 227

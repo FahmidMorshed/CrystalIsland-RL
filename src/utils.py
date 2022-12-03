@@ -41,9 +41,11 @@ def get_act_prob_df(df):
 
 def reward_predictor(df_org, seed=0, print_eval=False):
     df = df_org.loc[(df_org['action'] == envconst.action_map['a_workshsubmit'])].copy()
+    df['temp'] = df.apply(lambda x: x['next_state'][envconst.state_map['s_end']], axis=1)
+    df = df.loc[df['temp'] == 0]
 
     X = np.stack(df['state'])
-    df['y'] = df.apply(lambda x: 1 if x['reward'] == 100.0 else 0, axis=1)
+    df['y'] = df.apply(lambda x: x['next_state'][envconst.state_map['s_solved']], axis=1)
     y = np.array(df['y'])
 
     if print_eval:
@@ -93,9 +95,9 @@ def load_data(df_location, test_size=0.2, train_student=None, test_student=None)
     if train_student is None and test_student is None:
         d = df.loc[df['done']]
         student_ids = d['episode'].tolist()
-        nlgs = d['reward'].tolist()
+        split_by = d['reward'].tolist()
 
-        train_student, test_student = train_test_split(student_ids, test_size=test_size, stratify=nlgs)
+        train_student, test_student = train_test_split(student_ids, test_size=test_size, stratify=split_by)
 
     train_df = df.loc[df['episode'].isin(train_student)].reset_index(drop=True)
     test_df = df.loc[df['episode'].isin(test_student)].reset_index(drop=True)

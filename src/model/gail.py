@@ -116,13 +116,9 @@ class GAIL(Module):
                 done = False
 
                 state = self.env.reset()
-                forced_done = np.random.normal(self.args.ep_steps_mean, self.args.ep_steps_std)
 
                 while not done and steps < self.num_steps_per_iter:
                     action = self.act(state)
-
-                    if ep_step >= forced_done:
-                        action = np.array(self.env.envconst.action_map['a_workshsubmit'])  # forcing game end
 
                     ep_obs.append(state)
                     obs.append(state)
@@ -131,10 +127,6 @@ class GAIL(Module):
                     acts.append(action)
 
                     state, reward, done, info = self.env.step(int(action))
-
-                    if ep_step >= forced_done and done==False:
-                        reward = -100.0
-                        done = True
 
                     ep_rwds.append(reward)
                     ep_gms.append(self.args.discount_factor ** ep_step)
@@ -344,17 +336,10 @@ class GAIL(Module):
             state = self.env.reset()
             ep_step = 0
             done = False
-            forced_done = np.random.normal(self.args.ep_steps_mean, self.args.ep_steps_std)
             while not done:
                 action = int(self.act(state))
-                if ep_step >= forced_done:
-                    action = self.env.envconst.action_map['a_workshsubmit']  # forcing game end
 
                 next_state, reward, done, info = self.env.step(action)
-
-                if ep_step >= forced_done and done == False:
-                    done = True
-                    reward = -100.0
 
                 data.append({'episode': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
                              'next_state': next_state, 'done': done, 'info': info})
