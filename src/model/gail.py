@@ -1,14 +1,9 @@
 import dataclasses
 import logging
-from copy import deepcopy
-
 import numpy as np
 import torch
 
-from torch.nn import Module
-
-from src import evaluation
-from src.model import dummy_policy
+from src.model.policy import Policy
 from src.model.nets import PolicyNetwork, ValueNetwork, Discriminator
 
 from torch import FloatTensor
@@ -18,39 +13,29 @@ from collections import Counter
 logger = logging.getLogger(__name__)
 
 
-class GAIL(Module):
+class GAIL(Policy):
     def __init__(
             self,
             args: dataclasses,
             train_df: pd.DataFrame,
             test_df: pd.DataFrame,
-            env
+            env,
+            name="gail"
     ) -> None:
-        super().__init__()
-        self.args = args
+        super().__init__(args, train_df, test_df, env, name)
 
-        self.train_df = train_df
         self.exp_obs = np.stack(self.train_df['state'])
         self.exp_acts = np.array(self.train_df['action'])
         self.num_steps_per_iter = len(train_df)
 
-        self.test_df = test_df
         action_count = Counter(np.array(self.test_df['action']))
         total_eps = len(test_df.groupby('episode').count())
-        self.avg_action_counts = {act: round(count/total_eps, 1) for (act, count) in sorted(action_count.items())}
-        self.test_avg_step = round(test_df.groupby('episode').count()['done'].mean(), 2)
+        self.avg_action_counts = {act: round(count / total_eps, 1) for (act, count) in sorted(action_count.items())}
         self.test_reward = round(self.train_df.groupby('episode').sum(numeric_only=True)['reward'].mean(), 2)
-
-        self.env = env
 
         self.pi = PolicyNetwork(self.args)
         self.v = ValueNetwork(self.args)
         self.d = Discriminator(self.args)
-
-        p1 = dummy_policy.RandomPolicy(args, train_df, test_df, env)
-        p2 = dummy_policy.BehaviorPolicy(args, train_df, test_df, env)
-        p3 = dummy_policy.BehaviorPolicy2(args, train_df, test_df, env)
-        self.other_policies = {"RandomPolicy": p1, "BehaviorPolicy": p2, "BehaviorPolicy2": p3}
 
     def get_networks(self):
         return [self.pi, self.v]
@@ -81,7 +66,8 @@ class GAIL(Module):
         probs = self.get_probs(state)
         return np.log(probs[action])
 
-    def train(self, force_train=False):
+    def train(self, train_steps, force_train=False):
+        logger.info("TEST DATA | Rewards: {0: .0f} |  Actions: {1}".format(self.test_reward, self.avg_action_counts))
         if force_train is False:
             is_loaded = self.load()
             if is_loaded:
@@ -93,7 +79,7 @@ class GAIL(Module):
         exp_acts = FloatTensor(self.exp_acts)
 
         rwd_iter_means = []
-        for i in range(self.args.train_steps):
+        for i in range(train_steps):
             rwd_iter = []
 
             obs = []
@@ -289,26 +275,6 @@ class GAIL(Module):
 
         return rwd_iter_means
 
-    # an internal eval function to understand progress
-    def eval_score(self, epoch):
-        steps, rewards, actions = evaluation.steps_rewards_actions(self)
-        perp = evaluation.perplexity(self)
-        kld = evaluation.kld(self)
-        logger.info("====== EPOCH {0} ======".format(epoch))
-        logger.info("TEST DATA | Steps: {0: .0f} | Rewards: {1: .0f} |  Actions: {2}"
-                    .format(self.test_avg_step, self.test_reward, self.avg_action_counts))
-        logger.info("CURRENT POLICY | Steps: {1: .0f} | Rewards: {2: .0f} | "
-                    "Perplexity: {3: .4f} | KLD: {4: .4f} | Actions: {5}"
-                    .format(epoch, steps, rewards, perp, kld, actions))
-
-        for policy_name, policy in self.other_policies.items():
-            steps, rewards, actions = evaluation.steps_rewards_actions(policy)
-            perp = evaluation.perplexity(policy)
-            kld = evaluation.kld(policy)
-            logger.info("{6} | Steps: {1: .0f} | Rewards: {2: .0f} | "
-                        "Perplexity: {3: .4f} | KLD: {4: .4f} | Actions: {5}"
-                        .format(epoch, steps, rewards, perp, kld, actions, policy_name))
-
     def save(self):
         torch.save(self.pi.state_dict(), "../checkpoint/" + self.args.run_name + "_policy.ckpt")
         torch.save(self.d.state_dict(), "../checkpoint/" + self.args.run_name + "_discriminator.ckpt")
@@ -328,29 +294,6 @@ class GAIL(Module):
         except FileNotFoundError:
             logger.info('-- no gail with run_name {0} --'.format(self.args.run_name))
         return is_loaded
-
-    def simulate(self, total_episode):
-        logger.info("-- creating simulated data --")
-        data = []
-        for ep in range(total_episode):
-            state = self.env.reset()
-            ep_step = 0
-            done = False
-            while not done:
-                action = int(self.act(state))
-
-                next_state, reward, done, info = self.env.step(action)
-
-                data.append({'episode': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
-                             'next_state': next_state, 'done': done, 'info': info})
-                state = deepcopy(next_state)
-                ep_step += 1
-
-        df = pd.DataFrame(data, columns=['episode', 'step', 'state', 'action', 'reward', 'next_state', 'done', 'info'])
-
-        if self.args.dryrun is False:
-            df.to_pickle('../simulated_data/' + self.args.run_name + '_sim.pkl')
-        return df
 
 
 #################################

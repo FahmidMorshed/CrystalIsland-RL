@@ -23,7 +23,7 @@ def doubly_robust_estimate(policy, estimator) -> (List[Dict], float):
         V^{\pi_e}(s_0) = V_0^DR
         and returns the mean and standard deviation over episodes.
         For more information refer to https://arxiv.org/pdf/1911.06854.pdf"""
-    df_test = estimator.df
+    df_test = estimator.train_df
     all_estimates = []
     for episode, df in df_test.groupby('episode'):
         estimates_per_episode = {}
@@ -76,7 +76,7 @@ def importance_sampling_estimate(policy, estimator) -> (List[Dict], float, float
     For more information refer to https://arxiv.org/pdf/1911.06854.pdf"""
 
     # implementation follows 3.2.2 in https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/paper-1.pdf
-    df_test = estimator.df
+    df_test = estimator.train_df
     all_estimates = []
     w_t = {}
     for episode, df in df_test.groupby('episode'):

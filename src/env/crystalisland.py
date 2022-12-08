@@ -10,7 +10,7 @@ from gym import Env, spaces
 logger = logging.getLogger(__name__)
 
 class CrystalIsland(Env):
-    def __init__(self, solution_predictor=None, action_probs=None):
+    def __init__(self, solution_predictor=None, action_probs=None, anomaly_detector=None):
         super(CrystalIsland, self).__init__()
 
         # based on the defined state, we are creating an observation space
@@ -36,6 +36,7 @@ class CrystalIsland(Env):
         self.envconst = envconst
 
         self.action_probs = action_probs
+        self.anomaly_detector = anomaly_detector
 
     def _get_init_state(self):
         init_state = np.zeros(len(envconst.state_map))

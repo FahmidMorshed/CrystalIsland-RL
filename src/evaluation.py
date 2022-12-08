@@ -5,35 +5,15 @@ import pandas as pd
 import torch
 from torch import FloatTensor
 
+from src import utils
 
-def steps_rewards_actions(policy):
-    actions = []
-    steps = []
-    rewards = []
-    step = 0
-    state = policy.env.reset()
-    action_counts = []
-    curr_reward = 0
-    for i in range(len(policy.test_df)):
-        step += 1
-        action = policy.get_action(state)
 
-        actions.append(action)
-        state, reward, done, info = policy.env.step(action)
-
-        curr_reward += reward
-        if done:
-            steps.append(step)
-            act_count = Counter(actions)
-            action_counts.append(act_count)
-            rewards.append(curr_reward)
-            curr_reward = 0
-            actions = []
-            state = policy.env.reset()
-            step = 0
-
+def avg_rewards_actions(policy, df):
+    rewards = df.groupby('episode')['reward'].sum().tolist()
+    d = df.groupby('episode')['action'].apply(list)
+    action_counts = [Counter(acts) for ep, acts in d.items()]
     avg_action_counts = pd.DataFrame(action_counts).mean().reset_index().sort_values(by='index').set_index('index').round(1).to_dict()[0]
-    return np.mean(steps), np.mean(rewards), avg_action_counts
+    return np.mean(rewards), avg_action_counts
 
 
 def perplexity(policy):
@@ -44,3 +24,10 @@ def kld(policy):
     q = FloatTensor(np.stack(policy.test_df.apply(lambda x: policy.get_probs(x['state']), axis=1)))
     p = FloatTensor(np.stack(policy.test_df['act_prob']))
     return (p * (torch.log(p) - torch.log(q))).sum(-1).mean().item()
+
+
+def anomaly(policy, df):
+    X = utils.actions_by_ep(df)
+    y = policy.env.anomaly_detector.predict(X)  # outlier labels (0 or 1)
+    anomaly_in_percent = sum(y) / len(y) * 100.0
+    return anomaly_in_percent

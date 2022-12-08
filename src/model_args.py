@@ -25,13 +25,8 @@ class ModelArguments:
     device: str = field(default="cpu", metadata={"help": "device (cpu|cuda:0)"})
     units: float = field(default=64, metadata={"help": "number of neurons per layer"})
     lr: float = field(default=0.0001, metadata={"help": "learning rate"})
-    internal_epoch_pi: int = field(default=100, metadata={"help": "training epochs of policy model"})
-    internal_epoch_d: int = field(default=20, metadata={"help": "training epochs of discriminator model"})
     discount_factor: float = field(default=0.95, metadata={"help": "discount factor for gail"})
     clip_eps: float = field(default=0.3, metadata={"help": "clipping epsilon in PPO loss"})
-    ep_steps_mean: float = field(default=170., metadata={"help": "mean number of steps per episode"})
-    ep_steps_std: float = field(default=45., metadata={"help": "std for steps per episode"})
-    simulate_episodes: int = field(default=5000, metadata={"help": "total number of episodes to simulate"})
     batch_size: int = field(default=256, metadata={"help": "batch size for training"})
     bcq_threshold: float = field(default=0.2, metadata={"help": "bcq model constraint parameter (tau value)"})
 

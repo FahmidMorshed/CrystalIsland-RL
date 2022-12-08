@@ -2,16 +2,18 @@ import dataclasses
 import logging
 import random
 from collections import deque
+from copy import deepcopy
 
 import numpy as np
 import pandas as pd
 import torch
+from pyod.models.auto_encoder_torch import AutoEncoder
 from sklearn.metrics import classification_report, f1_score
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.neural_network import MLPClassifier
 
 import src.env.constants as envconst
-from src.model import dummy_policy
+from src.model import policy
 
 logger = logging.getLogger(__name__)
 
@@ -273,3 +275,94 @@ def get_action_probs():
             x['detail'].split('-')) >= 3 else "s_post_" + x['detail'].split('-')[1][:3], axis=1)
     probs["a_post"] = (d.groupby('name').count()['action'] / len(d)).to_dict()
     return probs
+
+
+def pad_states(df, scaler=None, max_len=230):
+    all_states = []
+    for student, d in df.groupby('episode'):
+        states = d['state']
+        states = np.stack(states)
+        states = states if scaler is None else scaler.transform(states)
+        curr_len = len(states)
+        if curr_len < max_len:
+            pad_len = max_len - curr_len
+            states = np.pad(states, pad_width=[(0, pad_len), (0, 0)], mode='constant', constant_values=0.)
+        elif curr_len >= max_len:
+            states = states[:max_len, :]
+
+        all_states.append(states)
+
+    states = np.stack(all_states)
+    return states
+
+def actions_by_ep(df):
+    all_actions = []
+    for student, d in df.groupby('episode'):
+        actions = d['action']
+        actions = np.array(actions)
+
+        all_actions.append(actions)
+
+    actions = np.stack(all_actions)
+    return actions
+
+
+
+def get_episode_df(policy, total_eps):
+    actions = []
+    steps = []
+    rewards = []
+    step = 0
+    state = policy.env.reset()
+    action_counts = []
+    curr_reward = 0
+    for ep in range(total_eps):
+        action = policy.get_action(state)
+        actions.append(action)
+        state, reward, done, info = policy.env.step(action)
+
+        curr_reward += reward
+        if done:
+            steps.append(step)
+            act_count = Counter(actions)
+            action_counts.append(act_count)
+            rewards.append(curr_reward)
+            curr_reward = 0
+            actions = []
+            state = policy.env.reset()
+            step = 0
+
+    avg_action_counts = pd.DataFrame(action_counts).mean().reset_index().sort_values(by='index').set_index('index').round(1).to_dict()[0]
+    return np.mean(steps), np.mean(rewards), avg_action_counts
+
+def simulate_env(policy, total_episode):
+    logger.info("-- creating simulated data --")
+    data = []
+    for ep in range(total_episode):
+        state = policy.env.reset()
+        ep_step = 0
+        done = False
+        while not done:
+            action = policy.get_action(state)
+            next_state, reward, done, info = policy.env.step(action)
+
+            data.append({'episode': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
+                         'next_state': next_state, 'done': done, 'info': info})
+            state = deepcopy(next_state)
+            ep_step += 1
+
+    df = pd.DataFrame(data, columns=['episode', 'step', 'state', 'action', 'reward', 'next_state', 'done', 'info'])
+
+    return df
+
+def get_anomaly_detector(df, test_df):
+    X_train = actions_by_ep(df)
+    detector = AutoEncoder(contamination=0.05, epochs=1000)
+    detector.fit(X_train)
+
+    X_test = actions_by_ep(test_df)
+    y_pred = detector.predict(X_test)
+    y_train_pred = detector.predict(X_train)
+    logger.info("Train data anomaly: {0: .2f}%".format(sum(y_train_pred) / len(y_train_pred) * 100.0))
+    logger.info("Test data anomaly: {0: .2f}%".format(sum(y_pred)/len(y_pred)*100.0))
+    return detector

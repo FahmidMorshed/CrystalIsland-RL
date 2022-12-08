@@ -1,0 +1,1677 @@
+INFO:src.utils:-- loading data from ../processed_data/student_trajectories.pkl with test size 0.2 --
+InnerAutoencoder(
+  (activation): ReLU()
+  (encoder): Sequential(
+    (linear0): Linear(in_features=230, out_features=64, bias=True)
+    (batch_norm0): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu0): ReLU()
+    (dropout0): Dropout(p=0.2, inplace=False)
+    (linear1): Linear(in_features=64, out_features=32, bias=True)
+    (batch_norm1): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU()
+    (dropout1): Dropout(p=0.2, inplace=False)
+  )
+  (decoder): Sequential(
+    (linear0): Linear(in_features=32, out_features=64, bias=True)
+    (batch_norm0): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu0): ReLU()
+    (dropout0): Dropout(p=0.2, inplace=False)
+    (linear1): Linear(in_features=64, out_features=230, bias=True)
+    (relu1): ReLU()
+  )
+)
+epoch 0: training loss 1.0806539177894592 
+epoch 1: training loss 1.036861115694046 
+epoch 2: training loss 1.0146844983100891 
+epoch 3: training loss 1.0064515888690948 
+epoch 4: training loss 1.0030984461307526 
+epoch 5: training loss 1.0008554637432099 
+epoch 6: training loss 0.9997549653053284 
+epoch 7: training loss 0.9986190915107727 
+epoch 8: training loss 0.9969253659248352 
+epoch 9: training loss 0.9974595248699188 
+epoch 10: training loss 0.994400417804718 
+epoch 11: training loss 0.9949066460132598 
+epoch 12: training loss 0.9937883973121643 
+epoch 13: training loss 0.9940315783023834 
+epoch 14: training loss 0.9923556864261627 
+epoch 15: training loss 0.9922224164009095 
+epoch 16: training loss 0.9897333025932312 
+epoch 17: training loss 0.9895917475223541 
+epoch 18: training loss 0.9880185008049012 
+epoch 19: training loss 0.9881944715976715 
+epoch 20: training loss 0.9874867141246796 
+epoch 21: training loss 0.9870008647441864 
+epoch 22: training loss 0.9849632501602172 
+epoch 23: training loss 0.9862557888031006 
+epoch 24: training loss 0.9834535241127014 
+epoch 25: training loss 0.9823178589344025 
+epoch 26: training loss 0.9809681355953217 
+epoch 27: training loss 0.9804588317871094 
+epoch 28: training loss 0.9811076819896698 
+epoch 29: training loss 0.9799618065357208 
+epoch 30: training loss 0.9794646143913269 
+epoch 31: training loss 0.9764329671859742 
+epoch 32: training loss 0.9760782301425934 
+epoch 33: training loss 0.9765523850917817 
+epoch 34: training loss 0.9746198952198029 
+epoch 35: training loss 0.9727744877338409 
+epoch 36: training loss 0.9736263990402222 
+epoch 37: training loss 0.9703337788581848 
+epoch 38: training loss 0.9698280453681946 
+epoch 39: training loss 0.9678935647010803 
+epoch 40: training loss 0.9688515186309814 
+epoch 41: training loss 0.9665314495563507 
+epoch 42: training loss 0.9652929186820984 
+epoch 43: training loss 0.9653743803501129 
+epoch 44: training loss 0.9641518712043762 
+epoch 45: training loss 0.9636683881282806 
+epoch 46: training loss 0.9643917381763458 
+epoch 47: training loss 0.9612390637397766 
+epoch 48: training loss 0.9619388043880462 
+epoch 49: training loss 0.9613615274429321 
+epoch 50: training loss 0.9607219576835633 
+epoch 51: training loss 0.9599897265434265 
+epoch 52: training loss 0.9582413077354431 
+epoch 53: training loss 0.9576713442802429 
+epoch 54: training loss 0.9552879452705383 
+epoch 55: training loss 0.9553980171680451 
+epoch 56: training loss 0.9557788133621216 
+epoch 57: training loss 0.9545085906982422 
+epoch 58: training loss 0.9526156783103943 
+epoch 59: training loss 0.9527340650558471 
+epoch 60: training loss 0.9504104197025299 
+epoch 61: training loss 0.9490260779857635 
+epoch 62: training loss 0.9515019059181213 
+epoch 63: training loss 0.9510430991649628 
+epoch 64: training loss 0.9514684319496155 
+epoch 65: training loss 0.9458871006965637 
+epoch 66: training loss 0.9465743780136109 
+epoch 67: training loss 0.9474686741828918 
+epoch 68: training loss 0.9465670168399811 
+epoch 69: training loss 0.9481574773788453 
+epoch 70: training loss 0.9455087602138519 
+epoch 71: training loss 0.9474116742610932 
+epoch 72: training loss 0.9449023723602294 
+epoch 73: training loss 0.9437967002391815 
+epoch 74: training loss 0.9427347958087922 
+epoch 75: training loss 0.9460865736007691 
+epoch 76: training loss 0.9418967485427856 
+epoch 77: training loss 0.9419189751148224 
+epoch 78: training loss 0.9422922790050506 
+epoch 79: training loss 0.943434476852417 
+epoch 80: training loss 0.9443401515483856 
+epoch 81: training loss 0.9392774045467377 
+epoch 82: training loss 0.9383342564105988 
+epoch 83: training loss 0.9390326619148255 
+epoch 84: training loss 0.9374982237815856 
+epoch 85: training loss 0.9383680701255799 
+epoch 86: training loss 0.9381025731563568 
+epoch 87: training loss 0.9367880582809448 
+epoch 88: training loss 0.9370175361633301 
+epoch 89: training loss 0.9355008602142334 
+epoch 90: training loss 0.9337390542030335 
+epoch 91: training loss 0.936502069234848 
+epoch 92: training loss 0.9379398107528687 
+epoch 93: training loss 0.9351533949375153 
+epoch 94: training loss 0.935805469751358 
+epoch 95: training loss 0.9356962740421295 
+epoch 96: training loss 0.9339645743370056 
+epoch 97: training loss 0.9386437058448791 
+epoch 98: training loss 0.9326833307743072 
+epoch 99: training loss 0.9302045702934265 
+epoch 100: training loss 0.9319519460201263 
+epoch 101: training loss 0.9310914397239685 
+epoch 102: training loss 0.9311516523361206 
+epoch 103: training loss 0.9320230901241302 
+epoch 104: training loss 0.9316221296787262 
+epoch 105: training loss 0.931094366312027 
+epoch 106: training loss 0.9311896622180938 
+epoch 107: training loss 0.9319038391113281 
+epoch 108: training loss 0.9301964998245239 
+epoch 109: training loss 0.9299460649490356 
+epoch 110: training loss 0.9276801288127899 
+epoch 111: training loss 0.9263478636741638 
+epoch 112: training loss 0.9299264371395111 
+epoch 113: training loss 0.9276531934738159 
+epoch 114: training loss 0.9258103907108307 
+epoch 115: training loss 0.9301183581352234 
+epoch 116: training loss 0.92293381690979 
+epoch 117: training loss 0.9275627911090851 
+epoch 118: training loss 0.9272600769996643 
+epoch 119: training loss 0.9282663524150848 
+epoch 120: training loss 0.9239161729812622 
+epoch 121: training loss 0.92553990483284 
+epoch 122: training loss 0.9270437657833099 
+epoch 123: training loss 0.9253361403942109 
+epoch 124: training loss 0.9291284799575805 
+epoch 125: training loss 0.9274542510509491 
+epoch 126: training loss 0.9241383969783783 
+epoch 127: training loss 0.9272403240203857 
+epoch 128: training loss 0.9246173858642578 
+epoch 129: training loss 0.9259010374546051 
+epoch 130: training loss 0.924711161851883 
+epoch 131: training loss 0.9206644058227539 
+epoch 132: training loss 0.924657154083252 
+epoch 133: training loss 0.921614545583725 
+epoch 134: training loss 0.9200047254562378 
+epoch 135: training loss 0.9213264226913452 
+epoch 136: training loss 0.921357399225235 
+epoch 137: training loss 0.9219115614891052 
+epoch 138: training loss 0.9222437977790833 
+epoch 139: training loss 0.9218468368053436 
+epoch 140: training loss 0.9230850577354431 
+epoch 141: training loss 0.9224371910095215 
+epoch 142: training loss 0.9212630689144135 
+epoch 143: training loss 0.9202976882457733 
+epoch 144: training loss 0.9176287293434143 
+epoch 145: training loss 0.9193500220775604 
+epoch 146: training loss 0.9163867056369781 
+epoch 147: training loss 0.9170643210411071 
+epoch 148: training loss 0.922505795955658 
+epoch 149: training loss 0.9219275891780854 
+epoch 150: training loss 0.9209445536136627 
+epoch 151: training loss 0.9219268441200257 
+epoch 152: training loss 0.9173892199993133 
+epoch 153: training loss 0.9168911874294281 
+epoch 154: training loss 0.9184543371200562 
+epoch 155: training loss 0.9184947490692139 
+epoch 156: training loss 0.9155746817588806 
+epoch 157: training loss 0.9201047837734222 
+epoch 158: training loss 0.9183546423912048 
+epoch 159: training loss 0.9188678026199341 
+epoch 160: training loss 0.9160257697105407 
+epoch 161: training loss 0.9193758070468903 
+epoch 162: training loss 0.9158381521701813 
+epoch 163: training loss 0.91607306599617 
+epoch 164: training loss 0.9138318121433258 
+epoch 165: training loss 0.9176200032234192 
+epoch 166: training loss 0.915987741947174 
+epoch 167: training loss 0.9159485995769501 
+epoch 168: training loss 0.9182223856449128 
+epoch 169: training loss 0.9140002250671386 
+epoch 170: training loss 0.916113305091858 
+epoch 171: training loss 0.9142108201980591 
+epoch 172: training loss 0.916109699010849 
+epoch 173: training loss 0.9143270492553711 
+epoch 174: training loss 0.9110801339149475 
+epoch 175: training loss 0.9148604094982147 
+epoch 176: training loss 0.9149574756622314 
+epoch 177: training loss 0.917255026102066 
+epoch 178: training loss 0.9149072706699372 
+epoch 179: training loss 0.9143902242183686 
+epoch 180: training loss 0.9149003326892853 
+epoch 181: training loss 0.9136209785938263 
+epoch 182: training loss 0.9122742533683776 
+epoch 183: training loss 0.9112073719501496 
+epoch 184: training loss 0.9138556122779846 
+epoch 185: training loss 0.9149554610252381 
+epoch 186: training loss 0.9112974643707276 
+epoch 187: training loss 0.9079689025878906 
+epoch 188: training loss 0.9157705545425415 
+epoch 189: training loss 0.9181659996509552 
+epoch 190: training loss 0.9166840553283692 
+epoch 191: training loss 0.9138022005558014 
+epoch 192: training loss 0.9095044016838074 
+epoch 193: training loss 0.9135706186294555 
+epoch 194: training loss 0.9167139291763305 
+epoch 195: training loss 0.9110553801059723 
+epoch 196: training loss 0.9130192041397095 
+epoch 197: training loss 0.9101882338523865 
+epoch 198: training loss 0.9138799607753754 
+epoch 199: training loss 0.9107242882251739 
+epoch 200: training loss 0.9151521325111389 
+epoch 201: training loss 0.9121751248836517 
+epoch 202: training loss 0.9159159779548645 
+epoch 203: training loss 0.9077203571796417 
+epoch 204: training loss 0.9145041525363922 
+epoch 205: training loss 0.9124905705451966 
+epoch 206: training loss 0.9086407244205474 
+epoch 207: training loss 0.9122959196567535 
+epoch 208: training loss 0.9106527924537658 
+epoch 209: training loss 0.9118403851985931 
+epoch 210: training loss 0.9118018746376038 
+epoch 211: training loss 0.914457380771637 
+epoch 212: training loss 0.9074715971946716 
+epoch 213: training loss 0.9111505210399627 
+epoch 214: training loss 0.9145380735397339 
+epoch 215: training loss 0.9119896173477173 
+epoch 216: training loss 0.9112851560115814 
+epoch 217: training loss 0.909117591381073 
+epoch 218: training loss 0.9058356344699859 
+epoch 219: training loss 0.9109417974948884 
+epoch 220: training loss 0.9084359645843506 
+epoch 221: training loss 0.9075513005256652 
+epoch 222: training loss 0.9115087449550628 
+epoch 223: training loss 0.9112140297889709 
+epoch 224: training loss 0.9075171411037445 
+epoch 225: training loss 0.9073956608772278 
+epoch 226: training loss 0.9052310645580292 
+epoch 227: training loss 0.9062834203243255 
+epoch 228: training loss 0.9120848119258881 
+epoch 229: training loss 0.9097066640853881 
+epoch 230: training loss 0.9082612574100495 
+epoch 231: training loss 0.9101009428501129 
+epoch 232: training loss 0.9069086074829101 
+epoch 233: training loss 0.9074759483337402 
+epoch 234: training loss 0.908383184671402 
+epoch 235: training loss 0.9081510245800019 
+epoch 236: training loss 0.9083064317703247 
+epoch 237: training loss 0.9125301301479339 
+epoch 238: training loss 0.9101723670959473 
+epoch 239: training loss 0.9089291274547577 
+epoch 240: training loss 0.9057738184928894 
+epoch 241: training loss 0.9087387084960937 
+epoch 242: training loss 0.9070975244045257 
+epoch 243: training loss 0.9053258001804352 
+epoch 244: training loss 0.9046040654182435 
+epoch 245: training loss 0.9075427055358887 
+epoch 246: training loss 0.9081006407737732 
+epoch 247: training loss 0.9060756385326385 
+epoch 248: training loss 0.9032325744628906 
+epoch 249: training loss 0.9047706604003907 
+epoch 250: training loss 0.9105872392654419 
+epoch 251: training loss 0.909376448392868 
+epoch 252: training loss 0.9017852187156677 
+epoch 253: training loss 0.9060025811195374 
+epoch 254: training loss 0.9099311351776123 
+epoch 255: training loss 0.9047241747379303 
+epoch 256: training loss 0.9049659252166748 
+epoch 257: training loss 0.9100540459156037 
+epoch 258: training loss 0.9049141228199005 
+epoch 259: training loss 0.9081522464752197 
+epoch 260: training loss 0.9077177703380584 
+epoch 261: training loss 0.9032190680503845 
+epoch 262: training loss 0.9059073269367218 
+epoch 263: training loss 0.9079338848590851 
+epoch 264: training loss 0.9049596548080444 
+epoch 265: training loss 0.9067391872406005 
+epoch 266: training loss 0.9038433194160461 
+epoch 267: training loss 0.9026517331600189 
+epoch 268: training loss 0.9041082441806794 
+epoch 269: training loss 0.9091108739376068 
+epoch 270: training loss 0.9052298605442047 
+epoch 271: training loss 0.9046759486198426 
+epoch 272: training loss 0.9072819352149963 
+epoch 273: training loss 0.9034801840782165 
+epoch 274: training loss 0.903188556432724 
+epoch 275: training loss 0.907041198015213 
+epoch 276: training loss 0.9040587246417999 
+epoch 277: training loss 0.9013176143169404 
+epoch 278: training loss 0.9063319087028503 
+epoch 279: training loss 0.9013504087924957 
+epoch 280: training loss 0.9063896596431732 
+epoch 281: training loss 0.9003705501556396 
+epoch 282: training loss 0.905750286579132 
+epoch 283: training loss 0.9015416741371155 
+epoch 284: training loss 0.9061156451702118 
+epoch 285: training loss 0.9037838757038117 
+epoch 286: training loss 0.900019371509552 
+epoch 287: training loss 0.9059684753417969 
+epoch 288: training loss 0.9044834733009338 
+epoch 289: training loss 0.9043623030185699 
+epoch 290: training loss 0.9032683074474335 
+epoch 291: training loss 0.9017847895622253 
+epoch 292: training loss 0.9049381911754608 
+epoch 293: training loss 0.9080220460891724 
+epoch 294: training loss 0.8989237427711487 
+epoch 295: training loss 0.9052987694740295 
+epoch 296: training loss 0.9046121180057526 
+epoch 297: training loss 0.9033762514591217 
+epoch 298: training loss 0.9071545124053955 
+epoch 299: training loss 0.9005245864391327 
+epoch 300: training loss 0.9016047894954682 
+epoch 301: training loss 0.9024776458740235 
+epoch 302: training loss 0.9038675546646118 
+epoch 303: training loss 0.9047832190990448 
+epoch 304: training loss 0.9009486258029937 
+epoch 305: training loss 0.9005811750888825 
+epoch 306: training loss 0.9036826074123383 
+epoch 307: training loss 0.901163387298584 
+epoch 308: training loss 0.9047566890716553 
+epoch 309: training loss 0.9007117629051209 
+epoch 310: training loss 0.9013861298561097 
+epoch 311: training loss 0.9036179482936859 
+epoch 312: training loss 0.9012182056903839 
+epoch 313: training loss 0.9040153384208679 
+epoch 314: training loss 0.8979930102825164 
+epoch 315: training loss 0.899608701467514 
+epoch 316: training loss 0.8987865090370178 
+epoch 317: training loss 0.9008548319339752 
+epoch 318: training loss 0.8989160418510437 
+epoch 319: training loss 0.9027233719825745 
+epoch 320: training loss 0.8998135685920715 
+epoch 321: training loss 0.9016622722148895 
+epoch 322: training loss 0.9016573607921601 
+epoch 323: training loss 0.9041708171367645 
+epoch 324: training loss 0.9026629507541657 
+epoch 325: training loss 0.903946042060852 
+epoch 326: training loss 0.8955382525920867 
+epoch 327: training loss 0.9043961524963379 
+epoch 328: training loss 0.90147106051445 
+epoch 329: training loss 0.8977969288825989 
+epoch 330: training loss 0.8994277536869049 
+epoch 331: training loss 0.9056200742721557 
+epoch 332: training loss 0.9010625183582306 
+epoch 333: training loss 0.8950974881649018 
+epoch 334: training loss 0.8961142599582672 
+epoch 335: training loss 0.9015680551528931 
+epoch 336: training loss 0.9012095928192139 
+epoch 337: training loss 0.9008051991462708 
+epoch 338: training loss 0.8973598182201385 
+epoch 339: training loss 0.9014929711818696 
+epoch 340: training loss 0.8973125517368317 
+epoch 341: training loss 0.8985897123813629 
+epoch 342: training loss 0.9014977812767029 
+epoch 343: training loss 0.8998704493045807 
+epoch 344: training loss 0.8962330102920533 
+epoch 345: training loss 0.9020149946212769 
+epoch 346: training loss 0.9006577908992768 
+epoch 347: training loss 0.9003086090087891 
+epoch 348: training loss 0.9020808279514313 
+epoch 349: training loss 0.895911180973053 
+epoch 350: training loss 0.9014563143253327 
+epoch 351: training loss 0.8989797413349152 
+epoch 352: training loss 0.8992891252040863 
+epoch 353: training loss 0.9004091024398804 
+epoch 354: training loss 0.8977080881595612 
+epoch 355: training loss 0.9009441494941711 
+epoch 356: training loss 0.9028524994850159 
+epoch 357: training loss 0.8967534303665161 
+epoch 358: training loss 0.9004079341888428 
+epoch 359: training loss 0.8974833071231842 
+epoch 360: training loss 0.8994634807109833 
+epoch 361: training loss 0.9013773262500763 
+epoch 362: training loss 0.8939669668674469 
+epoch 363: training loss 0.8941266655921936 
+epoch 364: training loss 0.8998563289642334 
+epoch 365: training loss 0.9004496455192565 
+epoch 366: training loss 0.899428391456604 
+epoch 367: training loss 0.8952153861522675 
+epoch 368: training loss 0.9001052796840667 
+epoch 369: training loss 0.90053431391716 
+epoch 370: training loss 0.9005481958389282 
+epoch 371: training loss 0.8947514772415162 
+epoch 372: training loss 0.8960887491703033 
+epoch 373: training loss 0.8976979613304138 
+epoch 374: training loss 0.8990655243396759 
+epoch 375: training loss 0.8978738129138947 
+epoch 376: training loss 0.8984579026699067 
+epoch 377: training loss 0.9005669534206391 
+epoch 378: training loss 0.9047663867473602 
+epoch 379: training loss 0.9009113430976867 
+epoch 380: training loss 0.8981793940067291 
+epoch 381: training loss 0.8981972098350525 
+epoch 382: training loss 0.9023550093173981 
+epoch 383: training loss 0.8962535381317138 
+epoch 384: training loss 0.9013717770576477 
+epoch 385: training loss 0.8972272098064422 
+epoch 386: training loss 0.8957131862640381 
+epoch 387: training loss 0.9021985948085784 
+epoch 388: training loss 0.8997283995151519 
+epoch 389: training loss 0.8997528314590454 
+epoch 390: training loss 0.900106692314148 
+epoch 391: training loss 0.8990502536296845 
+epoch 392: training loss 0.8969659268856048 
+epoch 393: training loss 0.9001247644424438 
+epoch 394: training loss 0.8973044335842133 
+epoch 395: training loss 0.8978530287742614 
+epoch 396: training loss 0.9008384764194488 
+epoch 397: training loss 0.9008455514907837 
+epoch 398: training loss 0.9007866621017456 
+epoch 399: training loss 0.899157601594925 
+epoch 400: training loss 0.9003345131874084 
+epoch 401: training loss 0.9032608926296234 
+epoch 402: training loss 0.8968642294406891 
+epoch 403: training loss 0.9005595743656158 
+epoch 404: training loss 0.8944391310214996 
+epoch 405: training loss 0.8976601600646973 
+epoch 406: training loss 0.9025473773479462 
+epoch 407: training loss 0.8990446090698242 
+epoch 408: training loss 0.8924919724464416 
+epoch 409: training loss 0.8993471920490265 
+epoch 410: training loss 0.8997838973999024 
+epoch 411: training loss 0.8987458646297455 
+epoch 412: training loss 0.9001567363739014 
+epoch 413: training loss 0.8963078200817108 
+epoch 414: training loss 0.8936271131038666 
+epoch 415: training loss 0.9030003309249878 
+epoch 416: training loss 0.8948944807052612 
+epoch 417: training loss 0.8958157479763031 
+epoch 418: training loss 0.8992713451385498 
+epoch 419: training loss 0.9010108888149262 
+epoch 420: training loss 0.8985466182231903 
+epoch 421: training loss 0.8964077472686768 
+epoch 422: training loss 0.896517527103424 
+epoch 423: training loss 0.8934406340122223 
+epoch 424: training loss 0.895480614900589 
+epoch 425: training loss 0.9002979099750519 
+epoch 426: training loss 0.8958723604679107 
+epoch 427: training loss 0.8907388985157013 
+epoch 428: training loss 0.8983800649642945 
+epoch 429: training loss 0.8950343608856202 
+epoch 430: training loss 0.8979401826858521 
+epoch 431: training loss 0.8973814725875855 
+epoch 432: training loss 0.8963512241840362 
+epoch 433: training loss 0.8935367643833161 
+epoch 434: training loss 0.9013304293155671 
+epoch 435: training loss 0.8954857409000396 
+epoch 436: training loss 0.8960651397705078 
+epoch 437: training loss 0.8933937966823577 
+epoch 438: training loss 0.8922691822052002 
+epoch 439: training loss 0.8994186580181122 
+epoch 440: training loss 0.8947130560874939 
+epoch 441: training loss 0.8929946839809417 
+epoch 442: training loss 0.899890786409378 
+epoch 443: training loss 0.8950409054756164 
+epoch 444: training loss 0.8930720806121826 
+epoch 445: training loss 0.8896769344806671 
+epoch 446: training loss 0.9010032832622528 
+epoch 447: training loss 0.8963963866233826 
+epoch 448: training loss 0.8959380984306335 
+epoch 449: training loss 0.8950322806835175 
+epoch 450: training loss 0.8958326995372772 
+epoch 451: training loss 0.8919834613800048 
+epoch 452: training loss 0.893412834405899 
+epoch 453: training loss 0.8977064371109009 
+epoch 454: training loss 0.8961901128292084 
+epoch 455: training loss 0.8923844993114471 
+epoch 456: training loss 0.8935956716537475 
+epoch 457: training loss 0.8940482854843139 
+epoch 458: training loss 0.8920548379421234 
+epoch 459: training loss 0.894282442331314 
+epoch 460: training loss 0.8980235159397125 
+epoch 461: training loss 0.8952962219715118 
+epoch 462: training loss 0.892219752073288 
+epoch 463: training loss 0.8916317164897919 
+epoch 464: training loss 0.8923804342746735 
+epoch 465: training loss 0.8950638234615326 
+epoch 466: training loss 0.8962874472141266 
+epoch 467: training loss 0.8945489406585694 
+epoch 468: training loss 0.8960846841335297 
+epoch 469: training loss 0.8901586294174194 
+epoch 470: training loss 0.893944787979126 
+epoch 471: training loss 0.8958083331584931 
+epoch 472: training loss 0.897629588842392 
+epoch 473: training loss 0.890837574005127 
+epoch 474: training loss 0.8962989211082458 
+epoch 475: training loss 0.8959127306938172 
+epoch 476: training loss 0.8991972625255584 
+epoch 477: training loss 0.8988720118999481 
+epoch 478: training loss 0.8961430072784424 
+epoch 479: training loss 0.8965713441371918 
+epoch 480: training loss 0.8936055779457093 
+epoch 481: training loss 0.8919438242912292 
+epoch 482: training loss 0.8944956302642822 
+epoch 483: training loss 0.8938685715198517 
+epoch 484: training loss 0.8899722993373871 
+epoch 485: training loss 0.8947934567928314 
+epoch 486: training loss 0.8944161236286163 
+epoch 487: training loss 0.8885764598846435 
+epoch 488: training loss 0.8927226305007935 
+epoch 489: training loss 0.8932689487934112 
+epoch 490: training loss 0.8992947518825531 
+epoch 491: training loss 0.8924568474292756 
+epoch 492: training loss 0.8918852746486664 
+epoch 493: training loss 0.8962319850921631 
+epoch 494: training loss 0.8903107345104218 
+epoch 495: training loss 0.8931351184844971 
+epoch 496: training loss 0.8909431755542755 
+epoch 497: training loss 0.8947475910186767 
+epoch 498: training loss 0.8943259239196777 
+epoch 499: training loss 0.896140867471695 
+epoch 500: training loss 0.8958223521709442 
+epoch 501: training loss 0.8912328481674194 
+epoch 502: training loss 0.8968248426914215 
+epoch 503: training loss 0.8892232835292816 
+epoch 504: training loss 0.8957850158214569 
+epoch 505: training loss 0.892137861251831 
+epoch 506: training loss 0.8961383640766144 
+epoch 507: training loss 0.8929524838924408 
+epoch 508: training loss 0.8927954792976379 
+epoch 509: training loss 0.8928644120693207 
+epoch 510: training loss 0.8936343371868134 
+epoch 511: training loss 0.896111011505127 
+epoch 512: training loss 0.8925817847251892 
+epoch 513: training loss 0.8961237609386444 
+epoch 514: training loss 0.889249575138092 
+epoch 515: training loss 0.8960651457309723 
+epoch 516: training loss 0.8974408507347107 
+epoch 517: training loss 0.888898742198944 
+epoch 518: training loss 0.8916000723838806 
+epoch 519: training loss 0.8927170515060425 
+epoch 520: training loss 0.8914770901203155 
+epoch 521: training loss 0.8942510664463044 
+epoch 522: training loss 0.8983582973480224 
+epoch 523: training loss 0.8986656606197357 
+epoch 524: training loss 0.896150004863739 
+epoch 525: training loss 0.8891267359256745 
+epoch 526: training loss 0.8921076536178589 
+epoch 527: training loss 0.8907412707805633 
+epoch 528: training loss 0.8974262118339539 
+epoch 529: training loss 0.8905053019523621 
+epoch 530: training loss 0.8896241247653961 
+epoch 531: training loss 0.8950514078140259 
+epoch 532: training loss 0.8929157555103302 
+epoch 533: training loss 0.8966164231300354 
+epoch 534: training loss 0.8916244804859161 
+epoch 535: training loss 0.8951409995555878 
+epoch 536: training loss 0.8936217308044434 
+epoch 537: training loss 0.8916690111160278 
+epoch 538: training loss 0.8976378321647644 
+epoch 539: training loss 0.8922637939453125 
+epoch 540: training loss 0.8945079326629639 
+epoch 541: training loss 0.8916716575622559 
+epoch 542: training loss 0.8941612899303436 
+epoch 543: training loss 0.8896080791950226 
+epoch 544: training loss 0.8967514753341674 
+epoch 545: training loss 0.8944513738155365 
+epoch 546: training loss 0.8930987179279327 
+epoch 547: training loss 0.8955142974853516 
+epoch 548: training loss 0.8933686852455139 
+epoch 549: training loss 0.892132556438446 
+epoch 550: training loss 0.8938761472702026 
+epoch 551: training loss 0.8931368052959442 
+epoch 552: training loss 0.8913603782653808 
+epoch 553: training loss 0.8867662012577057 
+epoch 554: training loss 0.8884413957595825 
+epoch 555: training loss 0.8945480227470398 
+epoch 556: training loss 0.8955250382423401 
+epoch 557: training loss 0.8887003719806671 
+epoch 558: training loss 0.8908872365951538 
+epoch 559: training loss 0.892295902967453 
+epoch 560: training loss 0.8910944163799286 
+epoch 561: training loss 0.8935630261898041 
+epoch 562: training loss 0.8951378583908081 
+epoch 563: training loss 0.8896054208278656 
+epoch 564: training loss 0.8968023777008056 
+epoch 565: training loss 0.8913503348827362 
+epoch 566: training loss 0.8913537502288819 
+epoch 567: training loss 0.8911264896392822 
+epoch 568: training loss 0.8895498633384704 
+epoch 569: training loss 0.8917913377285004 
+epoch 570: training loss 0.8878950238227844 
+epoch 571: training loss 0.8922595918178559 
+epoch 572: training loss 0.893429946899414 
+epoch 573: training loss 0.8923954606056214 
+epoch 574: training loss 0.8915912270545959 
+epoch 575: training loss 0.8982413232326507 
+epoch 576: training loss 0.8906243920326233 
+epoch 577: training loss 0.8950319766998291 
+epoch 578: training loss 0.8890890300273895 
+epoch 579: training loss 0.8939361035823822 
+epoch 580: training loss 0.8931089162826538 
+epoch 581: training loss 0.885956734418869 
+epoch 582: training loss 0.888621711730957 
+epoch 583: training loss 0.8892749190330506 
+epoch 584: training loss 0.8870348155498504 
+epoch 585: training loss 0.8944900929927826 
+epoch 586: training loss 0.8887144446372985 
+epoch 587: training loss 0.894756418466568 
+epoch 588: training loss 0.8876105427742005 
+epoch 589: training loss 0.8905254304409027 
+epoch 590: training loss 0.8984902262687683 
+epoch 591: training loss 0.8923637509346009 
+epoch 592: training loss 0.8935058295726777 
+epoch 593: training loss 0.8913580536842346 
+epoch 594: training loss 0.8901001214981079 
+epoch 595: training loss 0.8939929723739624 
+epoch 596: training loss 0.8919014692306518 
+epoch 597: training loss 0.8905019164085388 
+epoch 598: training loss 0.8907369434833526 
+epoch 599: training loss 0.8969406843185425 
+epoch 600: training loss 0.8883053243160248 
+epoch 601: training loss 0.8973034679889679 
+epoch 602: training loss 0.8923808217048645 
+epoch 603: training loss 0.8921782493591308 
+epoch 604: training loss 0.8910114645957947 
+epoch 605: training loss 0.8917300701141357 
+epoch 606: training loss 0.8899788618087768 
+epoch 607: training loss 0.8940763115882874 
+epoch 608: training loss 0.8883537530899048 
+epoch 609: training loss 0.8889254212379456 
+epoch 610: training loss 0.8910657227039337 
+epoch 611: training loss 0.890892505645752 
+epoch 612: training loss 0.8926784932613373 
+epoch 613: training loss 0.8880945980548859 
+epoch 614: training loss 0.8915595471858978 
+epoch 615: training loss 0.8943583071231842 
+epoch 616: training loss 0.8903496086597442 
+epoch 617: training loss 0.8933348715305328 
+epoch 618: training loss 0.8906750082969666 
+epoch 619: training loss 0.8925378978252411 
+epoch 620: training loss 0.8950429797172547 
+epoch 621: training loss 0.8864318668842316 
+epoch 622: training loss 0.8880912303924561 
+epoch 623: training loss 0.890813660621643 
+epoch 624: training loss 0.8899544954299927 
+epoch 625: training loss 0.8926334321498871 
+epoch 626: training loss 0.8964753866195678 
+epoch 627: training loss 0.8927200436592102 
+epoch 628: training loss 0.8927073895931243 
+epoch 629: training loss 0.8852254390716553 
+epoch 630: training loss 0.898163640499115 
+epoch 631: training loss 0.8945876598358155 
+epoch 632: training loss 0.8886434435844421 
+epoch 633: training loss 0.8936282396316528 
+epoch 634: training loss 0.8878069341182708 
+epoch 635: training loss 0.8931447267532349 
+epoch 636: training loss 0.8878672122955322 
+epoch 637: training loss 0.8896611154079437 
+epoch 638: training loss 0.8903247058391571 
+epoch 639: training loss 0.8920302450656891 
+epoch 640: training loss 0.8900365114212037 
+epoch 641: training loss 0.8893077671527863 
+epoch 642: training loss 0.889937835931778 
+epoch 643: training loss 0.8935657382011414 
+epoch 644: training loss 0.890259611606598 
+epoch 645: training loss 0.8916394233703613 
+epoch 646: training loss 0.8872684597969055 
+epoch 647: training loss 0.890229445695877 
+epoch 648: training loss 0.8895007371902466 
+epoch 649: training loss 0.89044109582901 
+epoch 650: training loss 0.8940200924873352 
+epoch 651: training loss 0.8891900539398193 
+epoch 652: training loss 0.890810763835907 
+epoch 653: training loss 0.8871599078178406 
+epoch 654: training loss 0.8897931396961212 
+epoch 655: training loss 0.891123229265213 
+epoch 656: training loss 0.8933961927890778 
+epoch 657: training loss 0.8970676183700561 
+epoch 658: training loss 0.8907791912555695 
+epoch 659: training loss 0.8916888654232025 
+epoch 660: training loss 0.8879868626594544 
+epoch 661: training loss 0.8915533661842346 
+epoch 662: training loss 0.8908294796943664 
+epoch 663: training loss 0.8915878415107727 
+epoch 664: training loss 0.8935748219490052 
+epoch 665: training loss 0.8905166625976563 
+epoch 666: training loss 0.8881385028362274 
+epoch 667: training loss 0.8848927557468415 
+epoch 668: training loss 0.891936582326889 
+epoch 669: training loss 0.8902941048145294 
+epoch 670: training loss 0.8889366984367371 
+epoch 671: training loss 0.8900130748748779 
+epoch 672: training loss 0.8900190949440002 
+epoch 673: training loss 0.8936534881591797 
+epoch 674: training loss 0.8881483137607574 
+epoch 675: training loss 0.8925040602684021 
+epoch 676: training loss 0.8907771289348603 
+epoch 677: training loss 0.891291880607605 
+epoch 678: training loss 0.892367821931839 
+epoch 679: training loss 0.886626785993576 
+epoch 680: training loss 0.8933726072311401 
+epoch 681: training loss 0.8877336323261261 
+epoch 682: training loss 0.8883947670459748 
+epoch 683: training loss 0.8901426017284393 
+epoch 684: training loss 0.8868347585201264 
+epoch 685: training loss 0.8862713932991028 
+epoch 686: training loss 0.8857570111751556 
+epoch 687: training loss 0.889816164970398 
+epoch 688: training loss 0.8908398568630218 
+epoch 689: training loss 0.8895737588405609 
+epoch 690: training loss 0.891260951757431 
+epoch 691: training loss 0.8939038515090942 
+epoch 692: training loss 0.8902950346469879 
+epoch 693: training loss 0.8880375981330871 
+epoch 694: training loss 0.885866230726242 
+epoch 695: training loss 0.8933768451213837 
+epoch 696: training loss 0.8878886103630066 
+epoch 697: training loss 0.8902305603027344 
+epoch 698: training loss 0.8870398104190826 
+epoch 699: training loss 0.8861084282398224 
+epoch 700: training loss 0.8871860980987549 
+epoch 701: training loss 0.8848730087280273 
+epoch 702: training loss 0.8811981201171875 
+epoch 703: training loss 0.8881250143051147 
+epoch 704: training loss 0.8960301876068115 
+epoch 705: training loss 0.8868030071258545 
+epoch 706: training loss 0.8895384192466735 
+epoch 707: training loss 0.8883558630943298 
+epoch 708: training loss 0.888291347026825 
+epoch 709: training loss 0.8919348955154419 
+epoch 710: training loss 0.8830691337585449 
+epoch 711: training loss 0.8880259931087494 
+epoch 712: training loss 0.8874805092811584 
+epoch 713: training loss 0.8891589224338532 
+epoch 714: training loss 0.8954362452030182 
+epoch 715: training loss 0.8870407938957214 
+epoch 716: training loss 0.8915772259235382 
+epoch 717: training loss 0.8901584863662719 
+epoch 718: training loss 0.8884687781333923 
+epoch 719: training loss 0.8871703922748566 
+epoch 720: training loss 0.8955504894256592 
+epoch 721: training loss 0.8885619401931762 
+epoch 722: training loss 0.8849096536636353 
+epoch 723: training loss 0.8919101893901825 
+epoch 724: training loss 0.8857788801193237 
+epoch 725: training loss 0.8863964021205902 
+epoch 726: training loss 0.8885645747184754 
+epoch 727: training loss 0.8909171521663666 
+epoch 728: training loss 0.8828439354896546 
+epoch 729: training loss 0.8883188724517822 
+epoch 730: training loss 0.8911110103130341 
+epoch 731: training loss 0.8859442889690399 
+epoch 732: training loss 0.8896211564540863 
+epoch 733: training loss 0.885052627325058 
+epoch 734: training loss 0.8942799031734466 
+epoch 735: training loss 0.8883556067943573 
+epoch 736: training loss 0.8879562497138977 
+epoch 737: training loss 0.8911770105361938 
+epoch 738: training loss 0.8855069279670715 
+epoch 739: training loss 0.8867157280445099 
+epoch 740: training loss 0.8877858638763427 
+epoch 741: training loss 0.8863564491271972 
+epoch 742: training loss 0.88741255402565 
+epoch 743: training loss 0.8873084723949433 
+epoch 744: training loss 0.8852356374263763 
+epoch 745: training loss 0.8853075802326202 
+epoch 746: training loss 0.8871242105960846 
+epoch 747: training loss 0.8906064391136169 
+epoch 748: training loss 0.8885112524032592 
+epoch 749: training loss 0.8877451062202454 
+epoch 750: training loss 0.8930995404720307 
+epoch 751: training loss 0.8886870384216309 
+epoch 752: training loss 0.8884677588939667 
+epoch 753: training loss 0.8877176821231842 
+epoch 754: training loss 0.8892173588275909 
+epoch 755: training loss 0.886377489566803 
+epoch 756: training loss 0.886006623506546 
+epoch 757: training loss 0.8879594385623932 
+epoch 758: training loss 0.8888097286224366 
+epoch 759: training loss 0.8903131008148193 
+epoch 760: training loss 0.8894478380680084 
+epoch 761: training loss 0.8888315677642822 
+epoch 762: training loss 0.8884687721729279 
+epoch 763: training loss 0.8860368430614471 
+epoch 764: training loss 0.8841716349124908 
+epoch 765: training loss 0.8884687542915344 
+epoch 766: training loss 0.886096578836441 
+epoch 767: training loss 0.8883650302886963 
+epoch 768: training loss 0.8884097993373871 
+epoch 769: training loss 0.8857571125030518 
+epoch 770: training loss 0.8852928102016449 
+epoch 771: training loss 0.8880599200725555 
+epoch 772: training loss 0.8909594178199768 
+epoch 773: training loss 0.8878248035907745 
+epoch 774: training loss 0.8875220119953156 
+epoch 775: training loss 0.8850271344184876 
+epoch 776: training loss 0.888971620798111 
+epoch 777: training loss 0.8876454949378967 
+epoch 778: training loss 0.8841066062450409 
+epoch 779: training loss 0.8819861590862275 
+epoch 780: training loss 0.8847524881362915 
+epoch 781: training loss 0.8879809081554413 
+epoch 782: training loss 0.8841878652572632 
+epoch 783: training loss 0.8871849179267883 
+epoch 784: training loss 0.8879321694374085 
+epoch 785: training loss 0.8885531842708587 
+epoch 786: training loss 0.8866353392601013 
+epoch 787: training loss 0.8889167070388794 
+epoch 788: training loss 0.8902895152568817 
+epoch 789: training loss 0.8831255733966827 
+epoch 790: training loss 0.8885259807109833 
+epoch 791: training loss 0.8876725673675537 
+epoch 792: training loss 0.8851527810096741 
+epoch 793: training loss 0.8891412675380707 
+epoch 794: training loss 0.8847133576869964 
+epoch 795: training loss 0.8813158392906189 
+epoch 796: training loss 0.8907316148281097 
+epoch 797: training loss 0.885563850402832 
+epoch 798: training loss 0.8883915662765502 
+epoch 799: training loss 0.8879154324531555 
+epoch 800: training loss 0.88846755027771 
+epoch 801: training loss 0.8868920207023621 
+epoch 802: training loss 0.8905606806278229 
+epoch 803: training loss 0.8873688101768493 
+epoch 804: training loss 0.8908568561077118 
+epoch 805: training loss 0.8846878349781037 
+epoch 806: training loss 0.8866539835929871 
+epoch 807: training loss 0.8828324258327485 
+epoch 808: training loss 0.8861430406570434 
+epoch 809: training loss 0.8877641022205353 
+epoch 810: training loss 0.890317416191101 
+epoch 811: training loss 0.8824869394302368 
+epoch 812: training loss 0.8877353072166443 
+epoch 813: training loss 0.8846603333950043 
+epoch 814: training loss 0.8870672404766082 
+epoch 815: training loss 0.8865411162376404 
+epoch 816: training loss 0.8835782289505005 
+epoch 817: training loss 0.8872299313545227 
+epoch 818: training loss 0.8816084921360016 
+epoch 819: training loss 0.8883647441864013 
+epoch 820: training loss 0.8813278913497925 
+epoch 821: training loss 0.8848548173904419 
+epoch 822: training loss 0.8919856309890747 
+epoch 823: training loss 0.8892661333084106 
+epoch 824: training loss 0.8875651478767395 
+epoch 825: training loss 0.8912313222885132 
+epoch 826: training loss 0.891559636592865 
+epoch 827: training loss 0.8841874063014984 
+epoch 828: training loss 0.8878639817237854 
+epoch 829: training loss 0.8865316808223724 
+epoch 830: training loss 0.8848795831203461 
+epoch 831: training loss 0.8817718327045441 
+epoch 832: training loss 0.8886761367321014 
+epoch 833: training loss 0.8823426187038421 
+epoch 834: training loss 0.8904550909996033 
+epoch 835: training loss 0.884841114282608 
+epoch 836: training loss 0.8878893554210663 
+epoch 837: training loss 0.8858959138393402 
+epoch 838: training loss 0.8868729114532471 
+epoch 839: training loss 0.8855480432510376 
+epoch 840: training loss 0.8844142079353332 
+epoch 841: training loss 0.8863844573497772 
+epoch 842: training loss 0.8849646389484406 
+epoch 843: training loss 0.8915327668190003 
+epoch 844: training loss 0.8903823673725129 
+epoch 845: training loss 0.883115166425705 
+epoch 846: training loss 0.8856399059295654 
+epoch 847: training loss 0.8869769275188446 
+epoch 848: training loss 0.8853572070598602 
+epoch 849: training loss 0.8845209896564483 
+epoch 850: training loss 0.8865508198738098 
+epoch 851: training loss 0.8831911027431488 
+epoch 852: training loss 0.8925819039344788 
+epoch 853: training loss 0.8900635778903961 
+epoch 854: training loss 0.882717615365982 
+epoch 855: training loss 0.8869912564754486 
+epoch 856: training loss 0.8842261910438538 
+epoch 857: training loss 0.8911276817321777 
+epoch 858: training loss 0.8862602114677429 
+epoch 859: training loss 0.8869367301464081 
+epoch 860: training loss 0.883787739276886 
+epoch 861: training loss 0.8845449268817902 
+epoch 862: training loss 0.8920153021812439 
+epoch 863: training loss 0.8868507444858551 
+epoch 864: training loss 0.8848411798477173 
+epoch 865: training loss 0.8844846367835999 
+epoch 866: training loss 0.8886798560619354 
+epoch 867: training loss 0.8856774806976319 
+epoch 868: training loss 0.8798057734966278 
+epoch 869: training loss 0.8856250822544098 
+epoch 870: training loss 0.8864184141159057 
+epoch 871: training loss 0.8813767850399017 
+epoch 872: training loss 0.8878166019916535 
+epoch 873: training loss 0.8829637944698334 
+epoch 874: training loss 0.8844575226306916 
+epoch 875: training loss 0.8881475329399109 
+epoch 876: training loss 0.8852376341819763 
+epoch 877: training loss 0.8877574145793915 
+epoch 878: training loss 0.8834206402301789 
+epoch 879: training loss 0.882861715555191 
+epoch 880: training loss 0.8844717025756836 
+epoch 881: training loss 0.8900714039802551 
+epoch 882: training loss 0.8911026656627655 
+epoch 883: training loss 0.8854363620281219 
+epoch 884: training loss 0.8863646149635315 
+epoch 885: training loss 0.8866433739662171 
+epoch 886: training loss 0.8880735754966735 
+epoch 887: training loss 0.8913213551044464 
+epoch 888: training loss 0.8869312524795532 
+epoch 889: training loss 0.8804725885391236 
+epoch 890: training loss 0.8852052628993988 
+epoch 891: training loss 0.8836157858371735 
+epoch 892: training loss 0.8830636739730835 
+epoch 893: training loss 0.8834276497364044 
+epoch 894: training loss 0.8822059452533721 
+epoch 895: training loss 0.8854871988296509 
+epoch 896: training loss 0.8900663793087006 
+epoch 897: training loss 0.8875801980495452 
+epoch 898: training loss 0.8882092297077179 
+epoch 899: training loss 0.8867115437984466 
+epoch 900: training loss 0.8818220436573029 
+epoch 901: training loss 0.8841604292392731 
+epoch 902: training loss 0.8872488617897034 
+epoch 903: training loss 0.8855604827404022 
+epoch 904: training loss 0.8831800282001495 
+epoch 905: training loss 0.8791445910930633 
+epoch 906: training loss 0.8803645730018616 
+epoch 907: training loss 0.8847110271453857 
+epoch 908: training loss 0.8878483533859253 
+epoch 909: training loss 0.8841068625450135 
+epoch 910: training loss 0.8877425849437713 
+epoch 911: training loss 0.8880565345287323 
+epoch 912: training loss 0.8850213289260864 
+epoch 913: training loss 0.8838723719120025 
+epoch 914: training loss 0.884213125705719 
+epoch 915: training loss 0.8884792923927307 
+epoch 916: training loss 0.8872852325439453 
+epoch 917: training loss 0.8840457677841187 
+epoch 918: training loss 0.8922814428806305 
+epoch 919: training loss 0.8818895816802979 
+epoch 920: training loss 0.8859806299209595 
+epoch 921: training loss 0.8877994894981385 
+epoch 922: training loss 0.8815520107746124 
+epoch 923: training loss 0.8880951046943665 
+epoch 924: training loss 0.8909892976284027 
+epoch 925: training loss 0.8854496836662292 
+epoch 926: training loss 0.8875637710094452 
+epoch 927: training loss 0.8847927749156952 
+epoch 928: training loss 0.8843420207500458 
+epoch 929: training loss 0.8834247529506684 
+epoch 930: training loss 0.8871742606163024 
+epoch 931: training loss 0.8829205095767975 
+epoch 932: training loss 0.8823290348052979 
+epoch 933: training loss 0.8814540088176728 
+epoch 934: training loss 0.883360493183136 
+epoch 935: training loss 0.8888982594013214 
+epoch 936: training loss 0.8857758998870849 
+epoch 937: training loss 0.8876795053482056 
+epoch 938: training loss 0.8834254086017609 
+epoch 939: training loss 0.8839392602443695 
+epoch 940: training loss 0.8852092981338501 
+epoch 941: training loss 0.8880488634109497 
+epoch 942: training loss 0.8850673556327819 
+epoch 943: training loss 0.8816305160522461 
+epoch 944: training loss 0.8829708993434906 
+epoch 945: training loss 0.8834801912307739 
+epoch 946: training loss 0.8904127299785614 
+epoch 947: training loss 0.8846685647964477 
+epoch 948: training loss 0.8876318454742431 
+epoch 949: training loss 0.8859130680561066 
+epoch 950: training loss 0.888576191663742 
+epoch 951: training loss 0.886359715461731 
+epoch 952: training loss 0.8888625204563141 
+epoch 953: training loss 0.8866195321083069 
+epoch 954: training loss 0.8880150139331817 
+epoch 955: training loss 0.8915499925613404 
+epoch 956: training loss 0.8844140708446503 
+epoch 957: training loss 0.8876169681549072 
+epoch 958: training loss 0.8803795576095581 
+epoch 959: training loss 0.8836105942726136 
+epoch 960: training loss 0.8885215759277344 
+epoch 961: training loss 0.8854790091514587 
+epoch 962: training loss 0.8797846734523773 
+epoch 963: training loss 0.8847247362136841 
+epoch 964: training loss 0.8887881577014923 
+epoch 965: training loss 0.8889462769031524 
+epoch 966: training loss 0.890726625919342 
+epoch 967: training loss 0.8857887744903564 
+epoch 968: training loss 0.887678474187851 
+epoch 969: training loss 0.8839874863624573 
+epoch 970: training loss 0.8863666594028473 
+epoch 971: training loss 0.8852902770042419 
+epoch 972: training loss 0.8877192080020905 
+epoch 973: training loss 0.8824212729930878 
+epoch 974: training loss 0.8864216268062591 
+epoch 975: training loss 0.8910566687583923 
+epoch 976: training loss 0.8820406377315522 
+epoch 977: training loss 0.8908729493618012 
+epoch 978: training loss 0.8818300783634185 
+epoch 979: training loss 0.8815022945404053 
+epoch 980: training loss 0.8809823453426361 
+epoch 981: training loss 0.8813703238964081 
+epoch 982: training loss 0.885726910829544 
+epoch 983: training loss 0.8818564653396607 
+epoch 984: training loss 0.8868194699287415 
+epoch 985: training loss 0.8795035779476166 
+epoch 986: training loss 0.8818532049655914 
+epoch 987: training loss 0.8814419627189636 
+epoch 988: training loss 0.8890624046325684 
+epoch 989: training loss 0.8823462724685669 
+epoch 990: training loss 0.8872576653957367 
+epoch 991: training loss 0.8869602978229523 
+epoch 992: training loss 0.8803475201129913 
+epoch 993: training loss 0.8828196704387665 
+epoch 994: training loss 0.888745927810669 
+epoch 995: training loss 0.8841180086135865 
+epoch 996: training loss 0.8869346261024476 
+epoch 997: training loss 0.8857523083686829 
+epoch 998: training loss 0.8860450387001038 
+epoch 999: training loss 0.8904704689979553 
+INFO:src.utils:Train data anomaly:  5.02%
+INFO:src.utils:Test data anomaly:  22.50%
+              precision    recall  f1-score   support
+
+         0.0       0.91      0.79      0.85        52
+         1.0       0.35      0.60      0.44        10
+
+    accuracy                           0.76        62
+   macro avg       0.63      0.69      0.64        62
+weighted avg       0.82      0.76      0.78        62
+
+              precision    recall  f1-score   support
+
+         0.0       0.83      0.96      0.89        52
+         1.0       0.00      0.00      0.00        10
+
+    accuracy                           0.81        62
+   macro avg       0.42      0.48      0.45        62
+weighted avg       0.70      0.81      0.75        62
+
+              precision    recall  f1-score   support
+
+         0.0       0.89      0.96      0.93        52
+         1.0       0.67      0.40      0.50        10
+
+    accuracy                           0.87        62
+   macro avg       0.78      0.68      0.71        62
+weighted avg       0.86      0.87      0.86        62
+
+              precision    recall  f1-score   support
+
+         0.0       0.89      0.92      0.90        51
+         1.0       0.50      0.40      0.44        10
+
+    accuracy                           0.84        61
+   macro avg       0.69      0.66      0.67        61
+weighted avg       0.82      0.84      0.83        61
+
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.86      0.87        51
+         1.0       0.36      0.40      0.38        10
+
+    accuracy                           0.79        61
+   macro avg       0.62      0.63      0.63        61
+weighted avg       0.80      0.79      0.79        61
+
+              precision    recall  f1-score   support
+
+         0.0       0.92      0.94      0.93        51
+         1.0       0.67      0.60      0.63        10
+
+    accuracy                           0.89        61
+   macro avg       0.79      0.77      0.78        61
+weighted avg       0.88      0.89      0.88        61
+
+              precision    recall  f1-score   support
+
+         0.0       0.86      0.98      0.92        51
+         1.0       0.67      0.20      0.31        10
+
+    accuracy                           0.85        61
+   macro avg       0.76      0.59      0.61        61
+weighted avg       0.83      0.85      0.82        61
+
+              precision    recall  f1-score   support
+
+         0.0       0.93      0.98      0.95        51
+         1.0       0.86      0.60      0.71        10
+
+    accuracy                           0.92        61
+   macro avg       0.89      0.79      0.83        61
+weighted avg       0.91      0.92      0.91        61
+
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.96      0.92        51
+         1.0       0.60      0.30      0.40        10
+
+    accuracy                           0.85        61
+   macro avg       0.74      0.63      0.66        61
+weighted avg       0.83      0.85      0.83        61
+
+              precision    recall  f1-score   support
+
+         0.0       0.88      0.88      0.88        52
+         1.0       0.33      0.33      0.33         9
+
+    accuracy                           0.80        61
+   macro avg       0.61      0.61      0.61        61
+weighted avg       0.80      0.80      0.80        61
+
+F1 Weighted Mean: 0.8253035016247392
+INFO:src.model.gail:TEST DATA | Rewards: -205 |  Actions: {0: 5.1, 1: 8.4, 2: 6.7, 3: 4.7, 4: 7.4, 5: 5.6, 6: 5.0, 7: 5.3, 8: 45.8, 9: 13.0, 10: 5.9, 11: 56.3, 12: 7.4, 13: 8.6, 14: 5.3, 15: 11.0, 16: 10.6, 17: 8.8, 18: 5.0, 19: 4.0}
+INFO:src.model.gail:-- no gail with run_name dec7_7 --
+INFO:src.model.gail:epoc: 1 | Target Reward Mean: -204.79 | Reward Mean: -121.35
+INFO:src.model.gail:epoc: 2 | Target Reward Mean: -204.79 | Reward Mean: -125.03
+INFO:src.model.gail:epoc: 3 | Target Reward Mean: -204.79 | Reward Mean: -125.52
+INFO:src.model.gail:epoc: 4 | Target Reward Mean: -204.79 | Reward Mean: -129.75
+INFO:src.model.gail:epoc: 5 | Target Reward Mean: -204.79 | Reward Mean: -135.09
+INFO:src.model.gail:epoc: 6 | Target Reward Mean: -204.79 | Reward Mean: -138.66
+INFO:src.model.gail:epoc: 7 | Target Reward Mean: -204.79 | Reward Mean: -139.16
+INFO:src.model.gail:epoc: 8 | Target Reward Mean: -204.79 | Reward Mean: -148.95
+INFO:src.model.gail:epoc: 9 | Target Reward Mean: -204.79 | Reward Mean: -153.95
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 10 | Rewards: -165 | Perplexity:  15.3449 | KLD:  1.9797 | Anomaly:  38.0%| Actions: {0: 3.8, 1: 4.2, 2: 8.3, 3: 10.1, 4: 11.8, 5: 5.1, 6: 9.6, 7: 8.3, 8: 15.8, 9: 16.2, 10: 6.5, 11: 49.2, 12: 19.2, 13: 16.7, 14: 5.6, 15: 7.9, 16: 16.6, 17: 3.1, 18: 8.9, 19: 3.8}
+INFO:src.model.gail:epoc: 11 | Target Reward Mean: -204.79 | Reward Mean: -167.76
+INFO:src.model.gail:epoc: 12 | Target Reward Mean: -204.79 | Reward Mean: -176.78
+INFO:src.model.gail:epoc: 13 | Target Reward Mean: -204.79 | Reward Mean: -180.97
+INFO:src.model.gail:epoc: 14 | Target Reward Mean: -204.79 | Reward Mean: -191.33
+INFO:src.model.gail:epoc: 15 | Target Reward Mean: -204.79 | Reward Mean: -196.19
+INFO:src.model.gail:epoc: 16 | Target Reward Mean: -204.79 | Reward Mean: -209.78
+INFO:src.model.gail:epoc: 17 | Target Reward Mean: -204.79 | Reward Mean: -215.85
+INFO:src.model.gail:epoc: 18 | Target Reward Mean: -204.79 | Reward Mean: -223.48
+INFO:src.model.gail:epoc: 19 | Target Reward Mean: -204.79 | Reward Mean: -229.06
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 20 | Rewards: -240 | Perplexity:  14.5222 | KLD:  1.9251 | Anomaly:  0.0%| Actions: {0: 1.8, 1: 2.8, 2: 4.6, 3: 4.1, 4: 6.8, 5: 4.1, 6: 4.8, 7: 4.4, 8: 47.9, 9: 12.8, 10: 4.5, 11: 77.6, 12: 10.8, 13: 15.4, 14: 3.4, 15: 7.3, 16: 12.0, 17: 1.8, 18: 3.6, 19: 1.8}
+INFO:src.model.gail:epoc: 21 | Target Reward Mean: -204.79 | Reward Mean: -242.30
+INFO:src.model.gail:epoc: 22 | Target Reward Mean: -204.79 | Reward Mean: -249.79
+INFO:src.model.gail:epoc: 23 | Target Reward Mean: -204.79 | Reward Mean: -255.34
+INFO:src.model.gail:epoc: 24 | Target Reward Mean: -204.79 | Reward Mean: -261.61
+INFO:src.model.gail:epoc: 25 | Target Reward Mean: -204.79 | Reward Mean: -259.49
+INFO:src.model.gail:epoc: 26 | Target Reward Mean: -204.79 | Reward Mean: -256.64
+INFO:src.model.gail:epoc: 27 | Target Reward Mean: -204.79 | Reward Mean: -264.14
+INFO:src.model.gail:epoc: 28 | Target Reward Mean: -204.79 | Reward Mean: -264.22
+INFO:src.model.gail:epoc: 29 | Target Reward Mean: -204.79 | Reward Mean: -276.17
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 30 | Rewards: -277 | Perplexity:  17.2742 | KLD:  2.0985 | Anomaly:  0.0%| Actions: {0: 2.6, 1: 5.4, 2: 4.4, 3: 2.5, 4: 4.6, 5: 3.1, 6: 3.3, 7: 2.8, 8: 86.9, 9: 14.9, 10: 6.2, 11: 25.3, 12: 3.9, 13: 9.3, 14: 5.7, 15: 35.7, 16: 12.4, 17: 1.6, 18: 1.5, 19: 1.2}
+INFO:src.model.gail:epoc: 31 | Target Reward Mean: -204.79 | Reward Mean: -275.93
+INFO:src.model.gail:epoc: 32 | Target Reward Mean: -204.79 | Reward Mean: -273.39
+INFO:src.model.gail:epoc: 33 | Target Reward Mean: -204.79 | Reward Mean: -265.65
+INFO:src.model.gail:epoc: 34 | Target Reward Mean: -204.79 | Reward Mean: -279.15
+INFO:src.model.gail:epoc: 35 | Target Reward Mean: -204.79 | Reward Mean: -267.89
+INFO:src.model.gail:epoc: 36 | Target Reward Mean: -204.79 | Reward Mean: -271.31
+INFO:src.model.gail:epoc: 37 | Target Reward Mean: -204.79 | Reward Mean: -273.82
+INFO:src.model.gail:epoc: 38 | Target Reward Mean: -204.79 | Reward Mean: -278.23
+INFO:src.model.gail:epoc: 39 | Target Reward Mean: -204.79 | Reward Mean: -270.08
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 40 | Rewards: -249 | Perplexity:  19.5967 | KLD:  2.2247 | Anomaly:  97.0%| Actions: {0: 15.1, 1: 9.9, 2: 7.8, 3: 2.6, 4: 5.0, 5: 4.1, 6: 3.1, 7: 3.7, 8: 15.5, 9: 6.8, 10: 16.4, 11: 35.7, 12: 3.2, 13: 4.1, 14: 20.0, 15: 58.6, 16: 16.0, 17: 2.3, 18: 1.3, 19: 1.3}
+INFO:src.model.gail:epoc: 41 | Target Reward Mean: -204.79 | Reward Mean: -256.34
+INFO:src.model.gail:epoc: 42 | Target Reward Mean: -204.79 | Reward Mean: -259.28
+INFO:src.model.gail:epoc: 43 | Target Reward Mean: -204.79 | Reward Mean: -262.47
+INFO:src.model.gail:epoc: 44 | Target Reward Mean: -204.79 | Reward Mean: -261.78
+INFO:src.model.gail:epoc: 45 | Target Reward Mean: -204.79 | Reward Mean: -275.29
+INFO:src.model.gail:epoc: 46 | Target Reward Mean: -204.79 | Reward Mean: -274.99
+INFO:src.model.gail:epoc: 47 | Target Reward Mean: -204.79 | Reward Mean: -279.45
+INFO:src.model.gail:epoc: 48 | Target Reward Mean: -204.79 | Reward Mean: -280.95
+INFO:src.model.gail:epoc: 49 | Target Reward Mean: -204.79 | Reward Mean: -277.20
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 50 | Rewards: -282 | Perplexity:  20.4029 | KLD:  2.2654 | Anomaly:  58.0%| Actions: {0: 17.9, 1: 9.1, 2: 7.1, 3: 2.3, 4: 3.6, 5: 4.5, 6: 2.3, 7: 4.2, 8: 8.3, 9: 3.8, 10: 24.4, 11: 78.6, 12: 4.0, 13: 5.0, 14: 22.3, 15: 16.3, 16: 14.4, 17: 1.9, 18: 1.5, 19: 1.2}
+INFO:src.model.gail:epoc: 51 | Target Reward Mean: -204.79 | Reward Mean: -292.53
+INFO:src.model.gail:epoc: 52 | Target Reward Mean: -204.79 | Reward Mean: -295.00
+INFO:src.model.gail:epoc: 53 | Target Reward Mean: -204.79 | Reward Mean: -291.77
+INFO:src.model.gail:epoc: 54 | Target Reward Mean: -204.79 | Reward Mean: -294.55
+INFO:src.model.gail:epoc: 55 | Target Reward Mean: -204.79 | Reward Mean: -294.51
+INFO:src.model.gail:epoc: 56 | Target Reward Mean: -204.79 | Reward Mean: -290.87
+INFO:src.model.gail:epoc: 57 | Target Reward Mean: -204.79 | Reward Mean: -281.00
+INFO:src.model.gail:epoc: 58 | Target Reward Mean: -204.79 | Reward Mean: -273.74
+INFO:src.model.gail:epoc: 59 | Target Reward Mean: -204.79 | Reward Mean: -274.81
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 60 | Rewards: -274 | Perplexity:  16.7761 | KLD:  2.0693 | Anomaly:  25.0%| Actions: {0: 5.1, 1: 18.0, 2: 5.1, 3: 3.1, 4: 3.1, 5: 11.5, 6: 3.8, 7: 7.5, 8: 31.8, 9: 3.9, 10: 26.3, 11: 44.3, 12: 20.4, 13: 15.0, 14: 5.3, 15: 2.0, 16: 20.0, 17: 1.9, 18: 2.5, 19: 1.4}
+INFO:src.model.gail:epoc: 61 | Target Reward Mean: -204.79 | Reward Mean: -264.57
+INFO:src.model.gail:epoc: 62 | Target Reward Mean: -204.79 | Reward Mean: -264.60
+INFO:src.model.gail:epoc: 63 | Target Reward Mean: -204.79 | Reward Mean: -255.48
+INFO:src.model.gail:epoc: 64 | Target Reward Mean: -204.79 | Reward Mean: -266.28
+INFO:src.model.gail:epoc: 65 | Target Reward Mean: -204.79 | Reward Mean: -254.88
+INFO:src.model.gail:epoc: 66 | Target Reward Mean: -204.79 | Reward Mean: -251.07
+INFO:src.model.gail:epoc: 67 | Target Reward Mean: -204.79 | Reward Mean: -249.27
+INFO:src.model.gail:epoc: 68 | Target Reward Mean: -204.79 | Reward Mean: -254.67
+INFO:src.model.gail:epoc: 69 | Target Reward Mean: -204.79 | Reward Mean: -244.55
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 70 | Rewards: -257 | Perplexity:  23.4818 | KLD:  2.4054 | Anomaly:  0.0%| Actions: {0: 1.7, 1: 14.2, 2: 2.9, 3: 3.6, 4: 2.8, 5: 7.8, 6: 6.1, 7: 8.0, 8: 99.1, 9: 12.3, 10: 3.9, 11: 9.6, 12: 20.6, 13: 18.9, 14: 1.6, 15: 1.3, 16: 9.8, 17: 1.6, 18: 5.9, 19: 1.6}
+INFO:src.model.gail:epoc: 71 | Target Reward Mean: -204.79 | Reward Mean: -244.64
+INFO:src.model.gail:epoc: 72 | Target Reward Mean: -204.79 | Reward Mean: -248.26
+INFO:src.model.gail:epoc: 73 | Target Reward Mean: -204.79 | Reward Mean: -229.51
+INFO:src.model.gail:epoc: 74 | Target Reward Mean: -204.79 | Reward Mean: -221.64
+INFO:src.model.gail:epoc: 75 | Target Reward Mean: -204.79 | Reward Mean: -228.84
+INFO:src.model.gail:epoc: 76 | Target Reward Mean: -204.79 | Reward Mean: -219.36
+INFO:src.model.gail:epoc: 77 | Target Reward Mean: -204.79 | Reward Mean: -213.40
+INFO:src.model.gail:epoc: 78 | Target Reward Mean: -204.79 | Reward Mean: -210.93
+INFO:src.model.gail:epoc: 79 | Target Reward Mean: -204.79 | Reward Mean: -215.09
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 80 | Rewards: -211 | Perplexity:  17.2483 | KLD:  2.0974 | Anomaly:  0.0%| Actions: {0: 1.6, 1: 3.7, 2: 5.4, 3: 5.9, 4: 5.3, 5: 4.4, 6: 10.8, 7: 6.2, 8: 33.0, 9: 28.5, 10: 1.7, 11: 74.4, 12: 7.4, 13: 18.0, 14: 1.4, 15: 1.4, 16: 8.3, 17: 2.2, 18: 11.5, 19: 2.3}
+INFO:src.model.gail:epoc: 81 | Target Reward Mean: -204.79 | Reward Mean: -222.20
+INFO:src.model.gail:epoc: 82 | Target Reward Mean: -204.79 | Reward Mean: -221.59
+INFO:src.model.gail:epoc: 83 | Target Reward Mean: -204.79 | Reward Mean: -219.33
+INFO:src.model.gail:epoc: 84 | Target Reward Mean: -204.79 | Reward Mean: -224.74
+INFO:src.model.gail:epoc: 85 | Target Reward Mean: -204.79 | Reward Mean: -230.35
+INFO:src.model.gail:epoc: 86 | Target Reward Mean: -204.79 | Reward Mean: -234.16
+INFO:src.model.gail:epoc: 87 | Target Reward Mean: -204.79 | Reward Mean: -230.17
+INFO:src.model.gail:epoc: 88 | Target Reward Mean: -204.79 | Reward Mean: -246.88
+INFO:src.model.gail:epoc: 89 | Target Reward Mean: -204.79 | Reward Mean: -235.15
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 90 | Rewards: -219 | Perplexity:  23.5776 | KLD:  2.4100 | Anomaly:  0.0%| Actions: {0: 1.7, 1: 3.0, 2: 7.3, 3: 5.8, 4: 12.1, 5: 3.3, 6: 6.2, 7: 3.8, 8: 6.8, 9: 19.9, 10: 1.3, 11: 133.2, 12: 2.9, 13: 7.0, 14: 1.6, 15: 1.6, 16: 5.2, 17: 3.4, 18: 5.0, 19: 2.6}
+INFO:src.model.gail:epoc: 91 | Target Reward Mean: -204.79 | Reward Mean: -218.23
+INFO:src.model.gail:epoc: 92 | Target Reward Mean: -204.79 | Reward Mean: -210.37
+INFO:src.model.gail:epoc: 93 | Target Reward Mean: -204.79 | Reward Mean: -193.23
+INFO:src.model.gail:epoc: 94 | Target Reward Mean: -204.79 | Reward Mean: -176.92
+INFO:src.model.gail:epoc: 95 | Target Reward Mean: -204.79 | Reward Mean: -177.07
+INFO:src.model.gail:epoc: 96 | Target Reward Mean: -204.79 | Reward Mean: -169.58
+INFO:src.model.gail:epoc: 97 | Target Reward Mean: -204.79 | Reward Mean: -160.32
+INFO:src.model.gail:epoc: 98 | Target Reward Mean: -204.79 | Reward Mean: -158.63
+INFO:src.model.gail:epoc: 99 | Target Reward Mean: -204.79 | Reward Mean: -151.32
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 100 | Rewards: -139 | Perplexity:  18.9019 | KLD:  2.1882 | Anomaly:  100.0%| Actions: {0: 6.0, 1: 12.4, 2: 13.8, 3: 10.2, 4: 35.3, 5: 5.1, 6: 6.7, 7: 4.3, 8: 6.3, 9: 25.0, 10: 1.9, 11: 60.7, 12: 2.8, 13: 6.0, 14: 2.4, 15: 2.7, 16: 6.1, 17: 13.9, 18: 3.1, 19: 7.2}
+INFO:src.model.gail:epoc: 101 | Target Reward Mean: -204.79 | Reward Mean: -141.31
+INFO:src.model.gail:epoc: 102 | Target Reward Mean: -204.79 | Reward Mean: -140.57
+INFO:src.model.gail:epoc: 103 | Target Reward Mean: -204.79 | Reward Mean: -136.39
+INFO:src.model.gail:epoc: 104 | Target Reward Mean: -204.79 | Reward Mean: -134.98
+INFO:src.model.gail:epoc: 105 | Target Reward Mean: -204.79 | Reward Mean: -129.47
+INFO:src.model.gail:epoc: 106 | Target Reward Mean: -204.79 | Reward Mean: -128.00
+INFO:src.model.gail:epoc: 107 | Target Reward Mean: -204.79 | Reward Mean: -128.49
+INFO:src.model.gail:epoc: 108 | Target Reward Mean: -204.79 | Reward Mean: -125.91
+INFO:src.model.gail:epoc: 109 | Target Reward Mean: -204.79 | Reward Mean: -125.26
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 110 | Rewards: -125 | Perplexity:  19.5179 | KLD:  2.2198 | Anomaly:  100.0%| Actions: {0: 14.6, 1: 31.8, 2: 12.8, 3: 9.2, 4: 19.0, 5: 7.1, 6: 5.8, 7: 4.2, 8: 16.8, 9: 17.4, 10: 2.2, 11: 17.2, 12: 3.1, 13: 6.8, 14: 9.1, 15: 7.3, 16: 8.8, 17: 18.0, 18: 3.0, 19: 16.2}
+INFO:src.model.gail:epoc: 111 | Target Reward Mean: -204.79 | Reward Mean: -127.84
+INFO:src.model.gail:epoc: 112 | Target Reward Mean: -204.79 | Reward Mean: -132.15
+INFO:src.model.gail:epoc: 113 | Target Reward Mean: -204.79 | Reward Mean: -132.65
+INFO:src.model.gail:epoc: 114 | Target Reward Mean: -204.79 | Reward Mean: -136.44
+INFO:src.model.gail:epoc: 115 | Target Reward Mean: -204.79 | Reward Mean: -140.58
+INFO:src.model.gail:epoc: 116 | Target Reward Mean: -204.79 | Reward Mean: -144.92
+INFO:src.model.gail:epoc: 117 | Target Reward Mean: -204.79 | Reward Mean: -148.71
+INFO:src.model.gail:epoc: 118 | Target Reward Mean: -204.79 | Reward Mean: -151.57
+INFO:src.model.gail:epoc: 119 | Target Reward Mean: -204.79 | Reward Mean: -162.70
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 120 | Rewards: -178 | Perplexity:  15.3083 | KLD:  1.9773 | Anomaly:  100.0%| Actions: {0: 10.9, 1: 13.7, 2: 8.4, 3: 4.9, 4: 5.7, 5: 6.0, 6: 3.9, 7: 3.9, 8: 49.4, 9: 12.1, 10: 3.3, 11: 18.7, 12: 5.8, 13: 10.3, 14: 20.4, 15: 14.4, 16: 19.5, 17: 8.5, 18: 2.8, 19: 8.3}
+INFO:src.model.gail:epoc: 121 | Target Reward Mean: -204.79 | Reward Mean: -180.76
+INFO:src.model.gail:epoc: 122 | Target Reward Mean: -204.79 | Reward Mean: -187.17
+INFO:src.model.gail:epoc: 123 | Target Reward Mean: -204.79 | Reward Mean: -186.87
+INFO:src.model.gail:epoc: 124 | Target Reward Mean: -204.79 | Reward Mean: -202.01
+INFO:src.model.gail:epoc: 125 | Target Reward Mean: -204.79 | Reward Mean: -206.77
+INFO:src.model.gail:epoc: 126 | Target Reward Mean: -204.79 | Reward Mean: -209.31
+INFO:src.model.gail:epoc: 127 | Target Reward Mean: -204.79 | Reward Mean: -219.36
+INFO:src.model.gail:epoc: 128 | Target Reward Mean: -204.79 | Reward Mean: -222.49
+INFO:src.model.gail:epoc: 129 | Target Reward Mean: -204.79 | Reward Mean: -225.57
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 130 | Rewards: -240 | Perplexity:  14.0322 | KLD:  1.8905 | Anomaly:  9.0%| Actions: {0: 5.9, 1: 6.8, 2: 6.6, 3: 3.2, 4: 4.1, 5: 3.9, 6: 4.2, 7: 3.7, 8: 33.2, 9: 14.3, 10: 3.4, 11: 66.8, 12: 13.4, 13: 8.6, 14: 11.4, 15: 17.4, 16: 16.1, 17: 3.6, 18: 1.9, 19: 3.1}
+INFO:src.model.gail:epoc: 131 | Target Reward Mean: -204.79 | Reward Mean: -238.71
+INFO:src.model.gail:epoc: 132 | Target Reward Mean: -204.79 | Reward Mean: -250.39
+INFO:src.model.gail:epoc: 133 | Target Reward Mean: -204.79 | Reward Mean: -257.67
+INFO:src.model.gail:epoc: 134 | Target Reward Mean: -204.79 | Reward Mean: -263.00
+INFO:src.model.gail:epoc: 135 | Target Reward Mean: -204.79 | Reward Mean: -277.34
+INFO:src.model.gail:epoc: 136 | Target Reward Mean: -204.79 | Reward Mean: -289.94
+INFO:src.model.gail:epoc: 137 | Target Reward Mean: -204.79 | Reward Mean: -291.45
+INFO:src.model.gail:epoc: 138 | Target Reward Mean: -204.79 | Reward Mean: -305.33
+INFO:src.model.gail:epoc: 139 | Target Reward Mean: -204.79 | Reward Mean: -303.87
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 140 | Rewards: -303 | Perplexity:  15.7782 | KLD:  2.0073 | Anomaly:  0.0%| Actions: {0: 3.3, 1: 9.0, 2: 4.6, 3: 4.2, 4: 6.4, 5: 3.4, 6: 8.0, 7: 7.3, 8: 15.8, 9: 18.1, 10: 3.8, 11: 52.5, 12: 46.6, 13: 20.2, 14: 3.0, 15: 11.5, 16: 10.2, 17: 1.9, 18: 1.6, 19: 1.4}
+INFO:src.model.gail:epoc: 141 | Target Reward Mean: -204.79 | Reward Mean: -302.04
+INFO:src.model.gail:epoc: 142 | Target Reward Mean: -204.79 | Reward Mean: -307.96
+INFO:src.model.gail:epoc: 143 | Target Reward Mean: -204.79 | Reward Mean: -301.86
+INFO:src.model.gail:epoc: 144 | Target Reward Mean: -204.79 | Reward Mean: -292.42
+INFO:src.model.gail:epoc: 145 | Target Reward Mean: -204.79 | Reward Mean: -278.86
+INFO:src.model.gail:epoc: 146 | Target Reward Mean: -204.79 | Reward Mean: -263.19
+INFO:src.model.gail:epoc: 147 | Target Reward Mean: -204.79 | Reward Mean: -262.27
+INFO:src.model.gail:epoc: 148 | Target Reward Mean: -204.79 | Reward Mean: -263.40
+INFO:src.model.gail:epoc: 149 | Target Reward Mean: -204.79 | Reward Mean: -264.58
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 150 | Rewards: -260 | Perplexity:  18.0687 | KLD:  2.1425 | Anomaly:  49.0%| Actions: {0: 2.2, 1: 20.9, 2: 6.8, 3: 11.6, 4: 12.6, 5: 2.2, 6: 11.2, 7: 4.2, 8: 88.3, 9: 17.0, 10: 3.6, 11: 18.7, 12: 3.3, 13: 12.5, 14: 1.7, 15: 4.3, 16: 5.9, 17: 2.6, 18: 1.8, 19: 1.6}
+INFO:src.model.gail:epoc: 151 | Target Reward Mean: -204.79 | Reward Mean: -257.87
+INFO:src.model.gail:epoc: 152 | Target Reward Mean: -204.79 | Reward Mean: -258.16
+INFO:src.model.gail:epoc: 153 | Target Reward Mean: -204.79 | Reward Mean: -256.26
+INFO:src.model.gail:epoc: 154 | Target Reward Mean: -204.79 | Reward Mean: -274.51
+INFO:src.model.gail:epoc: 155 | Target Reward Mean: -204.79 | Reward Mean: -269.56
+INFO:src.model.gail:epoc: 156 | Target Reward Mean: -204.79 | Reward Mean: -281.47
+INFO:src.model.gail:epoc: 157 | Target Reward Mean: -204.79 | Reward Mean: -277.91
+INFO:src.model.gail:epoc: 158 | Target Reward Mean: -204.79 | Reward Mean: -280.64
+INFO:src.model.gail:epoc: 159 | Target Reward Mean: -204.79 | Reward Mean: -282.13
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 160 | Rewards: -281 | Perplexity:  18.6200 | KLD:  2.1732 | Anomaly:  0.0%| Actions: {0: 1.7, 1: 9.1, 2: 9.6, 3: 11.9, 4: 8.4, 5: 1.8, 6: 4.7, 7: 1.8, 8: 85.9, 9: 10.9, 10: 4.4, 11: 64.3, 12: 1.5, 13: 2.5, 14: 1.3, 15: 2.5, 16: 6.9, 17: 3.1, 18: 1.4, 19: 1.4}
+INFO:src.model.gail:epoc: 161 | Target Reward Mean: -204.79 | Reward Mean: -290.81
+INFO:src.model.gail:epoc: 162 | Target Reward Mean: -204.79 | Reward Mean: -295.91
+INFO:src.model.gail:epoc: 163 | Target Reward Mean: -204.79 | Reward Mean: -299.89
+INFO:src.model.gail:epoc: 164 | Target Reward Mean: -204.79 | Reward Mean: -299.30
+INFO:src.model.gail:epoc: 165 | Target Reward Mean: -204.79 | Reward Mean: -302.27
+INFO:src.model.gail:epoc: 166 | Target Reward Mean: -204.79 | Reward Mean: -302.53
+INFO:src.model.gail:epoc: 167 | Target Reward Mean: -204.79 | Reward Mean: -304.37
+INFO:src.model.gail:epoc: 168 | Target Reward Mean: -204.79 | Reward Mean: -303.00
+INFO:src.model.gail:epoc: 169 | Target Reward Mean: -204.79 | Reward Mean: -310.85
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 170 | Rewards: -315 | Perplexity:  19.0059 | KLD:  2.1938 | Anomaly:  0.0%| Actions: {0: 1.7, 1: 5.7, 2: 8.6, 3: 5.9, 4: 5.5, 5: 2.3, 6: 3.7, 7: 1.8, 8: 32.4, 9: 18.0, 10: 21.1, 11: 92.1, 12: 1.4, 13: 2.0, 14: 1.6, 15: 10.7, 16: 15.5, 17: 2.4, 18: 1.4, 19: 1.1}
+INFO:src.model.gail:epoc: 171 | Target Reward Mean: -204.79 | Reward Mean: -307.47
+INFO:src.model.gail:epoc: 172 | Target Reward Mean: -204.79 | Reward Mean: -301.21
+INFO:src.model.gail:epoc: 173 | Target Reward Mean: -204.79 | Reward Mean: -306.44
+INFO:src.model.gail:epoc: 174 | Target Reward Mean: -204.79 | Reward Mean: -300.43
+INFO:src.model.gail:epoc: 175 | Target Reward Mean: -204.79 | Reward Mean: -293.82
+INFO:src.model.gail:epoc: 176 | Target Reward Mean: -204.79 | Reward Mean: -290.28
+INFO:src.model.gail:epoc: 177 | Target Reward Mean: -204.79 | Reward Mean: -282.71
+INFO:src.model.gail:epoc: 178 | Target Reward Mean: -204.79 | Reward Mean: -273.71
+INFO:src.model.gail:epoc: 179 | Target Reward Mean: -204.79 | Reward Mean: -271.04
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 180 | Rewards: -269 | Perplexity:  18.9947 | KLD:  2.1929 | Anomaly:  15.0%| Actions: {0: 2.5, 1: 9.0, 2: 3.9, 3: 2.8, 4: 4.4, 5: 4.7, 6: 3.6, 7: 2.3, 8: 17.3, 9: 16.7, 10: 26.6, 11: 34.4, 12: 1.7, 13: 8.2, 14: 1.9, 15: 73.6, 16: 16.4, 17: 1.7, 18: 2.0, 19: 1.2}
+INFO:src.model.gail:epoc: 181 | Target Reward Mean: -204.79 | Reward Mean: -285.90
+INFO:src.model.gail:epoc: 182 | Target Reward Mean: -204.79 | Reward Mean: -290.82
+INFO:src.model.gail:epoc: 183 | Target Reward Mean: -204.79 | Reward Mean: -286.56
+INFO:src.model.gail:epoc: 184 | Target Reward Mean: -204.79 | Reward Mean: -280.92
+INFO:src.model.gail:epoc: 185 | Target Reward Mean: -204.79 | Reward Mean: -278.30
+INFO:src.model.gail:epoc: 186 | Target Reward Mean: -204.79 | Reward Mean: -280.93
+INFO:src.model.gail:epoc: 187 | Target Reward Mean: -204.79 | Reward Mean: -297.54
+INFO:src.model.gail:epoc: 188 | Target Reward Mean: -204.79 | Reward Mean: -304.66
+INFO:src.model.gail:epoc: 189 | Target Reward Mean: -204.79 | Reward Mean: -311.03
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 190 | Rewards: -316 | Perplexity:  17.8713 | KLD:  2.1314 | Anomaly:  80.0%| Actions: {0: 5.8, 1: 21.7, 2: 2.9, 3: 1.9, 4: 5.9, 5: 4.3, 6: 2.0, 7: 3.8, 8: 23.9, 9: 2.6, 10: 6.2, 11: 33.7, 12: 5.1, 13: 68.5, 14: 3.7, 15: 14.4, 16: 14.4, 17: 1.6, 18: 9.5, 19: 1.1}
+INFO:src.model.gail:epoc: 191 | Target Reward Mean: -204.79 | Reward Mean: -321.22
+INFO:src.model.gail:epoc: 192 | Target Reward Mean: -204.79 | Reward Mean: -322.07
+INFO:src.model.gail:epoc: 193 | Target Reward Mean: -204.79 | Reward Mean: -319.70
+INFO:src.model.gail:epoc: 194 | Target Reward Mean: -204.79 | Reward Mean: -317.57
+INFO:src.model.gail:epoc: 195 | Target Reward Mean: -204.79 | Reward Mean: -318.92
+INFO:src.model.gail:epoc: 196 | Target Reward Mean: -204.79 | Reward Mean: -318.54
+INFO:src.model.gail:epoc: 197 | Target Reward Mean: -204.79 | Reward Mean: -310.16
+INFO:src.model.gail:epoc: 198 | Target Reward Mean: -204.79 | Reward Mean: -292.45
+INFO:src.model.gail:epoc: 199 | Target Reward Mean: -204.79 | Reward Mean: -297.77
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 200 | Rewards: -302 | Perplexity:  19.0434 | KLD:  2.1949 | Anomaly:  16.0%| Actions: {0: 3.7, 1: 20.3, 2: 2.5, 3: 1.5, 4: 6.6, 5: 3.1, 6: 1.8, 7: 3.7, 8: 44.2, 9: 1.9, 10: 1.5, 11: 47.1, 12: 54.5, 13: 10.5, 14: 3.9, 15: 2.0, 16: 13.1, 17: 2.5, 18: 9.4, 19: 1.2}
+INFO:src.model.gail:epoc: 201 | Target Reward Mean: -204.79 | Reward Mean: -298.61
+INFO:src.model.gail:epoc: 202 | Target Reward Mean: -204.79 | Reward Mean: -307.27
+INFO:src.model.gail:epoc: 203 | Target Reward Mean: -204.79 | Reward Mean: -304.28
+INFO:src.model.gail:epoc: 204 | Target Reward Mean: -204.79 | Reward Mean: -297.78
+INFO:src.model.gail:epoc: 205 | Target Reward Mean: -204.79 | Reward Mean: -291.08
+INFO:src.model.gail:epoc: 206 | Target Reward Mean: -204.79 | Reward Mean: -292.24
+INFO:src.model.gail:epoc: 207 | Target Reward Mean: -204.79 | Reward Mean: -298.58
+INFO:src.model.gail:epoc: 208 | Target Reward Mean: -204.79 | Reward Mean: -285.78
+INFO:src.model.gail:epoc: 209 | Target Reward Mean: -204.79 | Reward Mean: -295.91
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 210 | Rewards: -286 | Perplexity:  16.3161 | KLD:  2.0408 | Anomaly:  0.0%| Actions: {0: 2.3, 1: 5.2, 2: 8.3, 3: 1.4, 4: 9.1, 5: 3.2, 6: 4.9, 7: 4.0, 8: 54.4, 9: 14.2, 10: 1.3, 11: 67.9, 12: 12.8, 13: 1.4, 14: 5.7, 15: 3.7, 16: 20.7, 17: 3.1, 18: 8.5, 19: 1.2}
+INFO:src.model.gail:epoc: 211 | Target Reward Mean: -204.79 | Reward Mean: -282.68
+INFO:src.model.gail:epoc: 212 | Target Reward Mean: -204.79 | Reward Mean: -284.98
+INFO:src.model.gail:epoc: 213 | Target Reward Mean: -204.79 | Reward Mean: -277.43
+INFO:src.model.gail:epoc: 214 | Target Reward Mean: -204.79 | Reward Mean: -266.40
+INFO:src.model.gail:epoc: 215 | Target Reward Mean: -204.79 | Reward Mean: -280.01
+INFO:src.model.gail:epoc: 216 | Target Reward Mean: -204.79 | Reward Mean: -265.74
+INFO:src.model.gail:epoc: 217 | Target Reward Mean: -204.79 | Reward Mean: -264.27
+INFO:src.model.gail:epoc: 218 | Target Reward Mean: -204.79 | Reward Mean: -258.38
+INFO:src.model.gail:epoc: 219 | Target Reward Mean: -204.79 | Reward Mean: -251.63
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 220 | Rewards: -252 | Perplexity:  22.5655 | KLD:  2.3656 | Anomaly:  8.0%| Actions: {0: 1.4, 1: 2.3, 2: 16.7, 3: 2.6, 4: 7.5, 5: 2.1, 6: 18.8, 7: 2.8, 8: 21.6, 9: 56.7, 10: 1.2, 11: 35.8, 12: 1.4, 13: 1.0, 14: 4.2, 15: 31.8, 16: 14.5, 17: 7.6, 18: 3.7, 19: 1.5}
+INFO:src.model.gail:epoc: 221 | Target Reward Mean: -204.79 | Reward Mean: -263.40
+INFO:src.model.gail:epoc: 222 | Target Reward Mean: -204.79 | Reward Mean: -279.40
+INFO:src.model.gail:epoc: 223 | Target Reward Mean: -204.79 | Reward Mean: -261.24
+INFO:src.model.gail:epoc: 224 | Target Reward Mean: -204.79 | Reward Mean: -255.55
+INFO:src.model.gail:epoc: 225 | Target Reward Mean: -204.79 | Reward Mean: -267.17
+INFO:src.model.gail:epoc: 226 | Target Reward Mean: -204.79 | Reward Mean: -254.80
+INFO:src.model.gail:epoc: 227 | Target Reward Mean: -204.79 | Reward Mean: -271.52
+INFO:src.model.gail:epoc: 228 | Target Reward Mean: -204.79 | Reward Mean: -268.62
+INFO:src.model.gail:epoc: 229 | Target Reward Mean: -204.79 | Reward Mean: -271.17
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 230 | Rewards: -285 | Perplexity:  21.5003 | KLD:  2.3177 | Anomaly:  8.0%| Actions: {0: 1.3, 1: 2.3, 2: 10.7, 3: 5.7, 4: 9.1, 5: 3.6, 6: 15.6, 7: 1.5, 8: 27.8, 9: 24.4, 10: 1.1, 11: 53.8, 12: 1.3, 13: 1.0, 14: 2.5, 15: 41.9, 16: 21.4, 17: 7.2, 18: 2.1, 19: 1.3}
+INFO:src.model.gail:epoc: 231 | Target Reward Mean: -204.79 | Reward Mean: -275.38
+INFO:src.model.gail:epoc: 232 | Target Reward Mean: -204.79 | Reward Mean: -279.71
+INFO:src.model.gail:epoc: 233 | Target Reward Mean: -204.79 | Reward Mean: -285.97
+INFO:src.model.gail:epoc: 234 | Target Reward Mean: -204.79 | Reward Mean: -290.17
+INFO:src.model.gail:epoc: 235 | Target Reward Mean: -204.79 | Reward Mean: -290.10
+INFO:src.model.gail:epoc: 236 | Target Reward Mean: -204.79 | Reward Mean: -281.36
+INFO:src.model.gail:epoc: 237 | Target Reward Mean: -204.79 | Reward Mean: -282.30
+INFO:src.model.gail:epoc: 238 | Target Reward Mean: -204.79 | Reward Mean: -290.87
+INFO:src.model.gail:epoc: 239 | Target Reward Mean: -204.79 | Reward Mean: -291.30
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 240 | Rewards: -293 | Perplexity:  19.6563 | KLD:  2.2280 | Anomaly:  0.0%| Actions: {0: 1.4, 1: 2.5, 2: 10.6, 3: 3.6, 4: 9.3, 5: 6.5, 6: 6.9, 7: 1.7, 8: 65.7, 9: 9.2, 10: 1.2, 11: 55.4, 12: 1.5, 13: 1.1, 14: 2.7, 15: 22.3, 16: 28.0, 17: 2.8, 18: 1.8, 19: 1.4}
+INFO:src.model.gail:epoc: 241 | Target Reward Mean: -204.79 | Reward Mean: -294.97
+INFO:src.model.gail:epoc: 242 | Target Reward Mean: -204.79 | Reward Mean: -293.27
+INFO:src.model.gail:epoc: 243 | Target Reward Mean: -204.79 | Reward Mean: -299.41
+INFO:src.model.gail:epoc: 244 | Target Reward Mean: -204.79 | Reward Mean: -296.62
+INFO:src.model.gail:epoc: 245 | Target Reward Mean: -204.79 | Reward Mean: -296.93
+INFO:src.model.gail:epoc: 246 | Target Reward Mean: -204.79 | Reward Mean: -303.25
+INFO:src.model.gail:epoc: 247 | Target Reward Mean: -204.79 | Reward Mean: -307.87
+INFO:src.model.gail:epoc: 248 | Target Reward Mean: -204.79 | Reward Mean: -304.21
+INFO:src.model.gail:epoc: 249 | Target Reward Mean: -204.79 | Reward Mean: -304.46
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 250 | Rewards: -305 | Perplexity:  26.1607 | KLD:  2.5134 | Anomaly:  0.0%| Actions: {0: 2.5, 1: 2.6, 2: 6.0, 3: 3.8, 4: 7.2, 5: 5.3, 6: 5.5, 7: 1.9, 8: 119.9, 9: 3.1, 10: 1.1, 11: 30.9, 12: 1.4, 13: 1.1, 14: 4.3, 15: 11.9, 16: 22.5, 17: 1.8, 18: 1.7, 19: 1.3}
+INFO:src.model.gail:epoc: 251 | Target Reward Mean: -204.79 | Reward Mean: -307.48
+INFO:src.model.gail:epoc: 252 | Target Reward Mean: -204.79 | Reward Mean: -310.61
+INFO:src.model.gail:epoc: 253 | Target Reward Mean: -204.79 | Reward Mean: -301.15
+INFO:src.model.gail:epoc: 254 | Target Reward Mean: -204.79 | Reward Mean: -316.03
+INFO:src.model.gail:epoc: 255 | Target Reward Mean: -204.79 | Reward Mean: -313.68
+INFO:src.model.gail:epoc: 256 | Target Reward Mean: -204.79 | Reward Mean: -308.56
+INFO:src.model.gail:epoc: 257 | Target Reward Mean: -204.79 | Reward Mean: -304.72
+INFO:src.model.gail:epoc: 258 | Target Reward Mean: -204.79 | Reward Mean: -304.23
+INFO:src.model.gail:epoc: 259 | Target Reward Mean: -204.79 | Reward Mean: -305.62
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 260 | Rewards: -305 | Perplexity:  20.7006 | KLD:  2.2786 | Anomaly:  16.0%| Actions: {0: 8.7, 1: 4.3, 2: 5.0, 3: 2.7, 4: 6.5, 5: 4.0, 6: 6.2, 7: 1.9, 8: 75.4, 9: 2.1, 10: 1.5, 11: 36.6, 12: 1.7, 13: 1.2, 14: 38.5, 15: 4.0, 16: 21.2, 17: 2.1, 18: 9.4, 19: 1.3}
+INFO:src.model.gail:epoc: 261 | Target Reward Mean: -204.79 | Reward Mean: -303.13
+INFO:src.model.gail:epoc: 262 | Target Reward Mean: -204.79 | Reward Mean: -298.92
+INFO:src.model.gail:epoc: 263 | Target Reward Mean: -204.79 | Reward Mean: -300.67
+INFO:src.model.gail:epoc: 264 | Target Reward Mean: -204.79 | Reward Mean: -301.65
+INFO:src.model.gail:epoc: 265 | Target Reward Mean: -204.79 | Reward Mean: -300.83
+INFO:src.model.gail:epoc: 266 | Target Reward Mean: -204.79 | Reward Mean: -295.70
+INFO:src.model.gail:epoc: 267 | Target Reward Mean: -204.79 | Reward Mean: -293.96
+INFO:src.model.gail:epoc: 268 | Target Reward Mean: -204.79 | Reward Mean: -295.31
+INFO:src.model.gail:epoc: 269 | Target Reward Mean: -204.79 | Reward Mean: -288.30
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 270 | Rewards: -265 | Perplexity:  24.0547 | KLD:  2.4290 | Anomaly:  69.0%| Actions: {0: 6.6, 1: 10.4, 2: 7.7, 3: 3.7, 4: 4.5, 5: 2.8, 6: 6.7, 7: 1.6, 8: 14.5, 9: 2.7, 10: 1.7, 11: 58.7, 12: 2.3, 13: 1.4, 14: 69.0, 15: 6.0, 16: 15.2, 17: 4.4, 18: 11.6, 19: 2.6}
+INFO:src.model.gail:epoc: 271 | Target Reward Mean: -204.79 | Reward Mean: -278.57
+INFO:src.model.gail:epoc: 272 | Target Reward Mean: -204.79 | Reward Mean: -267.61
+INFO:src.model.gail:epoc: 273 | Target Reward Mean: -204.79 | Reward Mean: -253.15
+INFO:src.model.gail:epoc: 274 | Target Reward Mean: -204.79 | Reward Mean: -248.97
+INFO:src.model.gail:epoc: 275 | Target Reward Mean: -204.79 | Reward Mean: -224.07
+INFO:src.model.gail:epoc: 276 | Target Reward Mean: -204.79 | Reward Mean: -211.27
+INFO:src.model.gail:epoc: 277 | Target Reward Mean: -204.79 | Reward Mean: -197.07
+INFO:src.model.gail:epoc: 278 | Target Reward Mean: -204.79 | Reward Mean: -187.78
+INFO:src.model.gail:epoc: 279 | Target Reward Mean: -204.79 | Reward Mean: -177.77
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 280 | Rewards: -174 | Perplexity:  19.8114 | KLD:  2.2344 | Anomaly:  100.0%| Actions: {0: 4.3, 1: 26.7, 2: 15.9, 3: 17.8, 4: 4.9, 5: 4.8, 6: 13.8, 7: 3.2, 8: 6.8, 9: 12.4, 10: 3.1, 11: 66.7, 12: 1.6, 13: 2.1, 14: 6.8, 15: 10.6, 16: 11.7, 17: 6.7, 18: 6.7, 19: 5.2}
+INFO:src.model.gail:epoc: 281 | Target Reward Mean: -204.79 | Reward Mean: -175.60
+INFO:src.model.gail:epoc: 282 | Target Reward Mean: -204.79 | Reward Mean: -176.36
+INFO:src.model.gail:epoc: 283 | Target Reward Mean: -204.79 | Reward Mean: -176.38
+INFO:src.model.gail:epoc: 284 | Target Reward Mean: -204.79 | Reward Mean: -167.96
+INFO:src.model.gail:epoc: 285 | Target Reward Mean: -204.79 | Reward Mean: -177.95
+INFO:src.model.gail:epoc: 286 | Target Reward Mean: -204.79 | Reward Mean: -176.13
+INFO:src.model.gail:epoc: 287 | Target Reward Mean: -204.79 | Reward Mean: -181.51
+INFO:src.model.gail:epoc: 288 | Target Reward Mean: -204.79 | Reward Mean: -187.92
+INFO:src.model.gail:epoc: 289 | Target Reward Mean: -204.79 | Reward Mean: -196.10
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 290 | Rewards: -212 | Perplexity:  15.7343 | KLD:  2.0039 | Anomaly:  56.0%| Actions: {0: 2.1, 1: 16.1, 2: 9.1, 3: 13.0, 4: 3.6, 5: 3.1, 6: 9.2, 7: 2.8, 8: 24.6, 9: 28.2, 10: 5.8, 11: 59.2, 12: 2.6, 13: 6.9, 14: 2.6, 15: 21.6, 16: 12.4, 17: 3.0, 18: 3.0, 19: 3.4}
+INFO:src.model.gail:epoc: 291 | Target Reward Mean: -204.79 | Reward Mean: -210.10
+INFO:src.model.gail:epoc: 292 | Target Reward Mean: -204.79 | Reward Mean: -218.16
+INFO:src.model.gail:epoc: 293 | Target Reward Mean: -204.79 | Reward Mean: -236.11
+INFO:src.model.gail:epoc: 294 | Target Reward Mean: -204.79 | Reward Mean: -251.47
+INFO:src.model.gail:epoc: 295 | Target Reward Mean: -204.79 | Reward Mean: -256.64
+INFO:src.model.gail:epoc: 296 | Target Reward Mean: -204.79 | Reward Mean: -265.22
+INFO:src.model.gail:epoc: 297 | Target Reward Mean: -204.79 | Reward Mean: -268.41
+INFO:src.model.gail:epoc: 298 | Target Reward Mean: -204.79 | Reward Mean: -276.72
+INFO:src.model.gail:epoc: 299 | Target Reward Mean: -204.79 | Reward Mean: -280.38
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 300 | Rewards: -279 | Perplexity:  20.5953 | KLD:  2.2733 | Anomaly:  0.0%| Actions: {0: 1.7, 1: 7.5, 2: 3.4, 3: 2.7, 4: 2.6, 5: 1.7, 6: 2.5, 7: 1.8, 8: 22.8, 9: 7.7, 10: 23.0, 11: 48.4, 12: 24.5, 13: 45.3, 14: 1.5, 15: 24.0, 16: 9.0, 17: 1.6, 18: 1.6, 19: 1.4}
+INFO:src.model.gail:epoc: 301 | Target Reward Mean: -204.79 | Reward Mean: -286.32
+INFO:src.model.gail:epoc: 302 | Target Reward Mean: -204.79 | Reward Mean: -290.96
+INFO:src.model.gail:epoc: 303 | Target Reward Mean: -204.79 | Reward Mean: -290.36
+INFO:src.model.gail:epoc: 304 | Target Reward Mean: -204.79 | Reward Mean: -284.55
+INFO:src.model.gail:epoc: 305 | Target Reward Mean: -204.79 | Reward Mean: -287.18
+INFO:src.model.gail:epoc: 306 | Target Reward Mean: -204.79 | Reward Mean: -282.54
+INFO:src.model.gail:epoc: 307 | Target Reward Mean: -204.79 | Reward Mean: -282.45
+INFO:src.model.gail:epoc: 308 | Target Reward Mean: -204.79 | Reward Mean: -290.37
+INFO:src.model.gail:epoc: 309 | Target Reward Mean: -204.79 | Reward Mean: -285.13
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 310 | Rewards: -266 | Perplexity:  22.3151 | KLD:  2.3533 | Anomaly:  0.0%| Actions: {0: 2.1, 1: 12.6, 2: 5.1, 3: 3.1, 4: 3.0, 5: 1.7, 6: 2.4, 7: 1.8, 8: 12.0, 9: 3.7, 10: 21.9, 11: 57.3, 12: 49.4, 13: 26.8, 14: 1.6, 15: 16.1, 16: 8.7, 17: 2.4, 18: 1.5, 19: 2.3}
+INFO:src.model.gail:epoc: 311 | Target Reward Mean: -204.79 | Reward Mean: -274.94
+INFO:src.model.gail:epoc: 312 | Target Reward Mean: -204.79 | Reward Mean: -256.56
+INFO:src.model.gail:epoc: 313 | Target Reward Mean: -204.79 | Reward Mean: -248.24
+INFO:src.model.gail:epoc: 314 | Target Reward Mean: -204.79 | Reward Mean: -251.82
+INFO:src.model.gail:epoc: 315 | Target Reward Mean: -204.79 | Reward Mean: -233.74
+INFO:src.model.gail:epoc: 316 | Target Reward Mean: -204.79 | Reward Mean: -230.04
+INFO:src.model.gail:epoc: 317 | Target Reward Mean: -204.79 | Reward Mean: -221.91
+INFO:src.model.gail:epoc: 318 | Target Reward Mean: -204.79 | Reward Mean: -207.94
+INFO:src.model.gail:epoc: 319 | Target Reward Mean: -204.79 | Reward Mean: -197.92
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 320 | Rewards: -183 | Perplexity:  16.6251 | KLD:  2.0590 | Anomaly:  66.0%| Actions: {0: 3.7, 1: 17.4, 2: 9.0, 3: 4.8, 4: 4.1, 5: 3.9, 6: 4.4, 7: 2.3, 8: 23.3, 9: 4.7, 10: 8.9, 11: 73.3, 12: 19.1, 13: 6.0, 14: 1.6, 15: 10.8, 16: 8.8, 17: 15.1, 18: 1.8, 19: 9.5}
+INFO:src.model.gail:epoc: 321 | Target Reward Mean: -204.79 | Reward Mean: -171.33
+INFO:src.model.gail:epoc: 322 | Target Reward Mean: -204.79 | Reward Mean: -166.63
+INFO:src.model.gail:epoc: 323 | Target Reward Mean: -204.79 | Reward Mean: -154.96
+INFO:src.model.gail:epoc: 324 | Target Reward Mean: -204.79 | Reward Mean: -147.03
+INFO:src.model.gail:epoc: 325 | Target Reward Mean: -204.79 | Reward Mean: -136.63
+INFO:src.model.gail:epoc: 326 | Target Reward Mean: -204.79 | Reward Mean: -130.07
+INFO:src.model.gail:epoc: 327 | Target Reward Mean: -204.79 | Reward Mean: -124.20
+INFO:src.model.gail:epoc: 328 | Target Reward Mean: -204.79 | Reward Mean: -120.60
+INFO:src.model.gail:epoc: 329 | Target Reward Mean: -204.79 | Reward Mean: -115.47
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 330 | Rewards: -110 | Perplexity:  21.6468 | KLD:  2.3232 | Anomaly:  99.0%| Actions: {0: 4.8, 1: 4.6, 2: 4.9, 3: 3.0, 4: 2.8, 5: 12.5, 6: 6.6, 7: 2.5, 8: 64.5, 9: 10.9, 10: 2.3, 11: 16.7, 12: 2.0, 13: 1.7, 14: 1.2, 15: 4.9, 16: 3.5, 17: 48.8, 18: 1.6, 19: 34.0}
+INFO:src.model.gail:epoc: 331 | Target Reward Mean: -204.79 | Reward Mean: -110.95
+INFO:src.model.gail:epoc: 332 | Target Reward Mean: -204.79 | Reward Mean: -109.66
+INFO:src.model.gail:epoc: 333 | Target Reward Mean: -204.79 | Reward Mean: -108.76
+INFO:src.model.gail:epoc: 334 | Target Reward Mean: -204.79 | Reward Mean: -110.84
+INFO:src.model.gail:epoc: 335 | Target Reward Mean: -204.79 | Reward Mean: -114.39
+INFO:src.model.gail:epoc: 336 | Target Reward Mean: -204.79 | Reward Mean: -115.55
+INFO:src.model.gail:epoc: 337 | Target Reward Mean: -204.79 | Reward Mean: -121.46
+INFO:src.model.gail:epoc: 338 | Target Reward Mean: -204.79 | Reward Mean: -126.96
+INFO:src.model.gail:epoc: 339 | Target Reward Mean: -204.79 | Reward Mean: -130.31
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 340 | Rewards: -134 | Perplexity:  22.1289 | KLD:  2.3457 | Anomaly:  71.0%| Actions: {0: 5.2, 1: 2.2, 2: 2.7, 3: 2.2, 4: 2.3, 5: 14.5, 6: 4.7, 7: 2.3, 8: 67.2, 9: 20.8, 10: 1.6, 11: 37.3, 12: 1.4, 13: 1.4, 14: 1.1, 15: 2.2, 16: 2.7, 17: 33.9, 18: 1.3, 19: 28.7}
+INFO:src.model.gail:epoc: 341 | Target Reward Mean: -204.79 | Reward Mean: -136.21
+INFO:src.model.gail:epoc: 342 | Target Reward Mean: -204.79 | Reward Mean: -139.61
+INFO:src.model.gail:epoc: 343 | Target Reward Mean: -204.79 | Reward Mean: -144.86
+INFO:src.model.gail:epoc: 344 | Target Reward Mean: -204.79 | Reward Mean: -151.17
+INFO:src.model.gail:epoc: 345 | Target Reward Mean: -204.79 | Reward Mean: -155.30
+INFO:src.model.gail:epoc: 346 | Target Reward Mean: -204.79 | Reward Mean: -158.35
+INFO:src.model.gail:epoc: 347 | Target Reward Mean: -204.79 | Reward Mean: -167.11
+INFO:src.model.gail:epoc: 348 | Target Reward Mean: -204.79 | Reward Mean: -172.92
+INFO:src.model.gail:epoc: 349 | Target Reward Mean: -204.79 | Reward Mean: -178.11
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 350 | Rewards: -186 | Perplexity:  21.2960 | KLD:  2.3070 | Anomaly:  73.0%| Actions: {0: 13.6, 1: 4.2, 2: 5.3, 3: 3.3, 4: 6.6, 5: 8.7, 6: 8.4, 7: 6.5, 8: 33.7, 9: 30.7, 10: 1.5, 11: 58.7, 12: 1.3, 13: 1.6, 14: 1.2, 15: 2.4, 16: 12.8, 17: 17.1, 18: 1.3, 19: 15.3}
+INFO:src.model.gail:epoc: 351 | Target Reward Mean: -204.79 | Reward Mean: -188.74
+INFO:src.model.gail:epoc: 352 | Target Reward Mean: -204.79 | Reward Mean: -192.92
+INFO:src.model.gail:epoc: 353 | Target Reward Mean: -204.79 | Reward Mean: -195.64
+INFO:src.model.gail:epoc: 354 | Target Reward Mean: -204.79 | Reward Mean: -200.88
+INFO:src.model.gail:epoc: 355 | Target Reward Mean: -204.79 | Reward Mean: -197.04
+INFO:src.model.gail:epoc: 356 | Target Reward Mean: -204.79 | Reward Mean: -198.26
+INFO:src.model.gail:epoc: 357 | Target Reward Mean: -204.79 | Reward Mean: -198.47
+INFO:src.model.gail:epoc: 358 | Target Reward Mean: -204.79 | Reward Mean: -204.43
+INFO:src.model.gail:epoc: 359 | Target Reward Mean: -204.79 | Reward Mean: -201.23
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 360 | Rewards: -223 | Perplexity:  19.8635 | KLD:  2.2371 | Anomaly:  85.0%| Actions: {0: 5.5, 1: 14.7, 2: 8.1, 3: 5.2, 4: 10.7, 5: 4.1, 6: 8.9, 7: 7.0, 8: 46.7, 9: 29.8, 10: 1.6, 11: 39.3, 12: 1.6, 13: 1.4, 14: 1.5, 15: 3.1, 16: 27.4, 17: 8.5, 18: 1.3, 19: 7.2}
+INFO:src.model.gail:epoc: 361 | Target Reward Mean: -204.79 | Reward Mean: -218.10
+INFO:src.model.gail:epoc: 362 | Target Reward Mean: -204.79 | Reward Mean: -230.19
+INFO:src.model.gail:epoc: 363 | Target Reward Mean: -204.79 | Reward Mean: -234.65
+INFO:src.model.gail:epoc: 364 | Target Reward Mean: -204.79 | Reward Mean: -239.63
+INFO:src.model.gail:epoc: 365 | Target Reward Mean: -204.79 | Reward Mean: -249.78
+INFO:src.model.gail:epoc: 366 | Target Reward Mean: -204.79 | Reward Mean: -254.10
+INFO:src.model.gail:epoc: 367 | Target Reward Mean: -204.79 | Reward Mean: -270.60
+INFO:src.model.gail:epoc: 368 | Target Reward Mean: -204.79 | Reward Mean: -272.61
+INFO:src.model.gail:epoc: 369 | Target Reward Mean: -204.79 | Reward Mean: -277.96
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 370 | Rewards: -269 | Perplexity:  16.0473 | KLD:  2.0239 | Anomaly:  51.0%| Actions: {0: 3.2, 1: 21.8, 2: 7.1, 3: 3.9, 4: 5.6, 5: 2.8, 6: 6.8, 7: 4.5, 8: 44.7, 9: 15.4, 10: 1.9, 11: 49.7, 12: 17.2, 13: 2.8, 14: 5.8, 15: 13.5, 16: 19.2, 17: 3.1, 18: 1.9, 19: 2.1}
+INFO:src.model.gail:epoc: 371 | Target Reward Mean: -204.79 | Reward Mean: -283.14
+INFO:src.model.gail:epoc: 372 | Target Reward Mean: -204.79 | Reward Mean: -292.69
+INFO:src.model.gail:epoc: 373 | Target Reward Mean: -204.79 | Reward Mean: -289.28
+INFO:src.model.gail:epoc: 374 | Target Reward Mean: -204.79 | Reward Mean: -284.29
+INFO:src.model.gail:epoc: 375 | Target Reward Mean: -204.79 | Reward Mean: -281.29
+INFO:src.model.gail:epoc: 376 | Target Reward Mean: -204.79 | Reward Mean: -271.73
+INFO:src.model.gail:epoc: 377 | Target Reward Mean: -204.79 | Reward Mean: -269.66
+INFO:src.model.gail:epoc: 378 | Target Reward Mean: -204.79 | Reward Mean: -267.52
+INFO:src.model.gail:epoc: 379 | Target Reward Mean: -204.79 | Reward Mean: -266.18
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 380 | Rewards: -268 | Perplexity:  19.8668 | KLD:  2.2373 | Anomaly:  15.0%| Actions: {0: 2.2, 1: 6.0, 2: 4.0, 3: 3.0, 4: 2.9, 5: 1.8, 6: 4.2, 7: 1.8, 8: 14.2, 9: 4.9, 10: 3.8, 11: 28.1, 12: 25.2, 13: 10.3, 14: 10.6, 15: 93.4, 16: 8.8, 17: 3.1, 18: 3.7, 19: 1.4}
+INFO:src.model.gail:epoc: 381 | Target Reward Mean: -204.79 | Reward Mean: -260.93
+INFO:src.model.gail:epoc: 382 | Target Reward Mean: -204.79 | Reward Mean: -259.87
+INFO:src.model.gail:epoc: 383 | Target Reward Mean: -204.79 | Reward Mean: -269.66
+INFO:src.model.gail:epoc: 384 | Target Reward Mean: -204.79 | Reward Mean: -272.05
+INFO:src.model.gail:epoc: 385 | Target Reward Mean: -204.79 | Reward Mean: -270.89
+INFO:src.model.gail:epoc: 386 | Target Reward Mean: -204.79 | Reward Mean: -267.04
+INFO:src.model.gail:epoc: 387 | Target Reward Mean: -204.79 | Reward Mean: -281.39
+INFO:src.model.gail:epoc: 388 | Target Reward Mean: -204.79 | Reward Mean: -301.24
+INFO:src.model.gail:epoc: 389 | Target Reward Mean: -204.79 | Reward Mean: -303.31
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 390 | Rewards: -311 | Perplexity:  22.7203 | KLD:  2.3711 | Anomaly:  2.0%| Actions: {0: 1.8, 1: 5.7, 2: 3.4, 3: 3.7, 4: 3.7, 5: 2.3, 6: 4.3, 7: 1.7, 8: 9.8, 9: 2.0, 10: 4.3, 11: 80.3, 12: 5.0, 13: 52.3, 14: 9.2, 15: 15.6, 16: 11.6, 17: 1.8, 18: 15.2, 19: 1.3}
+INFO:src.model.gail:epoc: 391 | Target Reward Mean: -204.79 | Reward Mean: -307.03
+INFO:src.model.gail:epoc: 392 | Target Reward Mean: -204.79 | Reward Mean: -298.70
+INFO:src.model.gail:epoc: 393 | Target Reward Mean: -204.79 | Reward Mean: -302.42
+INFO:src.model.gail:epoc: 394 | Target Reward Mean: -204.79 | Reward Mean: -307.06
+INFO:src.model.gail:epoc: 395 | Target Reward Mean: -204.79 | Reward Mean: -294.07
+INFO:src.model.gail:epoc: 396 | Target Reward Mean: -204.79 | Reward Mean: -300.17
+INFO:src.model.gail:epoc: 397 | Target Reward Mean: -204.79 | Reward Mean: -293.75
+INFO:src.model.gail:epoc: 398 | Target Reward Mean: -204.79 | Reward Mean: -282.91
+INFO:src.model.gail:epoc: 399 | Target Reward Mean: -204.79 | Reward Mean: -271.57
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 400 | Rewards: -267 | Perplexity:  18.3326 | KLD:  2.1564 | Anomaly:  100.0%| Actions: {0: 2.0, 1: 36.7, 2: 6.4, 3: 6.8, 4: 6.8, 5: 3.2, 6: 6.2, 7: 2.1, 8: 26.8, 9: 4.0, 10: 7.8, 11: 48.0, 12: 2.6, 13: 11.9, 14: 5.5, 15: 4.6, 16: 24.3, 17: 3.0, 18: 22.4, 19: 1.3}
+INFO:src.model.gail:epoc: 401 | Target Reward Mean: -204.79 | Reward Mean: -265.48
+INFO:src.model.gail:epoc: 402 | Target Reward Mean: -204.79 | Reward Mean: -265.65
+INFO:src.model.gail:epoc: 403 | Target Reward Mean: -204.79 | Reward Mean: -278.67
+INFO:src.model.gail:epoc: 404 | Target Reward Mean: -204.79 | Reward Mean: -264.79
+INFO:src.model.gail:epoc: 405 | Target Reward Mean: -204.79 | Reward Mean: -270.53
+INFO:src.model.gail:epoc: 406 | Target Reward Mean: -204.79 | Reward Mean: -265.20
+INFO:src.model.gail:epoc: 407 | Target Reward Mean: -204.79 | Reward Mean: -257.27
+INFO:src.model.gail:epoc: 408 | Target Reward Mean: -204.79 | Reward Mean: -260.37
+INFO:src.model.gail:epoc: 409 | Target Reward Mean: -204.79 | Reward Mean: -251.75
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 410 | Rewards: -239 | Perplexity:  18.7219 | KLD:  2.1777 | Anomaly:  83.0%| Actions: {0: 2.3, 1: 10.7, 2: 22.1, 3: 13.0, 4: 10.0, 5: 3.2, 6: 8.4, 7: 2.7, 8: 94.6, 9: 11.0, 10: 3.9, 11: 16.4, 12: 1.9, 13: 2.1, 14: 3.2, 15: 5.2, 16: 11.9, 17: 5.1, 18: 2.9, 19: 2.4}
+INFO:src.model.gail:epoc: 411 | Target Reward Mean: -204.79 | Reward Mean: -247.88
+INFO:src.model.gail:epoc: 412 | Target Reward Mean: -204.79 | Reward Mean: -239.89
+INFO:src.model.gail:epoc: 413 | Target Reward Mean: -204.79 | Reward Mean: -240.82
+INFO:src.model.gail:epoc: 414 | Target Reward Mean: -204.79 | Reward Mean: -229.78
+INFO:src.model.gail:epoc: 415 | Target Reward Mean: -204.79 | Reward Mean: -229.88
+INFO:src.model.gail:epoc: 416 | Target Reward Mean: -204.79 | Reward Mean: -218.39
+INFO:src.model.gail:epoc: 417 | Target Reward Mean: -204.79 | Reward Mean: -218.39
+INFO:src.model.gail:epoc: 418 | Target Reward Mean: -204.79 | Reward Mean: -220.08
+INFO:src.model.gail:epoc: 419 | Target Reward Mean: -204.79 | Reward Mean: -219.63
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 420 | Rewards: -213 | Perplexity:  20.0027 | KLD:  2.2444 | Anomaly:  70.0%| Actions: {0: 2.3, 1: 4.3, 2: 32.7, 3: 9.7, 4: 7.2, 5: 3.2, 6: 8.3, 7: 3.0, 8: 58.6, 9: 14.4, 10: 2.4, 11: 50.7, 12: 1.7, 13: 1.9, 14: 2.6, 15: 8.0, 16: 8.3, 17: 7.8, 18: 1.9, 19: 4.1}
+INFO:src.model.gail:epoc: 421 | Target Reward Mean: -204.79 | Reward Mean: -217.49
+INFO:src.model.gail:epoc: 422 | Target Reward Mean: -204.79 | Reward Mean: -218.22
+INFO:src.model.gail:epoc: 423 | Target Reward Mean: -204.79 | Reward Mean: -216.04
+INFO:src.model.gail:epoc: 424 | Target Reward Mean: -204.79 | Reward Mean: -217.35
+INFO:src.model.gail:epoc: 425 | Target Reward Mean: -204.79 | Reward Mean: -214.50
+INFO:src.model.gail:epoc: 426 | Target Reward Mean: -204.79 | Reward Mean: -217.64
+INFO:src.model.gail:epoc: 427 | Target Reward Mean: -204.79 | Reward Mean: -218.88
+INFO:src.model.gail:epoc: 428 | Target Reward Mean: -204.79 | Reward Mean: -228.69
+INFO:src.model.gail:epoc: 429 | Target Reward Mean: -204.79 | Reward Mean: -232.54
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 430 | Rewards: -258 | Perplexity:  23.1122 | KLD:  2.3889 | Anomaly:  0.0%| Actions: {0: 2.7, 1: 4.8, 2: 6.9, 3: 5.0, 4: 6.8, 5: 4.8, 6: 7.8, 7: 4.0, 8: 17.6, 9: 29.9, 10: 1.8, 11: 83.3, 12: 2.1, 13: 2.0, 14: 7.2, 15: 27.4, 16: 11.0, 17: 3.4, 18: 2.4, 19: 1.9}
+INFO:src.model.gail:epoc: 431 | Target Reward Mean: -204.79 | Reward Mean: -247.07
+INFO:src.model.gail:epoc: 432 | Target Reward Mean: -204.79 | Reward Mean: -246.58
+INFO:src.model.gail:epoc: 433 | Target Reward Mean: -204.79 | Reward Mean: -239.10
+INFO:src.model.gail:epoc: 434 | Target Reward Mean: -204.79 | Reward Mean: -238.46
+INFO:src.model.gail:epoc: 435 | Target Reward Mean: -204.79 | Reward Mean: -235.30
+INFO:src.model.gail:epoc: 436 | Target Reward Mean: -204.79 | Reward Mean: -251.07
+INFO:src.model.gail:epoc: 437 | Target Reward Mean: -204.79 | Reward Mean: -266.78
+INFO:src.model.gail:epoc: 438 | Target Reward Mean: -204.79 | Reward Mean: -289.75
+INFO:src.model.gail:epoc: 439 | Target Reward Mean: -204.79 | Reward Mean: -304.80
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 440 | Rewards: -312 | Perplexity:  19.7760 | KLD:  2.2328 | Anomaly:  2.0%| Actions: {0: 2.0, 1: 8.2, 2: 2.4, 3: 2.4, 4: 3.7, 5: 2.8, 6: 4.2, 7: 2.6, 8: 34.9, 9: 25.0, 10: 2.2, 11: 26.6, 12: 11.0, 13: 4.0, 14: 54.7, 15: 16.7, 16: 19.8, 17: 1.3, 18: 7.4, 19: 1.2}
+INFO:src.model.gail:epoc: 441 | Target Reward Mean: -204.79 | Reward Mean: -314.73
+INFO:src.model.gail:epoc: 442 | Target Reward Mean: -204.79 | Reward Mean: -319.02
+INFO:src.model.gail:epoc: 443 | Target Reward Mean: -204.79 | Reward Mean: -319.22
+INFO:src.model.gail:epoc: 444 | Target Reward Mean: -204.79 | Reward Mean: -320.75
+INFO:src.model.gail:epoc: 445 | Target Reward Mean: -204.79 | Reward Mean: -323.02
+INFO:src.model.gail:epoc: 446 | Target Reward Mean: -204.79 | Reward Mean: -323.92
+INFO:src.model.gail:epoc: 447 | Target Reward Mean: -204.79 | Reward Mean: -324.95
+INFO:src.model.gail:epoc: 448 | Target Reward Mean: -204.79 | Reward Mean: -324.16
+INFO:src.model.gail:epoc: 449 | Target Reward Mean: -204.79 | Reward Mean: -327.40
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 450 | Rewards: -327 | Perplexity:  22.9480 | KLD:  2.3815 | Anomaly:  0.0%| Actions: {0: 2.0, 1: 6.6, 2: 2.0, 3: 1.9, 4: 3.5, 5: 2.5, 6: 3.9, 7: 2.3, 8: 44.3, 9: 9.8, 10: 2.1, 11: 20.3, 12: 60.7, 13: 13.8, 14: 25.4, 15: 3.8, 16: 23.5, 17: 1.1, 18: 4.2, 19: 1.0}
+INFO:src.model.gail:epoc: 451 | Target Reward Mean: -204.79 | Reward Mean: -326.99
+INFO:src.model.gail:epoc: 452 | Target Reward Mean: -204.79 | Reward Mean: -325.43
+INFO:src.model.gail:epoc: 453 | Target Reward Mean: -204.79 | Reward Mean: -327.16
+INFO:src.model.gail:epoc: 454 | Target Reward Mean: -204.79 | Reward Mean: -327.97
+INFO:src.model.gail:epoc: 455 | Target Reward Mean: -204.79 | Reward Mean: -326.79
+INFO:src.model.gail:epoc: 456 | Target Reward Mean: -204.79 | Reward Mean: -325.38
+INFO:src.model.gail:epoc: 457 | Target Reward Mean: -204.79 | Reward Mean: -326.92
+INFO:src.model.gail:epoc: 458 | Target Reward Mean: -204.79 | Reward Mean: -326.97
+INFO:src.model.gail:epoc: 459 | Target Reward Mean: -204.79 | Reward Mean: -327.66
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 460 | Rewards: -325 | Perplexity:  20.1078 | KLD:  2.2496 | Anomaly:  0.0%| Actions: {0: 2.5, 1: 3.6, 2: 2.5, 3: 4.7, 4: 7.2, 5: 2.4, 6: 10.3, 7: 2.4, 8: 36.3, 9: 18.4, 10: 14.2, 11: 43.1, 12: 44.4, 13: 9.1, 14: 5.8, 15: 1.9, 16: 21.4, 17: 1.2, 18: 1.8, 19: 1.0}
+INFO:src.model.gail:epoc: 461 | Target Reward Mean: -204.79 | Reward Mean: -327.35
+INFO:src.model.gail:epoc: 462 | Target Reward Mean: -204.79 | Reward Mean: -324.71
+INFO:src.model.gail:epoc: 463 | Target Reward Mean: -204.79 | Reward Mean: -323.77
+INFO:src.model.gail:epoc: 464 | Target Reward Mean: -204.79 | Reward Mean: -322.71
+INFO:src.model.gail:epoc: 465 | Target Reward Mean: -204.79 | Reward Mean: -324.68
+INFO:src.model.gail:epoc: 466 | Target Reward Mean: -204.79 | Reward Mean: -323.27
+INFO:src.model.gail:epoc: 467 | Target Reward Mean: -204.79 | Reward Mean: -323.29
+INFO:src.model.gail:epoc: 468 | Target Reward Mean: -204.79 | Reward Mean: -325.00
+INFO:src.model.gail:epoc: 469 | Target Reward Mean: -204.79 | Reward Mean: -322.34
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 470 | Rewards: -326 | Perplexity:  26.2451 | KLD:  2.5164 | Anomaly:  0.0%| Actions: {0: 2.4, 1: 2.0, 2: 4.6, 3: 7.0, 4: 13.9, 5: 2.2, 6: 13.0, 7: 2.5, 8: 24.0, 9: 32.0, 10: 29.6, 11: 66.1, 12: 8.1, 13: 2.3, 14: 1.3, 15: 1.4, 16: 20.2, 17: 1.2, 18: 1.1, 19: 1.0}
+INFO:src.model.gail:epoc: 471 | Target Reward Mean: -204.79 | Reward Mean: -322.24
+INFO:src.model.gail:epoc: 472 | Target Reward Mean: -204.79 | Reward Mean: -323.77
+INFO:src.model.gail:epoc: 473 | Target Reward Mean: -204.79 | Reward Mean: -321.96
+INFO:src.model.gail:epoc: 474 | Target Reward Mean: -204.79 | Reward Mean: -323.80
+INFO:src.model.gail:epoc: 475 | Target Reward Mean: -204.79 | Reward Mean: -320.24
+INFO:src.model.gail:epoc: 476 | Target Reward Mean: -204.79 | Reward Mean: -323.45
+INFO:src.model.gail:epoc: 477 | Target Reward Mean: -204.79 | Reward Mean: -323.53
+INFO:src.model.gail:epoc: 478 | Target Reward Mean: -204.79 | Reward Mean: -324.45
+INFO:src.model.gail:epoc: 479 | Target Reward Mean: -204.79 | Reward Mean: -323.36
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 480 | Rewards: -326 | Perplexity:  35.7323 | KLD:  2.8243 | Anomaly:  0.0%| Actions: {0: 2.2, 1: 2.0, 2: 17.0, 3: 3.8, 4: 20.3, 5: 1.9, 6: 7.0, 7: 2.0, 8: 18.4, 9: 39.5, 10: 22.7, 11: 76.8, 12: 1.1, 13: 12.6, 14: 1.1, 15: 1.1, 16: 4.5, 17: 1.1, 18: 1.2, 19: 1.0}
+INFO:src.model.gail:epoc: 481 | Target Reward Mean: -204.79 | Reward Mean: -324.60
+INFO:src.model.gail:epoc: 482 | Target Reward Mean: -204.79 | Reward Mean: -325.85
+INFO:src.model.gail:epoc: 483 | Target Reward Mean: -204.79 | Reward Mean: -326.44
+INFO:src.model.gail:epoc: 484 | Target Reward Mean: -204.79 | Reward Mean: -322.50
+INFO:src.model.gail:epoc: 485 | Target Reward Mean: -204.79 | Reward Mean: -324.41
+INFO:src.model.gail:epoc: 486 | Target Reward Mean: -204.79 | Reward Mean: -320.30
+INFO:src.model.gail:epoc: 487 | Target Reward Mean: -204.79 | Reward Mean: -323.10
+INFO:src.model.gail:epoc: 488 | Target Reward Mean: -204.79 | Reward Mean: -322.43
+INFO:src.model.gail:epoc: 489 | Target Reward Mean: -204.79 | Reward Mean: -321.63
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 490 | Rewards: -316 | Perplexity:  33.9825 | KLD:  2.7738 | Anomaly:  0.0%| Actions: {0: 2.4, 1: 2.3, 2: 9.5, 3: 8.6, 4: 23.5, 5: 1.9, 6: 4.0, 7: 3.6, 8: 64.3, 9: 26.7, 10: 9.5, 11: 47.5, 12: 1.3, 13: 20.1, 14: 1.0, 15: 1.1, 16: 5.9, 17: 1.4, 18: 1.0, 19: 1.0}
+INFO:src.model.gail:epoc: 491 | Target Reward Mean: -204.79 | Reward Mean: -323.87
+INFO:src.model.gail:epoc: 492 | Target Reward Mean: -204.79 | Reward Mean: -318.48
+INFO:src.model.gail:epoc: 493 | Target Reward Mean: -204.79 | Reward Mean: -321.76
+INFO:src.model.gail:epoc: 494 | Target Reward Mean: -204.79 | Reward Mean: -315.63
+INFO:src.model.gail:epoc: 495 | Target Reward Mean: -204.79 | Reward Mean: -319.52
+INFO:src.model.gail:epoc: 496 | Target Reward Mean: -204.79 | Reward Mean: -318.29
+INFO:src.model.gail:epoc: 497 | Target Reward Mean: -204.79 | Reward Mean: -319.87
+INFO:src.model.gail:epoc: 498 | Target Reward Mean: -204.79 | Reward Mean: -307.58
+INFO:src.model.gail:epoc: 499 | Target Reward Mean: -204.79 | Reward Mean: -308.79
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 500 | Rewards: -279 | Perplexity:  28.4855 | KLD:  2.5974 | Anomaly:  0.0%| Actions: {0: 1.8, 1: 3.8, 2: 9.4, 3: 6.9, 4: 12.0, 5: 2.0, 6: 3.4, 7: 2.8, 8: 122.6, 9: 23.5, 10: 11.6, 11: 12.6, 12: 1.1, 13: 2.6, 14: 1.0, 15: 1.8, 16: 7.8, 17: 6.1, 18: 1.3, 19: 1.5}
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:gail || EPOCH 0 | Rewards: -294 | Perplexity:  28.4855 | KLD:  2.5974 | Anomaly:  0.0%| Actions: {0: 1.8, 1: 3.9, 2: 9.4, 3: 6.4, 4: 12.4, 5: 2.0, 6: 3.3, 7: 3.1, 8: 120.7, 9: 23.6, 10: 11.9, 11: 14.0, 12: 1.3, 13: 2.5, 14: 1.1, 15: 1.8, 16: 8.0, 17: 6.0, 18: 1.3, 19: 1.6}
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:random || EPOCH 0 | Rewards: -121 | Perplexity:  20.0000 | KLD:  2.2443 | Anomaly:  100.0%| Actions: {0: 12.0, 1: 11.3, 2: 12.2, 3: 11.9, 4: 11.5, 5: 11.4, 6: 11.4, 7: 11.7, 8: 11.4, 9: 11.5, 10: 10.8, 11: 11.5, 12: 12.5, 13: 10.9, 14: 11.7, 15: 11.5, 16: 11.1, 17: 11.7, 18: 11.1, 19: 10.8}
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:behavior_prob || EPOCH 0 | Rewards: -157 | Perplexity:  13.0853 | KLD:  1.8207 | Anomaly:  46.0%| Actions: {0: 5.4, 1: 8.5, 2: 6.7, 3: 4.6, 4: 8.1, 5: 5.5, 6: 5.0, 7: 6.1, 8: 42.1, 9: 12.9, 10: 7.1, 11: 53.9, 12: 7.8, 13: 9.1, 14: 6.1, 15: 11.9, 16: 11.2, 17: 8.3, 18: 5.3, 19: 4.5}
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:behavior_rf || EPOCH 0 | Rewards: -225 | Perplexity:  12.1881 | KLD:  inf | Anomaly:  31.0%| Actions: {0: 6.4, 1: 7.7, 2: 5.6, 3: 5.3, 4: 9.5, 5: 6.0, 6: 5.0, 7: 5.2, 8: 36.4, 9: 19.3, 10: 10.6, 11: 40.6, 12: 8.3, 13: 8.7, 14: 6.0, 15: 15.8, 16: 12.3, 17: 10.6, 18: 6.1, 19: 4.8}
+INFO:src.utils:-- creating simulated data --
+INFO:src.model.policy:behavior_rf || EPOCH 0 | Rewards: -291 | Perplexity:  2928.0434 | KLD:  inf | Anomaly:  35.0%| Actions: {0: 4.8, 1: 10.7, 2: 5.0, 3: 6.0, 4: 25.8, 5: 3.5, 6: 6.2, 7: 3.5, 8: 40.6, 9: 14.0, 10: 11.7, 11: 53.4, 12: 6.1, 13: 7.1, 14: 7.8, 15: 13.1, 16: 21.3, 17: 11.0, 18: 4.7, 19: 5.2}
