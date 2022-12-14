@@ -51,22 +51,19 @@ class GAIL(Policy):
         return action
 
     def get_action(self, state):
-        return int(self.act(state))
+        with torch.no_grad():
+            return int(self.act(state))
 
-    def get_probs(self, state: np.ndarray):
+    def get_all_probs(self, all_states: np.ndarray):
         self.pi.eval()
 
-        state = FloatTensor(state)
+        state = FloatTensor(all_states)
         distb = self.pi(state)
 
         probs = distb.probs.detach().cpu().numpy()
         return probs
 
-    def act_log_prob(self, state, action):
-        probs = self.get_probs(state)
-        return np.log(probs[action])
-
-    def train(self, train_steps, force_train=False):
+    def train(self, train_steps=200, force_train=False):
         logger.info("TEST DATA | Rewards: {0: .0f} |  Actions: {1}".format(self.test_reward, self.avg_action_counts))
         if force_train is False:
             is_loaded = self.load()
@@ -81,6 +78,8 @@ class GAIL(Policy):
         rwd_iter_means = []
         for i in range(train_steps):
             rwd_iter = []
+            rwd_last = []
+            solved = 0.0
 
             obs = []
             acts = []
@@ -99,12 +98,15 @@ class GAIL(Policy):
                 ep_lmbs = []
 
                 ep_step = 0
+                reward = 0
                 done = False
 
                 state = self.env.reset()
 
                 while not done and steps < self.num_steps_per_iter:
                     action = self.act(state)
+                    if ep_step == self.env.envconst.max_ep_len-1:
+                        action = np.array(self.env.envconst.action_map['a_end'])
 
                     ep_obs.append(state)
                     obs.append(state)
@@ -123,6 +125,8 @@ class GAIL(Policy):
 
                 if done:
                     rwd_iter.append(np.sum(ep_rwds))
+                    solved = 1.0 if reward == 100 else 0.0
+                    rwd_last.append(solved)
 
                 ep_obs = FloatTensor(np.array(ep_obs))
                 ep_acts = FloatTensor(np.array(ep_acts))
@@ -262,12 +266,12 @@ class GAIL(Policy):
 
             set_params(self.pi, new_params)
 
-            if (i + 1) % 10 == 0:
+            if (i + 1) % 20 == 0:
                 self.eval_score(i + 1)
             else:
                 logger.info(
-                    "epoc: {0} | Target Reward Mean: {1: .2f} | Reward Mean: {2: .2f}"
-                    .format(i + 1, self.test_reward, np.mean(rwd_iter))
+                    "epoc: {0} | Target Reward Mean: {1: .2f} | Reward Mean: {2: .2f} | Percent Solved: {3: .2f}"
+                    .format(i + 1, self.test_reward, np.mean(rwd_iter), np.sum(rwd_last)/len(rwd_last) * 100.0)
                 )
 
         if self.args.dryrun is False:

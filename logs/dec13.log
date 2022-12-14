@@ -1,8 +1,8 @@
-2022-12-14 10:21:04.058329: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+2022-12-13 17:29:12.706243: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 INFO:src.utils:-- loading data from ../processed_data/student_trajectories.pkl with test size 0.2 --
-
 INFO:src.evaluation:-- evaluation | reward and action --
+
 =====RUNNING RANDOM=====
 
 INFO:src.evaluation:-- evaluation | perplexity --
@@ -11,8 +11,6 @@ INFO:src.evaluation:-- evaluation | anomaly --
 CBLOF | Prec: 46.67 | Recall 100.0 | F1 62.67 | Acc 89.12 | f1w 90.94 | Anomaly 19.65
 IF | Prec: 43.0 | Recall 100.0 | F1 59.43 | Acc 87.95 | f1w 90.08 | Anomaly 20.82
 INFO:src.evaluation:-- evaluation | classify --
-/Applications/PyCharm.app/Contents/plugins/python/helpers/pydev/_pydevd_bundle/pydevd_utils.py:606: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
-  for item in s.iteritems():
 DT FName: s_objtest_cac Step: 140 0.0 1.0
 RF FName: s_objtest_jar11 Step: 140 1.0 1.0
 DT FName: s_objtest_cac Step: 140 0.0 1.0
@@ -115,11 +113,11 @@ DT FName: s_objtest_ket Step: 107 0.0 1.0
 RF FName: s_objtest_jar10 Step: 107 0.0 1.0
 DT | Prec: 98.82 | Recall 100.0 | F1 99.39 | Acc 99.39 | f1w 99.39
 RF | Prec: 100.0 | Recall 100.0 | F1 100.0 | Acc 100.0 | f1w 100.0
-INFO:src.model.policy:rand || EPOCH 0 | Rewards: -82 | Perplexity:  20.0000 | Div (pq qp js):  7.32  1.96  1.17 | Anomaly:  80.0% | Classify:  100.00% | Actions: {0: 10.1, 1: 10.0, 2: 10.0, 3: 9.9, 4: 10.0, 5: 10.1, 6: 9.7, 7: 9.9, 8: 10.0, 9: 10.0, 10: 9.8, 11: 10.1, 12: 9.9, 13: 10.0, 14: 10.1, 15: 10.0, 16: 9.7, 17: 9.9, 18: 9.8, 19: 11.1}
 
+INFO:src.model.policy:rand || EPOCH 0 | Rewards: -82 | Perplexity:  20.0000 | Div (pq qp js):  7.32  1.96  1.17 | Anomaly:  80.0% | Classify:  100.00% | Actions: {0: 10.1, 1: 10.0, 2: 10.0, 3: 9.9, 4: 10.0, 5: 10.1, 6: 9.7, 7: 9.9, 8: 10.0, 9: 10.0, 10: 9.8, 11: 10.1, 12: 9.9, 13: 10.0, 14: 10.1, 15: 10.0, 16: 9.7, 17: 9.9, 18: 9.8, 19: 11.1}
+INFO:src.evaluation:-- evaluation | reward and action --
 =====RUNNING ACTION PRIOR=====
 
-INFO:src.evaluation:-- evaluation | reward and action --
 INFO:src.evaluation:-- evaluation | perplexity --
 INFO:src.evaluation:-- evaluation | divergence --
 INFO:src.evaluation:-- evaluation | anomaly --
@@ -454,12 +452,12 @@ DT FName: s_solved Step: 197 1.0 0.0
 RF FName: s_end Step: 197 1.0 0.0
 DT | Prec: 100.0 | Recall 98.75 | F1 99.35 | Acc 99.39 | f1w 99.39
 RF | Prec: 98.82 | Recall 95.22 | F1 96.89 | Acc 96.97 | f1w 96.97
-INFO:src.model.policy:bcnn || EPOCH 0 | Rewards: -295 | Perplexity:  4861.3189 | Div (pq qp js):  7.80  7.44  3.95 | Anomaly:  44.4% | Classify:  100.00% | Actions: {0: 1.5, 1: 83.9, 2: 84.6, 3: 15.9, 4: 30.0, 5: 1.3, 6: 32.7, 7: 1.4, 8: 35.1, 9: 19.2, 10: 13.5, 11: 17.1, 12: 3.7, 13: 3.4, 14: 2.9, 15: 6.4, 16: 12.4, 17: 19.8, 18: 2.4, 19: 1.0}
 
+INFO:src.model.policy:bcnn || EPOCH 0 | Rewards: -295 | Perplexity:  4861.3189 | Div (pq qp js):  7.80  7.44  3.95 | Anomaly:  44.4% | Classify:  100.00% | Actions: {0: 1.5, 1: 83.9, 2: 84.6, 3: 15.9, 4: 30.0, 5: 1.3, 6: 32.7, 7: 1.4, 8: 35.1, 9: 19.2, 10: 13.5, 11: 17.1, 12: 3.7, 13: 3.4, 14: 2.9, 15: 6.4, 16: 12.4, 17: 19.8, 18: 2.4, 19: 1.0}
 =====RUNNING GAIL=====
 
 INFO:src.model.gail:TEST DATA | Rewards: -49 |  Actions: {0: 3.7, 1: 7.6, 2: 4.8, 3: 2.4, 4: 6.9, 5: 4.0, 6: 3.0, 7: 3.9, 8: 39.4, 9: 8.1, 10: 9.1, 11: 57.7, 12: 5.3, 13: 6.6, 14: 4.5, 15: 15.3, 16: 8.6, 17: 3.4, 18: 3.6, 19: 2.1}
-INFO:src.model.gail:-- no gail with run_name dec14_1 --
+INFO:src.model.gail:-- no gail with run_name dec13_1 --
 INFO:src.model.gail:epoc: 1 | Target Reward Mean: -49.48 | Reward Mean: -67.28 | Percent Solved:  27.71
 INFO:src.model.gail:epoc: 2 | Target Reward Mean: -49.48 | Reward Mean: -86.80 | Percent Solved:  20.48
 INFO:src.model.gail:epoc: 3 | Target Reward Mean: -49.48 | Reward Mean: -88.02 | Percent Solved:  22.89
@@ -1381,22 +1379,482 @@ INFO:src.model.gail:epoc: 155 | Target Reward Mean: -49.48 | Reward Mean: -282.1
 INFO:src.model.gail:epoc: 156 | Target Reward Mean: -49.48 | Reward Mean: -289.36 | Percent Solved:  4.82
 INFO:src.model.gail:epoc: 157 | Target Reward Mean: -49.48 | Reward Mean: -289.36 | Percent Solved:  4.82
 INFO:src.model.gail:epoc: 158 | Target Reward Mean: -49.48 | Reward Mean: -286.95 | Percent Solved:  6.02
-Traceback (most recent call last):
-  File "/Users/fahmid/IntelliMedia/CrystalIsland RL/src/main.py", line 90, in <module>
-  File "/Users/fahmid/IntelliMedia/CrystalIsland RL/src/main.py", line 83, in run
-    gail.train(200)
-  File "/Users/fahmid/IntelliMedia/CrystalIsland RL/src/model/gail.py", line 107, in train
-    action = self.act(state)
-  File "/Users/fahmid/IntelliMedia/CrystalIsland RL/src/model/gail.py", line 44, in act
-    self.pi.eval()
-  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1858, in eval
-    return self.train(False)
-  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1839, in train
-    module.train(mode)
-  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1839, in train
-    module.train(mode)
-  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1838, in train
-    for module in self.children():
-  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1719, in children
-    def children(self) -> Iterator['Module']:
-KeyboardInterrupt
+INFO:src.model.gail:epoc: 159 | Target Reward Mean: -49.48 | Reward Mean: -286.95 | Percent Solved:  6.02
+INFO:src.evaluation:-- evaluation | reward and action --
+INFO:src.evaluation:-- evaluation | perplexity --
+INFO:src.evaluation:-- evaluation | divergence --
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 43.0 | Recall 100.0 | F1 55.43 | Acc 83.68 | f1w 87.12 | Anomaly 25.09
+IF | Prec: 26.67 | Recall 60.0 | F1 36.67 | Acc 82.46 | f1w 85.13 | Anomaly 19.65
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_end Step: 169 1.0 0.0
+RF FName: s_worksheet Step: 169 14.0 39.0
+DT FName: s_end Step: 169 1.0 0.0
+RF FName: s_worksheet Step: 169 17.0 32.0
+DT FName: s_end Step: 169 1.0 0.0
+RF FName: s_worksheet Step: 169 0.0 35.0
+DT FName: s_end Step: 169 1.0 0.0
+RF FName: s_worksheet Step: 169 13.0 32.0
+DT FName: s_end Step: 169 1.0 0.0
+RF FName: s_worksheet Step: 169 12.0 27.0
+DT FName: s_end Step: 169 1.0 0.0
+RF FName: s_worksheet Step: 169 12.0 32.0
+DT FName: s_end Step: 169 1.0 0.0
+RF FName: s_worksheet Step: 169 6.0 34.0
+DT FName: s_end Step: 169 1.0 0.0
+RF FName: s_worksheet Step: 169 17.0 29.0
+DT FName: s_end Step: 169 1.0 0.0
+RF FName: s_worksheet Step: 169 15.0 43.0
+DT FName: s_end Step: 169 1.0 0.0
+RF FName: s_worksheet Step: 169 6.0 40.0
+DT FName: s_end Step: 187 1.0 0.0
+RF FName: s_testpos Step: 187 1.0 0.0
+DT FName: s_end Step: 187 1.0 0.0
+RF FName: s_testpos Step: 187 1.0 0.0
+DT FName: s_end Step: 187 1.0 0.0
+RF FName: s_testpos Step: 187 1.0 0.0
+DT FName: s_end Step: 187 1.0 0.0
+RF FName: s_testpos Step: 187 1.0 0.0
+DT FName: s_end Step: 187 1.0 0.0
+RF FName: s_testpos Step: 187 1.0 0.0
+DT FName: s_end Step: 187 1.0 0.0
+RF FName: s_testpos Step: 187 1.0 0.0
+DT FName: s_end Step: 187 1.0 0.0
+RF FName: s_testpos Step: 187 1.0 0.0
+DT FName: s_end Step: 187 1.0 0.0
+RF FName: s_testpos Step: 187 1.0 0.0
+DT FName: s_end Step: 187 1.0 0.0
+RF FName: s_testpos Step: 187 1.0 1.0
+DT FName: s_end Step: 187 1.0 0.0
+RF FName: s_testpos Step: 187 1.0 1.0
+DT FName: s_end Step: 195 1.0 0.0
+RF FName: s_end Step: 195 1.0 0.0
+DT FName: s_end Step: 195 1.0 0.0
+RF FName: s_end Step: 195 1.0 0.0
+DT FName: s_end Step: 195 1.0 0.0
+RF FName: s_end Step: 195 1.0 0.0
+DT FName: s_end Step: 195 1.0 0.0
+RF FName: s_end Step: 195 1.0 0.0
+DT FName: s_end Step: 195 1.0 0.0
+RF FName: s_end Step: 195 1.0 0.0
+DT FName: s_end Step: 195 1.0 0.0
+RF FName: s_end Step: 195 1.0 0.0
+DT FName: s_end Step: 195 1.0 0.0
+RF FName: s_end Step: 195 1.0 0.0
+DT FName: s_end Step: 195 1.0 0.0
+RF FName: s_end Step: 195 1.0 0.0
+DT FName: s_end Step: 195 1.0 0.0
+RF FName: s_end Step: 195 1.0 0.0
+DT FName: s_end Step: 195 1.0 0.0
+RF FName: s_end Step: 195 1.0 0.0
+DT FName: s_end Step: 181 1.0 0.0
+RF FName: s_worksheet Step: 181 14.0 41.0
+DT FName: s_end Step: 181 1.0 0.0
+RF FName: s_worksheet Step: 181 17.0 34.0
+DT FName: s_end Step: 181 1.0 0.0
+RF FName: s_worksheet Step: 181 3.0 38.0
+DT FName: s_end Step: 181 1.0 0.0
+RF FName: s_worksheet Step: 181 13.0 34.0
+DT FName: s_end Step: 181 1.0 0.0
+RF FName: s_worksheet Step: 181 12.0 28.0
+DT FName: s_end Step: 181 1.0 0.0
+RF FName: s_worksheet Step: 181 12.0 34.0
+DT FName: s_end Step: 181 1.0 0.0
+RF FName: s_worksheet Step: 181 6.0 40.0
+DT FName: s_end Step: 181 1.0 0.0
+RF FName: s_worksheet Step: 181 17.0 30.0
+DT FName: s_end Step: 181 1.0 0.0
+RF FName: s_worksheet Step: 181 15.0 48.0
+DT FName: s_end Step: 181 1.0 0.0
+RF FName: s_worksheet Step: 181 6.0 43.0
+DT FName: s_end Step: 194 1.0 0.0
+RF FName: s_end Step: 194 1.0 0.0
+DT FName: s_end Step: 194 1.0 0.0
+RF FName: s_end Step: 194 1.0 0.0
+DT FName: s_end Step: 194 1.0 0.0
+RF FName: s_end Step: 194 1.0 0.0
+DT FName: s_end Step: 194 1.0 0.0
+RF FName: s_end Step: 194 1.0 0.0
+DT FName: s_end Step: 194 1.0 0.0
+RF FName: s_end Step: 194 1.0 0.0
+DT FName: s_end Step: 194 1.0 0.0
+RF FName: s_end Step: 194 1.0 0.0
+DT FName: s_end Step: 194 1.0 0.0
+RF FName: s_end Step: 194 1.0 0.0
+DT FName: s_end Step: 194 1.0 0.0
+RF FName: s_end Step: 194 1.0 0.0
+DT FName: s_end Step: 194 1.0 0.0
+RF FName: s_end Step: 194 1.0 0.0
+DT FName: s_end Step: 194 1.0 0.0
+RF FName: s_end Step: 194 1.0 0.0
+DT | Prec: 98.82 | Recall 100.0 | F1 99.39 | Acc 99.39 | f1w 99.39
+RF | Prec: 98.82 | Recall 100.0 | F1 99.39 | Acc 99.39 | f1w 99.39
+INFO:src.model.policy:gail || EPOCH 160 | Rewards: -286 | Perplexity:  40.3965 | Div (pq qp js):  6.77  2.66  1.52 | Anomaly:  66.7% | Classify:  100.00% | Actions: {0: 2.4, 1: 23.3, 2: 2.2, 3: 1.4, 4: 8.4, 5: 3.2, 6: 1.6, 7: 3.5, 8: 4.2, 9: 4.2, 10: 1.1, 11: 75.2, 12: 1.0, 13: 1.3, 14: 1.3, 15: 42.7, 16: 27.1, 17: 1.2, 18: 1.1, 19: 1.0}
+INFO:src.model.gail:epoc: 161 | Target Reward Mean: -49.48 | Reward Mean: -289.36 | Percent Solved:  4.82
+INFO:src.model.gail:epoc: 162 | Target Reward Mean: -49.48 | Reward Mean: -289.36 | Percent Solved:  4.82
+INFO:src.model.gail:epoc: 163 | Target Reward Mean: -49.48 | Reward Mean: -294.18 | Percent Solved:  2.41
+INFO:src.model.gail:epoc: 164 | Target Reward Mean: -49.48 | Reward Mean: -294.18 | Percent Solved:  2.41
+INFO:src.model.gail:epoc: 165 | Target Reward Mean: -49.48 | Reward Mean: -282.13 | Percent Solved:  8.43
+INFO:src.model.gail:epoc: 166 | Target Reward Mean: -49.48 | Reward Mean: -286.95 | Percent Solved:  6.02
+INFO:src.model.gail:epoc: 167 | Target Reward Mean: -49.48 | Reward Mean: -282.13 | Percent Solved:  8.43
+INFO:src.model.gail:epoc: 168 | Target Reward Mean: -49.48 | Reward Mean: -267.67 | Percent Solved:  15.66
+INFO:src.model.gail:epoc: 169 | Target Reward Mean: -49.48 | Reward Mean: -274.90 | Percent Solved:  12.05
+INFO:src.model.gail:epoc: 170 | Target Reward Mean: -49.48 | Reward Mean: -267.67 | Percent Solved:  15.66
+INFO:src.model.gail:epoc: 171 | Target Reward Mean: -49.48 | Reward Mean: -270.08 | Percent Solved:  14.46
+INFO:src.model.gail:epoc: 172 | Target Reward Mean: -49.48 | Reward Mean: -277.31 | Percent Solved:  10.84
+INFO:src.model.gail:epoc: 173 | Target Reward Mean: -49.48 | Reward Mean: -275.06 | Percent Solved:  9.64
+INFO:src.model.gail:epoc: 174 | Target Reward Mean: -49.48 | Reward Mean: -279.72 | Percent Solved:  9.64
+INFO:src.model.gail:epoc: 175 | Target Reward Mean: -49.48 | Reward Mean: -267.67 | Percent Solved:  15.66
+INFO:src.model.gail:epoc: 176 | Target Reward Mean: -49.48 | Reward Mean: -277.31 | Percent Solved:  10.84
+INFO:src.model.gail:epoc: 177 | Target Reward Mean: -49.48 | Reward Mean: -256.33 | Percent Solved:  14.46
+INFO:src.model.gail:epoc: 178 | Target Reward Mean: -49.48 | Reward Mean: -274.99 | Percent Solved:  10.84
+INFO:src.model.gail:epoc: 179 | Target Reward Mean: -49.48 | Reward Mean: -270.12 | Percent Solved:  13.25
+INFO:src.evaluation:-- evaluation | reward and action --
+INFO:src.evaluation:-- evaluation | perplexity --
+INFO:src.evaluation:-- evaluation | divergence --
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 0.0 | Recall 0.0 | F1 0.0 | Acc 67.19 | f1w 72.97 | Anomaly 24.04
+IF | Prec: 0.0 | Recall 0.0 | F1 0.0 | Acc 73.68 | f1w 77.29 | Anomaly 17.54
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_worksheet Step: 176 30.0 1.0
+RF FName: s_worksheet Step: 176 30.0 1.0
+DT FName: s_worksheet Step: 176 4.0 0.0
+RF FName: s_worksheet Step: 176 4.0 0.0
+DT FName: s_worksheet Step: 176 6.0 1.0
+RF FName: s_worksheet Step: 176 6.0 1.0
+DT FName: s_worksheet Step: 176 16.0 0.0
+RF FName: s_worksheet Step: 176 16.0 0.0
+DT FName: s_worksheet Step: 176 6.0 0.0
+RF FName: s_worksheet Step: 176 6.0 0.0
+DT FName: s_worksheet Step: 176 10.0 0.0
+RF FName: s_worksheet Step: 176 10.0 0.0
+DT FName: s_worksheet Step: 176 8.0 0.0
+RF FName: s_worksheet Step: 176 8.0 0.0
+DT FName: s_worksheet Step: 176 10.0 0.0
+RF FName: s_worksheet Step: 176 10.0 0.0
+DT FName: s_worksheet Step: 176 9.0 0.0
+RF FName: s_worksheet Step: 176 9.0 0.0
+DT FName: s_worksheet Step: 176 11.0 0.0
+RF FName: s_worksheet Step: 176 11.0 0.0
+DT FName: s_worksheet Step: 176 31.0 1.0
+RF FName: s_worksheet Step: 176 30.0 1.0
+DT FName: s_worksheet Step: 176 4.0 0.0
+RF FName: s_worksheet Step: 176 4.0 0.0
+DT FName: s_worksheet Step: 176 6.0 1.0
+RF FName: s_worksheet Step: 176 6.0 1.0
+DT FName: s_worksheet Step: 176 16.0 0.0
+RF FName: s_worksheet Step: 176 16.0 0.0
+DT FName: s_worksheet Step: 176 6.0 0.0
+RF FName: s_worksheet Step: 176 6.0 0.0
+DT FName: s_worksheet Step: 176 10.0 0.0
+RF FName: s_worksheet Step: 176 10.0 0.0
+DT FName: s_worksheet Step: 176 8.0 0.0
+RF FName: s_worksheet Step: 176 8.0 0.0
+DT FName: s_worksheet Step: 176 10.0 0.0
+RF FName: s_worksheet Step: 176 10.0 0.0
+DT FName: s_worksheet Step: 176 9.0 0.0
+RF FName: s_worksheet Step: 176 9.0 0.0
+DT FName: s_worksheet Step: 176 11.0 0.0
+RF FName: s_worksheet Step: 176 11.0 0.0
+DT FName: s_worksheet Step: 195 31.0 1.0
+RF FName: s_worksheet Step: 195 31.0 1.0
+DT FName: s_worksheet Step: 195 4.0 0.0
+RF FName: s_worksheet Step: 195 4.0 0.0
+DT FName: s_worksheet Step: 195 6.0 1.0
+RF FName: s_worksheet Step: 195 6.0 1.0
+DT FName: s_worksheet Step: 195 16.0 0.0
+RF FName: s_worksheet Step: 195 16.0 0.0
+DT FName: s_worksheet Step: 195 6.0 0.0
+RF FName: s_worksheet Step: 195 6.0 0.0
+DT FName: s_worksheet Step: 195 10.0 0.0
+RF FName: s_worksheet Step: 195 10.0 0.0
+DT FName: s_worksheet Step: 195 8.0 0.0
+RF FName: s_worksheet Step: 195 8.0 0.0
+DT FName: s_worksheet Step: 195 10.0 0.0
+RF FName: s_worksheet Step: 195 10.0 0.0
+DT FName: s_worksheet Step: 195 9.0 0.0
+RF FName: s_worksheet Step: 195 9.0 0.0
+DT FName: s_worksheet Step: 195 11.0 0.0
+RF FName: s_worksheet Step: 195 11.0 0.0
+DT FName: s_end Step: 179 1.0 0.0
+RF FName: s_worksheet Step: 179 30.0 1.0
+DT FName: s_end Step: 179 1.0 0.0
+RF FName: s_worksheet Step: 179 4.0 0.0
+DT FName: s_end Step: 179 1.0 0.0
+RF FName: s_worksheet Step: 179 6.0 1.0
+DT FName: s_end Step: 179 1.0 0.0
+RF FName: s_worksheet Step: 179 16.0 0.0
+DT FName: s_end Step: 179 1.0 0.0
+RF FName: s_worksheet Step: 179 6.0 0.0
+DT FName: s_end Step: 179 1.0 0.0
+RF FName: s_worksheet Step: 179 10.0 0.0
+DT FName: s_end Step: 179 1.0 0.0
+RF FName: s_worksheet Step: 179 8.0 0.0
+DT FName: s_end Step: 179 1.0 0.0
+RF FName: s_worksheet Step: 179 10.0 0.0
+DT FName: s_end Step: 179 1.0 0.0
+RF FName: s_worksheet Step: 179 9.0 0.0
+DT FName: s_end Step: 179 1.0 0.0
+RF FName: s_worksheet Step: 179 11.0 0.0
+DT FName: s_worksheet Step: 176 30.0 1.0
+RF FName: s_worksheet Step: 176 30.0 1.0
+DT FName: s_worksheet Step: 176 4.0 0.0
+RF FName: s_worksheet Step: 176 4.0 0.0
+DT FName: s_worksheet Step: 176 5.0 1.0
+RF FName: s_worksheet Step: 176 6.0 1.0
+DT FName: s_worksheet Step: 176 16.0 0.0
+RF FName: s_worksheet Step: 176 16.0 0.0
+DT FName: s_worksheet Step: 176 6.0 0.0
+RF FName: s_worksheet Step: 176 6.0 0.0
+DT FName: s_worksheet Step: 176 9.0 0.0
+RF FName: s_worksheet Step: 176 10.0 0.0
+DT FName: s_worksheet Step: 176 8.0 0.0
+RF FName: s_worksheet Step: 176 8.0 0.0
+DT FName: s_worksheet Step: 176 10.0 0.0
+RF FName: s_worksheet Step: 176 10.0 0.0
+DT FName: s_worksheet Step: 176 9.0 0.0
+RF FName: s_worksheet Step: 176 9.0 0.0
+DT FName: s_worksheet Step: 176 11.0 0.0
+RF FName: s_worksheet Step: 176 11.0 0.0
+DT | Prec: 96.78 | Recall 100.0 | F1 98.32 | Acc 98.2 | f1w 98.19
+RF | Prec: 100.0 | Recall 100.0 | F1 100.0 | Acc 100.0 | f1w 100.0
+INFO:src.model.policy:gail || EPOCH 180 | Rewards: -255 | Perplexity:  73.4330 | Div (pq qp js):  6.82  3.26  1.85 | Anomaly:  0.0% | Classify:  100.00% | Actions: {0: 1.7, 1: 2.0, 2: 1.9, 3: 2.8, 4: 2.5, 5: 1.8, 6: 1.4, 7: 1.8, 8: 170.7, 9: 5.7, 10: 1.2, 11: 4.8, 12: 1.1, 13: 1.5, 14: 2.1, 15: 1.2, 16: 2.4, 17: 1.1, 18: 1.2, 19: 1.0}
+INFO:src.model.gail:epoc: 181 | Target Reward Mean: -49.48 | Reward Mean: -265.47 | Percent Solved:  15.66
+INFO:src.model.gail:epoc: 182 | Target Reward Mean: -49.48 | Reward Mean: -255.82 | Percent Solved:  19.28
+INFO:src.model.gail:epoc: 183 | Target Reward Mean: -49.48 | Reward Mean: -234.06 | Percent Solved:  30.12
+INFO:src.model.gail:epoc: 184 | Target Reward Mean: -49.48 | Reward Mean: -236.51 | Percent Solved:  28.92
+INFO:src.model.gail:epoc: 185 | Target Reward Mean: -49.48 | Reward Mean: -207.98 | Percent Solved:  39.76
+INFO:src.model.gail:epoc: 186 | Target Reward Mean: -49.48 | Reward Mean: -231.55 | Percent Solved:  32.53
+INFO:src.model.gail:epoc: 187 | Target Reward Mean: -49.48 | Reward Mean: -227.45 | Percent Solved:  31.33
+INFO:src.model.gail:epoc: 188 | Target Reward Mean: -49.48 | Reward Mean: -210.40 | Percent Solved:  43.37
+INFO:src.model.gail:epoc: 189 | Target Reward Mean: -49.48 | Reward Mean: -224.77 | Percent Solved:  33.73
+INFO:src.model.gail:epoc: 190 | Target Reward Mean: -49.48 | Reward Mean: -221.89 | Percent Solved:  38.55
+INFO:src.model.gail:epoc: 191 | Target Reward Mean: -49.48 | Reward Mean: -219.48 | Percent Solved:  39.76
+INFO:src.model.gail:epoc: 192 | Target Reward Mean: -49.48 | Reward Mean: -212.25 | Percent Solved:  43.37
+INFO:src.model.gail:epoc: 193 | Target Reward Mean: -49.48 | Reward Mean: -221.96 | Percent Solved:  37.35
+INFO:src.model.gail:epoc: 194 | Target Reward Mean: -49.48 | Reward Mean: -207.43 | Percent Solved:  45.78
+INFO:src.model.gail:epoc: 195 | Target Reward Mean: -49.48 | Reward Mean: -221.89 | Percent Solved:  38.55
+INFO:src.model.gail:epoc: 196 | Target Reward Mean: -49.48 | Reward Mean: -212.65 | Percent Solved:  42.17
+INFO:src.model.gail:epoc: 197 | Target Reward Mean: -49.48 | Reward Mean: -212.34 | Percent Solved:  42.17
+INFO:src.model.gail:epoc: 198 | Target Reward Mean: -49.48 | Reward Mean: -209.84 | Percent Solved:  44.58
+INFO:src.model.gail:epoc: 199 | Target Reward Mean: -49.48 | Reward Mean: -219.48 | Percent Solved:  39.76
+INFO:src.evaluation:-- evaluation | reward and action --
+INFO:src.evaluation:-- evaluation | perplexity --
+INFO:src.evaluation:-- evaluation | divergence --
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 9.52 | Recall 30.0 | F1 13.0 | Acc 67.19 | f1w 73.74 | Anomaly 28.48
+IF | Prec: 24.0 | Recall 40.0 | F1 29.05 | Acc 79.24 | f1w 82.56 | Anomaly 18.65
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_worksheet Step: 150 16.0 1.0
+RF FName: s_worksheet Step: 150 13.0 1.0
+DT FName: s_worksheet Step: 150 12.0 1.0
+RF FName: s_worksheet Step: 150 9.0 1.0
+DT FName: s_worksheet Step: 150 8.0 1.0
+RF FName: s_worksheet Step: 150 8.0 1.0
+DT FName: s_worksheet Step: 150 5.0 1.0
+RF FName: s_worksheet Step: 150 3.0 0.0
+DT FName: s_worksheet Step: 150 16.0 1.0
+RF FName: s_worksheet Step: 150 14.0 0.0
+DT FName: s_worksheet Step: 150 17.0 1.0
+RF FName: s_worksheet Step: 150 17.0 1.0
+DT FName: s_worksheet Step: 150 4.0 0.0
+RF FName: s_worksheet Step: 150 4.0 0.0
+DT FName: s_worksheet Step: 150 6.0 0.0
+RF FName: s_worksheet Step: 150 3.0 0.0
+DT FName: s_worksheet Step: 150 24.0 1.0
+RF FName: s_worksheet Step: 150 20.0 1.0
+DT FName: s_worksheet Step: 150 13.0 1.0
+RF FName: s_worksheet Step: 150 10.0 1.0
+DT FName: s_end Step: 199 1.0 0.0
+RF FName: s_computer Step: 199 4.0 22.0
+DT FName: s_end Step: 199 1.0 0.0
+RF FName: s_computer Step: 199 0.0 20.0
+DT FName: s_end Step: 199 1.0 0.0
+RF FName: s_computer Step: 199 0.0 22.0
+DT FName: s_end Step: 199 1.0 0.0
+RF FName: s_computer Step: 199 2.0 27.0
+DT FName: s_end Step: 199 1.0 0.0
+RF FName: s_computer Step: 199 0.0 26.0
+DT FName: s_end Step: 199 1.0 0.0
+RF FName: s_computer Step: 199 2.0 32.0
+DT FName: s_end Step: 199 1.0 0.0
+RF FName: s_computer Step: 199 0.0 32.0
+DT FName: s_end Step: 199 1.0 0.0
+RF FName: s_computer Step: 199 4.0 35.0
+DT FName: s_end Step: 199 1.0 0.0
+RF FName: s_computer Step: 199 0.0 32.0
+DT FName: s_end Step: 199 1.0 0.0
+RF FName: s_computer Step: 199 2.0 22.0
+DT FName: s_end Step: 171 1.0 0.0
+RF FName: s_computer Step: 171 4.0 16.0
+DT FName: s_end Step: 171 1.0 0.0
+RF FName: s_computer Step: 171 0.0 18.0
+DT FName: s_end Step: 171 1.0 0.0
+RF FName: s_computer Step: 171 0.0 19.0
+DT FName: s_end Step: 171 1.0 0.0
+RF FName: s_computer Step: 171 2.0 25.0
+DT FName: s_end Step: 171 1.0 0.0
+RF FName: s_computer Step: 171 0.0 23.0
+DT FName: s_end Step: 171 1.0 0.0
+RF FName: s_computer Step: 171 2.0 28.0
+DT FName: s_end Step: 171 1.0 0.0
+RF FName: s_computer Step: 171 0.0 27.0
+DT FName: s_end Step: 171 1.0 0.0
+RF FName: s_computer Step: 171 4.0 32.0
+DT FName: s_end Step: 171 1.0 0.0
+RF FName: s_computer Step: 171 0.0 28.0
+DT FName: s_end Step: 171 1.0 0.0
+RF FName: s_computer Step: 171 2.0 19.0
+DT FName: s_computer Step: 199 4.0 18.0
+RF FName: s_computer Step: 199 4.0 22.0
+DT FName: s_computer Step: 199 0.0 19.0
+RF FName: s_computer Step: 199 0.0 20.0
+DT FName: s_computer Step: 199 0.0 19.0
+RF FName: s_computer Step: 199 0.0 22.0
+DT FName: s_computer Step: 199 2.0 25.0
+RF FName: s_computer Step: 199 2.0 27.0
+DT FName: s_computer Step: 199 0.0 23.0
+RF FName: s_computer Step: 199 0.0 26.0
+DT FName: s_computer Step: 199 2.0 28.0
+RF FName: s_computer Step: 199 2.0 32.0
+DT FName: s_computer Step: 199 0.0 27.0
+RF FName: s_computer Step: 199 0.0 32.0
+DT FName: s_computer Step: 199 4.0 32.0
+RF FName: s_computer Step: 199 4.0 35.0
+DT FName: s_computer Step: 199 0.0 29.0
+RF FName: s_computer Step: 199 0.0 32.0
+DT FName: s_computer Step: 199 2.0 19.0
+RF FName: s_computer Step: 199 2.0 22.0
+DT FName: s_end Step: 180 1.0 0.0
+RF FName: s_worksheet Step: 180 16.0 1.0
+DT FName: s_end Step: 180 1.0 0.0
+RF FName: s_worksheet Step: 180 12.0 1.0
+DT FName: s_end Step: 180 1.0 0.0
+RF FName: s_worksheet Step: 180 8.0 1.0
+DT FName: s_end Step: 180 1.0 0.0
+RF FName: s_worksheet Step: 180 5.0 0.0
+DT FName: s_end Step: 180 1.0 0.0
+RF FName: s_worksheet Step: 180 16.0 1.0
+DT FName: s_end Step: 180 1.0 0.0
+RF FName: s_worksheet Step: 180 17.0 1.0
+DT FName: s_end Step: 180 1.0 0.0
+RF FName: s_worksheet Step: 180 4.0 0.0
+DT FName: s_end Step: 180 1.0 0.0
+RF FName: s_worksheet Step: 180 6.0 0.0
+DT FName: s_end Step: 180 1.0 0.0
+RF FName: s_worksheet Step: 180 24.0 1.0
+DT FName: s_end Step: 180 1.0 0.0
+RF FName: s_worksheet Step: 180 13.0 1.0
+DT | Prec: 97.65 | Recall 96.32 | F1 96.88 | Acc 97.01 | f1w 97.0
+RF | Prec: 100.0 | Recall 98.75 | F1 99.35 | Acc 99.39 | f1w 99.39
+INFO:src.model.policy:gail || EPOCH 200 | Rewards: -218 | Perplexity:  32.2670 | Div (pq qp js):  7.02  2.44  1.41 | Anomaly:  44.4% | Classify:  100.00% | Actions: {0: 1.7, 1: 3.4, 2: 12.2, 3: 8.1, 4: 10.9, 5: 2.1, 6: 3.8, 7: 3.2, 8: 65.9, 9: 20.6, 10: 2.0, 11: 20.0, 12: 1.1, 13: 9.9, 14: 23.8, 15: 1.3, 16: 6.1, 17: 1.8, 18: 5.0, 19: 1.0}
+INFO:src.evaluation:-- evaluation | reward and action --
+INFO:src.evaluation:-- evaluation | perplexity --
+INFO:src.evaluation:-- evaluation | divergence --
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 7.86 | Recall 40.0 | F1 13.0 | Acc 68.13 | f1w 74.17 | Anomaly 29.53
+IF | Prec: 16.67 | Recall 30.0 | F1 21.33 | Acc 77.95 | f1w 81.69 | Anomaly 19.82
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_computer Step: 181 6.0 18.0
+RF FName: s_computer Step: 181 6.0 18.0
+DT FName: s_computer Step: 181 4.0 24.0
+RF FName: s_computer Step: 181 4.0 24.0
+DT FName: s_computer Step: 181 2.0 22.0
+RF FName: s_computer Step: 181 2.0 22.0
+DT FName: s_computer Step: 181 5.0 22.0
+RF FName: s_computer Step: 181 5.0 21.0
+DT FName: s_computer Step: 181 0.0 21.0
+RF FName: s_computer Step: 181 0.0 21.0
+DT FName: s_computer Step: 181 0.0 24.0
+RF FName: s_computer Step: 181 0.0 24.0
+DT FName: s_computer Step: 181 0.0 21.0
+RF FName: s_computer Step: 181 0.0 21.0
+DT FName: s_computer Step: 181 3.0 24.0
+RF FName: s_computer Step: 181 3.0 24.0
+DT FName: s_computer Step: 181 2.0 25.0
+RF FName: s_computer Step: 181 2.0 24.0
+DT FName: s_computer Step: 181 2.0 19.0
+RF FName: s_computer Step: 181 2.0 18.0
+DT FName: s_computer Step: 163 6.0 20.0
+RF FName: s_computer Step: 163 6.0 16.0
+DT FName: s_computer Step: 163 4.0 26.0
+RF FName: s_computer Step: 163 4.0 23.0
+DT FName: s_computer Step: 163 2.0 24.0
+RF FName: s_computer Step: 163 2.0 20.0
+DT FName: s_computer Step: 163 5.0 23.0
+RF FName: s_computer Step: 163 5.0 20.0
+DT FName: s_computer Step: 163 0.0 21.0
+RF FName: s_computer Step: 163 0.0 18.0
+DT FName: s_computer Step: 163 0.0 25.0
+RF FName: s_computer Step: 163 0.0 24.0
+DT FName: s_computer Step: 163 0.0 21.0
+RF FName: s_computer Step: 163 0.0 18.0
+DT FName: s_computer Step: 163 3.0 26.0
+RF FName: s_computer Step: 163 3.0 20.0
+DT FName: s_computer Step: 163 2.0 26.0
+RF FName: s_computer Step: 163 2.0 23.0
+DT FName: s_computer Step: 163 2.0 19.0
+RF FName: s_computer Step: 163 2.0 16.0
+DT FName: s_end Step: 189 1.0 0.0
+RF FName: s_computer Step: 189 6.0 19.0
+DT FName: s_end Step: 189 1.0 0.0
+RF FName: s_computer Step: 189 4.0 24.0
+DT FName: s_end Step: 189 1.0 0.0
+RF FName: s_computer Step: 189 2.0 22.0
+DT FName: s_end Step: 189 1.0 0.0
+RF FName: s_computer Step: 189 5.0 22.0
+DT FName: s_end Step: 189 1.0 0.0
+RF FName: s_computer Step: 189 0.0 21.0
+DT FName: s_end Step: 189 1.0 0.0
+RF FName: s_computer Step: 189 0.0 24.0
+DT FName: s_end Step: 189 1.0 0.0
+RF FName: s_computer Step: 189 0.0 21.0
+DT FName: s_end Step: 189 1.0 0.0
+RF FName: s_computer Step: 189 3.0 24.0
+DT FName: s_end Step: 189 1.0 0.0
+RF FName: s_computer Step: 189 2.0 26.0
+DT FName: s_end Step: 189 1.0 0.0
+RF FName: s_computer Step: 189 2.0 19.0
+DT FName: s_end Step: 190 1.0 0.0
+RF FName: s_computer Step: 190 6.0 19.0
+DT FName: s_end Step: 190 1.0 0.0
+RF FName: s_computer Step: 190 4.0 24.0
+DT FName: s_end Step: 190 1.0 0.0
+RF FName: s_computer Step: 190 2.0 22.0
+DT FName: s_end Step: 190 1.0 0.0
+RF FName: s_computer Step: 190 5.0 23.0
+DT FName: s_end Step: 190 1.0 0.0
+RF FName: s_computer Step: 190 0.0 21.0
+DT FName: s_end Step: 190 1.0 0.0
+RF FName: s_computer Step: 190 0.0 24.0
+DT FName: s_end Step: 190 1.0 0.0
+RF FName: s_computer Step: 190 0.0 21.0
+DT FName: s_end Step: 190 1.0 0.0
+RF FName: s_computer Step: 190 3.0 25.0
+DT FName: s_end Step: 190 1.0 0.0
+RF FName: s_computer Step: 190 2.0 26.0
+DT FName: s_end Step: 190 1.0 0.0
+RF FName: s_computer Step: 190 2.0 19.0
+DT FName: s_end Step: 109 1.0 0.0
+RF FName: s_computer Step: 109 2.0 13.0
+DT FName: s_end Step: 109 1.0 0.0
+RF FName: s_computer Step: 109 4.0 19.0
+DT FName: s_end Step: 109 1.0 0.0
+RF FName: s_computer Step: 109 0.0 12.0
+DT FName: s_end Step: 109 1.0 0.0
+RF FName: s_computer Step: 109 5.0 15.0
+DT FName: s_end Step: 109 1.0 0.0
+RF FName: s_computer Step: 109 0.0 10.0
+DT FName: s_end Step: 109 1.0 0.0
+RF FName: s_computer Step: 109 0.0 17.0
+DT FName: s_end Step: 109 1.0 0.0
+RF FName: s_computer Step: 109 0.0 11.0
+DT FName: s_end Step: 109 1.0 0.0
+RF FName: s_computer Step: 109 0.0 15.0
+DT FName: s_end Step: 109 1.0 0.0
+RF FName: s_computer Step: 109 0.0 18.0
+DT FName: s_end Step: 109 1.0 0.0
+RF FName: s_computer Step: 109 2.0 8.0
+DT | Prec: 97.65 | Recall 97.65 | F1 97.61 | Acc 97.59 | f1w 97.59
+RF | Prec: 100.0 | Recall 98.82 | F1 99.39 | Acc 99.39 | f1w 99.39
+INFO:src.model.policy:gail || EPOCH 0 | Rewards: -216 | Perplexity:  32.2670 | Div (pq qp js):  7.02  2.44  1.41 | Anomaly:  25.0% | Classify:  100.00% | Actions: {0: 1.7, 1: 3.3, 2: 12.2, 3: 8.3, 4: 11.0, 5: 2.2, 6: 3.7, 7: 3.2, 8: 65.9, 9: 20.6, 10: 1.9, 11: 19.9, 12: 1.1, 13: 10.0, 14: 23.8, 15: 1.3, 16: 6.0, 17: 1.8, 18: 4.9, 19: 1.0}

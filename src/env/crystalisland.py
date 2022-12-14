@@ -10,21 +10,21 @@ from gym import Env, spaces
 logger = logging.getLogger(__name__)
 
 class CrystalIsland(Env):
-    def __init__(self, solution_predictor=None, action_probs=None, anomaly_detector=None):
+    def __init__(self, solution_predictor=None):
         super(CrystalIsland, self).__init__()
 
         # based on the defined state, we are creating an observation space
-        obs_space_tup = ()
+        obs_space_tup = {}
         for fname, fid in envconst.state_map.items():
-            if fname in ['s_testleft', 's_label', 's_worksheet', 's_workshsubmit', 's_notetake', 's_noteview',
-                         's_computer',
-                         's_quiz'] or 's_aes_' in fname:
-                obs_space_tup += (spaces.Discrete(200),)  # max count
+            if fname in ["s_testpos", "s_testleft", "s_label", "s_label_lesson", "s_label_slide",
+                         "s_worksheet", "s_workshsubmit", "s_notetake", "s_noteview", "s_computer"] or 's_aes_' in fname:
+                obs_space_tup[fid] = 200  # max count
             elif fname == 's_target_item':
-                obs_space_tup += (spaces.Discrete(3),)
+                obs_space_tup[fid] = 3
             else:
-                obs_space_tup += (spaces.Discrete(2),)
-        self.observation_space = spaces.Tuple(obs_space_tup)
+                obs_space_tup[fid] = 2
+        obs_space_tup = [dim for fid, dim in sorted(obs_space_tup.items())]
+        self.observation_space = spaces.MultiDiscrete(obs_space_tup)
 
         # based on the defined action, we are creating an observation space
         self.action_space = spaces.Discrete(len(envconst.action_map), )
@@ -35,12 +35,12 @@ class CrystalIsland(Env):
         self.solution_predictor = solution_predictor
         self.envconst = envconst
 
-        self.action_probs = action_probs
-        self.anomaly_detector = anomaly_detector
+        self.info = {}
+
 
     def _get_init_state(self):
         init_state = np.zeros(len(envconst.state_map))
-        init_state[envconst.state_map['s_label_lesson']] = 1
+        init_state[envconst.state_map['s_label_lesson']] = 0
 
         init_state[envconst.state_map['s_target_disease']] = np.random.choice([0, 1])
         init_state[envconst.state_map['s_target_item']] = np.random.choice([0, 1, 2])
@@ -69,7 +69,7 @@ class CrystalIsland(Env):
         self.state = deepcopy(state)
 
     def render(self, mode="human"):
-        raise NotImplementedError
+        print(self.info)
 
     def step(self, action: int):
         action_name = envconst.action_map_rev[action]
@@ -88,6 +88,8 @@ class CrystalIsland(Env):
             rand_val = "last step"
 
         elif next_state[envconst.state_map["s_end"]] == 1:
+            next_state = np.ones(len(envconst.state_map))
+            next_state[self.envconst.state_map['s_solved']] = self.state[self.envconst.state_map['s_solved']]
             rand_val = "game ended"
             reward = 0.0
 
@@ -138,31 +140,28 @@ class CrystalIsland(Env):
                     target_item = next_state[envconst.state_map['s_target_item']]
                     if (rand_val, target_item) in [("s_obj_egg", 0), ("s_obj_mil", 1), ("s_obj_san", 2)]:
                         next_state[envconst.state_map['s_testpos']] = 1
-                        next_state[envconst.state_map['s_label_slide']] = 1
 
         elif action_name in ['a_post', 'a_book', 'a_obj']:
             fnames = [f for f in envconst.state_map.keys() if 's' + action_name[1:] + "_" in f]
-            p = None
-            if self.action_probs is not None:
-                p = [self.action_probs[action_name][f] for f in fnames]
+
+            p = [self.envconst.obj_post_book_probs[action_name][f] for f in fnames]
             rand_val = np.random.choice(fnames, p=p)
             next_state[envconst.state_map[rand_val]] = 1
 
         elif 'a_label' == action_name:
-            # labeling must be available | usually lesson is tried much earlier than slide
-            if next_state[envconst.state_map["s_label_lesson"]] == 1:
-                # on avg 5.2 tries (sd 4.1) is needed for making lesson correct with min 1, max 28
-                rand_val = np.random.normal(5.2, scale=4.1)
-                if next_state[envconst.state_map["s_label"]] > rand_val:
-                    next_state[envconst.state_map["s_label_lesson"]] = 0
+            # when a_label is triggered, almost 50/50 chance of being lesson or slide
+            is_lesson = np.random.choice([True, False])
+            if next_state[envconst.state_map["s_label_lesson"]] == 0 and is_lesson:
                 next_state[envconst.state_map["s_label"]] += 1
+                rand_val = np.random.choice([True, False], p=envconst.label_accept["s_label_lesson"])
+                if rand_val:
+                    next_state[envconst.state_map["s_label_lesson"]] = 1
 
-            elif next_state[envconst.state_map["s_label_slide"]] == 1:
-                # on avg 8.4 tries (sd 5.7) is needed (including lesson) for making slide correct with min 1, max 38
-                rand_val = np.random.normal(8.4, scale=5.7)
-                if next_state[envconst.state_map["s_label"]] > rand_val:
-                    next_state[envconst.state_map["s_label_slide"]] = 0
+            elif next_state[envconst.state_map["s_label_slide"]] == 0 and is_lesson:
                 next_state[envconst.state_map["s_label"]] += 1
+                rand_val = np.random.choice([True, False], p=envconst.label_accept["s_label_slide"])
+                if rand_val:
+                    next_state[envconst.state_map["s_label_slide"]] = 1
 
         elif 'a_workshsubmit' == action_name:
             next_state[envconst.state_map['s' + action_name[1:]]] += 1
@@ -170,7 +169,7 @@ class CrystalIsland(Env):
                 solved = self.solution_predictor.predict([next_state])[0]
             else:
                 # the prob of getting unsolved and solve, respectively
-                solved = np.random.choice([0, 1], p=[.83, .17])
+                solved = np.random.choice([0, 1], p=[.84, .16])
 
             next_state[envconst.state_map["s_solved"]] = solved
 
@@ -180,13 +179,13 @@ class CrystalIsland(Env):
         elif 'a_end' == action_name:
             next_state[envconst.state_map['s_end']] = 1
 
-        next_state[envconst.state_map['s_step']] += 1
         # noting down info
         info["rand_val"] = rand_val
         info["aes"] = aes
         info["fchanges"] = self._diff_state(self.state, next_state)
 
         self.state = next_state
+        self.info = info
         return next_state, reward, done, info
 
     def _trigger_aes(self, next_state, aes_name: str, action_prob: dict):

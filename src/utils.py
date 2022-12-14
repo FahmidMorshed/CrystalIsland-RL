@@ -7,10 +7,20 @@ from copy import deepcopy
 import numpy as np
 import pandas as pd
 import torch
-from pyod.models.auto_encoder_torch import AutoEncoder
-from sklearn.metrics import classification_report, f1_score
+from imitation.data.types import Transitions
+from pyod.models.abod import ABOD
+from pyod.models.auto_encoder import AutoEncoder
+# from pyod.models.auto_encoder_torch import AutoEncoder
+from pyod.models.cblof import CBLOF
+from pyod.models.copod import COPOD
+from pyod.models.iforest import IForest
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, f1_score, accuracy_score, precision_recall_fscore_support
 from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.neural_network import MLPClassifier
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
 
 import src.env.constants as envconst
 from src.model import policy
@@ -41,7 +51,57 @@ def get_act_prob_df(df):
     df.drop(columns=['state_tup'], inplace=True)
     return df
 
-def reward_predictor(df_org, seed=0, print_eval=False):
+
+def get_anomaly_detector(df, seed=0, print_eval=False):
+    X, y = actions_by_ep(df)
+
+    if print_eval:
+        skf = StratifiedKFold(n_splits=10, random_state=seed, shuffle=True)
+        train_1 = []
+        test_1 = []
+        train_2 = []
+        test_2 = []
+        train_3 = []
+        test_3 = []
+        for train_index, test_index in skf.split(X, y):
+            X_train, X_test = X[train_index], X[test_index]
+            y_train, y_test = y[train_index], y[test_index]
+
+            detector = CBLOF(contamination=0.05, random_state=seed)
+            detector.fit(X_train)
+            y_train = detector.predict(X_train)
+            y_test = detector.predict(X_test)
+            train_1.append(sum(y_train) / len(y_train) * 100.0)
+            test_1.append(sum(y_test) / len(y_test) * 100.0)
+
+            detector = AutoEncoder(contamination=0.05, verbose=0, epochs=500)
+            detector.fit(X_train)
+            y_train = detector.predict(X_train)
+            y_test = detector.predict(X_test)
+            train_2.append(sum(y_train) / len(y_train) * 100.0)
+            test_2.append(sum(y_test) / len(y_test) * 100.0)
+
+            detector = IForest(contamination=0.05)
+            detector.fit(X_train)
+            y_train = detector.predict(X_train)
+            y_test = detector.predict(X_test)
+            train_3.append(sum(y_train) / len(y_train) * 100.0)
+            test_3.append(sum(y_test) / len(y_test) * 100.0)
+
+        logger.info("CBLOF | Train | Anomaly: {0: .2f}%".format(np.mean(train_1)))
+        logger.info("CBLOF | Test | Anomaly: {0: .2f}%".format(np.mean(test_1)))
+        logger.info("ABOD | Train | Anomaly: {0: .2f}%".format(np.mean(train_2)))
+        logger.info("ABOD | Test | Anomaly: {0: .2f}%".format(np.mean(test_2)))
+        logger.info("IForest | Train | Anomaly: {0: .2f}%".format(np.mean(train_3)))
+        logger.info("IForest | Test | Anomaly: {0: .2f}%".format(np.mean(test_3)))
+
+    detector = CBLOF(contamination=0.05, random_state=seed)
+    detector.fit(X)
+
+    return detector
+
+def solve_predictor(df_location, seed=0, print_eval=False):
+    df_org = pd.read_pickle(df_location)
     df = df_org.loc[(df_org['action'] == envconst.action_map['a_workshsubmit'])].copy()
     df['temp'] = df.apply(lambda x: x['next_state'][envconst.state_map['s_end']], axis=1)
     df = df.loc[df['temp'] == 0]
@@ -52,31 +112,138 @@ def reward_predictor(df_org, seed=0, print_eval=False):
 
     if print_eval:
         skf = StratifiedKFold(n_splits=10, random_state=seed, shuffle=True)
-        f1 = []
+        metrics = []
+        metrics_svm = []
+        metrics_dt = []
+        metrics_rf = []
+        metrics_base = []
+        metrics_major = []
+        metrics_minor = []
+        acc = []
+        acc_svm = []
+        acc_dt = []
+        acc_rf = []
+        acc_base = []
+        acc_major = []
+        acc_minor = []
+        f1w = []
+        f1w_svm = []
+        f1w_dt = []
+        f1w_rf = []
+        f1w_base = []
+        f1w_major = []
+        f1w_minor = []
         for train_index, test_index in skf.split(X, y):
             X_train, X_test = X[train_index], X[test_index]
             y_train, y_test = y[train_index], y[test_index]
 
-            clf = MLPClassifier(random_state=seed, max_iter=1000, shuffle=True)
+            clf = MLPClassifier(random_state=seed, hidden_layer_sizes=(100,), max_iter=10000, shuffle=True, activation='logistic')
             clf.fit(X_train, y_train)
             y_pred = clf.predict(X_test)
-            print(classification_report(y_test, y_pred))
-            f1.append(f1_score(y_test, y_pred, average='weighted'))
+            metrics.append(precision_recall_fscore_support(y_test, y_pred, zero_division=0))
+            acc.append(accuracy_score(y_test, y_pred))
+            f1w.append(f1_score(y_test, y_pred, average='weighted'))
 
-        print("F1 Weighted Mean:", np.mean(f1))
+            # other baselines
+            clf = SVC(random_state=seed)
+            clf.fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
+            metrics_svm.append(precision_recall_fscore_support(y_test, y_pred, zero_division=0))
+            acc_svm.append(accuracy_score(y_test, y_pred))
+            f1w_svm.append(f1_score(y_test, y_pred, average='weighted'))
 
-    clf = MLPClassifier(random_state=seed, max_iter=1000, shuffle=True)
+            clf = DecisionTreeClassifier(random_state=seed)
+            clf.fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
+            metrics_dt.append(precision_recall_fscore_support(y_test, y_pred, zero_division=0))
+            acc_dt.append(accuracy_score(y_test, y_pred))
+            f1w_dt.append(f1_score(y_test, y_pred, average='weighted'))
+
+            clf = RandomForestClassifier(random_state=seed)
+            clf.fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
+            metrics_rf.append(precision_recall_fscore_support(y_test, y_pred, zero_division=0))
+            acc_rf.append(accuracy_score(y_test, y_pred))
+            f1w_rf.append(f1_score(y_test, y_pred, average='weighted'))
+
+            y_base = np.random.choice([0, 1], p=[.84, .16], size=len(y_test))
+            metrics_base.append(precision_recall_fscore_support(y_test, y_base, zero_division=0))
+            acc_base.append(accuracy_score(y_test, y_base))
+            f1w_base.append(f1_score(y_test, y_base, average='weighted'))
+
+            y_major = np.array([0] * len(y_test))
+            metrics_major.append(precision_recall_fscore_support(y_test, y_major, zero_division=0))
+            acc_major.append(accuracy_score(y_test, y_major))
+            f1w_major.append(f1_score(y_test, y_major, average='weighted'))
+
+            y_minor = np.array([1] * len(y_test))
+            metrics_minor.append(precision_recall_fscore_support(y_test, y_minor, zero_division=0))
+            acc_minor.append(accuracy_score(y_test, y_minor))
+            f1w_minor.append(f1_score(y_test, y_minor, average='weighted'))
+
+        prec, rec, f1 = [round(v1 * 100, 2) for (v0, v1) in np.mean(np.stack(metrics), axis=0)][:3]
+        accuracy = round(np.mean(acc) * 100, 2)
+        f1w = round(np.mean(f1w) * 100, 2)
+        print(f"NN | Prec: {prec} | Recall {rec} | F1 {f1} | Acc {accuracy} | f1w {f1w}")
+        prec, rec, f1 = [round(v1 * 100, 2) for (v0, v1) in np.mean(np.stack(metrics_svm), axis=0)][:3]
+        accuracy = round(np.mean(acc_svm) * 100, 2)
+        f1w = round(np.mean(f1w_svm) * 100, 2)
+        print(f"SVM | Prec: {prec} | Recall {rec} | F1 {f1} | Acc {accuracy} | f1w {f1w}")
+        prec, rec, f1 = [round(v1 * 100, 2) for (v0, v1) in np.mean(np.stack(metrics_dt), axis=0)][:3]
+        accuracy = round(np.mean(acc_dt) * 100, 2)
+        f1w = round(np.mean(f1w_dt) * 100, 2)
+        print(f"DT | Prec: {prec} | Recall {rec} | F1 {f1} | Acc {accuracy} | f1w {f1w}")
+        prec, rec, f1 = [round(v1 * 100, 2) for (v0, v1) in np.mean(np.stack(metrics_rf), axis=0)][:3]
+        accuracy = round(np.mean(acc_rf) * 100, 2)
+        f1w = round(np.mean(f1w_rf) * 100, 2)
+        print(f"RF | Prec: {prec} | Recall {rec} | F1 {f1} | Acc {accuracy} | f1w {f1w}")
+
+        prec, rec, f1 = [round(v1 * 100, 2) for (v0, v1) in np.mean(np.stack(metrics_base), axis=0)][:3]
+        accuracy = round(np.mean(acc_base) * 100, 2)
+        f1w = round(np.mean(f1w_base) * 100, 2)
+        print(f"BASE | Prec: {prec} | Recall {rec} | F1 {f1} | Acc {accuracy} | f1w {f1w}")
+        prec, rec, f1 = [round(v1 * 100, 2) for (v0, v1) in np.mean(np.stack(metrics_major), axis=0)][:3]
+        accuracy = round(np.mean(acc_major) * 100, 2)
+        f1w = round(np.mean(f1w_major) * 100, 2)
+        print(f"MAJOR | Prec: {prec} | Recall {rec} | F1 {f1} | Acc {accuracy} | f1w {f1w}")
+        prec, rec, f1 = [round(v1 * 100, 2) for (v0, v1) in np.mean(np.stack(metrics_minor), axis=0)][:3]
+        accuracy = round(np.mean(acc_minor) * 100, 2)
+        f1w = round(np.mean(f1w_minor) * 100, 2)
+        print(f"MINOR | Prec: {prec} | Recall {rec} | F1 {f1} | Acc {accuracy} | f1w {f1w}")
+
+    clf = MLPClassifier(random_state=seed, hidden_layer_sizes=(100,), max_iter=10000, shuffle=True,
+                        activation='logistic')
     clf.fit(X, y)
     return clf
 
-def load_data_by_reward(df_location, reward=100, test_size=0.2):
+def load_data_by_solved(df_location, solved_reward=100, test_size=0.2):
     logger.info("-- loading data from {0} with test size {1} --".format(df_location, test_size))
     df = pd.read_pickle(df_location)
 
     df = get_act_prob_df(df)
 
-    d = df.loc[(df['reward'] == reward)]
+    d = df.loc[(df['reward'] == solved_reward)]
     student_ids = d['episode'].tolist()
+
+    train_student, test_student = train_test_split(student_ids, test_size=test_size)
+
+    train_df = df.loc[df['episode'].isin(train_student)].reset_index(drop=True)
+    test_df = df.loc[df['episode'].isin(test_student)].reset_index(drop=True)
+
+    # shuffle
+    train_df = train_df.set_index("episode").loc[train_student].reset_index()
+    test_df = test_df.set_index("episode").loc[test_student].reset_index()
+
+    return train_df, test_df
+
+def load_data_by_reward(df_location, high=True, test_size=0.2):
+    logger.info("-- loading data from {0} with test size {1} --".format(df_location, test_size))
+    df = pd.read_pickle(df_location)
+
+    df = get_act_prob_df(df)
+
+    d = df.groupby('episode').sum()
+    student_ids = d.loc[d['reward'] >= -150]['episode'].unique() if high else d.loc[d['reward'] < -150]['episode'].unique()
 
     train_student, test_student = train_test_split(student_ids, test_size=test_size)
 
@@ -297,14 +464,28 @@ def pad_states(df, scaler=None, max_len=230):
 
 def actions_by_ep(df):
     all_actions = []
+    all_rewards = []
     for student, d in df.groupby('episode'):
         actions = d['action']
         actions = np.array(actions)
+        all_rewards.append(d.iloc[-1]['reward'])
 
         all_actions.append(actions)
 
     actions = np.stack(all_actions)
-    return actions
+    rewards = np.array(all_rewards)
+    return actions, rewards
+
+def states_by_ep(df):
+    all_states = []
+    for student, d in df.groupby('episode'):
+        states = d['state']
+        states = np.stack(states).flatten()
+
+        all_states.append(states)
+
+    states = np.stack(all_states)
+    return states
 
 
 
@@ -335,34 +516,35 @@ def get_episode_df(policy, total_eps):
     avg_action_counts = pd.DataFrame(action_counts).mean().reset_index().sort_values(by='index').set_index('index').round(1).to_dict()[0]
     return np.mean(steps), np.mean(rewards), avg_action_counts
 
+
 def simulate_env(policy, total_episode):
-    logger.info("-- creating simulated data --")
+    # logger.info("-- creating simulated data --")
     data = []
+    steps = 0
     for ep in range(total_episode):
         state = policy.env.reset()
         ep_step = 0
         done = False
         while not done:
             action = policy.get_action(state)
+            if ep_step == envconst.max_ep_len-1:
+                action = envconst.action_map['a_end']
             next_state, reward, done, info = policy.env.step(action)
 
             data.append({'episode': str(ep), 'step': ep_step, 'state': state, 'action': action, 'reward': reward,
                          'next_state': next_state, 'done': done, 'info': info})
             state = deepcopy(next_state)
             ep_step += 1
-
+            steps += 1
     df = pd.DataFrame(data, columns=['episode', 'step', 'state', 'action', 'reward', 'next_state', 'done', 'info'])
 
     return df
 
-def get_anomaly_detector(df, test_df):
-    X_train = actions_by_ep(df)
-    detector = AutoEncoder(contamination=0.05, epochs=1000)
-    detector.fit(X_train)
-
-    X_test = actions_by_ep(test_df)
-    y_pred = detector.predict(X_test)
-    y_train_pred = detector.predict(X_train)
-    logger.info("Train data anomaly: {0: .2f}%".format(sum(y_train_pred) / len(y_train_pred) * 100.0))
-    logger.info("Test data anomaly: {0: .2f}%".format(sum(y_pred)/len(y_pred)*100.0))
-    return detector
+def get_transitions(df: pd.DataFrame):
+    states = np.stack(df['state'])
+    actions = np.array(df['action'])
+    next_states = np.stack(df['next_state'])
+    dones = np.array(df['done'])
+    infos = np.array(df['info'])
+    transitions = Transitions(obs=states, acts=actions, infos=infos, next_obs=next_states, dones=dones)
+    return transitions
