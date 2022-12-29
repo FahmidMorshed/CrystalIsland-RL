@@ -123,6 +123,6 @@ def get_env():
 
     anomaly_detector = utils.get_anomaly_detector(train, test)
     action_probs = utils.get_action_probs()
-    clf = utils.solve_predictor(train, args.seed, print_eval=False)
+    clf = utils.outcome_predictor(train, args.seed, print_eval=False)
     env = CrystalIsland(solution_predictor=clf, action_probs=action_probs, anomaly_detector=anomaly_detector)
     return env

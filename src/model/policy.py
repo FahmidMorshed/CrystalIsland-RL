@@ -1,5 +1,6 @@
 import dataclasses
 import logging
+import re
 from copy import deepcopy
 
 import numpy as np
@@ -7,6 +8,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from sklearn.tree import DecisionTreeClassifier
+from transformers import GPT2Tokenizer, GPT2LMHeadModel
 
 from src import evaluation, utils
 
@@ -39,9 +41,9 @@ class Policy:
         return
 
     def eval_score(self, epoch):
-        rewards, actions = evaluation.avg_rewards_actions(self)
-        perp = evaluation.perplexity(self)
-        kld_pq, kld_qp, jsd = evaluation.divergence(self)
+        rewards, actions = 0.0, 0.0 #evaluation.avg_rewards_actions(self)
+        perp = 0.0 #evaluation.perplexity(self)
+        kld_pq, kld_qp, jsd = 0.0, 0.0, 0.0, #evaluation.divergence(self)
         detector, anomaly_f1w = evaluation.anomaly(self)
         clf, clf_f1w = evaluation.classify(self)
         logger.info("{6} || EPOCH {0} | Rewards: {1: .0f} | "
@@ -105,3 +107,48 @@ class BehaviorCloning(Policy):
         # logger.info(classification_report(y_test, y_pred, zero_division=0))
 
         return
+
+
+class LanguageModel(Policy):
+    def __init__(self, args: dataclasses, train_df: pd.DataFrame, test_df: pd.DataFrame, env, name="gpt"):
+        super().__init__(args, train_df, test_df, env, name)
+
+        # load tokenizer and model
+        self.tokenizer = GPT2Tokenizer.from_pretrained("gpt2", bos_token='<|startoftext|>',
+                                                  eos_token='<|endoftext|>', pad_token='<|pad|>')
+        self.model = GPT2LMHeadModel.from_pretrained("../huggingfaceckpt/gpt2-epoch-2")
+        self.model.resize_token_embeddings(len(self.tokenizer))
+        self.model.eval()
+
+        self.probs = self.env.envconst.action_probs
+
+    def get_action(self, state: np.ndarray):
+        state_str = utils.state_string(state)
+        prompt = f'<|startoftext|>Current State: {state_str}\nNext Action:'
+        # generate tokens
+        token = self.tokenizer(f"{prompt}", return_tensors="pt")
+        generated = token.input_ids
+        attention_mask = token.attention_mask
+        # perform prediction
+        sample_outputs = self.model.generate(
+            generated,
+            attention_mask=attention_mask,
+            do_sample=False,
+            top_k=50,
+            max_length=1024,
+            top_p=0.90,
+            temperature=0.0,
+            num_return_sequences=0,
+            pad_token_id=50256)
+        # decode the predicted tokens into texts
+        pred_text = self.tokenizer.decode(sample_outputs[0], skip_special_tokens=True)
+        # extract the predicted sentiment
+        try:
+            action_str = re.findall("\nNext Action: (.*)", pred_text)[-1]
+        except:
+            action_str = "None"
+        return utils.action_string_rev(action_str)
+
+    def get_all_probs(self, all_states: np.ndarray):
+        all_probs = np.stack([self.probs] * len(all_states))
+        return all_probs

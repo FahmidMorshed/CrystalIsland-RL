@@ -1,0 +1,1846 @@
+2022-12-28 14:11:56.705985: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+==========
+RANDOM 0
+NN | Prec: 49.09 | Recall 51.28 | F1 49.83 | Acc 53.06 | f1w 52.86
+SVM | Prec: 53.48 | Recall 50.64 | F1 51.5 | Acc 57.35 | f1w 56.93
+DT | Prec: 50.92 | Recall 52.95 | F1 51.14 | Acc 55.9 | f1w 55.37
+RF | Prec: 53.08 | Recall 36.22 | F1 42.34 | Acc 55.91 | f1w 54.13
+BASE | Prec: 42.36 | Recall 16.6 | F1 22.65 | Acc 53.74 | f1w 46.62
+MAJOR | Prec: 0.0 | Recall 0.0 | F1 0.0 | Acc 54.48 | f1w 38.44
+MINOR | Prec: 45.52 | Recall 100.0 | F1 62.54 | Acc 45.52 | f1w 28.49
+INFO:src.utils:-- loading data from ../processed_data/student_trajectories.pkl with test size 0.2 --
+
+=====RUNNING RANDOM=====
+
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 19.64 | Recall 29.0 | F1 23.33 | Acc 82.45 | f1w 84.27 | Anomaly 14.29
+IF | Prec: 2.22 | Recall 5.0 | F1 3.08 | Acc 77.55 | f1w 79.62 | Anomaly 14.29
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_post_prevention_treatment Step: 222 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 157 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 222 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 157 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 222 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 157 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 222 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 157 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 222 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 157 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 222 0.0 0.0
+RF FName: s_post_bacteria_structure Step: 157 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 222 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 157 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 222 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 157 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 222 1.0 1.0
+RF FName: s_post_bacteria_structure Step: 157 1.0 1.0
+DT FName: s_post_prevention_treatment Step: 222 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 157 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_scientific_method Step: 94 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_scientific_method Step: 94 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_scientific_method Step: 94 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_scientific_method Step: 94 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 1.0
+RF FName: s_post_scientific_method Step: 94 1.0 1.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_scientific_method Step: 94 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_scientific_method Step: 94 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_scientific_method Step: 94 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_scientific_method Step: 94 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_scientific_method Step: 94 1.0 0.0
+DT FName: s_post_electron_microscope Step: 139 1.0 0.0
+RF FName: s_post_scientific_method Step: 103 1.0 0.0
+DT FName: s_post_electron_microscope Step: 139 1.0 0.0
+RF FName: s_post_scientific_method Step: 103 1.0 0.0
+DT FName: s_post_electron_microscope Step: 139 1.0 0.0
+RF FName: s_post_scientific_method Step: 103 1.0 0.0
+DT FName: s_post_electron_microscope Step: 139 1.0 0.0
+RF FName: s_post_scientific_method Step: 103 1.0 0.0
+DT FName: s_post_electron_microscope Step: 139 1.0 0.0
+RF FName: s_post_scientific_method Step: 103 1.0 1.0
+DT FName: s_post_electron_microscope Step: 139 1.0 1.0
+RF FName: s_post_scientific_method Step: 103 1.0 0.0
+DT FName: s_post_electron_microscope Step: 139 1.0 0.0
+RF FName: s_post_scientific_method Step: 103 1.0 0.0
+DT FName: s_post_electron_microscope Step: 139 1.0 0.0
+RF FName: s_post_scientific_method Step: 103 1.0 0.0
+DT FName: s_post_electron_microscope Step: 139 1.0 1.0
+RF FName: s_post_scientific_method Step: 103 1.0 0.0
+DT FName: s_post_electron_microscope Step: 139 1.0 0.0
+RF FName: s_post_scientific_method Step: 103 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_prevention_treatment Step: 200 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_prevention_treatment Step: 200 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_prevention_treatment Step: 200 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_prevention_treatment Step: 200 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 1.0
+RF FName: s_post_prevention_treatment Step: 200 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_prevention_treatment Step: 200 0.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_prevention_treatment Step: 200 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_prevention_treatment Step: 200 1.0 0.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_prevention_treatment Step: 200 1.0 1.0
+DT FName: s_post_scientific_method Step: 105 1.0 0.0
+RF FName: s_post_prevention_treatment Step: 200 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 90 0.0 0.0
+DT FName: s_post_prevention_treatment Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 90 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 90 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 90 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 90 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 217 0.0 0.0
+RF FName: s_post_electron_microscope Step: 90 1.0 1.0
+DT FName: s_post_prevention_treatment Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 90 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 90 1.0 0.0
+DT FName: s_post_prevention_treatment Step: 217 1.0 1.0
+RF FName: s_post_electron_microscope Step: 90 1.0 1.0
+DT FName: s_post_prevention_treatment Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 90 1.0 0.0
+DT | Prec: 97.27 | Recall 95.47 | F1 96.32 | Acc 96.41 | f1w 96.4
+RF | Prec: 99.11 | Recall 97.75 | F1 98.41 | Acc 98.43 | f1w 98.43
+INFO:src.model.policy:rand || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  0.0% | Classify:  97.32% | Actions: 0.0
+INFO:src.evaluation:-- evaluation | anomaly --
+
+=====RUNNING ACTION PRIOR=====
+
+CBLOF | Prec: 3.08 | Recall 8.0 | F1 4.44 | Acc 77.96 | f1w 80.03 | Anomaly 14.69
+IF | Prec: 5.0 | Recall 10.0 | F1 6.67 | Acc 81.63 | f1w 82.25 | Anomaly 11.02
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_label Step: 229 1.0 0.0
+RF FName: s_label Step: 218 1.0 0.0
+DT FName: s_label Step: 229 4.0 1.0
+RF FName: s_label Step: 218 4.0 1.0
+DT FName: s_label Step: 229 12.0 0.0
+RF FName: s_label Step: 218 12.0 0.0
+DT FName: s_label Step: 229 5.0 0.0
+RF FName: s_label Step: 218 5.0 0.0
+DT FName: s_label Step: 229 7.0 2.0
+RF FName: s_label Step: 218 7.0 2.0
+DT FName: s_label Step: 229 16.0 1.0
+RF FName: s_label Step: 218 16.0 1.0
+DT FName: s_label Step: 229 5.0 2.0
+RF FName: s_label Step: 218 5.0 2.0
+DT FName: s_label Step: 229 5.0 7.0
+RF FName: s_label Step: 218 5.0 7.0
+DT FName: s_label Step: 229 8.0 0.0
+RF FName: s_label Step: 218 8.0 0.0
+DT FName: s_label Step: 229 2.0 0.0
+RF FName: s_label Step: 218 2.0 0.0
+DT FName: s_label_slide Step: 229 0.0 0.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 229 0.0 0.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label_slide Step: 229 0.0 0.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 229 0.0 0.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label Step: 222 1.0 0.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label Step: 222 4.0 1.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label Step: 222 12.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label Step: 222 5.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label Step: 222 7.0 2.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label Step: 222 16.0 1.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label Step: 222 5.0 2.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label Step: 222 5.0 7.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label Step: 222 8.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label Step: 222 2.0 0.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label_slide Step: 225 0.0 0.0
+RF FName: s_label Step: 206 1.0 0.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label Step: 206 4.0 1.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label Step: 206 12.0 0.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label Step: 206 5.0 0.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label Step: 206 7.0 2.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label Step: 206 9.0 1.0
+DT FName: s_label_slide Step: 225 0.0 0.0
+RF FName: s_label Step: 206 5.0 2.0
+DT FName: s_label_slide Step: 225 0.0 0.0
+RF FName: s_label Step: 206 5.0 7.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label Step: 206 8.0 0.0
+DT FName: s_label_slide Step: 225 0.0 0.0
+RF FName: s_label Step: 206 2.0 0.0
+DT FName: s_label_slide Step: 225 0.0 0.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 225 0.0 0.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label_slide Step: 225 0.0 0.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT FName: s_label_slide Step: 225 1.0 0.0
+RF FName: s_label_slide Step: 201 1.0 0.0
+DT FName: s_label_slide Step: 225 0.0 0.0
+RF FName: s_label_slide Step: 201 0.0 0.0
+DT | Prec: 90.44 | Recall 92.4 | F1 91.33 | Acc 91.25 | f1w 91.25
+RF | Prec: 98.18 | Recall 94.61 | F1 96.34 | Acc 96.41 | f1w 96.41
+INFO:src.model.policy:actp || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  46.2% | Classify:  89.25% | Actions: 0.0
+
+=====RUNNING BEHAVIOR CLONING DT=====
+
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 31.02 | Recall 53.0 | F1 38.49 | Acc 85.31 | f1w 86.94 | Anomaly 15.51
+IF | Prec: 51.67 | Recall 53.0 | F1 46.0 | Acc 88.98 | f1w 89.61 | Anomaly 11.84
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_label Step: 228 8.0 0.0
+RF FName: s_label Step: 176 8.0 0.0
+DT FName: s_label Step: 228 6.0 0.0
+RF FName: s_label Step: 176 6.0 0.0
+DT FName: s_label Step: 228 7.0 0.0
+RF FName: s_label Step: 176 7.0 0.0
+DT FName: s_label Step: 228 8.0 0.0
+RF FName: s_label Step: 176 8.0 0.0
+DT FName: s_label Step: 228 2.0 1.0
+RF FName: s_label Step: 176 2.0 1.0
+DT FName: s_label Step: 228 1.0 2.0
+RF FName: s_label Step: 176 1.0 2.0
+DT FName: s_label Step: 228 3.0 0.0
+RF FName: s_label Step: 176 3.0 0.0
+DT FName: s_label Step: 228 7.0 0.0
+RF FName: s_label Step: 176 7.0 0.0
+DT FName: s_label Step: 228 2.0 0.0
+RF FName: s_label Step: 176 2.0 0.0
+DT FName: s_label Step: 228 8.0 2.0
+RF FName: s_label Step: 176 8.0 2.0
+DT FName: s_workshsubmit Step: 222 0.0 0.0
+RF FName: s_label Step: 162 8.0 0.0
+DT FName: s_workshsubmit Step: 222 3.0 0.0
+RF FName: s_label Step: 162 6.0 0.0
+DT FName: s_workshsubmit Step: 222 0.0 0.0
+RF FName: s_label Step: 162 7.0 0.0
+DT FName: s_workshsubmit Step: 222 0.0 0.0
+RF FName: s_label Step: 162 8.0 0.0
+DT FName: s_workshsubmit Step: 222 6.0 0.0
+RF FName: s_label Step: 162 2.0 1.0
+DT FName: s_workshsubmit Step: 222 2.0 0.0
+RF FName: s_label Step: 162 1.0 2.0
+DT FName: s_workshsubmit Step: 222 1.0 0.0
+RF FName: s_label Step: 162 3.0 0.0
+DT FName: s_workshsubmit Step: 222 1.0 0.0
+RF FName: s_label Step: 162 7.0 0.0
+DT FName: s_workshsubmit Step: 222 2.0 0.0
+RF FName: s_label Step: 162 2.0 0.0
+DT FName: s_workshsubmit Step: 222 2.0 0.0
+RF FName: s_label Step: 162 8.0 2.0
+DT FName: s_label Step: 217 8.0 0.0
+RF FName: s_workshsubmit Step: 224 0.0 0.0
+DT FName: s_label Step: 217 6.0 0.0
+RF FName: s_workshsubmit Step: 224 3.0 0.0
+DT FName: s_label Step: 217 7.0 0.0
+RF FName: s_workshsubmit Step: 224 0.0 0.0
+DT FName: s_label Step: 217 8.0 0.0
+RF FName: s_workshsubmit Step: 224 0.0 0.0
+DT FName: s_label Step: 217 2.0 1.0
+RF FName: s_workshsubmit Step: 224 6.0 0.0
+DT FName: s_label Step: 217 1.0 2.0
+RF FName: s_workshsubmit Step: 224 2.0 0.0
+DT FName: s_label Step: 217 3.0 0.0
+RF FName: s_workshsubmit Step: 224 1.0 0.0
+DT FName: s_label Step: 217 7.0 0.0
+RF FName: s_workshsubmit Step: 224 1.0 0.0
+DT FName: s_label Step: 217 2.0 0.0
+RF FName: s_workshsubmit Step: 224 2.0 0.0
+DT FName: s_label Step: 217 8.0 2.0
+RF FName: s_workshsubmit Step: 224 2.0 0.0
+DT FName: s_label Step: 228 8.0 0.0
+RF FName: s_label Step: 226 8.0 0.0
+DT FName: s_label Step: 228 6.0 0.0
+RF FName: s_label Step: 226 6.0 0.0
+DT FName: s_label Step: 228 7.0 0.0
+RF FName: s_label Step: 226 7.0 0.0
+DT FName: s_label Step: 228 8.0 0.0
+RF FName: s_label Step: 226 8.0 0.0
+DT FName: s_label Step: 228 2.0 1.0
+RF FName: s_label Step: 226 2.0 1.0
+DT FName: s_label Step: 228 1.0 2.0
+RF FName: s_label Step: 226 1.0 2.0
+DT FName: s_label Step: 228 3.0 0.0
+RF FName: s_label Step: 226 3.0 0.0
+DT FName: s_label Step: 228 7.0 0.0
+RF FName: s_label Step: 226 7.0 0.0
+DT FName: s_label Step: 228 2.0 0.0
+RF FName: s_label Step: 226 2.0 0.0
+DT FName: s_label Step: 228 8.0 2.0
+RF FName: s_label Step: 226 8.0 2.0
+DT FName: s_label Step: 228 8.0 0.0
+RF FName: s_label Step: 176 8.0 0.0
+DT FName: s_label Step: 228 6.0 0.0
+RF FName: s_label Step: 176 6.0 0.0
+DT FName: s_label Step: 228 7.0 0.0
+RF FName: s_label Step: 176 7.0 0.0
+DT FName: s_label Step: 228 8.0 0.0
+RF FName: s_label Step: 176 8.0 0.0
+DT FName: s_label Step: 228 2.0 1.0
+RF FName: s_label Step: 176 2.0 1.0
+DT FName: s_label Step: 228 1.0 2.0
+RF FName: s_label Step: 176 1.0 2.0
+DT FName: s_label Step: 228 3.0 0.0
+RF FName: s_label Step: 176 3.0 0.0
+DT FName: s_label Step: 228 7.0 0.0
+RF FName: s_label Step: 176 7.0 0.0
+DT FName: s_label Step: 228 2.0 0.0
+RF FName: s_label Step: 176 2.0 0.0
+DT FName: s_label Step: 228 8.0 2.0
+RF FName: s_label Step: 176 8.0 2.0
+DT | Prec: 94.68 | Recall 95.06 | F1 94.86 | Acc 94.84 | f1w 94.84
+RF | Prec: 98.62 | Recall 96.39 | F1 97.49 | Acc 97.54 | f1w 97.53
+
+=====RUNNING BEHAVIOR CLONING MLP=====
+
+INFO:src.model.policy:bcdt || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  54.5% | Classify:  94.64% | Actions: 0.0
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 26.06 | Recall 58.0 | F1 35.5 | Acc 84.08 | f1w 85.88 | Anomaly 17.55
+IF | Prec: 58.44 | Recall 72.0 | F1 62.6 | Acc 91.43 | f1w 92.15 | Anomaly 12.65
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_label Step: 223 3.0 0.0
+RF FName: s_objtest_milk Step: 226 1.0 0.0
+DT FName: s_label Step: 223 8.0 0.0
+RF FName: s_objtest_milk Step: 226 1.0 1.0
+DT FName: s_label Step: 223 6.0 0.0
+RF FName: s_objtest_milk Step: 226 1.0 0.0
+DT FName: s_label Step: 223 15.0 0.0
+RF FName: s_objtest_milk Step: 226 1.0 0.0
+DT FName: s_label Step: 223 2.0 0.0
+RF FName: s_objtest_milk Step: 226 1.0 0.0
+DT FName: s_label Step: 223 2.0 7.0
+RF FName: s_objtest_milk Step: 226 0.0 0.0
+DT FName: s_label Step: 223 6.0 0.0
+RF FName: s_objtest_milk Step: 226 1.0 0.0
+DT FName: s_label Step: 223 7.0 0.0
+RF FName: s_objtest_milk Step: 226 1.0 0.0
+DT FName: s_label Step: 223 3.0 43.0
+RF FName: s_objtest_milk Step: 226 1.0 0.0
+DT FName: s_label Step: 223 9.0 2.0
+RF FName: s_objtest_milk Step: 226 1.0 0.0
+DT FName: s_label Step: 216 3.0 0.0
+RF FName: s_workshsubmit Step: 225 1.0 0.0
+DT FName: s_label Step: 216 8.0 0.0
+RF FName: s_workshsubmit Step: 225 0.0 0.0
+DT FName: s_label Step: 216 6.0 0.0
+RF FName: s_workshsubmit Step: 225 1.0 0.0
+DT FName: s_label Step: 216 11.0 0.0
+RF FName: s_workshsubmit Step: 225 0.0 0.0
+DT FName: s_label Step: 216 2.0 0.0
+RF FName: s_workshsubmit Step: 225 1.0 0.0
+DT FName: s_label Step: 216 2.0 7.0
+RF FName: s_workshsubmit Step: 225 3.0 0.0
+DT FName: s_label Step: 216 6.0 0.0
+RF FName: s_workshsubmit Step: 225 3.0 0.0
+DT FName: s_label Step: 216 7.0 0.0
+RF FName: s_workshsubmit Step: 225 2.0 0.0
+DT FName: s_label Step: 216 3.0 43.0
+RF FName: s_workshsubmit Step: 225 1.0 9.0
+DT FName: s_label Step: 216 9.0 2.0
+RF FName: s_workshsubmit Step: 225 1.0 0.0
+DT FName: s_workshsubmit Step: 221 1.0 0.0
+RF FName: s_label Step: 176 3.0 0.0
+DT FName: s_workshsubmit Step: 221 0.0 0.0
+RF FName: s_label Step: 176 8.0 0.0
+DT FName: s_workshsubmit Step: 221 1.0 0.0
+RF FName: s_label Step: 176 6.0 0.0
+DT FName: s_workshsubmit Step: 221 0.0 0.0
+RF FName: s_label Step: 176 11.0 0.0
+DT FName: s_workshsubmit Step: 221 1.0 0.0
+RF FName: s_label Step: 176 2.0 0.0
+DT FName: s_workshsubmit Step: 221 3.0 0.0
+RF FName: s_label Step: 176 2.0 7.0
+DT FName: s_workshsubmit Step: 221 3.0 0.0
+RF FName: s_label Step: 176 6.0 0.0
+DT FName: s_workshsubmit Step: 221 2.0 0.0
+RF FName: s_label Step: 176 7.0 0.0
+DT FName: s_workshsubmit Step: 221 1.0 9.0
+RF FName: s_label Step: 176 3.0 43.0
+DT FName: s_workshsubmit Step: 221 1.0 0.0
+RF FName: s_label Step: 176 8.0 2.0
+DT FName: s_objtest_milk Step: 225 1.0 0.0
+RF FName: s_workshsubmit Step: 224 1.0 0.0
+DT FName: s_objtest_milk Step: 225 1.0 1.0
+RF FName: s_workshsubmit Step: 224 0.0 0.0
+DT FName: s_objtest_milk Step: 225 1.0 0.0
+RF FName: s_workshsubmit Step: 224 1.0 0.0
+DT FName: s_objtest_milk Step: 225 1.0 0.0
+RF FName: s_workshsubmit Step: 224 0.0 0.0
+DT FName: s_objtest_milk Step: 225 1.0 0.0
+RF FName: s_workshsubmit Step: 224 1.0 0.0
+DT FName: s_objtest_milk Step: 225 0.0 0.0
+RF FName: s_workshsubmit Step: 224 3.0 0.0
+DT FName: s_objtest_milk Step: 225 1.0 0.0
+RF FName: s_workshsubmit Step: 224 3.0 0.0
+DT FName: s_objtest_milk Step: 225 1.0 0.0
+RF FName: s_workshsubmit Step: 224 2.0 0.0
+DT FName: s_objtest_milk Step: 225 1.0 0.0
+RF FName: s_workshsubmit Step: 224 1.0 9.0
+DT FName: s_objtest_milk Step: 225 1.0 0.0
+RF FName: s_workshsubmit Step: 224 1.0 0.0
+DT FName: s_workshsubmit Step: 218 1.0 0.0
+INFO:src.model.policy:bcnn || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  15.4% | Classify:  94.64% | Actions: 0.0
+RF FName: s_workshsubmit Step: 224 1.0 0.0
+DT FName: s_workshsubmit Step: 218 0.0 0.0
+RF FName: s_workshsubmit Step: 224 0.0 0.0
+DT FName: s_workshsubmit Step: 218 1.0 0.0
+RF FName: s_workshsubmit Step: 224 1.0 0.0
+DT FName: s_workshsubmit Step: 218 0.0 0.0
+RF FName: s_workshsubmit Step: 224 0.0 0.0
+DT FName: s_workshsubmit Step: 218 1.0 0.0
+RF FName: s_workshsubmit Step: 224 1.0 0.0
+DT FName: s_workshsubmit Step: 218 3.0 0.0
+RF FName: s_workshsubmit Step: 224 3.0 0.0
+DT FName: s_workshsubmit Step: 218 3.0 0.0
+RF FName: s_workshsubmit Step: 224 3.0 0.0
+DT FName: s_workshsubmit Step: 218 2.0 0.0
+RF FName: s_workshsubmit Step: 224 2.0 0.0
+DT FName: s_workshsubmit Step: 218 1.0 9.0
+RF FName: s_workshsubmit Step: 224 1.0 9.0
+DT FName: s_workshsubmit Step: 218 1.0 0.0
+RF FName: s_workshsubmit Step: 224 1.0 0.0
+DT | Prec: 92.16 | Recall 88.3 | F1 90.03 | Acc 90.36 | f1w 90.33
+RF | Prec: 94.73 | Recall 95.51 | F1 95.06 | Acc 95.07 | f1w 95.07
+
+=====RUNNING GPT=====
+
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 13.01 | Recall 19.0 | F1 14.94 | Acc 80.41 | f1w 82.18 | Anomaly 13.88
+IF | Prec: 15.0 | Recall 19.0 | F1 16.02 | Acc 82.04 | f1w 83.22 | Anomaly 12.24
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_talk_quentin Step: 202 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 202 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 202 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 202 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 202 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 202 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 202 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 202 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 202 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 202 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 186 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 186 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 186 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 186 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 186 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 186 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 186 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 186 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 186 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 186 1.0 0.0
+DT FName: s_talk_quentin Step: 194 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 194 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 194 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 194 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 194 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 194 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 194 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 194 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 194 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 194 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 213 1.0 0.0
+RF FName: s_talk_quentin Step: 173 1.0 0.0
+DT FName: s_talk_quentin Step: 213 1.0 0.0
+RF FName: s_talk_quentin Step: 173 1.0 0.0
+DT FName: s_talk_quentin Step: 213 1.0 0.0
+RF FName: s_talk_quentin Step: 173 1.0 0.0
+DT FName: s_talk_quentin Step: 213 1.0 0.0
+RF FName: s_talk_quentin Step: 173 1.0 0.0
+DT FName: s_talk_quentin Step: 213 1.0 0.0
+RF FName: s_talk_quentin Step: 173 1.0 0.0
+DT FName: s_talk_quentin Step: 213 1.0 0.0
+RF FName: s_talk_quentin Step: 173 1.0 0.0
+DT FName: s_talk_quentin Step: 213 1.0 0.0
+RF FName: s_talk_quentin Step: 173 1.0 0.0
+DT FName: s_talk_quentin Step: 213 1.0 0.0
+RF FName: s_talk_quentin Step: 173 1.0 0.0
+DT FName: s_talk_quentin Step: 213 1.0 0.0
+RF FName: s_talk_quentin Step: 173 1.0 0.0
+DT FName: s_talk_quentin Step: 213 1.0 0.0
+RF FName: s_talk_quentin Step: 173 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT FName: s_talk_quentin Step: 199 1.0 0.0
+RF FName: s_talk_quentin Step: 209 1.0 0.0
+DT | Prec: 98.7 | Recall 100.0 | F1 99.34 | Acc 99.33 | f1w 99.33
+RF | Prec: 100.0 | Recall 100.0 | F1 100.0 | Acc 100.0 | f1w 100.0
+
+INFO:src.model.policy:gpt || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  0.0% | Classify:  99.11% | Actions: 0.0
+=====RUNNING GAIL=====
+INFO:src.model.gail:TEST DATA | Rewards: -9 |  Actions: {0: 2.2, 1: 5.1, 2: 3.2, 3: 1.5, 4: 4.1, 5: 3.2, 6: 1.9, 7: 2.1, 8: 46.7, 9: 10.3, 10: 3.1, 11: 50.7, 12: 5.2, 13: 6.4, 14: 2.6, 15: 7.6, 16: 8.3, 17: 5.6, 18: 1.6, 19: 1.0}
+
+INFO:src.model.gail:-- loaded gail with run_name dec18_0 --
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 74.38 | Recall 100.0 | F1 84.95 | Acc 96.73 | f1w 97.0 | Anomaly 12.24
+INFO:src.evaluation:-- evaluation | classify --
+IF | Prec: 78.1 | Recall 100.0 | F1 86.55 | Acc 97.14 | f1w 97.43 | Anomaly 11.84
+DT FName: s_computer Step: 229 6.0 7.0
+RF FName: s_computer Step: 217 6.0 7.0
+DT FName: s_computer Step: 229 6.0 18.0
+RF FName: s_computer Step: 217 6.0 17.0
+DT FName: s_computer Step: 229 4.0 9.0
+RF FName: s_computer Step: 217 4.0 9.0
+DT FName: s_computer Step: 229 0.0 8.0
+RF FName: s_computer Step: 217 0.0 8.0
+DT FName: s_computer Step: 229 5.0 9.0
+RF FName: s_computer Step: 217 5.0 8.0
+DT FName: s_computer Step: 229 3.0 19.0
+RF FName: s_computer Step: 217 3.0 18.0
+DT FName: s_computer Step: 229 7.0 14.0
+RF FName: s_computer Step: 217 7.0 14.0
+DT FName: s_computer Step: 229 2.0 22.0
+RF FName: s_computer Step: 217 2.0 21.0
+DT FName: s_computer Step: 229 5.0 19.0
+RF FName: s_computer Step: 217 5.0 18.0
+DT FName: s_computer Step: 229 0.0 16.0
+RF FName: s_computer Step: 217 0.0 14.0
+DT FName: s_computer Step: 228 6.0 7.0
+RF FName: s_computer Step: 217 6.0 7.0
+DT FName: s_computer Step: 228 6.0 17.0
+RF FName: s_computer Step: 217 6.0 17.0
+DT FName: s_computer Step: 228 4.0 9.0
+RF FName: s_computer Step: 217 4.0 9.0
+DT FName: s_computer Step: 228 0.0 8.0
+RF FName: s_computer Step: 217 0.0 8.0
+DT FName: s_computer Step: 228 5.0 8.0
+RF FName: s_computer Step: 217 5.0 8.0
+DT FName: s_computer Step: 228 3.0 19.0
+RF FName: s_computer Step: 217 3.0 18.0
+DT FName: s_computer Step: 228 7.0 14.0
+RF FName: s_computer Step: 217 7.0 14.0
+DT FName: s_computer Step: 228 2.0 22.0
+RF FName: s_computer Step: 217 2.0 21.0
+DT FName: s_computer Step: 228 5.0 19.0
+RF FName: s_computer Step: 217 5.0 18.0
+DT FName: s_computer Step: 228 0.0 16.0
+RF FName: s_computer Step: 217 0.0 14.0
+DT FName: s_computer Step: 229 6.0 7.0
+RF FName: s_computer Step: 209 6.0 6.0
+DT FName: s_computer Step: 229 6.0 18.0
+RF FName: s_computer Step: 209 6.0 15.0
+DT FName: s_computer Step: 229 4.0 9.0
+RF FName: s_computer Step: 209 4.0 7.0
+DT FName: s_computer Step: 229 0.0 8.0
+RF FName: s_computer Step: 209 0.0 8.0
+DT FName: s_computer Step: 229 5.0 9.0
+RF FName: s_computer Step: 209 5.0 8.0
+DT FName: s_computer Step: 229 3.0 19.0
+RF FName: s_computer Step: 209 3.0 17.0
+DT FName: s_computer Step: 229 7.0 14.0
+RF FName: s_computer Step: 209 7.0 12.0
+DT FName: s_computer Step: 229 2.0 22.0
+RF FName: s_computer Step: 209 2.0 20.0
+DT FName: s_computer Step: 229 5.0 19.0
+RF FName: s_computer Step: 209 5.0 17.0
+DT FName: s_computer Step: 229 0.0 16.0
+RF FName: s_computer Step: 209 0.0 14.0
+DT FName: s_computer Step: 229 6.0 7.0
+RF FName: s_computer Step: 225 6.0 7.0
+DT FName: s_computer Step: 229 6.0 18.0
+RF FName: s_computer Step: 225 6.0 17.0
+DT FName: s_computer Step: 229 4.0 9.0
+RF FName: s_computer Step: 225 4.0 9.0
+DT FName: s_computer Step: 229 0.0 8.0
+RF FName: s_computer Step: 225 0.0 8.0
+DT FName: s_computer Step: 229 5.0 9.0
+RF FName: s_computer Step: 225 5.0 8.0
+DT FName: s_computer Step: 229 3.0 19.0
+RF FName: s_computer Step: 225 3.0 18.0
+DT FName: s_computer Step: 229 7.0 14.0
+RF FName: s_computer Step: 225 7.0 14.0
+DT FName: s_computer Step: 229 2.0 22.0
+RF FName: s_computer Step: 225 2.0 22.0
+DT FName: s_computer Step: 229 5.0 19.0
+RF FName: s_computer Step: 225 5.0 19.0
+DT FName: s_computer Step: 229 0.0 16.0
+RF FName: s_computer Step: 225 0.0 15.0
+DT FName: s_computer Step: 228 6.0 7.0
+RF FName: s_computer Step: 209 6.0 6.0
+DT FName: s_computer Step: 228 6.0 17.0
+RF FName: s_computer Step: 209 6.0 15.0
+DT FName: s_computer Step: 228 4.0 9.0
+RF FName: s_computer Step: 209 4.0 7.0
+DT FName: s_computer Step: 228 0.0 8.0
+RF FName: s_computer Step: 209 0.0 8.0
+DT FName: s_computer Step: 228 5.0 8.0
+RF FName: s_computer Step: 209 5.0 8.0
+DT FName: s_computer Step: 228 3.0 19.0
+RF FName: s_computer Step: 209 3.0 17.0
+DT FName: s_computer Step: 228 7.0 14.0
+RF FName: s_computer Step: 209 7.0 12.0
+DT FName: s_computer Step: 228 2.0 22.0
+RF FName: s_computer Step: 209 2.0 20.0
+DT FName: s_computer Step: 228 5.0 19.0
+RF FName: s_computer Step: 209 5.0 17.0
+DT FName: s_computer Step: 228 0.0 16.0
+RF FName: s_computer Step: 209 0.0 14.0
+DT | Prec: 96.88 | Recall 97.32 | F1 97.08 | Acc 97.09 | f1w 97.09
+RF | Prec: 99.57 | Recall 100.0 | F1 99.78 | Acc 99.78 | f1w 99.78
+==========
+RANDOM 1
+INFO:src.model.policy:gail || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  100.0% | Classify:  100.00% | Actions: 0.0
+NN | Prec: 51.55 | Recall 49.62 | F1 50.13 | Acc 54.92 | f1w 54.7
+SVM | Prec: 53.8 | Recall 48.85 | F1 49.71 | Acc 56.64 | f1w 55.61
+DT | Prec: 48.69 | Recall 50.32 | F1 49.06 | Acc 52.69 | f1w 52.4
+RF | Prec: 52.1 | Recall 34.74 | F1 40.78 | Acc 55.56 | f1w 53.33
+BASE | Prec: 40.89 | Recall 17.18 | F1 23.75 | Acc 51.98 | f1w 46.16
+MAJOR | Prec: 0.0 | Recall 0.0 | F1 0.0 | Acc 54.48 | f1w 38.44
+MINOR | Prec: 45.52 | Recall 100.0 | F1 62.54 | Acc 45.52 | f1w 28.49
+INFO:src.utils:-- loading data from ../processed_data/student_trajectories.pkl with test size 0.2 --
+
+=====RUNNING RANDOM=====
+
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 1.82 | Recall 5.0 | F1 2.67 | Acc 74.69 | f1w 77.9 | Anomaly 17.14
+IF | Prec: 0.0 | Recall 0.0 | F1 0.0 | Acc 79.18 | f1w 80.43 | Anomaly 11.84
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_post_electron_microscope Step: 197 1.0 1.0
+RF FName: s_post_electron_microscope Step: 125 1.0 1.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 125 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 125 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 125 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 125 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 125 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 125 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 125 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 125 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 125 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 1.0
+RF FName: s_post_electron_microscope Step: 214 1.0 1.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 214 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 214 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 214 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 214 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 214 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 214 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 214 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 214 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 214 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 1.0
+RF FName: s_post_electron_microscope Step: 156 1.0 1.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 156 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 156 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 156 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 156 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 156 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 156 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 156 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 156 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 156 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 1.0
+RF FName: s_post_electron_microscope Step: 109 1.0 1.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 109 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 109 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 109 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 109 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 109 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 109 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 109 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 109 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 109 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 1.0
+RF FName: s_post_electron_microscope Step: 194 1.0 1.0
+INFO:src.model.policy:rand || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  0.0% | Classify:  99.11% | Actions: 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+INFO:src.evaluation:-- evaluation | anomaly --
+INFO:src.evaluation:-- evaluation | classify --
+RF FName: s_post_electron_microscope Step: 194 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 194 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 194 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 194 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 194 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 194 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 194 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 194 1.0 0.0
+DT FName: s_post_electron_microscope Step: 197 1.0 0.0
+RF FName: s_post_electron_microscope Step: 194 1.0 0.0
+DT | Prec: 95.97 | Recall 96.42 | F1 96.18 | Acc 96.19 | f1w 96.19
+RF | Prec: 98.2 | Recall 97.77 | F1 97.98 | Acc 98.0 | f1w 97.99
+
+=====RUNNING ACTION PRIOR=====
+
+CBLOF | Prec: 27.38 | Recall 45.0 | F1 33.73 | Acc 84.08 | f1w 85.77 | Anomaly 15.1
+IF | Prec: 0.0 | Recall 0.0 | F1 0.0 | Acc 77.55 | f1w 79.47 | Anomaly 13.47
+DT FName: s_label_slide Step: 228 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 228 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 228 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 228 0.0 0.0
+RF FName: s_label_slide Step: 209 0.0 0.0
+DT FName: s_label_slide Step: 228 0.0 0.0
+RF FName: s_label_slide Step: 209 0.0 0.0
+DT FName: s_label_slide Step: 228 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 228 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 228 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 228 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 228 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label Step: 225 4.0 3.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label Step: 225 4.0 1.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label Step: 225 6.0 1.0
+DT FName: s_label_slide Step: 229 0.0 0.0
+RF FName: s_label Step: 225 1.0 5.0
+DT FName: s_label_slide Step: 229 0.0 0.0
+RF FName: s_label Step: 225 15.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label Step: 225 6.0 1.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label Step: 225 6.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label Step: 225 10.0 1.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label Step: 225 14.0 4.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label Step: 225 13.0 1.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 229 0.0 0.0
+RF FName: s_label_slide Step: 209 0.0 0.0
+DT FName: s_label_slide Step: 229 0.0 0.0
+RF FName: s_label_slide Step: 209 0.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 229 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 219 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 219 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 219 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 219 0.0 0.0
+RF FName: s_label_slide Step: 209 0.0 0.0
+DT FName: s_label_slide Step: 219 0.0 0.0
+RF FName: s_label_slide Step: 209 0.0 0.0
+DT FName: s_label_slide Step: 219 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 219 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 219 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 219 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_label_slide Step: 219 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+INFO:src.model.policy:actp || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  26.7% | Classify:  91.96% | Actions: 0.0
+INFO:src.evaluation:-- evaluation | anomaly --
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_talk_kim Step: 22 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_talk_kim Step: 22 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_talk_kim Step: 22 1.0 1.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_talk_kim Step: 22 1.0 1.0
+RF FName: s_label_slide Step: 209 0.0 0.0
+DT FName: s_talk_kim Step: 22 0.0 0.0
+RF FName: s_label_slide Step: 209 0.0 0.0
+DT FName: s_talk_kim Step: 22 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_talk_kim Step: 22 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_talk_kim Step: 22 1.0 1.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_talk_kim Step: 22 1.0 1.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT FName: s_talk_kim Step: 22 1.0 0.0
+RF FName: s_label_slide Step: 209 1.0 0.0
+DT | Prec: 88.75 | Recall 86.57 | F1 87.56 | Acc 87.67 | f1w 87.66
+RF | Prec: 96.4 | Recall 93.74 | F1 95.03 | Acc 95.07 | f1w 95.07
+
+=====RUNNING BEHAVIOR CLONING DT=====
+
+CBLOF | Prec: 22.33 | Recall 45.0 | F1 29.67 | Acc 82.45 | f1w 84.57 | Anomaly 16.73
+IF | Prec: 43.29 | Recall 50.0 | F1 46.11 | Acc 88.98 | f1w 89.53 | Anomaly 11.02
+DT FName: s_testleft Step: 211 2.0 10.0
+RF FName: s_talk_extra Step: 190 0.0 0.0
+DT FName: s_testleft Step: 211 0.0 10.0
+RF FName: s_talk_extra Step: 190 1.0 0.0
+DT FName: s_testleft Step: 211 1.0 3.0
+RF FName: s_talk_extra Step: 190 1.0 0.0
+DT FName: s_testleft Step: 211 2.0 5.0
+RF FName: s_talk_extra Step: 190 1.0 0.0
+DT FName: s_testleft Step: 211 0.0 5.0
+RF FName: s_talk_extra Step: 190 1.0 0.0
+DT FName: s_testleft Step: 211 0.0 10.0
+RF FName: s_talk_extra Step: 190 1.0 1.0
+DT FName: s_testleft Step: 211 1.0 10.0
+RF FName: s_talk_extra Step: 190 1.0 1.0
+DT FName: s_testleft Step: 211 0.0 5.0
+RF FName: s_talk_extra Step: 190 1.0 1.0
+DT FName: s_testleft Step: 211 1.0 5.0
+RF FName: s_talk_extra Step: 190 1.0 0.0
+DT FName: s_testleft Step: 211 0.0 5.0
+RF FName: s_talk_extra Step: 190 1.0 0.0
+DT FName: s_testleft Step: 213 2.0 10.0
+RF FName: s_talk_extra Step: 221 0.0 0.0
+DT FName: s_testleft Step: 213 0.0 10.0
+RF FName: s_talk_extra Step: 221 1.0 0.0
+DT FName: s_testleft Step: 213 1.0 3.0
+RF FName: s_talk_extra Step: 221 1.0 0.0
+DT FName: s_testleft Step: 213 4.0 5.0
+RF FName: s_talk_extra Step: 221 1.0 0.0
+DT FName: s_testleft Step: 213 0.0 5.0
+RF FName: s_talk_extra Step: 221 1.0 0.0
+DT FName: s_testleft Step: 213 0.0 10.0
+RF FName: s_talk_extra Step: 221 1.0 1.0
+DT FName: s_testleft Step: 213 0.0 10.0
+RF FName: s_talk_extra Step: 221 1.0 1.0
+DT FName: s_testleft Step: 213 0.0 5.0
+RF FName: s_talk_extra Step: 221 1.0 1.0
+DT FName: s_testleft Step: 213 1.0 5.0
+RF FName: s_talk_extra Step: 221 1.0 0.0
+DT FName: s_testleft Step: 213 0.0 5.0
+RF FName: s_talk_extra Step: 221 1.0 0.0
+DT FName: s_talk_extra Step: 209 0.0 0.0
+RF FName: s_talk_extra Step: 205 0.0 0.0
+DT FName: s_talk_extra Step: 209 1.0 0.0
+RF FName: s_talk_extra Step: 205 1.0 0.0
+DT FName: s_talk_extra Step: 209 1.0 0.0
+RF FName: s_talk_extra Step: 205 1.0 0.0
+DT FName: s_talk_extra Step: 209 1.0 0.0
+RF FName: s_talk_extra Step: 205 1.0 0.0
+DT FName: s_talk_extra Step: 209 1.0 0.0
+RF FName: s_talk_extra Step: 205 1.0 0.0
+DT FName: s_talk_extra Step: 209 1.0 1.0
+RF FName: s_talk_extra Step: 205 1.0 1.0
+DT FName: s_talk_extra Step: 209 1.0 1.0
+RF FName: s_talk_extra Step: 205 1.0 1.0
+DT FName: s_talk_extra Step: 209 1.0 1.0
+RF FName: s_talk_extra Step: 205 1.0 1.0
+DT FName: s_talk_extra Step: 209 1.0 0.0
+RF FName: s_talk_extra Step: 205 1.0 0.0
+DT FName: s_talk_extra Step: 209 1.0 0.0
+RF FName: s_talk_extra Step: 205 1.0 0.0
+DT FName: s_testleft Step: 210 2.0 10.0
+RF FName: s_talk_extra Step: 196 0.0 0.0
+DT FName: s_testleft Step: 210 0.0 10.0
+RF FName: s_talk_extra Step: 196 1.0 0.0
+DT FName: s_testleft Step: 210 1.0 3.0
+RF FName: s_talk_extra Step: 196 1.0 0.0
+DT FName: s_testleft Step: 210 1.0 5.0
+RF FName: s_talk_extra Step: 196 1.0 0.0
+DT FName: s_testleft Step: 210 0.0 5.0
+RF FName: s_talk_extra Step: 196 1.0 0.0
+DT FName: s_testleft Step: 210 0.0 10.0
+RF FName: s_talk_extra Step: 196 1.0 1.0
+DT FName: s_testleft Step: 210 2.0 10.0
+RF FName: s_talk_extra Step: 196 1.0 1.0
+DT FName: s_testleft Step: 210 0.0 5.0
+RF FName: s_talk_extra Step: 196 1.0 1.0
+DT FName: s_testleft Step: 210 1.0 5.0
+RF FName: s_talk_extra Step: 196 1.0 0.0
+DT FName: s_testleft Step: 210 0.0 5.0
+RF FName: s_talk_extra Step: 196 1.0 0.0
+DT FName: s_testleft Step: 210 2.0 10.0
+RF FName: s_testpos Step: 189 1.0 0.0
+DT FName: s_testleft Step: 210 0.0 10.0
+RF FName: s_testpos Step: 189 1.0 0.0
+DT FName: s_testleft Step: 210 1.0 3.0
+RF FName: s_testpos Step: 189 0.0 0.0
+DT FName: s_testleft Step: 210 1.0 5.0
+RF FName: s_testpos Step: 189 0.0 0.0
+DT FName: s_testleft Step: 210 0.0 5.0
+RF FName: s_testpos Step: 189 1.0 0.0
+DT FName: s_testleft Step: 210 0.0 10.0
+RF FName: s_testpos Step: 189 1.0 0.0
+DT FName: s_testleft Step: 210 2.0 10.0
+RF FName: s_testpos Step: 189 1.0 0.0
+DT FName: s_testleft Step: 210 0.0 5.0
+RF FName: s_testpos Step: 189 1.0 0.0
+DT FName: s_testleft Step: 210 1.0 5.0
+RF FName: s_testpos Step: 189 1.0 0.0
+DT FName: s_testleft Step: 210 0.0 5.0
+RF FName: s_testpos Step: 189 1.0 0.0
+DT | Prec: 93.83 | Recall 95.06 | F1 94.41 | Acc 94.39 | f1w 94.39
+RF | Prec: 97.76 | Recall 98.19 | F1 97.97 | Acc 97.98 | f1w 97.98
+
+=====RUNNING BEHAVIOR CLONING MLP=====
+
+INFO:src.model.policy:bcdt || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  36.4% | Classify:  93.75% | Actions: 0.0
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 18.72 | Recall 29.0 | F1 22.69 | Acc 81.22 | f1w 83.47 | Anomaly 15.51
+IF | Prec: 57.56 | Recall 85.0 | F1 67.9 | Acc 93.06 | f1w 93.58 | Anomaly 13.47
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_label Step: 227 5.0 0.0
+RF FName: s_label Step: 166 5.0 0.0
+DT FName: s_label Step: 227 5.0 0.0
+RF FName: s_label Step: 166 2.0 0.0
+DT FName: s_label Step: 227 2.0 0.0
+RF FName: s_label Step: 166 2.0 0.0
+DT FName: s_label Step: 227 8.0 0.0
+RF FName: s_label Step: 166 8.0 0.0
+DT FName: s_label Step: 227 5.0 0.0
+RF FName: s_label Step: 166 5.0 0.0
+DT FName: s_label Step: 227 2.0 0.0
+RF FName: s_label Step: 166 2.0 0.0
+DT FName: s_label Step: 227 2.0 1.0
+RF FName: s_label Step: 166 2.0 1.0
+DT FName: s_label Step: 227 6.0 0.0
+RF FName: s_label Step: 166 6.0 0.0
+DT FName: s_label Step: 227 7.0 0.0
+RF FName: s_label Step: 166 7.0 0.0
+DT FName: s_label Step: 227 5.0 0.0
+RF FName: s_label Step: 166 5.0 0.0
+DT FName: s_label Step: 177 5.0 0.0
+RF FName: s_label Step: 192 5.0 0.0
+DT FName: s_label Step: 177 2.0 0.0
+RF FName: s_label Step: 192 2.0 0.0
+DT FName: s_label Step: 177 2.0 0.0
+RF FName: s_label Step: 192 2.0 0.0
+DT FName: s_label Step: 177 8.0 0.0
+RF FName: s_label Step: 192 8.0 0.0
+DT FName: s_label Step: 177 5.0 0.0
+RF FName: s_label Step: 192 5.0 0.0
+DT FName: s_label Step: 177 2.0 0.0
+RF FName: s_label Step: 192 2.0 0.0
+DT FName: s_label Step: 177 2.0 1.0
+RF FName: s_label Step: 192 2.0 1.0
+DT FName: s_label Step: 177 6.0 0.0
+RF FName: s_label Step: 192 6.0 0.0
+DT FName: s_label Step: 177 7.0 0.0
+RF FName: s_label Step: 192 7.0 0.0
+DT FName: s_label Step: 177 5.0 0.0
+RF FName: s_label Step: 192 5.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 209 5.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 209 5.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 1.0
+RF FName: s_label Step: 209 2.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 209 8.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 209 5.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 1.0
+RF FName: s_label Step: 209 2.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 209 2.0 1.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 209 6.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 209 7.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 209 5.0 0.0
+DT FName: s_label Step: 177 5.0 0.0
+RF FName: s_label Step: 192 5.0 0.0
+DT FName: s_label Step: 177 2.0 0.0
+RF FName: s_label Step: 192 2.0 0.0
+DT FName: s_label Step: 177 2.0 0.0
+RF FName: s_label Step: 192 2.0 0.0
+DT FName: s_label Step: 177 8.0 0.0
+RF FName: s_label Step: 192 8.0 0.0
+DT FName: s_label Step: 177 5.0 0.0
+RF FName: s_label Step: 192 5.0 0.0
+DT FName: s_label Step: 177 2.0 0.0
+RF FName: s_label Step: 192 2.0 0.0
+DT FName: s_label Step: 177 2.0 1.0
+RF FName: s_label Step: 192 2.0 1.0
+DT FName: s_label Step: 177 6.0 0.0
+RF FName: s_label Step: 192 6.0 0.0
+DT FName: s_label Step: 177 7.0 0.0
+RF FName: s_label Step: 192 7.0 0.0
+DT FName: s_label Step: 177 5.0 0.0
+RF FName: s_label Step: 192 5.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 192 5.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 192 2.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 1.0
+RF FName: s_label Step: 192 2.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 192 8.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 192 5.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 1.0
+RF FName: s_label Step: 192 2.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 192 2.0 1.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 192 6.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 192 7.0 0.0
+DT FName: s_talk_extra Step: 227 1.0 0.0
+RF FName: s_label Step: 192 5.0 0.0
+DT | Prec: 94.1 | Recall 92.37 | F1 93.2 | Acc 93.26 | f1w 93.26
+RF | Prec: 97.19 | Recall 95.54 | F1 96.32 | Acc 96.41 | f1w 96.4
+
+=====RUNNING GPT=====
+INFO:src.model.policy:bcnn || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  0.0% | Classify:  91.07% | Actions: 0.0
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 4.22 | Recall 8.0 | F1 5.52 | Acc 77.55 | f1w 79.92 | Anomaly 15.1
+IF | Prec: 5.36 | Recall 8.0 | F1 6.41 | Acc 81.63 | f1w 82.36 | Anomaly 11.02
+INFO:src.evaluation:-- evaluation | classify --
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 202 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 202 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 202 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 202 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 202 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 202 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 202 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 202 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 202 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 202 1.0 0.0
+DT FName: s_talk_quentin Step: 212 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 212 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 212 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 212 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 212 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 212 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 212 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 212 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 212 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 212 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 218 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 218 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 218 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 218 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 218 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 218 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 218 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 218 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 218 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 218 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 215 1.0 0.0
+RF FName: s_talk_quentin Step: 225 1.0 0.0
+DT FName: s_talk_quentin Step: 229 1.0 0.0
+RF FName: s_talk_quentin Step: 153 1.0 0.0
+DT FName: s_talk_quentin Step: 229 1.0 0.0
+RF FName: s_talk_quentin Step: 153 1.0 0.0
+DT FName: s_talk_quentin Step: 229 1.0 0.0
+RF FName: s_talk_quentin Step: 153 1.0 0.0
+DT FName: s_talk_quentin Step: 229 1.0 0.0
+RF FName: s_talk_quentin Step: 153 1.0 0.0
+DT FName: s_talk_quentin Step: 229 1.0 0.0
+RF FName: s_talk_quentin Step: 153 1.0 0.0
+DT FName: s_talk_quentin Step: 229 1.0 0.0
+RF FName: s_talk_quentin Step: 153 1.0 0.0
+DT FName: s_talk_quentin Step: 229 1.0 0.0
+RF FName: s_talk_quentin Step: 153 1.0 0.0
+DT FName: s_talk_quentin Step: 229 1.0 0.0
+RF FName: s_talk_quentin Step: 153 1.0 0.0
+DT FName: s_talk_quentin Step: 229 1.0 0.0
+RF FName: s_talk_quentin Step: 153 1.0 0.0
+DT FName: s_talk_quentin Step: 229 1.0 0.0
+RF FName: s_talk_quentin Step: 153 0.0 0.0
+DT | Prec: 99.57 | Recall 100.0 | F1 99.78 | Acc 99.78 | f1w 99.78
+RF | Prec: 100.0 | Recall 100.0 | F1 100.0 | Acc 100.0 | f1w 100.0
+INFO:src.model.policy:gpt || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  0.0% | Classify:  100.00% | Actions: 0.0
+
+=====RUNNING GAIL=====
+
+INFO:src.model.gail:TEST DATA | Rewards: -9 |  Actions: {0: 2.0, 1: 5.8, 2: 3.7, 3: 1.7, 4: 4.4, 5: 3.3, 6: 1.8, 7: 2.5, 8: 46.4, 9: 9.4, 10: 2.9, 11: 55.3, 12: 4.3, 13: 5.5, 14: 2.3, 15: 8.6, 16: 9.2, 17: 5.2, 18: 1.8, 19: 1.0}
+INFO:src.model.gail:-- loaded gail with run_name dec18_1 --
+INFO:src.evaluation:-- evaluation | anomaly --
+INFO:src.evaluation:-- evaluation | classify --
+CBLOF | Prec: 0.0 | Recall 0.0 | F1 0.0 | Acc 72.65 | f1w 76.54 | Anomaly 18.37
+IF | Prec: 6.5 | Recall 8.0 | F1 7.08 | Acc 80.82 | f1w 81.98 | Anomaly 11.84
+DT FName: s_testleft Step: 37 0.0 0.0
+RF FName: s_testleft Step: 41 1.0 0.0
+DT FName: s_testleft Step: 37 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 37 5.0 0.0
+RF FName: s_testleft Step: 41 5.0 0.0
+DT FName: s_testleft Step: 37 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 37 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 37 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 37 5.0 0.0
+RF FName: s_testleft Step: 41 5.0 0.0
+DT FName: s_testleft Step: 37 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 37 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 37 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 44 1.0 0.0
+RF FName: s_testleft Step: 41 1.0 0.0
+DT FName: s_testleft Step: 44 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 44 5.0 0.0
+RF FName: s_testleft Step: 41 5.0 0.0
+DT FName: s_testleft Step: 44 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 44 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 44 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 44 5.0 0.0
+RF FName: s_testleft Step: 41 5.0 0.0
+DT FName: s_testleft Step: 44 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 44 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 44 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 44 1.0 0.0
+RF FName: s_testleft Step: 41 1.0 0.0
+DT FName: s_testleft Step: 44 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 44 5.0 0.0
+RF FName: s_testleft Step: 41 5.0 0.0
+DT FName: s_testleft Step: 44 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 44 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 44 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 44 5.0 0.0
+RF FName: s_testleft Step: 41 5.0 0.0
+DT FName: s_testleft Step: 44 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 44 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 44 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 55 1.0 0.0
+RF FName: s_testleft Step: 41 1.0 0.0
+DT FName: s_testleft Step: 55 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 55 5.0 0.0
+RF FName: s_testleft Step: 41 5.0 0.0
+DT FName: s_testleft Step: 55 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 55 2.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 55 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 55 5.0 0.0
+RF FName: s_testleft Step: 41 5.0 0.0
+DT FName: s_testleft Step: 55 10.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 55 3.0 0.0
+RF FName: s_testleft Step: 41 3.0 0.0
+DT FName: s_testleft Step: 55 9.0 0.0
+RF FName: s_testleft Step: 41 10.0 0.0
+DT FName: s_testleft Step: 31 4.0 0.0
+RF FName: s_testleft Step: 27 4.0 0.0
+DT FName: s_testleft Step: 31 10.0 1.0
+RF FName: s_testleft Step: 27 10.0 1.0
+DT FName: s_testleft Step: 31 5.0 0.0
+RF FName: s_testleft Step: 27 5.0 0.0
+DT FName: s_testleft Step: 31 3.0 0.0
+RF FName: s_testleft Step: 27 3.0 0.0
+DT FName: s_testleft Step: 31 3.0 0.0
+RF FName: s_testleft Step: 27 3.0 0.0
+DT FName: s_testleft Step: 31 10.0 0.0
+RF FName: s_testleft Step: 27 10.0 0.0
+DT FName: s_testleft Step: 31 5.0 0.0
+RF FName: s_testleft Step: 27 5.0 1.0
+DT FName: s_testleft Step: 31 10.0 0.0
+RF FName: s_testleft Step: 27 10.0 0.0
+DT FName: s_testleft Step: 31 3.0 0.0
+RF FName: s_testleft Step: 27 3.0 0.0
+DT FName: s_testleft Step: 31 10.0 0.0
+RF FName: s_testleft Step: 27 10.0 0.0
+DT | Prec: 98.68 | Recall 98.67 | F1 98.66 | Acc 98.66 | f1w 98.66
+RF | Prec: 100.0 | Recall 100.0 | F1 100.0 | Acc 100.0 | f1w 100.0
+==========
+INFO:src.model.policy:gail || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  0.0% | Classify:  99.11% | Actions: 0.0
+RANDOM 2
+NN | Prec: 46.73 | Recall 42.37 | F1 42.6 | Acc 51.6 | f1w 49.85
+SVM | Prec: 54.2 | Recall 45.38 | F1 45.94 | Acc 55.19 | f1w 53.59
+DT | Prec: 51.72 | Recall 54.74 | F1 52.84 | Acc 56.94 | f1w 56.69
+RF | Prec: 51.49 | Recall 38.4 | F1 42.91 | Acc 55.2 | f1w 53.51
+BASE | Prec: 40.55 | Recall 13.27 | F1 19.68 | Acc 53.06 | f1w 45.36
+MAJOR | Prec: 0.0 | Recall 0.0 | F1 0.0 | Acc 54.48 | f1w 38.44
+MINOR | Prec: 45.52 | Recall 100.0 | F1 62.54 | Acc 45.52 | f1w 28.49
+INFO:src.utils:-- loading data from ../processed_data/student_trajectories.pkl with test size 0.2 --
+INFO:src.evaluation:-- evaluation | anomaly --
+INFO:src.evaluation:-- evaluation | classify --
+
+=====RUNNING RANDOM=====
+
+CBLOF | Prec: 38.2 | Recall 50.0 | F1 42.16 | Acc 83.27 | f1w 85.68 | Anomaly 16.73
+IF | Prec: 0.0 | Recall 0.0 | F1 0.0 | Acc 77.96 | f1w 79.67 | Anomaly 13.06
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_scientific_method Step: 180 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 1.0
+RF FName: s_post_scientific_method Step: 180 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_scientific_method Step: 180 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_scientific_method Step: 180 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_scientific_method Step: 180 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_scientific_method Step: 180 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_scientific_method Step: 180 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_scientific_method Step: 180 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_scientific_method Step: 180 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_scientific_method Step: 180 1.0 1.0
+DT FName: s_post_scientific_method Step: 224 1.0 0.0
+RF FName: s_post_scientific_method Step: 223 1.0 0.0
+DT FName: s_post_scientific_method Step: 224 1.0 0.0
+RF FName: s_post_scientific_method Step: 223 1.0 0.0
+DT FName: s_post_scientific_method Step: 224 1.0 0.0
+RF FName: s_post_scientific_method Step: 223 1.0 0.0
+DT FName: s_post_scientific_method Step: 224 1.0 0.0
+RF FName: s_post_scientific_method Step: 223 1.0 0.0
+DT FName: s_post_scientific_method Step: 224 1.0 0.0
+RF FName: s_post_scientific_method Step: 223 1.0 0.0
+DT FName: s_post_scientific_method Step: 224 1.0 0.0
+RF FName: s_post_scientific_method Step: 223 1.0 0.0
+DT FName: s_post_scientific_method Step: 224 1.0 0.0
+RF FName: s_post_scientific_method Step: 223 1.0 0.0
+DT FName: s_post_scientific_method Step: 224 1.0 0.0
+RF FName: s_post_scientific_method Step: 223 1.0 0.0
+DT FName: s_post_scientific_method Step: 224 1.0 0.0
+RF FName: s_post_scientific_method Step: 223 1.0 0.0
+DT FName: s_post_scientific_method Step: 224 1.0 1.0
+RF FName: s_post_scientific_method Step: 223 1.0 1.0
+DT FName: s_post_electron_microscope Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 175 1.0 0.0
+DT FName: s_post_electron_microscope Step: 217 1.0 1.0
+RF FName: s_post_electron_microscope Step: 175 1.0 1.0
+DT FName: s_post_electron_microscope Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 175 1.0 0.0
+DT FName: s_post_electron_microscope Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 175 1.0 0.0
+DT FName: s_post_electron_microscope Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 175 1.0 0.0
+DT FName: s_post_electron_microscope Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 175 1.0 0.0
+DT FName: s_post_electron_microscope Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 175 1.0 0.0
+DT FName: s_post_electron_microscope Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 175 1.0 0.0
+DT FName: s_post_electron_microscope Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 175 1.0 0.0
+DT FName: s_post_electron_microscope Step: 217 1.0 0.0
+RF FName: s_post_electron_microscope Step: 175 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_electron_microscope Step: 186 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 1.0
+RF FName: s_post_electron_microscope Step: 186 1.0 1.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_electron_microscope Step: 186 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_electron_microscope Step: 186 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_electron_microscope Step: 186 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_electron_microscope Step: 186 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_electron_microscope Step: 186 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_electron_microscope Step: 186 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_electron_microscope Step: 186 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_electron_microscope Step: 186 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 196 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 1.0
+RF FName: s_post_bacteria_structure Step: 196 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 196 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 196 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 196 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 196 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 196 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 196 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 196 1.0 0.0
+DT FName: s_post_electron_microscope Step: 228 1.0 0.0
+RF FName: s_post_bacteria_structure Step: 196 1.0 0.0
+DT | Prec: 98.22 | Recall 97.76 | F1 97.98 | Acc 97.98 | f1w 97.98
+RF | Prec: 99.09 | Recall 98.65 | F1 98.87 | Acc 98.88 | f1w 98.88
+INFO:src.model.policy:rand || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  83.3% | Classify:  94.64% | Actions: 0.0
+INFO:src.evaluation:-- evaluation | anomaly --
+
+=====RUNNING ACTION PRIOR=====
+
+INFO:src.evaluation:-- evaluation | classify --
+CBLOF | Prec: 36.0 | Recall 34.0 | F1 33.0 | Acc 84.08 | f1w 85.89 | Anomaly 13.47
+IF | Prec: 16.82 | Recall 18.0 | F1 14.88 | Acc 79.18 | f1w 81.49 | Anomaly 15.1
+DT FName: s_label Step: 228 3.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 228 5.0 4.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 228 17.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 228 5.0 2.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 228 7.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 228 5.0 0.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 228 4.0 0.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 228 14.0 2.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 228 7.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 228 1.0 4.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 225 3.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 225 5.0 4.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 225 17.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 225 5.0 2.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 225 7.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 225 5.0 0.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 225 4.0 0.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 225 14.0 2.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 225 7.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 225 1.0 4.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 216 3.0 0.0
+RF FName: s_testleft Step: 220 6.0 4.0
+DT FName: s_label Step: 216 5.0 4.0
+RF FName: s_testleft Step: 220 10.0 2.0
+DT FName: s_label Step: 216 17.0 0.0
+RF FName: s_testleft Step: 220 1.0 4.0
+DT FName: s_label Step: 216 5.0 2.0
+RF FName: s_testleft Step: 220 3.0 3.0
+DT FName: s_label Step: 216 7.0 0.0
+RF FName: s_testleft Step: 220 2.0 4.0
+DT FName: s_label Step: 216 5.0 0.0
+RF FName: s_testleft Step: 220 10.0 7.0
+DT FName: s_label Step: 216 4.0 0.0
+RF FName: s_testleft Step: 220 3.0 4.0
+DT FName: s_label Step: 216 14.0 2.0
+RF FName: s_testleft Step: 220 1.0 8.0
+DT FName: s_label Step: 216 7.0 0.0
+RF FName: s_testleft Step: 220 4.0 3.0
+DT FName: s_label Step: 216 1.0 4.0
+RF FName: s_testleft Step: 220 0.0 7.0
+DT FName: s_label Step: 226 3.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 5.0 4.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 226 17.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 5.0 2.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 7.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 5.0 0.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 226 4.0 0.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 226 14.0 2.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 7.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 1.0 4.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 226 3.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 5.0 4.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 226 17.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 5.0 2.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 7.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 5.0 0.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 226 4.0 0.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT FName: s_label Step: 226 14.0 2.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 7.0 0.0
+RF FName: s_label_slide Step: 226 1.0 0.0
+DT FName: s_label Step: 226 1.0 4.0
+RF FName: s_label_slide Step: 226 0.0 0.0
+DT | Prec: 87.76 | Recall 89.7 | F1 88.71 | Acc 88.56 | f1w 88.56
+RF | Prec: 96.81 | Recall 94.63 | F1 95.66 | Acc 95.74 | f1w 95.74
+INFO:src.model.policy:actp || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  20.0% | Classify:  88.37% | Actions: 0.0
+INFO:src.evaluation:-- evaluation | anomaly --
+
+=====RUNNING BEHAVIOR CLONING DT=====
+
+CBLOF | Prec: 22.22 | Recall 36.0 | F1 26.85 | Acc 78.37 | f1w 81.85 | Anomaly 19.18
+INFO:src.evaluation:-- evaluation | classify --
+IF | Prec: 57.73 | Recall 69.0 | F1 60.29 | Acc 90.2 | f1w 91.29 | Anomaly 13.06
+DT FName: s_label Step: 222 6.0 2.0
+RF FName: s_objtest_milk Step: 175 1.0 1.0
+DT FName: s_label Step: 222 1.0 0.0
+RF FName: s_objtest_milk Step: 175 1.0 0.0
+DT FName: s_label Step: 222 6.0 0.0
+RF FName: s_objtest_milk Step: 175 1.0 0.0
+DT FName: s_label Step: 222 8.0 3.0
+RF FName: s_objtest_milk Step: 175 1.0 0.0
+DT FName: s_label Step: 222 6.0 0.0
+RF FName: s_objtest_milk Step: 175 1.0 0.0
+DT FName: s_label Step: 222 4.0 0.0
+RF FName: s_objtest_milk Step: 175 0.0 0.0
+DT FName: s_label Step: 222 27.0 0.0
+RF FName: s_objtest_milk Step: 175 1.0 0.0
+DT FName: s_label Step: 222 1.0 0.0
+RF FName: s_objtest_milk Step: 175 0.0 0.0
+DT FName: s_label Step: 222 12.0 0.0
+RF FName: s_objtest_milk Step: 175 1.0 0.0
+DT FName: s_label Step: 222 1.0 0.0
+RF FName: s_objtest_milk Step: 175 0.0 0.0
+DT FName: s_objtest_milk Step: 218 1.0 1.0
+RF FName: s_label Step: 185 6.0 2.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 185 1.0 0.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 185 6.0 0.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 185 8.0 3.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 185 6.0 0.0
+DT FName: s_objtest_milk Step: 218 0.0 0.0
+RF FName: s_label Step: 185 4.0 0.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 185 27.0 0.0
+DT FName: s_objtest_milk Step: 218 0.0 0.0
+RF FName: s_label Step: 185 1.0 0.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 185 12.0 0.0
+DT FName: s_objtest_milk Step: 218 0.0 0.0
+RF FName: s_label Step: 185 1.0 0.0
+DT FName: s_objtest_milk Step: 218 1.0 1.0
+RF FName: s_label Step: 217 6.0 2.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 217 1.0 0.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 217 6.0 0.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 217 8.0 3.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 217 6.0 0.0
+DT FName: s_objtest_milk Step: 218 0.0 0.0
+RF FName: s_label Step: 217 4.0 0.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 217 27.0 0.0
+DT FName: s_objtest_milk Step: 218 0.0 0.0
+RF FName: s_label Step: 217 1.0 0.0
+DT FName: s_objtest_milk Step: 218 1.0 0.0
+RF FName: s_label Step: 217 12.0 0.0
+DT FName: s_objtest_milk Step: 218 0.0 0.0
+RF FName: s_label Step: 217 1.0 0.0
+DT FName: s_label Step: 189 6.0 2.0
+RF FName: s_label Step: 198 6.0 2.0
+DT FName: s_label Step: 189 1.0 0.0
+RF FName: s_label Step: 198 1.0 0.0
+DT FName: s_label Step: 189 6.0 0.0
+RF FName: s_label Step: 198 6.0 0.0
+DT FName: s_label Step: 189 8.0 3.0
+RF FName: s_label Step: 198 8.0 3.0
+DT FName: s_label Step: 189 6.0 0.0
+RF FName: s_label Step: 198 6.0 0.0
+DT FName: s_label Step: 189 4.0 0.0
+RF FName: s_label Step: 198 4.0 0.0
+DT FName: s_label Step: 189 27.0 0.0
+RF FName: s_label Step: 198 27.0 0.0
+DT FName: s_label Step: 189 1.0 0.0
+RF FName: s_label Step: 198 1.0 0.0
+DT FName: s_label Step: 189 12.0 0.0
+RF FName: s_label Step: 198 12.0 0.0
+DT FName: s_label Step: 189 1.0 0.0
+RF FName: s_label Step: 198 1.0 0.0
+DT FName: s_label Step: 222 6.0 2.0
+RF FName: s_label Step: 202 6.0 2.0
+DT FName: s_label Step: 222 1.0 0.0
+RF FName: s_label Step: 202 1.0 0.0
+DT FName: s_label Step: 222 6.0 0.0
+RF FName: s_label Step: 202 6.0 0.0
+DT FName: s_label Step: 222 8.0 3.0
+RF FName: s_label Step: 202 8.0 3.0
+DT FName: s_label Step: 222 6.0 0.0
+RF FName: s_label Step: 202 6.0 0.0
+DT FName: s_label Step: 222 4.0 0.0
+RF FName: s_label Step: 202 4.0 0.0
+DT FName: s_label Step: 222 27.0 0.0
+RF FName: s_label Step: 202 27.0 0.0
+DT FName: s_label Step: 222 1.0 0.0
+RF FName: s_label Step: 202 1.0 0.0
+DT FName: s_label Step: 222 12.0 0.0
+RF FName: s_label Step: 202 12.0 0.0
+DT FName: s_label Step: 222 1.0 0.0
+RF FName: s_label Step: 202 1.0 0.0
+DT | Prec: 93.93 | Recall 95.53 | F1 94.68 | Acc 94.62 | f1w 94.61
+RF | Prec: 98.68 | Recall 97.76 | F1 98.19 | Acc 98.21 | f1w 98.21
+
+INFO:src.model.policy:bcdt || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  18.2% | Classify:  95.53% | Actions: 0.0
+=====RUNNING BEHAVIOR CLONING MLP=====
+
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 27.38 | Recall 46.0 | F1 32.95 | Acc 83.67 | f1w 85.44 | Anomaly 15.51
+INFO:src.evaluation:-- evaluation | classify --
+IF | Prec: 49.33 | Recall 58.0 | F1 50.34 | Acc 89.8 | f1w 90.32 | Anomaly 11.84
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 1.0
+RF FName: s_talk_extra Step: 169 1.0 1.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 1.0
+RF FName: s_talk_extra Step: 169 1.0 1.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 195 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 195 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 195 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 195 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 1.0
+RF FName: s_talk_extra Step: 195 1.0 1.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 195 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 195 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 1.0
+RF FName: s_talk_extra Step: 195 1.0 1.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 195 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 195 1.0 0.0
+DT FName: s_talk_extra Step: 206 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 206 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 206 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 206 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 206 1.0 1.0
+RF FName: s_talk_extra Step: 169 1.0 1.0
+DT FName: s_talk_extra Step: 206 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 206 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 206 1.0 1.0
+RF FName: s_talk_extra Step: 169 1.0 1.0
+DT FName: s_talk_extra Step: 206 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 206 1.0 0.0
+RF FName: s_talk_extra Step: 169 1.0 0.0
+DT FName: s_talk_extra Step: 184 1.0 0.0
+RF FName: s_talk_extra Step: 180 1.0 0.0
+DT FName: s_talk_extra Step: 184 1.0 0.0
+RF FName: s_talk_extra Step: 180 1.0 0.0
+DT FName: s_talk_extra Step: 184 1.0 0.0
+RF FName: s_talk_extra Step: 180 1.0 0.0
+DT FName: s_talk_extra Step: 184 1.0 0.0
+RF FName: s_talk_extra Step: 180 1.0 0.0
+DT FName: s_talk_extra Step: 184 1.0 1.0
+RF FName: s_talk_extra Step: 180 1.0 1.0
+DT FName: s_talk_extra Step: 184 1.0 0.0
+RF FName: s_talk_extra Step: 180 1.0 0.0
+DT FName: s_talk_extra Step: 184 1.0 0.0
+RF FName: s_talk_extra Step: 180 1.0 0.0
+DT FName: s_talk_extra Step: 184 1.0 1.0
+RF FName: s_talk_extra Step: 180 1.0 1.0
+DT FName: s_talk_extra Step: 184 1.0 0.0
+RF FName: s_talk_extra Step: 180 1.0 0.0
+DT FName: s_talk_extra Step: 184 1.0 0.0
+RF FName: s_talk_extra Step: 180 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 227 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 227 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 227 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 227 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 1.0
+RF FName: s_talk_extra Step: 227 1.0 1.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 227 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 227 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 1.0
+RF FName: s_talk_extra Step: 227 1.0 1.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 227 1.0 0.0
+DT FName: s_talk_extra Step: 173 1.0 0.0
+RF FName: s_talk_extra Step: 227 1.0 0.0
+DT | Prec: 89.85 | Recall 94.64 | F1 92.11 | Acc 91.92 | f1w 91.91
+RF | Prec: 94.47 | Recall 97.31 | F1 95.83 | Acc 95.74 | f1w 95.73
+INFO:src.model.policy:bcnn || EPOCH 0 | Rewards:  0 | Perplexity:  0.0000 | Div (pq qp js):  0.00  0.00  0.00 | Anomaly:  60.0% | Classify:  89.25% | Actions: 0.0
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+
+=====RUNNING GPT=====
+
+INFO:src.evaluation:-- evaluation | anomaly --
+CBLOF | Prec: 4.5 | Recall 9.0 | F1 6.0 | Acc 74.69 | f1w 78.17 | Anomaly 17.96
+IF | Prec: 7.5 | Recall 9.0 | F1 8.08 | Acc 77.96 | f1w 80.28 | Anomaly 14.69
+INFO:src.evaluation:-- evaluation | classify --
+Traceback (most recent call last):
+  File "/Users/fahmid/IntelliMedia/CrystalIsland RL/src/main.py", line 95, in <module>
+    run()
+  File "/Users/fahmid/IntelliMedia/CrystalIsland RL/src/main.py", line 86, in run
+    gpt.eval_score(0)
+  File "/Users/fahmid/IntelliMedia/CrystalIsland RL/src/model/policy.py", line 48, in eval_score
+    clf, clf_f1w = evaluation.classify(self)
+  File "/Users/fahmid/IntelliMedia/CrystalIsland RL/src/evaluation.py", line 179, in classify
+    df_sim = utils.simulate_env(policy, total_episode=total_ep)
+  File "/Users/fahmid/IntelliMedia/CrystalIsland RL/src/utils.py", line 539, in simulate_env
+    action = policy.get_action(state)
+  File "/Users/fahmid/IntelliMedia/CrystalIsland RL/src/model/policy.py", line 133, in get_action
+    sample_outputs = self.model.generate(
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/transformers/generation_utils.py", line 1390, in generate
+    return self.greedy_search(
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/transformers/generation_utils.py", line 1785, in greedy_search
+    outputs = self(
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 1046, in forward
+    transformer_outputs = self.transformer(
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 889, in forward
+    outputs = block(
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 426, in forward
+    feed_forward_hidden_states = self.mlp(hidden_states)
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/transformers/models/gpt2/modeling_gpt2.py", line 355, in forward
+    hidden_states = self.c_proj(hidden_states)
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/Users/fahmid/opt/anaconda3/envs/deeprl/lib/python3.10/site-packages/transformers/pytorch_utils.py", line 112, in forward
+    x = torch.addmm(self.bias, x.view(-1, x.size(-1)), self.weight)
+KeyboardInterrupt

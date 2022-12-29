@@ -100,14 +100,12 @@ def get_anomaly_detector(df, seed=0, print_eval=False):
 
     return detector
 
-def solve_predictor(df_location, seed=0, print_eval=False):
+def outcome_predictor(df_location, seed=0, print_eval=False):
     df_org = pd.read_pickle(df_location)
-    df = df_org.loc[(df_org['action'] == envconst.action_map['a_workshsubmit'])].copy()
-    df['temp'] = df.apply(lambda x: x['next_state'][envconst.state_map['s_end']], axis=1)
-    df = df.loc[df['temp'] == 0]
+    df = df_org.loc[(df_org['action'] == envconst.action_map['a_end'])].copy()
 
     X = np.stack(df['state'])
-    df['y'] = df.apply(lambda x: x['next_state'][envconst.state_map['s_solved']], axis=1)
+    df['y'] = df.apply(lambda x: 1 if x['reward'] == 100.0 else 0, axis=1)
     y = np.array(df['y'])
 
     if print_eval:
@@ -137,7 +135,7 @@ def solve_predictor(df_location, seed=0, print_eval=False):
             X_train, X_test = X[train_index], X[test_index]
             y_train, y_test = y[train_index], y[test_index]
 
-            clf = MLPClassifier(random_state=seed, hidden_layer_sizes=(100,), max_iter=10000, shuffle=True, activation='logistic')
+            clf = MLPClassifier(random_state=seed, hidden_layer_sizes=(128, 128, 128), max_iter=10000, shuffle=True, activation='relu')
             clf.fit(X_train, y_train)
             y_pred = clf.predict(X_test)
             metrics.append(precision_recall_fscore_support(y_test, y_pred, zero_division=0))
@@ -216,14 +214,15 @@ def solve_predictor(df_location, seed=0, print_eval=False):
     clf.fit(X, y)
     return clf
 
-def load_data_by_solved(df_location, solved_reward=100, test_size=0.2):
+def load_data_by_outcome(df_location, outcome=100, test_size=0.2):
     logger.info("-- loading data from {0} with test size {1} --".format(df_location, test_size))
     df = pd.read_pickle(df_location)
 
     df = get_act_prob_df(df)
 
-    d = df.loc[(df['reward'] == solved_reward)]
-    student_ids = d['episode'].tolist()
+    d = df.loc[(df['reward'] == 0)]
+    not_student_ids = set(d['episode'].tolist())
+    student_ids = df.loc[~df['episode'].isin(not_student_ids)]['episode'].unique()
 
     train_student, test_student = train_test_split(student_ids, test_size=test_size)
 
@@ -470,6 +469,11 @@ def actions_by_ep(df):
         actions = np.array(actions)
         all_rewards.append(d.iloc[-1]['reward'])
 
+        if len(actions)!=envconst.max_ep_len:
+            pad = envconst.max_ep_len - len(actions)
+            pad = np.array([envconst.action_map['a_end']] * pad)
+            actions = np.concatenate((actions, pad))
+
         all_actions.append(actions)
 
     actions = np.stack(all_actions)
@@ -480,8 +484,14 @@ def states_by_ep(df):
     all_states = []
     for student, d in df.groupby('episode'):
         states = d['state']
-        states = np.stack(states).flatten()
+        states = np.stack(states)
 
+        if len(states) != envconst.max_ep_len:
+            pad = envconst.max_ep_len - len(states)
+            last_state = deepcopy(states[-1])
+            pad = np.array([last_state]*pad)
+            states = np.concatenate((states, pad))
+        states = states.flatten()
         all_states.append(states)
 
     states = np.stack(all_states)
@@ -548,3 +558,151 @@ def get_transitions(df: pd.DataFrame):
     infos = np.array(df['info'])
     transitions = Transitions(obs=states, acts=actions, infos=infos, next_obs=next_states, dones=dones)
     return transitions
+
+
+def Xy_shuffle(a, b):
+    assert len(a) == len(b)
+    p = np.random.permutation(len(a))
+    return a[p], b[p]
+
+def state_string(state):
+    non_zero_feature_idx = np.where(state != 0)[0]
+
+    gender = "female"
+    if state[envconst.state_map['s_static_gender']] == 0:
+        gender = "male"
+    pretest = "high"
+    if state[envconst.state_map['s_static_pretest']] == 0:
+        pretest = "low"
+    skill = "high"
+    if state[envconst.state_map['s_static_gameskill']] == 0:
+        skill = "low"
+
+    target_item = "egg"
+    if state[envconst.state_map['s_target_item']] == 1:
+        target_item = "milk"
+    elif state[envconst.state_map['s_target_item']] == 2:
+        target_item = "sandwich"
+    target_disease = "influenza"
+    if state[envconst.state_map['s_target_disease']] == 1:
+        target_disease = "salmonellosis"
+
+    out = f"I am a {gender}. I have {pretest} pretest and {skill} game skill. " \
+          f"In the game, I am investigating an outbreak of {target_disease} spreading through {target_item}. "
+
+    spoken_to = []
+    picked_up = []
+    book_read = []
+    post_read = []
+    tested = []
+    testleft = ""
+    testpos = ""
+    label = ""
+    lesson = ""
+    slide = ""
+    worksheet = ""
+    notetake = ""
+    noteview = ""
+    computer = ""
+    submit = ""
+    aes = []
+    found = ""
+    end = ""
+    for fid in non_zero_feature_idx:
+        fname = envconst.state_map_rev[fid]
+        val = state[fid]
+        if "s_talk_" in fname:
+            name = fname.split("s_talk_")[1]
+            spoken_to.append(name)
+        elif "s_obj_" in fname:
+            name = fname.split("s_obj_")[1]
+            picked_up.append(name)
+        elif "s_book_" in fname:
+            name = fname.split("s_book_")[1]
+            book_read.append(name)
+        elif "s_post_" in fname:
+            name = fname.split("s_post_")[1]
+            post_read.append(name)
+        elif "s_objtest_" in fname:
+            name = fname.split("s_objtest_")[1]
+            tested.append(name)
+        elif "s_testleft" == fname:
+            testleft = "I have " + str(val) + " test(s) left. "
+        elif "s_testpos" == fname:
+            testpos = "I have found the source of the disease. "
+        elif "s_label" == fname:
+            label = "I have worked on " + str(val) + " labels. "
+        elif "s_label_lesson" == fname:
+            lesson = "I have worked on the lesson. "
+        elif "s_label_slide" == fname:
+            slide = "I have worked on the slide. "
+        elif "s_worksheet" == fname:
+            worksheet = "I have worked on the worksheet " + str(val) + " time(s). "
+        elif "s_notetake" == fname:
+            notetake = "I have taken " + str(val) + " note(s). "
+        elif "s_noteview" == fname:
+            noteview = "I have viewed my notes " + str(val) + " time(s). "
+        elif "s_computer" == fname:
+            computer = "I have used the computer " + str(val) + " time(s). "
+        elif "s_workshsubmit" == fname:
+            submit = "I have submitted my worksheet " + str(val) + " time(s). "
+        elif "s_aes_" in fname:
+            aes.append(fname + " " + str(val) + " time(s)")
+        elif "s_solved" == fname:
+            found = "I have the correct solution."
+        elif "s_end" == fname:
+            end = "I closed the game."
+    if len(spoken_to) != 0:
+        out += "I have spoken to " + ', '.join(spoken_to) + ". "
+    if len(picked_up) != 0:
+        out += "I have picked up " + ', '.join(picked_up) + ". "
+    if len(book_read) != 0:
+        out += "I have read books on " + ', '.join(book_read) + ". "
+    if len(post_read) != 0:
+        out += "I have read posters on " + ', '.join(post_read) + ". "
+    if len(tested) != 0:
+        out += "I have tested " + ', '.join(tested) + " for the source of the disease. "
+    out += testleft + testpos + label + lesson + slide + worksheet + notetake + noteview + computer + submit + found + end
+    if len(aes) != 0:
+        out += "I have received " + ', '.join(aes) + ". "
+    return out
+
+def action_string(action):
+    out = "I want to "
+    aname = envconst.action_map_rev[action]
+    if "a_talk_" in aname:
+        name = aname.split("a_talk_")[1]
+        out += "speak to " + name + "."
+    elif "a_obj" == aname:
+        out += "pickup an object."
+    elif "a_objtest" == aname:
+        out += "test an object."
+    elif "a_book" == aname:
+        out += "read a book."
+    elif "a_post" == aname:
+        out += "read a poster."
+    elif "a_notetake" == aname:
+        out += "take a note."
+    elif "a_noteview" == aname:
+        out += "view my note(s)."
+    elif "a_computer" == aname:
+        out += "use the computer."
+    elif "a_worksheet" == aname:
+        out += "work on the worksheet."
+    elif "a_label" == aname:
+        out += "work on the label."
+    elif "a_testleft" == aname:
+        out += "get new test kit."
+    elif "a_workshsubmit" == aname:
+        out += "submit my worksheet."
+    elif "a_end" == aname:
+        out += "close the game."
+
+    return out
+
+def action_string_rev(out):
+    for (aname, action) in envconst.action_map.items():
+        if out == action_string(action):
+            return action
+    print("NO ACTION FOUND FOR ", out)
+    return np.random.choice(list(envconst.action_map.values()))

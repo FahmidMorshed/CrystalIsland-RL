@@ -32,7 +32,7 @@ class CrystalIsland(Env):
         self.state = self._get_init_state()
         self.step_count = -1
 
-        self.solution_predictor = solution_predictor
+        self.outcome_predictor = solution_predictor
         self.envconst = envconst
 
         self.info = {}
@@ -82,32 +82,21 @@ class CrystalIsland(Env):
         rand_val = ""
         aes = ""
 
-        if self.step_count >= self.envconst.max_ep_len-1:
-            done = True
-            reward = 100.0 if self.state[self.envconst.state_map['s_solved']] == 1 else -100.0
-            rand_val = "last step"
-
-        elif next_state[envconst.state_map["s_end"]] == 1:
-            next_state = np.ones(len(envconst.state_map))
-            next_state[self.envconst.state_map['s_solved']] = self.state[self.envconst.state_map['s_solved']]
-            rand_val = "game ended"
-            reward = 0.0
-
-        elif 'a_talk_' in action_name:
-            if action_name == 'a_talk_que' and next_state[envconst.state_map['s' + action_name[1:]]] == 1:
+        if 'a_talk_' in action_name:
+            if action_name == 'a_talk_quentin' and next_state[envconst.state_map['s' + action_name[1:]]] == 1:
                 # talk to quentin 2nd time | AES Quentin Revelation triggered
                 next_state, aes = self._trigger_aes(next_state, aes_name='s_aes_que_', action_prob={0: 0.5, 1: 0.5})
-            if action_name == 'a_talk_bry' and next_state[envconst.state_map['s' + action_name[1:]]] == 1:
+            if action_name == 'a_talk_bryce' and next_state[envconst.state_map['s' + action_name[1:]]] == 1:
                 # talk to bryce 2nd time | AES Bryce Password Revelation triggered
                 next_state, aes = self._trigger_aes(next_state, aes_name='s_aes_pas_', action_prob={0: 0.5, 1: 0.5})
-            if action_name in ['a_talk_que', 'a_talk_for', 'a_talk_rob'] and \
+            if action_name in ['a_talk_quentin', 'a_talk_ford', 'a_talk_robert'] and \
                     next_state[envconst.state_map['s' + action_name[1:]]] == 0:
                 # talk to bryce, ford, or robert for the 1st time | AES Knowledge Quiz triggered
                 next_state, aes = self._trigger_aes(next_state, aes_name='s_aes_kno_', action_prob={0: 0.5, 1: 0.5})
-            if action_name == 'a_talk_ter':
+            if action_name == 'a_talk_teresa':
                 # talk to teresa | AES Teresa Symptoms triggered
                 next_state, aes = self._trigger_aes(next_state, aes_name='s_aes_ter_', action_prob={0: 0.33, 1: 0.33, 2: 0.34})
-            if action_name == 'a_talk_bry':
+            if action_name == 'a_talk_bryce':
                 # talk to bryce | AES Bryce Symptoms triggered
                 next_state, aes = self._trigger_aes(next_state, aes_name='s_aes_bry_', action_prob={0: 0.5, 1: 0.5})
 
@@ -138,7 +127,7 @@ class CrystalIsland(Env):
 
                     # check if target item is the same
                     target_item = next_state[envconst.state_map['s_target_item']]
-                    if (rand_val, target_item) in [("s_obj_egg", 0), ("s_obj_mil", 1), ("s_obj_san", 2)]:
+                    if (rand_val, target_item) in [("s_obj_egg", 0), ("s_obj_milk", 1), ("s_obj_sandwich", 2)]:
                         next_state[envconst.state_map['s_testpos']] = 1
 
         elif action_name in ['a_post', 'a_book', 'a_obj']:
@@ -165,11 +154,8 @@ class CrystalIsland(Env):
 
         elif 'a_workshsubmit' == action_name:
             next_state[envconst.state_map['s' + action_name[1:]]] += 1
-            if self.solution_predictor is not None:
-                solved = self.solution_predictor.predict([next_state])[0]
-            else:
-                # the prob of getting unsolved and solve, respectively
-                solved = np.random.choice([0, 1], p=[.84, .16])
+             # the prob of getting unsolved and solve, respectively
+            solved = np.random.choice([0, 1], p=[.84, .16])
 
             next_state[envconst.state_map["s_solved"]] = solved
 
@@ -178,6 +164,8 @@ class CrystalIsland(Env):
 
         elif 'a_end' == action_name:
             next_state[envconst.state_map['s_end']] = 1
+            reward = 100 if self.outcome_predictor.predict([next_state])[0] == 1 else -100
+            done = True
 
         # noting down info
         info["rand_val"] = rand_val

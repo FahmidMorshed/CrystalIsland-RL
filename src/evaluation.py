@@ -69,6 +69,8 @@ def anomaly(policy, print_eval=True):
     X = np.concatenate((X_sim, X_true), axis=0)
     y = np.concatenate((y_sim, y_true), axis=0)
 
+    X, y = utils.Xy_shuffle(X, y)
+
     if print_eval:
         # scores
         metrics = []
@@ -160,12 +162,17 @@ def anomaly(policy, print_eval=True):
 
     X_test = np.concatenate((X_sim_test, X_true_test), axis=0)
     y_test = np.concatenate((y_sim_test, y_true_test), axis=0)
+
+    X_test, y_test = utils.Xy_shuffle(X_test, y_test)
+
     y_pred = detector.predict(X_test)
     f1w = f1_score(y_test, y_pred, pos_label=1)
     return detector, f1w * 100
 
 
 def classify(policy, print_eval=True):
+    # TODO MOST DATA IS RANDOM/SINK states after padding, might confuse the clf, push the results in odd position
+    # TODO also, if padded state is 1s, and our policy is not ending, then it is easy to see that at 220 pos, we expect 1
     logger.info("-- evaluation | classify --")
     seed = policy.args.seed
     total_ep = len(policy.train_df['episode'].unique())
@@ -187,6 +194,8 @@ def classify(policy, print_eval=True):
 
     X = np.concatenate((X_sim, X_true), axis=0)
     y = np.concatenate((y_sim, y_true), axis=0)
+
+    X, y = utils.Xy_shuffle(X, y)
 
     if print_eval:
         # scores
@@ -253,6 +262,9 @@ def classify(policy, print_eval=True):
 
     X_test = np.concatenate((X_sim_test, X_true_test), axis=0)
     y_test = np.concatenate((y_sim_test, y_true_test), axis=0)
+
+    X_test, y_test = utils.Xy_shuffle(X_test, y_test)
+
     y_pred = clf.predict(X_test)
     f1w = f1_score(y_test, y_pred, average='weighted')
     return clf, f1w * 100

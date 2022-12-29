@@ -42,46 +42,53 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 external_config = {
-    'dryrun': False,
-    'run_name': 'dec14',
+    'dryrun': True,
+    'run_name': 'dec18',
 }
 
 def run():
+    for i in range(5):
+        print("="*10)
+        print("RANDOM", i)
+        args = utils.parse_config(ModelArguments, external_config)
+        args.seed = i
+        utils.set_all_seeds(args.seed)
+        args.run_name += "_" + str(args.seed)
 
-    args = utils.parse_config(ModelArguments, external_config)
-    args.seed = 1
-    utils.set_all_seeds(args.seed)
-    args.run_name += "_" + str(args.seed)
-    train, test = utils.load_data_by_solved(args.student_data_loc, test_size=.2)
+        clf = utils.outcome_predictor(args.student_data_loc, args.seed, print_eval=True)
+        env = CrystalIsland(solution_predictor=clf)
 
-    # clf = utils.solve_predictor(args.student_data_loc, args.seed, print_eval=True)
-    env = CrystalIsland(solution_predictor=None)
+        train, test = utils.load_data(args.student_data_loc, test_size=.2)
 
-    print("\n=====RUNNING RANDOM=====\n")
-    rp = policy.RandomPolicy(args, train, test, env)
-    rp.train()
-    rp.eval_score(0)
+        print("\n=====RUNNING RANDOM=====\n")
+        rp = policy.RandomPolicy(args, train, test, env)
+        rp.train()
+        rp.eval_score(0)
 
-    print("\n=====RUNNING ACTION PRIOR=====\n")
-    ap = policy.ActionPriorPolicy(args, train, test, env)
-    ap.train()
-    ap.eval_score(0)
+        print("\n=====RUNNING ACTION PRIOR=====\n")
+        ap = policy.ActionPriorPolicy(args, train, test, env)
+        ap.train()
+        ap.eval_score(0)
 
-    print("\n=====RUNNING BEHAVIOR CLONING DT=====\n")
-    bcdt = policy.BehaviorCloning(args, train, test, env)
-    bcdt.train()
-    bcdt.eval_score(0)
+        print("\n=====RUNNING BEHAVIOR CLONING DT=====\n")
+        bcdt = policy.BehaviorCloning(args, train, test, env)
+        bcdt.train()
+        bcdt.eval_score(0)
 
-    print("\n=====RUNNING BEHAVIOR CLONING MLP=====\n")
-    clf = MLPClassifier(random_state=args.seed, hidden_layer_sizes=(128, 128), max_iter=10000, shuffle=True)
-    bcnn = policy.BehaviorCloning(args, train, test, env, clf=clf, name='bcnn')
-    bcnn.train()
-    bcnn.eval_score(0)
+        print("\n=====RUNNING BEHAVIOR CLONING MLP=====\n")
+        clf = MLPClassifier(random_state=args.seed, hidden_layer_sizes=(128, 128), max_iter=10000, shuffle=True)
+        bcnn = policy.BehaviorCloning(args, train, test, env, clf=clf, name='bcnn')
+        bcnn.train()
+        bcnn.eval_score(0)
 
-    print("\n=====RUNNING GAIL=====\n")
-    gail = GAIL(args, train, test, env)
-    gail.train(200)
-    gail.eval_score(0)
+        print("\n=====RUNNING GPT=====\n")
+        gpt = policy.LanguageModel(args, train, test, env)
+        gpt.eval_score(0)
+
+        print("\n=====RUNNING GAIL=====\n")
+        gail = GAIL(args, train, test, env)
+        gail.train(200)
+        gail.eval_score(0)
 
 
 if __name__ == "__main__":
